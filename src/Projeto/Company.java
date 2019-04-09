@@ -100,8 +100,8 @@ public class Company {
         this.professional.add(s);
     }
 
-    public Professional unregisterProfessional(String id) {
-        return null;
+    public void unregisterProfessional(Professional s) {     //remove um profissional da empresa
+        this.professional.remove(s);
     }
 
     public Meeting searchMettings(int nif) {
