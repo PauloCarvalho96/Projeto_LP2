@@ -12,8 +12,5 @@ public class Main {
         System.out.println("Idade:"+p1.getAge()+"\nData nascimento: "+p1.getBirth_date().toString());
         System.out.println("Genero: "+p1.getGender());
         System.out.println("Location: "+p1.getLocation());
-
-        System.out.println("ddddd");
-
     }
 }
