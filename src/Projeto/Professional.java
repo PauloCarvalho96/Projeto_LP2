@@ -12,6 +12,12 @@ public class Professional extends Person {
 
     private Company company;
 
+    @Override
+    public String toString()
+    {
+        return "name:"+this.getName()+"\nage: "+this.getAge()+"\ndata de nascimento: "+this.getBirth_date()+"\nsexo :"+this.getGender()+"\n";
+    }
+
     /**
      * Constructor
      */
