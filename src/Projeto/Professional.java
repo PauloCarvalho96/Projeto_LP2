@@ -12,19 +12,38 @@ public class Professional extends Person {
 
     private Company company;
 
+    private ArrayList<String> skills = new ArrayList<>();
+
+    @Override
+    public String toString()
+    {
+        return "name:"+this.getName()+"\nage: "+this.getAge()+"\nsexo :"+this.getGender()+"\nSkills: "+this.getSkills()+"\n";
+    }
+
     /**
      * Constructor
      */
-    public Professional(String name, int age, String gender, Date date, Date date1, Location location) {
-        super(name, age, gender, date);
-        this.setDate(date1);
+    public Professional(String name, int age, String gender, Date registration, ArrayList<String> skills, Location location) {
+        super(name, age, gender);
+        this.setRegistration(registration);
+        this.setSkills(skills);
         this.setLocation(location);
-}
+    }
+
     /**
      * Gets and Sets
      */
+
     public double getSalary() {
         return salary;
+    }
+
+    public ArrayList<String> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(ArrayList<String> skills) {
+        this.skills = skills;
     }
 
     public void setSalary(double salary) {
@@ -67,25 +86,13 @@ public class Professional extends Person {
 
     /**
      *
-     * @element-type Skill
-     */
-    public ArrayList<Professional> getSkill() {
-        return skill;
-    }
-
-    public void setSkill(ArrayList<Professional> skill) {
-        this.skill = skill;
-    }
-
-    /**
-     *
      * @element-type Meeting
      */
-    public ArrayList<Professional> getMeet() {
+    public ArrayList<Meeting> getMeet() {
         return meet;
     }
 
-    public void setMeet(ArrayList<Professional> meet) {
+    public void setMeet(ArrayList<Meeting> meet) {
         this.meet = meet;
     }
 
@@ -109,11 +116,11 @@ public class Professional extends Person {
      *
      * @element-type CompanyHistory
      */
-    public ArrayList<Professional> getCompanyHistory() {
+    public ArrayList<CompanyHistory> getCompanyHistory() {
         return companyHistory;
     }
 
-    public void setCompanyHistory(ArrayList<Professional> companyHistory) {
+    public void setCompanyHistory(ArrayList<CompanyHistory> companyHistory) {
         this.companyHistory = companyHistory;
     }
 
@@ -121,11 +128,11 @@ public class Professional extends Person {
      *
      * @element-type InterestAreas
      */
-    public ArrayList<Professional> getInterestAreas() {
+    public ArrayList<InterestAreas> getInterestAreas() {
         return interestAreas;
     }
 
-    public void setInterestAreas(ArrayList<Professional> interestAreas) {
+    public void setInterestAreas(ArrayList<InterestAreas> interestAreas) {
         this.interestAreas = interestAreas;
     }
 
@@ -137,13 +144,12 @@ public class Professional extends Person {
         this.location = location;
     }
 
-    private ArrayList<Professional> skill = new ArrayList<>();
-    private ArrayList<Professional> meet = new ArrayList<>();
+    private ArrayList<Meeting> meet = new ArrayList<>();
     private Person person;
     private Employment employment;
     private Date date;
-    private ArrayList<Professional> companyHistory = new ArrayList<>();
-    private ArrayList<Professional> interestAreas = new ArrayList<>();
+    private ArrayList<CompanyHistory> companyHistory = new ArrayList<>();
+    private ArrayList<InterestAreas> interestAreas = new ArrayList<>();
     private Location location;
 
     public int numberOfSkills() {

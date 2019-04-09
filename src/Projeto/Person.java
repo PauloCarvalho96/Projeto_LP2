@@ -14,11 +14,10 @@ public class Person {
     /**
      *  Constructor
      */
-    public Person(String name, int age, String gender, Date date) {
+    public Person(String name, int age, String gender) {
         this.setName(name);
         this.setAge(age);
         this.setGender(gender);
-        this.setBirth_date(date);
     }
 
     /**

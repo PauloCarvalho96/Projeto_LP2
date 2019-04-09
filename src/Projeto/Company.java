@@ -51,11 +51,11 @@ public class Company {
      *
      * @element-type Professional
      */
-    public ArrayList<Company> getProfessional() {
+    public ArrayList<Professional> getProfessional() {
         return professional;
     }
 
-    public void setProfessional(ArrayList<Company> professional) {
+    public void setProfessional(ArrayList<Professional> professional) {
         this.professional = professional;
     }
 
@@ -91,16 +91,17 @@ public class Company {
         GestaoDeEmpresas = gestaoDeEmpresas;
     }
 
-    private ArrayList<Company> professional = new ArrayList<>();
+    private ArrayList<Professional> professional = new ArrayList<>();
     private ArrayList<Company> meet = new ArrayList<>();
     private Location location;
     private GestaoDeEmpresas GestaoDeEmpresas;
 
-    public void registerProfessional(Professional s) {
+    public void registerProfessional(Professional s) {      //adiciona profissional a empresa
+        this.professional.add(s);
     }
 
-    public Professional unregisterProfessional(String id) {
-        return null;
+    public void unregisterProfessional(Professional s) {     //remove um profissional da empresa
+        this.professional.remove(s);
     }
 
     public Meeting searchMettings(int nif) {
