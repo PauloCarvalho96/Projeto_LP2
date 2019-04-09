@@ -139,14 +139,23 @@ public class Professional extends Person {
 
     private ArrayList<Professional> skill = new ArrayList<>();
     private ArrayList<Professional> meet = new ArrayList<>();
-    private Person person;
+    private ArrayList<Professional> person = new ArrayList<>();
     private Employment employment;
     private Date date;
     private ArrayList<Professional> companyHistory = new ArrayList<>();
     private ArrayList<Professional> interestAreas = new ArrayList<>();
     private Location location;
 
-    public int numberOfSkills() {
+    public int numberOfSkills(Professional p) {
+        for (Professional pi:this.person) {
+            if(pi.getName().compareTo(p.getName())==0)
+            {
+                for (Professional s:this.skill) {
+                    if(s.getSkill().c)
+                }
+            }
+
+        }
         return 0;
     }
 
