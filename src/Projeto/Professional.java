@@ -24,9 +24,8 @@ public class Professional extends Person {
     /**
      * Constructor
      */
-    public Professional(String name, int age, String gender, Date registration, ArrayList<String> skills, Location location, String id) {
+    public Professional(String name, int age, String gender, ArrayList<String> skills, Location location, String id) {
         super(name, age, gender);
-        this.setRegistration(registration);
         this.setSkills(skills);
         this.setLocation(location);
         this.setId(id);

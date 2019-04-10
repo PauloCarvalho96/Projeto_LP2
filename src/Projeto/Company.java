@@ -96,7 +96,7 @@ public class Company {
         this.professional.delete(d);
     }
 
-    public void printPro()
+    public void printProForRegistrationDate()
     {
         for (Date d:professional.keys()) {
             System.out.println(d+" "+professional.get(d));
