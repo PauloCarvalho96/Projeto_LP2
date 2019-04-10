@@ -12,12 +12,15 @@ public class Professional extends Person {
 
     private Company company;
 
+    private int numberSkills=0; //////////////////////////////////
+
     private ArrayList<String> skills = new ArrayList<>();
 
     @Override
     public String toString()
     {
-        return "name:"+this.getName()+"\nage: "+this.getAge()+"\nsexo :"+this.getGender()+"\nSkills: "+this.getSkills()+"\n";
+        return "name:"+this.getName()+"\nage: "+this.getAge()+"\nsexo :"+this.getGender()+"\nSkills: "+this.getSkills()+"\nNumber Skills: "+this.getNumberSkills()+"\n";
+
     }
 
     /**
@@ -72,6 +75,14 @@ public class Professional extends Person {
 
     public void setCompany(Company company) {
         this.company = company;
+    }
+
+    public int getNumberSkills() { /////////////////////////////////////////////////////////////////77
+        return numberSkills;
+    }
+
+    public void setNumberSkills(int numberSkills) { //////////////////////////////////////////7
+        this.numberSkills = numberSkills;
     }
 
     @Override
@@ -152,7 +163,13 @@ public class Professional extends Person {
     private ArrayList<InterestAreas> interestAreas = new ArrayList<>();
     private Location location;
 
-    public int numberOfSkills() {
+    public int numberOfSkills(String s) { //////////////// ESTA MAL, NAO SEI COMO FAZER !!!!!!!!!!!!!!!!!!!!!
+        for (String si:this.getSkills()) {
+            if(si.contains(s))
+            {
+                this.numberSkills++;
+            }
+        }
         return 0;
     }
 
