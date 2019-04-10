@@ -20,7 +20,6 @@ public class Professional extends Person {
         return "name:"+this.getName()+"\nage: "+this.getAge()+"\nsexo :"+this.getGender()+"\nSkills: "+this.getSkills()+
                 "\nData de registo na empresa: "+this.getRegistration()+"\nID: "+this.getId();
     }
-
     /**
      * Constructor
      */
