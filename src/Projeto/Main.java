@@ -26,10 +26,10 @@ public class Main {
         c1.unregisterProfessional(p2);
         c2.registerProfessional(p2);
 
-        System.out.println("Empresa:" +c1.getName()+"\nphone: "+c1.getPhone()+"\nnif: "+c1.getNif());
+        System.out.println("Empresa:" +c1.getName()+"\nphone: "+c1.getPhone()+"\nnif: "+c1.getNif()+"\nLocation: "+c1.getLocation());
         System.out.println("Profissional:"+c1.getProfessional());
         System.out.println("-----------------------");
-        System.out.println("Empresa:" +c2.getName()+"\nphone: "+c2.getPhone()+"\nnif: "+c2.getNif());
+        System.out.println("Empresa:" +c2.getName()+"\nphone: "+c2.getPhone()+"\nnif: "+c2.getNif()+"\nLocation: "+c2.getLocation());
         System.out.println("Profissional:"+c2.getProfessional());
     }
 }
