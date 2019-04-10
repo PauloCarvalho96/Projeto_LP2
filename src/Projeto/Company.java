@@ -109,10 +109,7 @@ public class Company {
     }
 
     public Professional searchEmployer(int id) {
-        for (Professional p1:this.id
-             ) {
 
-        }
         return null;
     }
 
