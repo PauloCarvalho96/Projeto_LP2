@@ -11,7 +11,7 @@ public class Meeting {
     /**
      * Constructor
      */
-    public Meeting(String name, int duration, Location location, ArrayList<Meeting> interestAreas, Date date) {
+    public Meeting(String name, int duration, Location location, ArrayList<String> interestAreas, Date date) {
         this.setName(name);
         this.setDuration(duration);
         this.setLocation(location);
@@ -42,11 +42,11 @@ public class Meeting {
      *
      * @element-type Professional
      */
-    public ArrayList<Meeting> getProfessional() {
+    public ArrayList<Professional> getProfessional() {
         return professional;
     }
 
-    public void setProfessional(ArrayList<Meeting> professional) {
+    public void setProfessional(ArrayList<Professional> professional) {
         this.professional = professional;
     }
 
@@ -70,11 +70,11 @@ public class Meeting {
      *
      * @element-type InterestAreas
      */
-    public ArrayList<Meeting> getInterestAreas() {
+    public ArrayList<String> getInterestAreas() {
         return interestAreas;
     }
 
-    public void setInterestAreas(ArrayList<Meeting> interestAreas) {
+    public void setInterestAreas(ArrayList<String> interestAreas) {
         this.interestAreas = interestAreas;
     }
 
@@ -86,9 +86,9 @@ public class Meeting {
         this.date = date;
     }
 
-    private ArrayList<Meeting> professional = new ArrayList<>();
+    private ArrayList<Professional> professional = new ArrayList<>();
     private Company company;
     private Location location;
-    private ArrayList<Meeting> interestAreas = new ArrayList<>();
+    private ArrayList<String> interestAreas = new ArrayList<>();
     private Date date;
 }
