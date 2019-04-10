@@ -125,17 +125,7 @@ public class Professional extends Person {
         this.companyHistory = companyHistory;
     }
 
-    /**
-     *
-     * @element-type InterestAreas
-     */
-    public ArrayList<InterestAreas> getInterestAreas() {
-        return interestAreas;
-    }
 
-    public void setInterestAreas(ArrayList<InterestAreas> interestAreas) {
-        this.interestAreas = interestAreas;
-    }
 
     public Location getLocation() {
         return location;
@@ -150,7 +140,6 @@ public class Professional extends Person {
     private Employment employment;
     private Date date;
     private ArrayList<CompanyHistory> companyHistory = new ArrayList<>();
-    private ArrayList<InterestAreas> interestAreas = new ArrayList<>();
     private Location location;
 
     public Meeting searchMeetings(Professional p) {

@@ -74,19 +74,11 @@ public class Company {
         this.location = location;
     }
 
-    public Projeto.GestaoDeEmpresas getGestaoDeEmpresas() {
-        return GestaoDeEmpresas;
-    }
-
-    public void setGestaoDeEmpresas(Projeto.GestaoDeEmpresas gestaoDeEmpresas) {
-        GestaoDeEmpresas = gestaoDeEmpresas;
-    }
 
     private RedBlackBST<Date,Professional> professional = new RedBlackBST<>();
 
     private ArrayList<Company> meet = new ArrayList<>();
     private Location location;
-    private GestaoDeEmpresas GestaoDeEmpresas;
 
     public void registerProfessional(Date d,Professional p) {      //adiciona profissional a empresa
         this.professional.put(d,p);
@@ -158,12 +150,12 @@ public class Company {
     {
         p.setCompany(null);
         p.setSalary(0.0);
+        p.setId(null);
     }
 
     @Override
     public String toString()
     {
-        return this.getName();
+        return "\nName: "+this.getName()+"\nPhone: "+this.getPhone()+"\nnif: "+this.getNif()+"\nlocation: "+this.getLocation()+"\n---------------";
     }
-
 }
