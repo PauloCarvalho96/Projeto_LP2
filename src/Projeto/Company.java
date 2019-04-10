@@ -1,5 +1,7 @@
 package Projeto;
 
+import edu.princeton.cs.algs4.RedBlackBST;
+
 import java.util.ArrayList;
 
 public class Company {
@@ -47,17 +49,6 @@ public class Company {
         this.nif = nif;
     }
 
-    /**
-     *
-     * @element-type Professional
-     */
-    public ArrayList<Professional> getProfessional() {
-        return professional;
-    }
-
-    public void setProfessional(ArrayList<Professional> professional) {
-        this.professional = professional;
-    }
 
     /**
      *
@@ -91,17 +82,25 @@ public class Company {
         GestaoDeEmpresas = gestaoDeEmpresas;
     }
 
-    private ArrayList<Professional> professional = new ArrayList<>();
+    private RedBlackBST<Date,String> professional = new RedBlackBST<>();
+
     private ArrayList<Company> meet = new ArrayList<>();
     private Location location;
     private GestaoDeEmpresas GestaoDeEmpresas;
 
-    public void registerProfessional(Professional s) {      //adiciona profissional a empresa
-        this.professional.add(s);
+    public void registerProfessional(Date d,Professional p) {      //adiciona profissional a empresa
+        this.professional.put(d,p.getName());
     }
 
-    public void unregisterProfessional(Professional s) {     //remove um profissional da empresa
-        this.professional.remove(s);
+    public void unregisterProfessional(Date d) {     //remove um profissional da empresa
+        this.professional.delete(d);
+    }
+
+    public void printPro()
+    {
+        for (Date d:professional.keys()) {
+            System.out.println(d+" "+professional.get(d));
+        }
     }
 
     public Meeting searchMettings(int nif) {

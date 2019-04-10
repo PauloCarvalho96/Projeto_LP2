@@ -6,6 +6,7 @@ public class Main {
     public static void main (String[] args)
     {
         Date d1r = new Date (10,05,2010,00,00);
+        Date d2r = new Date (15,04,1900,00,00);
 
         Location l1 = new Location(10,10);
         Location l2 = new Location(1,1);
@@ -26,16 +27,11 @@ public class Main {
 
         p1.setId("1");
         p2.setId("2");
+        c1.registerProfessional(d1r,p1);
+        c1.registerProfessional(d2r,p2);
 
-        c1.registerProfessional(p1);
-        c1.registerProfessional(p2);
-        c1.unregisterProfessional(p2);
-        c2.registerProfessional(p2);
+        c1.printPro();
 
-        System.out.println("Empresa:" +c1.getName()+"\nphone: "+c1.getPhone()+"\nnif: "+c1.getNif()+"\nLocation: "+c1.getLocation());
-        System.out.println("Profissional:"+c1.getProfessional());
-        System.out.println("-----------------------");
-        System.out.println("Empresa:" +c2.getName()+"\nphone: "+c2.getPhone()+"\nnif: "+c2.getNif()+"\nLocation: "+c2.getLocation());
-        System.out.println("Profissional:"+c2.getProfessional());
     }
+
 }

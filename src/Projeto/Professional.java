@@ -154,9 +154,9 @@ public class Professional extends Person {
     private ArrayList<InterestAreas> interestAreas = new ArrayList<>();
     private Location location;
 
-
-
     public Meeting searchMeetings(Professional p) {
         return null;
     }
+
+
 }
