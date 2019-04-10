@@ -18,11 +18,14 @@ public class Main {
         skillsP2.add("Fotografia");
         skillsP2.add("Video");
 
-        Professional p1 = new Professional("Paulo",23,"Masculino",d1r,skillsP1,l1);
-        Professional p2 = new Professional("Sheila",69,"Feminino",d1r,skillsP2,l1);
+        Professional p1 = new Professional("Paulo",23,"Masculino",d1r,skillsP1,l1,null);
+        Professional p2 = new Professional("Sheila",69,"Feminino",d1r,skillsP2,l1,null);
 
         Company c1 = new Company("UFP",252252525,190190190,l2);
         Company c2 = new Company("PR MOTORS",123456789,423567437,l3);
+
+        p1.setId("1");
+        p2.setId("2");
 
         c1.registerProfessional(p1);
         c1.registerProfessional(p2);

@@ -17,17 +17,19 @@ public class Professional extends Person {
     @Override
     public String toString()
     {
-        return "name:"+this.getName()+"\nage: "+this.getAge()+"\nsexo :"+this.getGender()+"\nSkills: "+this.getSkills()+"\nData de registo na empresa: "+this.getRegistration();
+        return "name:"+this.getName()+"\nage: "+this.getAge()+"\nsexo :"+this.getGender()+"\nSkills: "+this.getSkills()+
+                "\nData de registo na empresa: "+this.getRegistration()+"\nID: "+this.getId();
     }
 
     /**
      * Constructor
      */
-    public Professional(String name, int age, String gender, Date registration, ArrayList<String> skills, Location location) {
+    public Professional(String name, int age, String gender, Date registration, ArrayList<String> skills, Location location, String id) {
         super(name, age, gender);
         this.setRegistration(registration);
         this.setSkills(skills);
         this.setLocation(location);
+        this.setId(id);
     }
 
     /**
@@ -152,8 +154,9 @@ public class Professional extends Person {
     private ArrayList<InterestAreas> interestAreas = new ArrayList<>();
     private Location location;
 
+
+
     public Meeting searchMeetings(Professional p) {
         return null;
     }
-
 }

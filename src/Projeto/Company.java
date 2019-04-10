@@ -109,7 +109,6 @@ public class Company {
     }
 
     public Professional searchEmployer(int id) {
-
         return null;
     }
 
