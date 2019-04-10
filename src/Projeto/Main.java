@@ -51,7 +51,8 @@ public class Main {
         //c1.unregisterProfessional(d1r);
         //c1.printProForRegistrationDate();
         //c1.editProfessional(d1r,d4r,p4);
-        c1.printProForRegistrationDate();
-        c2.printProForRegistrationDate();
+        //c1.printProForRegistrationDate();
+        //c2.printProForRegistrationDate();
+        c1.searchBySkill("Video");
     }
 }

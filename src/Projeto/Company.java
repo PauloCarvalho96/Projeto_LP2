@@ -143,6 +143,17 @@ public class Company {
         return null;
     }
 
+    public String searchBySkill(String skill)       //procura profissionais com uma determinada skill na empresa
+    {
+        for (Date d:professional.keys()) {
+            if(professional.get(d).getSkills().contains(skill))
+            {
+                System.out.println("Name: "+professional.get(d).getName()+"\nSkill: "+skill);
+            }
+        }
+        return null;
+    }
+
     @Override
     public String toString()
     {

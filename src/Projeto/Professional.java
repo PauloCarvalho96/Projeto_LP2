@@ -156,5 +156,4 @@ public class Professional extends Person {
         return null;
     }
 
-
 }
