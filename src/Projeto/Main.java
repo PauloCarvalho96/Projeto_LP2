@@ -34,6 +34,10 @@ public class Main {
         c1.registerProfessional(d2r,p2);
         c1.registerProfessional(d3r,p3);
 
+        //c1.printProForRegistrationDate();
+        //c1.unregisterProfessional(d1r);
+        //c1.printProForRegistrationDate();
+        c1.editProfessional(d1r,"Paulo",d3r,"Jorge");
         c1.printProForRegistrationDate();
 
     }

@@ -103,6 +103,17 @@ public class Company {
         }
     }
 
+    public void editProfessional(Date d, String p,Date nd,String np)
+    {
+        for (Date di:professional.keys()) {
+            if(di.compareTo(d)==0 && professional.get(d).compareTo(p)==0)
+            {
+                d = nd;
+                p = np;
+            }
+            }
+    }
+
     public Meeting searchMettings(int nif) {
         return null;
     }
