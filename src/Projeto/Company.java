@@ -154,6 +154,12 @@ public class Company {
         return null;
     }
 
+    public void removeFromCompany(Professional p)     //remove da empresa
+    {
+        p.setCompany(null);
+        p.setSalary(0.0);
+    }
+
     @Override
     public String toString()
     {

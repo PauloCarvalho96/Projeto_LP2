@@ -18,15 +18,16 @@ public class Professional extends Person {
     public String toString()
     {
         return "\nEmpresa: "+this.getCompany()+"\nname:"+this.getName()+"\nage: "+this.getAge()+"\nsexo :"+this.getGender()+"\nSkills: "+this.getSkills()+
-                "\nLocation: "+this.getLocation()+"\nID: "+this.getId()+"\n--------------------";
+                "\nLocation: "+this.getLocation()+"\nSalary: "+this.getSalary()+"\nID: "+this.getId()+"\n--------------------";
     }
     /**
      * Constructor
      */
-    public Professional(String name, int age, String gender, ArrayList<String> skills, Location location, String id) {
+    public Professional(String name, int age, String gender, ArrayList<String> skills, Location location, String id,double salary) {
         super(name, age, gender);
         this.setSkills(skills);
         this.setLocation(location);
+        this.setSalary(salary);
         this.setId(id);
     }
 

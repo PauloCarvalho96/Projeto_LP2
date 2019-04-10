@@ -22,11 +22,11 @@ public class Main {
         skillsP2.add("Fotografia");
         skillsP2.add("Video");
 
-        Professional p1 = new Professional("Paulo",23,"Masculino",skillsP1,l1,null);
-        Professional p2 = new Professional("Sheila",69,"Feminino",skillsP2,l1,null);
-        Professional p3 = new Professional("Jota",32,"Masculino",skillsP1,l1,null);
-        Professional p4 = new Professional("Artur",99,"Masculino",skillsP2,l1,null);
-        Professional p5 = new Professional("Pedro",20,"Masculino",skillsP1,l1,null);
+        Professional p1 = new Professional("Paulo",23,"Masculino",skillsP1,l1,null,0.0);
+        Professional p2 = new Professional("Sheila",69,"Feminino",skillsP2,l1,null,0.0);
+        Professional p3 = new Professional("Jota",32,"Masculino",skillsP1,l1,null,0.0);
+        Professional p4 = new Professional("Artur",99,"Masculino",skillsP2,l1,null,0.0);
+        Professional p5 = new Professional("Pedro",20,"Masculino",skillsP1,l1,null,0.0);
 
         Company c1 = new Company("UFP",252252525,190190190,l2);
         Company c2 = new Company("PR MOTORS",123456789,423567437,l3);
@@ -36,6 +36,11 @@ public class Main {
         p3.setId("3");
         p4.setId("4");
         p5.setId("5");
+        p1.setSalary(1000.0);
+        p2.setSalary(5000.0);
+        p3.setSalary(3000.0);
+        p4.setSalary(2000.0);
+        p5.setSalary(8000.0);
         c1.registerProfessional(d1r,p1);
         c1.associatePro(c1,p1);
         c1.registerProfessional(d2r,p2);
@@ -47,12 +52,13 @@ public class Main {
         c2.registerProfessional(d5r,p5);
         c2.associatePro(c2,p5);
 
+        //c1.removeFromCompany(p1);
         //c1.printProForRegistrationDate();
         //c1.unregisterProfessional(d1r);
         //c1.printProForRegistrationDate();
         //c1.editProfessional(d1r,d4r,p4);
-        //c1.printProForRegistrationDate();
-        //c2.printProForRegistrationDate();
-        c1.searchBySkill("Video");
+        //c1.searchBySkill("Video");
+        c1.printProForRegistrationDate();
+        c2.printProForRegistrationDate();
     }
 }
