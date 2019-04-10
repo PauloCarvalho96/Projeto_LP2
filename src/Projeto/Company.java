@@ -92,6 +92,11 @@ public class Company {
         this.professional.put(d,p);
     }
 
+    public void associatePro(Company c, Professional p)     //associa um profissional a uma empresa
+    {
+        p.setCompany(c);
+    }
+
     public void unregisterProfessional(Date d) {     //remove um profissional da empresa
         this.professional.delete(d);
     }
@@ -136,6 +141,12 @@ public class Company {
 
     public Professional highestSalary(int nif,  Professional p) {
         return null;
+    }
+
+    @Override
+    public String toString()
+    {
+        return this.getName();
     }
 
 }
