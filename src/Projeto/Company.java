@@ -12,17 +12,26 @@ public class Company {
 
     private int nif;
 
+    private ArrayList<String>meetings =new ArrayList<>();
 
     /**
      * Constructor
      */
-    public Company(String name, int phone, int nif, Location location) {
-        this.setName(name);
-        this.setPhone(phone);
-        this.setNif(nif);
-        this.setLocation(location);
+    public Company(String name, int phone, int nif, ArrayList<String> meetings, Location location) {
+        this.name = name;
+        this.phone = phone;
+        this.nif = nif;
+        this.meetings = meetings;
+        this.location = location;
     }
 
+    public ArrayList<String> getMeetings() {
+        return meetings;
+    }
+
+    public void setMeetings(ArrayList<String> meetings) {
+        this.meetings = meetings;
+    }
 
     public RedBlackBST<Date, Professional> getProfessional() {
         return professional;
@@ -92,6 +101,11 @@ public class Company {
 
     public void registerProfessional(Date d,Professional p) {      //adiciona profissional a empresa
         this.professional.put(d,p);
+    }
+
+    public void associateMeet(Company c, Meeting m)
+    {
+        m.setCompany(c);
     }
 
     public void associatePro(Company c, Professional p)     //associa um profissional a uma empresa

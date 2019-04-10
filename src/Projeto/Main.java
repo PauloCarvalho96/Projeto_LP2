@@ -96,7 +96,7 @@ public class Main {
         Meeting m1 = new Meeting("Palestra JAVA",60,l4,interestAreas1,dm1);
 
         meetings.put(dm1,m1);
-
+        c1.associateMeet(c1,m1);
         for (Date d:meetings.keys()) {
             System.out.println(d+" "+meetings.get(d));
         }
