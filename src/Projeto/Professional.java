@@ -17,8 +17,8 @@ public class Professional extends Person {
     @Override
     public String toString()
     {
-        return "name:"+this.getName()+"\nage: "+this.getAge()+"\nsexo :"+this.getGender()+"\nSkills: "+this.getSkills()+
-                "\nData de registo na empresa: "+this.getRegistration()+"\nID: "+this.getId();
+        return "\nname:"+this.getName()+"\nage: "+this.getAge()+"\nsexo :"+this.getGender()+"\nSkills: "+this.getSkills()+"\nID: "+this.getId()
+                +"\n--------------------";
     }
 
     /**
