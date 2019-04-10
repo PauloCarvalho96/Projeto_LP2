@@ -92,10 +92,15 @@ public class Meeting {
     private ArrayList<String> interestAreas = new ArrayList<>();
     private Date date;
 
+    public void associateMeetCompany(Company c)
+    {
+        this.setCompany(c);
+    }
+
     @Override
     public String toString()
     {
-        return "\nName: "+this.getName()+"\nCompany: "+this.getCompany()+"\nDuration: "+this.getDuration()+" minutes"+
+        return "\nName: "+this.getName()+"\nCompany: "+this.getCompany().getName()+"\nDuration: "+this.getDuration()+" minutes"+
                 "\nLocation: "+this.getLocation()+"\nProfessionals: "+this.getProfessional()+"\n--------------------";
     }
 }

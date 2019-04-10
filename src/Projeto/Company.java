@@ -12,26 +12,17 @@ public class Company {
 
     private int nif;
 
-    private ArrayList<String>meetings =new ArrayList<>();
 
     /**
      * Constructor
      */
-    public Company(String name, int phone, int nif, ArrayList<String> meetings, Location location) {
+    public Company(String name, int phone, int nif, Location location) {
         this.name = name;
         this.phone = phone;
         this.nif = nif;
-        this.meetings = meetings;
         this.location = location;
     }
 
-    public ArrayList<String> getMeetings() {
-        return meetings;
-    }
-
-    public void setMeetings(ArrayList<String> meetings) {
-        this.meetings = meetings;
-    }
 
     public RedBlackBST<Date, Professional> getProfessional() {
         return professional;
@@ -68,19 +59,6 @@ public class Company {
         this.nif = nif;
     }
 
-
-    /**
-     *
-     * @element-type Meeting
-     */
-    public ArrayList<Company> getMeet() {
-        return meet;
-    }
-
-    public void setMeet(ArrayList<Company> meet) {
-        this.meet = meet;
-    }
-
     /**
      *
      * @element-type Meeting
@@ -96,16 +74,18 @@ public class Company {
 
     private RedBlackBST<Date,Professional> professional = new RedBlackBST<>();
 
-    private ArrayList<Company> meet = new ArrayList<>();
     private Location location;
+
+    private ArrayList<String> meeting = new ArrayList<>();
+
 
     public void registerProfessional(Date d,Professional p) {      //adiciona profissional a empresa
         this.professional.put(d,p);
     }
 
-    public void associateMeet(Company c, Meeting m)
+    public void associateMeet(Meeting m)
     {
-        m.setCompany(c);
+        this.meeting.add(m.getName());
     }
 
     public void associatePro(Company c, Professional p)     //associa um profissional a uma empresa
@@ -124,7 +104,15 @@ public class Company {
         }
     }
 
-    public void editProfessional(Date d, Date nd,Professional np)       //edita o profissional
+    public ArrayList<String> getMeeting() {
+        return meeting;
+    }
+
+    public void setMeeting(ArrayList<String> meeting) {
+        this.meeting = meeting;
+    }
+
+    public void editProfessional(Date d, Date nd, Professional np)       //edita o profissional
     {
         for (Date di:professional.keys()) {
             if(di.compareTo(d)==0)
@@ -180,6 +168,7 @@ public class Company {
     @Override
     public String toString()
     {
-        return "\nName: "+this.getName()+"\nPhone: "+this.getPhone()+"\nnif: "+this.getNif()+"\nlocation: "+this.getLocation()+"\n---------------";
+        return "\nName: "+this.getName()+"\nPhone: "+this.getPhone()+"\nnif: "+this.getNif()+"\nlocation: "+this.getLocation()+
+                "\nMeetings: "+this.getMeeting()+"\n---------------";
     }
 }
