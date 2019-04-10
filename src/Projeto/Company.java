@@ -12,6 +12,7 @@ public class Company {
 
     private int nif;
 
+
     /**
      * Constructor
      */
@@ -20,6 +21,15 @@ public class Company {
         this.setPhone(phone);
         this.setNif(nif);
         this.setLocation(location);
+    }
+
+
+    public RedBlackBST<Date, Professional> getProfessional() {
+        return professional;
+    }
+
+    public void setProfessional(RedBlackBST<Date, Professional> professional) {
+        this.professional = professional;
     }
 
     /**

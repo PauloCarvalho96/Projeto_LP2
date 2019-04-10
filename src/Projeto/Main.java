@@ -1,5 +1,6 @@
 package Projeto;
 
+import edu.princeton.cs.algs4.RedBlackBST;
 import edu.princeton.cs.algs4.SeparateChainingHashST_Projeto;
 
 import java.util.ArrayList;
@@ -9,18 +10,21 @@ public class Main {
     {
         SeparateChainingHashST_Projeto<Date,Company> company = new SeparateChainingHashST_Projeto<>();
         SeparateChainingHashST_Projeto<Date,Professional> professionals = new SeparateChainingHashST_Projeto<>();
+        RedBlackBST<Date,Meeting> meetings = new RedBlackBST<>();
 
-        Date d1r = new Date (10,05,2010,00,00);
-        Date d2r = new Date (15,04,1900,00,00);
-        Date d3r = new Date (7,10,1999,00,00);
-        Date d4r = new Date (1,4,1900,00,00);
-        Date d5r = new Date (23,10,2005,00,00);
-        Date dc1 = new Date (3,5,2000,00,00);
-        Date dc2 = new Date (1,5,2001,00,10);
+        Date d1r = new Date (10,5,2010,0,0);
+        Date d2r = new Date (15,4,1900,0,0);
+        Date d3r = new Date (7,10,1999,0,0);
+        Date d4r = new Date (1,4,1900,0,0);
+        Date d5r = new Date (23,10,2005,0,0);
+        Date dc1 = new Date (3,5,2000,0,0);
+        Date dc2 = new Date (1,5,2001,0,10);
+        Date dm1 = new Date(7,12,2018,5,45);
 
         Location l1 = new Location(10,10);
         Location l2 = new Location(1,1);
         Location l3 = new Location(4,5);
+        Location l4 = new Location(50,30);
 
         ArrayList<String> skillsP1 = new ArrayList<>();
         skillsP1.add("Programacao C");
@@ -80,8 +84,23 @@ public class Main {
           //  System.out.println(d+" "+professionals.get(d));
         //}
 
-        for (Date d:company.keys()) {
-            System.out.println(d+" "+company.get(d));
+        //for (Date d:company.keys()) {
+          //  System.out.println(d+" "+company.get(d));
+        //}
+
+        ArrayList<String> interestAreas1 = new ArrayList<>();
+        interestAreas1.add("Programacao");
+        interestAreas1.add("POO");
+        interestAreas1.add("APPS");
+
+        Meeting m1 = new Meeting("Palestra JAVA",60,l4,interestAreas1,dm1);
+
+        meetings.put(dm1,m1);
+
+        for (Date d:meetings.keys()) {
+            System.out.println(d+" "+meetings.get(d));
         }
+
+
     }
 }

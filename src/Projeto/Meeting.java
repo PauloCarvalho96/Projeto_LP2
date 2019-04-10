@@ -91,4 +91,11 @@ public class Meeting {
     private Location location;
     private ArrayList<String> interestAreas = new ArrayList<>();
     private Date date;
+
+    @Override
+    public String toString()
+    {
+        return "\nName: "+this.getName()+"\nCompany: "+this.getCompany()+"\nDuration: "+this.getDuration()+" minutes"+
+                "\nLocation: "+this.getLocation()+"\nProfessionals: "+this.getProfessional()+"\n--------------------";
+    }
 }
