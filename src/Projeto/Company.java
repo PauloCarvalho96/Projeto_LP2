@@ -83,9 +83,9 @@ public class Company {
         this.professional.put(d,p);
     }
 
-    public void associateMeet(Meeting m)
+    public void associateCompanyMeet(Meeting m) // Associa uma company a um meeting
     {
-        this.meeting.add(m.getName());
+        this.setMeeting(m.getInterestAreas());
     }
 
     public void associatePro(Company c, Professional p)     //associa um profissional a uma empresa

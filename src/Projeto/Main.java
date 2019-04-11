@@ -20,6 +20,7 @@ public class Main {
         Date dc1 = new Date (3,5,2000,0,0);
         Date dc2 = new Date (1,5,2001,0,10);
         Date dm1 = new Date(7,12,2018,5,45);
+        Date dm2 = new Date(6,4,2017,3,30);
 
         Location l1 = new Location(10,10);
         Location l2 = new Location(1,1);
@@ -93,19 +94,33 @@ public class Main {
         interestAreas1.add("POO");
         interestAreas1.add("APPS");
 
+        ArrayList<String> interestAreas2 = new ArrayList<>();
+        interestAreas2.add("Aprender C");
+
         Meeting m1 = new Meeting("Palestra JAVA",60,l4,interestAreas1,dm1);
+        Meeting m2 = new Meeting("Palestra C",180,l2,interestAreas2,dm2);
 
         meetings.put(dm1,m1);
-        c1.associateMeet(m1);       //associa company a meeting
+        meetings.put(dm2,m2);
+
+        c1.associateCompanyMeet(m1);    //associa company a meeting
+        c2.associateCompanyMeet(m2);
+
         m1.associateMeetCompany(c1);    //associa meeting a company
+        m2.associateMeetCompany(c2);
 
-        //for (Date d:meetings.keys()) {
-          //  System.out.println(d+" "+meetings.get(d));
-        //}
+        p1.associateProfessionalMeet(m1);
+        p2.associateProfessionalMeet(m2); /** se acrescentar mais que um profissional ao mesmo meeting ele nao imprime todos, apenas o ultimo **/
+        m1.associateMeetProfessional(p1);
+        m2.associateMeetProfessional(p2); /** se acrescentar mais que um profissional ao mesmo meeting ele nao imprime todos, apenas o ultimo **/
 
-        for (Date d:company.keys()) {
-          System.out.println(d+" "+company.get(d));
+        for (Date d:meetings.keys()) {
+            System.out.println(d+" "+meetings.get(d));
         }
+
+        //for (Date d:company.keys()) {
+         // System.out.println(d+" "+company.get(d));
+        //}
 
     }
 }

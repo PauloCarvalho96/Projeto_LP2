@@ -89,11 +89,11 @@ public class Professional extends Person {
      *
      * @element-type Meeting
      */
-    public ArrayList<Meeting> getMeet() {
+    public ArrayList<String> getMeet() {
         return meet;
     }
 
-    public void setMeet(ArrayList<Meeting> meet) {
+    public void setMeet(ArrayList<String> meet) {
         this.meet = meet;
     }
 
@@ -135,7 +135,7 @@ public class Professional extends Person {
         this.location = location;
     }
 
-    private ArrayList<Meeting> meet = new ArrayList<>();
+    private ArrayList<String> meet = new ArrayList<>();
     private Person person;
     private Employment employment;
     private Date date;
@@ -146,4 +146,9 @@ public class Professional extends Person {
         return null;
     }
 
+    public void associateProfessionalMeet(Meeting m) // Associa o preficional ao Meet
+    {
+        //this.setMeeting(m.getInterestAreas());
+        this.setMeet(m.getInterestAreas());
+    }
 }

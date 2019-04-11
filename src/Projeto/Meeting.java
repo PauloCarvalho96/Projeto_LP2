@@ -19,9 +19,18 @@ public class Meeting {
         this.setDate(date);
     }
 
+    public Professional getProfessional() {
+        return professional;
+    }
+
+    public void setProfessional(Professional professional) {
+        this.professional = professional;
+    }
+
     /**
      * Gets and Sets
      */
+
     public String getName() {
         return name;
     }
@@ -42,13 +51,7 @@ public class Meeting {
      *
      * @element-type Professional
      */
-    public ArrayList<Professional> getProfessional() {
-        return professional;
-    }
 
-    public void setProfessional(ArrayList<Professional> professional) {
-        this.professional = professional;
-    }
 
     public Company getCompany() {
         return company;
@@ -86,21 +89,27 @@ public class Meeting {
         this.date = date;
     }
 
-    private ArrayList<Professional> professional = new ArrayList<>();
+    //private ArrayList<Professional> professional = new ArrayList<>();
+    private Professional professional;
     private Company company;
     private Location location;
     private ArrayList<String> interestAreas = new ArrayList<>();
     private Date date;
 
-    public void associateMeetCompany(Company c)
+    public void associateMeetCompany(Company c) // Associa um Meeting a uma Empresa
     {
         this.setCompany(c);
+    }
+
+    public void associateMeetProfessional(Professional p)
+    {
+        this.setProfessional(p);
     }
 
     @Override
     public String toString()
     {
         return "\nName: "+this.getName()+"\nCompany: "+this.getCompany().getName()+"\nDuration: "+this.getDuration()+" minutes"+
-                "\nLocation: "+this.getLocation()+"\nProfessionals: "+this.getProfessional()+"\n--------------------";
+                "\nLocation: "+this.getLocation()+"\nInterest Areas: "+this.getInterestAreas()+"\nProfessionals:"+this.getProfessional()+"\n--------------------";
     }
 }
