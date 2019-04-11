@@ -114,13 +114,13 @@ public class Main {
         m1.associateMeetProfessional(p1);
         m2.associateMeetProfessional(p2); /** se acrescentar mais que um profissional ao mesmo meeting ele nao imprime todos, apenas o ultimo **/
 
-        for (Date d:meetings.keys()) {
-            System.out.println(d+" "+meetings.get(d));
-        }
-
-        //for (Date d:company.keys()) {
-         // System.out.println(d+" "+company.get(d));
+        //for (Date d:meetings.keys()) {
+          //  System.out.println(d+" "+meetings.get(d));
         //}
+
+        for (Date d:company.keys()) {
+          System.out.println(d+" "+company.get(d));
+        }
 
     }
 }

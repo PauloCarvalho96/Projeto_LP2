@@ -146,9 +146,8 @@ public class Professional extends Person {
         return null;
     }
 
-    public void associateProfessionalMeet(Meeting m) // Associa o preficional ao Meet
+    public void associateProfessionalMeet(Meeting m) // Associa o professional ao Meet
     {
-        //this.setMeeting(m.getInterestAreas());
         this.setMeet(m.getInterestAreas());
     }
 }
