@@ -19,17 +19,20 @@ public class Meeting {
         this.setDate(date);
     }
 
-    public Professional getProfessional() {
+
+    public ArrayList<String> getProfessional() {
         return professional;
     }
 
-    public void setProfessional(Professional professional) {
+    public void setProfessional(ArrayList<String> professional) {
         this.professional = professional;
     }
 
     /**
      * Gets and Sets
      */
+
+
 
     public String getName() {
         return name;
@@ -47,19 +50,18 @@ public class Meeting {
         this.duration = duration;
     }
 
+    public ArrayList<String> getCompanys() {
+        return companys;
+    }
+
+    public void setCompanys(ArrayList<String> companys) {
+        this.companys = companys;
+    }
+
     /**
      *
      * @element-type Professional
      */
-
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
-    }
 
     public Location getLocation() {
         return location;
@@ -89,27 +91,27 @@ public class Meeting {
         this.date = date;
     }
 
-    //private ArrayList<Professional> professional = new ArrayList<>();
-    private Professional professional;
-    private Company company;
+    private ArrayList<String> professional = new ArrayList<>();
+    private ArrayList<String> companys = new ArrayList<>();
     private Location location;
     private ArrayList<String> interestAreas = new ArrayList<>();
     private Date date;
 
     public void associateMeetCompany(Company c) // Associa um Meeting a uma Empresa
     {
-        this.setCompany(c);
+        this.companys.add(c.getName());
     }
 
     public void associateMeetProfessional(Professional p)
     {
-        this.setProfessional(p);
+        this.professional.add(p.getName());
     }
 
     @Override
     public String toString()
     {
-        return "\nName: "+this.getName()+"\nCompany: "+this.getCompany().getName()+"\nDuration: "+this.getDuration()+" minutes"+
-                "\nLocation: "+this.getLocation()+"\nInterest Areas: "+this.getInterestAreas()+"\nProfessionals:"+this.getProfessional()+"\n--------------------";
+        return "\nName: "+this.getName()+"\nCompany: "+this.getCompanys()+"\nDuration: "+this.getDuration()+" minutes"+
+                "\nLocation: "+this.getLocation()+"\nInterest Areas: "+this.getInterestAreas()
+                +"\nProfessionals:"+this.getProfessional()+"\n--------------------";
     }
 }

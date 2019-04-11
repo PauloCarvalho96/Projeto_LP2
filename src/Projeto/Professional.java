@@ -17,8 +17,9 @@ public class Professional extends Person {
     @Override
     public String toString()
     {
-        return "\nEmpresa: "+this.getCompany()+"\nname:"+this.getName()+"\nage: "+this.getAge()+"\nsexo :"+this.getGender()+"\nSkills: "+this.getSkills()+
-                "\nLocation: "+this.getLocation()+"\nSalary: "+this.getSalary()+"\nID: "+this.getId()+"\n--------------------";
+        return "\nEmpresa: "+this.getCompany().getName()+"\nname:"+this.getName()+"\nage: "+this.getAge()+"\nsexo :"+this.getGender()+
+                "\nSkills: "+this.getSkills()+ "\nLocation: "+this.getLocation()+"\nSalary: "+this.getSalary()+"\nID: "+
+                this.getId()+"\nMeetings: "+this.getMeet()+"\n--------------------";
     }
     /**
      * Constructor
@@ -85,10 +86,6 @@ public class Professional extends Person {
         this.date = date;
     }
 
-    /**
-     *
-     * @element-type Meeting
-     */
     public ArrayList<String> getMeet() {
         return meet;
     }
@@ -96,6 +93,12 @@ public class Professional extends Person {
     public void setMeet(ArrayList<String> meet) {
         this.meet = meet;
     }
+
+    /**
+     *
+     * @element-type Meeting
+     */
+
 
     public Person getPerson() {
         return person;
@@ -148,6 +151,6 @@ public class Professional extends Person {
 
     public void associateProfessionalMeet(Meeting m) // Associa o professional ao Meet
     {
-        this.setMeet(m.getInterestAreas());
+        this.meet.add(m.getName());
     }
 }

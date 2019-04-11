@@ -81,14 +81,6 @@ public class Main {
         //c1.printProForRegistrationDate();
         //c2.printProForRegistrationDate();
 
-        //for (Date d:professionals.keys()) {
-          //  System.out.println(d+" "+professionals.get(d));
-        //}
-
-        //for (Date d:company.keys()) {
-          //  System.out.println(d+" "+company.get(d));
-        //}
-
         ArrayList<String> interestAreas1 = new ArrayList<>();
         interestAreas1.add("Programacao");
         interestAreas1.add("POO");
@@ -104,23 +96,27 @@ public class Main {
         meetings.put(dm2,m2);
 
         c1.associateCompanyMeet(m1);    //associa company a meeting
-        c2.associateCompanyMeet(m2);
+        c1.associateCompanyMeet(m2);
 
         m1.associateMeetCompany(c1);    //associa meeting a company
         m2.associateMeetCompany(c2);
 
         p1.associateProfessionalMeet(m1);
-        p2.associateProfessionalMeet(m2); /** se acrescentar mais que um profissional ao mesmo meeting ele nao imprime todos, apenas o ultimo **/
+        p1.associateProfessionalMeet(m2);
         m1.associateMeetProfessional(p1);
-        m2.associateMeetProfessional(p2); /** se acrescentar mais que um profissional ao mesmo meeting ele nao imprime todos, apenas o ultimo **/
+        m1.associateMeetProfessional(p2);
 
-        //for (Date d:meetings.keys()) {
-          //  System.out.println(d+" "+meetings.get(d));
+
+       // for (Date d:meetings.keys()) {                    //imprime todos os meetings
+         //   System.out.println(d+" "+meetings.get(d));
+       //}
+
+       //for (Date d:company.keys()) {                     //imprime todas as companys
+        //System.out.println(d+" "+company.get(d));
         //}
 
-        for (Date d:company.keys()) {
-          System.out.println(d+" "+company.get(d));
-        }
-
+        //for (Date d:professionals.keys()) {               //imprime todos os professionals
+          //System.out.println(d+" "+professionals.get(d));
+        //}
     }
 }
