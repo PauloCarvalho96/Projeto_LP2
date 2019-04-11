@@ -102,12 +102,12 @@ public class Main {
         m2.associateMeetCompany(c2);
 
         p1.associateProfessionalMeet(m1);
-        p1.associateProfessionalMeet(m2);
+        p2.associateProfessionalMeet(m2);
         m1.associateMeetProfessional(p1);
         m1.associateMeetProfessional(p2);
 
 
-       // for (Date d:meetings.keys()) {                    //imprime todos os meetings
+        //for (Date d:meetings.keys()) {                    //imprime todos os meetings
          //   System.out.println(d+" "+meetings.get(d));
        //}
 
@@ -115,8 +115,8 @@ public class Main {
         //System.out.println(d+" "+company.get(d));
         //}
 
-        //for (Date d:professionals.keys()) {               //imprime todos os professionals
-          //System.out.println(d+" "+professionals.get(d));
-        //}
+        for (Date d:professionals.keys()) {               //imprime todos os professionals
+          System.out.println(d+" "+professionals.get(d));
+        }
     }
 }

@@ -153,4 +153,5 @@ public class Professional extends Person {
     {
         this.meet.add(m.getName());
     }
+
 }
