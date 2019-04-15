@@ -32,8 +32,6 @@ public class Meeting {
      * Gets and Sets
      */
 
-
-
     public String getName() {
         return name;
     }

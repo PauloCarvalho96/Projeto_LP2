@@ -12,6 +12,11 @@ public class Professional extends Person {
 
     private Company company;
 
+    private ArrayList<String> meet = new ArrayList<>();
+    private Person person;
+    private Date date;
+    private Location location;
+
     private ArrayList<String> skills = new ArrayList<>();           //skills do profissional
 
     @Override
@@ -19,7 +24,7 @@ public class Professional extends Person {
     {
         return "\nEmpresa: "+this.getCompany().getName()+"\nname:"+this.getName()+"\nage: "+this.getAge()+"\nsexo :"+this.getGender()+
                 "\nSkills: "+this.getSkills()+ "\nLocation: "+this.getLocation()+"\nSalary: "+this.getSalary()+"\nID: "+
-                this.getId()+"\nMeetings: "+this.getMeet()+"\nCompany History: "+"\n--------------------";
+                this.getId()+"\nMeetings: "+this.getMeet()+"\n--------------------";
     }
     /**
      * Constructor
@@ -103,7 +108,6 @@ public class Professional extends Person {
         this.person = person;
     }
 
-
     public Location getLocation() {
         return location;
     }
@@ -111,11 +115,6 @@ public class Professional extends Person {
     public void setLocation(Location location) {
         this.location = location;
     }
-
-    private ArrayList<String> meet = new ArrayList<>();
-    private Person person;
-    private Date date;
-    private Location location;
 
     public Meeting searchMeetings(Professional p) {
         return null;

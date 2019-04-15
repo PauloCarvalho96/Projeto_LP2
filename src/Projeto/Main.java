@@ -35,6 +35,10 @@ public class Main {
         Date dm1 = new Date(7,12,2018,5,45);
         Date dm2 = new Date(6,4,2017,3,30);
 
+        //data de entrada e saida de empresa
+        Date d1in = new Date(1,1,2001,1,1);
+        Date d1out = new Date(5,3,1998,0,0);
+
         //localizaçoes
         Location l1 = new Location(10,10);
         Location l2 = new Location(1,1);
@@ -123,6 +127,7 @@ public class Main {
 
         m1.associateMeetProfessional(p1);   //associa meet a profissional
         m1.associateMeetProfessional(p2);
+
 
 
         //for (Date d:meetings.keys()) {                    //imprime todos os meetings
