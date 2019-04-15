@@ -12,24 +12,28 @@ public class Professional extends Person {
 
     private Company company;
 
-    private ArrayList<String> skills = new ArrayList<>();
+    private ArrayList<String> skills = new ArrayList<>();           //skills do profissional
+    private ArrayList<String> companyHistory = new ArrayList<>();   //historico de empresas
+
 
     @Override
     public String toString()
     {
         return "\nEmpresa: "+this.getCompany().getName()+"\nname:"+this.getName()+"\nage: "+this.getAge()+"\nsexo :"+this.getGender()+
                 "\nSkills: "+this.getSkills()+ "\nLocation: "+this.getLocation()+"\nSalary: "+this.getSalary()+"\nID: "+
-                this.getId()+"\nMeetings: "+this.getMeet()+"\n--------------------";
+                this.getId()+"\nMeetings: "+this.getMeet()+"\nCompany History: "+"\n--------------------";
     }
     /**
      * Constructor
      */
-    public Professional(String name, int age, String gender, ArrayList<String> skills, Location location, String id,double salary) {
+
+    public Professional(String name, int age, String gender, ArrayList<String> skills, Location location, String id,double salary,ArrayList<String> companyHistory) {
         super(name, age, gender);
         this.setSkills(skills);
         this.setLocation(location);
         this.setSalary(salary);
         this.setId(id);
+        this.setCompanyHistory(companyHistory);
     }
 
     /**
@@ -40,16 +44,24 @@ public class Professional extends Person {
         return salary;
     }
 
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public ArrayList<String> getCompanyHistory() {
+        return companyHistory;
+    }
+
+    public void setCompanyHistory(ArrayList<String> companyHistory) {
+        this.companyHistory = companyHistory;
+    }
+
     public ArrayList<String> getSkills() {
         return skills;
     }
 
     public void setSkills(ArrayList<String> skills) {
         this.skills = skills;
-    }
-
-    public void setSalary(double salary) {
-        this.salary = salary;
     }
 
     public Date getRegistration() {
@@ -94,26 +106,12 @@ public class Professional extends Person {
         this.meet = meet;
     }
 
-    /**
-     *
-     * @element-type Meeting
-     */
-
-
     public Person getPerson() {
         return person;
     }
 
     public void setPerson(Person person) {
         this.person = person;
-    }
-
-    public Employment getEmployment() {
-        return employment;
-    }
-
-    public void setEmployment(Employment employment) {
-        this.employment = employment;
     }
 
     public Location getLocation() {
@@ -126,7 +124,6 @@ public class Professional extends Person {
 
     private ArrayList<String> meet = new ArrayList<>();
     private Person person;
-    private Employment employment;
     private Date date;
     private Location location;
 
@@ -138,5 +135,4 @@ public class Professional extends Person {
     {
         this.meet.add(m.getName());
     }
-
 }
