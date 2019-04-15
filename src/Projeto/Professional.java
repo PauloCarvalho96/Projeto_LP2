@@ -16,22 +16,22 @@ public class Professional extends Person {
     private Person person;
     private Date date;
     private Location location;
-
+    private ArrayList<String> companyHistory = new ArrayList<>();
     private ArrayList<String> skills = new ArrayList<>();           //skills do profissional
 
     @Override
     public String toString()
     {
-        return "\nEmpresa: "+this.getCompany().getName()+"\nname:"+this.getName()+"\nage: "+this.getAge()+"\nsexo :"+this.getGender()+
+        return "\nEmpresa: "+this.getCompany().getName()+"\nname:"+this.getName()+"\nBirth Date: "+this.getBirth_date()+"\nsexo :"+this.getGender()+
                 "\nSkills: "+this.getSkills()+ "\nLocation: "+this.getLocation()+"\nSalary: "+this.getSalary()+"\nID: "+
-                this.getId()+"\nMeetings: "+this.getMeet()+"\n--------------------";
+                this.getId()+"\nMeetings: "+this.getMeet()+"\nCompany History: "+this.getCompanyHistory()+"\n--------------------";
     }
     /**
      * Constructor
      */
 
-    public Professional(String name, int age, String gender, ArrayList<String> skills, Location location, String id,double salary) {
-        super(name, age, gender);
+    public Professional(String name,String gender,Date birth, ArrayList<String> skills, Location location, String id,double salary) {
+        super(name,gender,birth);
         this.setSkills(skills);
         this.setLocation(location);
         this.setSalary(salary);
@@ -42,8 +42,17 @@ public class Professional extends Person {
      * Gets and Sets
      */
 
+
     public double getSalary() {
         return salary;
+    }
+
+    public ArrayList<String> getCompanyHistory() {
+        return companyHistory;
+    }
+
+    public void setCompanyHistory(ArrayList<String> companyHistory) {
+        this.companyHistory = companyHistory;
     }
 
     public void setSalary(double salary) {
@@ -122,6 +131,11 @@ public class Professional extends Person {
 
     public void associateProfessionalMeet(Meeting m) // Associa o professional ao Meet
     {
-        this.meet.add(m.getName());
+        this.getMeet().add(m.getName());
+    }
+
+    public void addCompanyHistoryToPro(Company c)
+    {
+        this.companyHistory.add(c.getName());
     }
 }

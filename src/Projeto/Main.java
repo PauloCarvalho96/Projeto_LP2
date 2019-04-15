@@ -15,10 +15,10 @@ public class Main {
 
         //datas de nascimento
         Date bdp1 = new Date(21,3,1996,1,0);
-        Date bdp2 = new Date(21,3,1996,2,0);
-        Date bdp3 = new Date(21,3,1996,3,0);
-        Date bdp4 = new Date(21,3,1996,4,0);
-        Date bdp5 = new Date(21,3,1996,5,0);
+        Date bdp2 = new Date(10,3,1940,2,0);
+        Date bdp3 = new Date(5,5,1994,3,0);
+        Date bdp4 = new Date(4,7,1991,4,0);
+        Date bdp5 = new Date(3,10,1993,5,0);
 
         //datas de registo
         Date d1r = new Date (10,5,2010,0,0);
@@ -52,11 +52,11 @@ public class Main {
         skillsP2.add("Fotografia");
         skillsP2.add("Video");
 
-        Professional p1 = new Professional("Paulo",23,"Masculino",skillsP1,l1,null,0.0);
-        Professional p2 = new Professional("Sheila",69,"Feminino",skillsP2,l1,null,0.0);
-        Professional p3 = new Professional("Jota",32,"Masculino",skillsP1,l1,null,0.0);
-        Professional p4 = new Professional("Artur",99,"Masculino",skillsP2,l1,null,0.0);
-        Professional p5 = new Professional("Pedro",20,"Masculino",skillsP1,l1,null,0.0);
+        Professional p1 = new Professional("Paulo","Masculino",bdp1,skillsP1,l1,null,0.0);
+        Professional p2 = new Professional("Sheila","Feminino",bdp2,skillsP2,l1,null,0.0);
+        Professional p3 = new Professional("Jota","Masculino",bdp3,skillsP1,l1,null,0.0);
+        Professional p4 = new Professional("Artur","Masculino",bdp4,skillsP2,l1,null,0.0);
+        Professional p5 = new Professional("Pedro","Masculino",bdp5,skillsP1,l1,null,0.0);
 
         Company c1 = new Company("UFP",252252525,190190190,l2);
         Company c2 = new Company("PR MOTORS",123456789,423567437,l3);
@@ -128,7 +128,8 @@ public class Main {
         m1.associateMeetProfessional(p1);   //associa meet a profissional
         m1.associateMeetProfessional(p2);
 
-
+        //company history
+        p1.addCompanyHistoryToPro(c1);
 
         //for (Date d:meetings.keys()) {                    //imprime todos os meetings
          //   System.out.println(d+" "+meetings.get(d));
@@ -138,8 +139,8 @@ public class Main {
 //        System.out.println(d+" "+company.get(d));
 //        }
 
-//        for (Date d:professionals.keys()) {               //imprime todos os professionals
-//          System.out.println(d+" "+professionals.get(d));
-//        }
+        for (Date d:professionals.keys()) {               //imprime todos os professionals
+          System.out.println(d+" "+professionals.get(d));
+        }
     }
 }

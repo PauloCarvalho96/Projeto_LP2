@@ -3,21 +3,17 @@ package Projeto;
 public class Person {
 
     private String name;
-
-    private int age;
-
     private String gender;
-
     private Professional professional;
     private Date birth_date;
 
     /**
      *  Constructor
      */
-    public Person(String name, int age, String gender) {
+    public Person(String name, String gender,Date birth) {
         this.setName(name);
-        this.setAge(age);
         this.setGender(gender);
+        this.setBirth_date(birth);
     }
 
     /**
@@ -29,14 +25,6 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public String getGender() {
