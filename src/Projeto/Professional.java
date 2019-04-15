@@ -1,5 +1,8 @@
 package Projeto;
 
+import edu.princeton.cs.algs4.SeparateChainingHashST;
+import edu.princeton.cs.algs4.SeparateChainingHashST_Projeto;
+
 import java.util.ArrayList;
 
 public class Professional extends Person {
@@ -30,12 +33,10 @@ public class Professional extends Person {
      * Constructor
      */
 
-    public Professional(String name,String gender,Date birth, ArrayList<String> skills, Location location, String id,double salary) {
+    public Professional(String name,String gender,Date birth, ArrayList<String> skills, Location location) {
         super(name,gender,birth);
         this.setSkills(skills);
         this.setLocation(location);
-        this.setSalary(salary);
-        this.setId(id);
     }
 
     /**

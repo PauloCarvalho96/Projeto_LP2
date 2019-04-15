@@ -52,11 +52,11 @@ public class Main {
         skillsP2.add("Fotografia");
         skillsP2.add("Video");
 
-        Professional p1 = new Professional("Paulo","Masculino",bdp1,skillsP1,l1,null,0.0);
-        Professional p2 = new Professional("Sheila","Feminino",bdp2,skillsP2,l1,null,0.0);
-        Professional p3 = new Professional("Jota","Masculino",bdp3,skillsP1,l1,null,0.0);
-        Professional p4 = new Professional("Artur","Masculino",bdp4,skillsP2,l1,null,0.0);
-        Professional p5 = new Professional("Pedro","Masculino",bdp5,skillsP1,l1,null,0.0);
+        Professional p1 = new Professional("Paulo","Masculino",bdp1,skillsP1,l1);
+        Professional p2 = new Professional("Sheila","Feminino",bdp2,skillsP2,l1);
+        Professional p3 = new Professional("Jota","Masculino",bdp3,skillsP1,l1);
+        Professional p4 = new Professional("Artur","Masculino",bdp4,skillsP2,l1);
+        Professional p5 = new Professional("Pedro","Masculino",bdp5,skillsP1,l1);
 
         Company c1 = new Company("UFP",252252525,190190190,l2);
         Company c2 = new Company("PR MOTORS",123456789,423567437,l3);
@@ -97,7 +97,7 @@ public class Main {
         //c1.unregisterProfessional(d1r,p1);
         //c1.printProForRegistrationDate();
         //c1.printProForRegistrationDate();
-        //c1.editProfessional(d1r,d4r,p4);
+        //c1.editProfessional(p1,d1r,d4r,p4);
         //c1.searchBySkill("Video");
         //c1.printProForRegistrationDate();
         //c2.printProForRegistrationDate();
@@ -129,7 +129,7 @@ public class Main {
         m1.associateMeetProfessional(p2);
 
         //company history
-        p1.addCompanyHistoryToPro(c1);
+        //p1.addCompanyHistoryToPro(c2);
 
         //for (Date d:meetings.keys()) {                    //imprime todos os meetings
          //   System.out.println(d+" "+meetings.get(d));

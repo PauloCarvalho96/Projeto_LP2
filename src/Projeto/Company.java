@@ -114,11 +114,12 @@ public class Company {
         this.meeting = meeting;
     }
 
-    public void editProfessional(Date d, Date nd, Professional np)       //edita o profissional
+    public void editProfessional(Professional p ,Date d, Date nd, Professional np)       //edita o profissional
     {
         for (Date di:professional.keys()) {
             if(di.compareTo(d)==0)
             {
+                unregisterProfessional(d,p);
                 registerProfessional(nd,np);
             }
             }
