@@ -1,6 +1,7 @@
 package Projeto;
 
 import edu.princeton.cs.algs4.RedBlackBST;
+import edu.princeton.cs.algs4.SeparateChainingHashST;
 import edu.princeton.cs.algs4.SeparateChainingHashST_Projeto;
 
 import java.util.ArrayList;
@@ -47,11 +48,11 @@ public class Main {
         skillsP2.add("Fotografia");
         skillsP2.add("Video");
 
-        Professional p1 = new Professional("Paulo",23,"Masculino",skillsP1,l1,null,0.0,null);
-        Professional p2 = new Professional("Sheila",69,"Feminino",skillsP2,l1,null,0.0,null);
-        Professional p3 = new Professional("Jota",32,"Masculino",skillsP1,l1,null,0.0,null);
-        Professional p4 = new Professional("Artur",99,"Masculino",skillsP2,l1,null,0.0,null);
-        Professional p5 = new Professional("Pedro",20,"Masculino",skillsP1,l1,null,0.0,null);
+        Professional p1 = new Professional("Paulo",23,"Masculino",skillsP1,l1,null,0.0);
+        Professional p2 = new Professional("Sheila",69,"Feminino",skillsP2,l1,null,0.0);
+        Professional p3 = new Professional("Jota",32,"Masculino",skillsP1,l1,null,0.0);
+        Professional p4 = new Professional("Artur",99,"Masculino",skillsP2,l1,null,0.0);
+        Professional p5 = new Professional("Pedro",20,"Masculino",skillsP1,l1,null,0.0);
 
         Company c1 = new Company("UFP",252252525,190190190,l2);
         Company c2 = new Company("PR MOTORS",123456789,423567437,l3);

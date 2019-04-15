@@ -13,8 +13,6 @@ public class Professional extends Person {
     private Company company;
 
     private ArrayList<String> skills = new ArrayList<>();           //skills do profissional
-    private ArrayList<String> companyHistory = new ArrayList<>();   //historico de empresas
-
 
     @Override
     public String toString()
@@ -27,13 +25,12 @@ public class Professional extends Person {
      * Constructor
      */
 
-    public Professional(String name, int age, String gender, ArrayList<String> skills, Location location, String id,double salary,ArrayList<String> companyHistory) {
+    public Professional(String name, int age, String gender, ArrayList<String> skills, Location location, String id,double salary) {
         super(name, age, gender);
         this.setSkills(skills);
         this.setLocation(location);
         this.setSalary(salary);
         this.setId(id);
-        this.setCompanyHistory(companyHistory);
     }
 
     /**
@@ -46,14 +43,6 @@ public class Professional extends Person {
 
     public void setSalary(double salary) {
         this.salary = salary;
-    }
-
-    public ArrayList<String> getCompanyHistory() {
-        return companyHistory;
-    }
-
-    public void setCompanyHistory(ArrayList<String> companyHistory) {
-        this.companyHistory = companyHistory;
     }
 
     public ArrayList<String> getSkills() {
@@ -113,6 +102,7 @@ public class Professional extends Person {
     public void setPerson(Person person) {
         this.person = person;
     }
+
 
     public Location getLocation() {
         return location;
