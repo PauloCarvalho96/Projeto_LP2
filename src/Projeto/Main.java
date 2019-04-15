@@ -8,20 +8,33 @@ import java.util.ArrayList;
 public class Main {
     public static void main (String[] args)
     {
-        SeparateChainingHashST_Projeto<Date,Company> company = new SeparateChainingHashST_Projeto<>();
-        SeparateChainingHashST_Projeto<Date,Professional> professionals = new SeparateChainingHashST_Projeto<>();
-        RedBlackBST<Date,Meeting> meetings = new RedBlackBST<>();
+        SeparateChainingHashST_Projeto<Date,Company> company = new SeparateChainingHashST_Projeto<>();      //Date é data de registo da empresa
+        SeparateChainingHashST_Projeto<Date,Professional> professionals = new SeparateChainingHashST_Projeto<>();   //Date é data de nascimento do profissional
+        RedBlackBST<Date,Meeting> meetings = new RedBlackBST<>();       //Date é data de criação do meeting
 
+        //datas de nascimento
+        Date bdp1 = new Date(21,3,1996,1,0);
+        Date bdp2 = new Date(21,3,1996,2,0);
+        Date bdp3 = new Date(21,3,1996,3,0);
+        Date bdp4 = new Date(21,3,1996,4,0);
+        Date bdp5 = new Date(21,3,1996,5,0);
+
+        //datas de registo
         Date d1r = new Date (10,5,2010,0,0);
         Date d2r = new Date (15,4,1900,0,0);
         Date d3r = new Date (7,10,1999,0,0);
         Date d4r = new Date (1,4,1900,0,0);
         Date d5r = new Date (23,10,2005,0,0);
+
+        //datas de registo de empresas
         Date dc1 = new Date (3,5,2000,0,0);
         Date dc2 = new Date (1,5,2001,0,10);
+
+        //datas dos meetings
         Date dm1 = new Date(7,12,2018,5,45);
         Date dm2 = new Date(6,4,2017,3,30);
 
+        //localizaçoes
         Location l1 = new Location(10,10);
         Location l2 = new Location(1,1);
         Location l3 = new Location(4,5);
@@ -45,36 +58,39 @@ public class Main {
 
         company.put(dc1,c1);
         company.put(dc2,c2);
-        professionals.put(d1r,p1);
-        professionals.put(d2r,p2);
-        professionals.put(d3r,p3);
-        professionals.put(d4r,p4);
-        professionals.put(d5r,p5);
+        professionals.put(bdp1,p1);
+        professionals.put(bdp2,p2);
+        professionals.put(bdp3,p3);
+        professionals.put(bdp4,p4);
+        professionals.put(bdp5,p5);
 
-        p1.setId("1");
-        p2.setId("2");
-        p3.setId("3");
-        p4.setId("4");
-        p5.setId("5");
-        p1.setSalary(1000.0);
-        p2.setSalary(5000.0);
-        p3.setSalary(3000.0);
-        p4.setSalary(2000.0);
-        p5.setSalary(8000.0);
         c1.registerProfessional(d1r,p1);
+        p1.setId("1");
         c1.associatePro(c1,p1);
-        c1.registerProfessional(d2r,p2);
-        c1.associatePro(c1,p2);
-        c1.registerProfessional(d3r,p3);
-        c1.associatePro(c1,p3);
-        c2.registerProfessional(d4r,p4);
-        c2.associatePro(c2,p4);
-        c2.registerProfessional(d5r,p5);
-        c2.associatePro(c2,p5);
+        p1.setSalary(1000.0);
 
-        //c1.removeFromCompany(p1);
+        c1.registerProfessional(d2r,p2);
+        p2.setId("2");
+        c1.associatePro(c1,p2);
+        p2.setSalary(5000.0);
+
+        c1.registerProfessional(d3r,p3);
+        p3.setId("3");
+        c1.associatePro(c1,p3);
+        p3.setSalary(3000.0);
+
+        c2.registerProfessional(d4r,p4);
+        p4.setId("4");
+        c2.associatePro(c2,p4);
+        p4.setSalary(2000.0);
+
+        c2.registerProfessional(d5r,p5);
+        p5.setId("5");
+        c2.associatePro(c2,p5);
+        p5.setSalary(8000.0);
+
+        //c1.unregisterProfessional(d1r,p1);
         //c1.printProForRegistrationDate();
-        //c1.unregisterProfessional(d1r);
         //c1.printProForRegistrationDate();
         //c1.editProfessional(d1r,d4r,p4);
         //c1.searchBySkill("Video");
@@ -101,9 +117,10 @@ public class Main {
         m1.associateMeetCompany(c1);    //associa meeting a company
         m2.associateMeetCompany(c2);
 
-        p1.associateProfessionalMeet(m1);
+        p1.associateProfessionalMeet(m1);   //associa profissional a meet
         p2.associateProfessionalMeet(m2);
-        m1.associateMeetProfessional(p1);
+
+        m1.associateMeetProfessional(p1);   //associa meet a profissional
         m1.associateMeetProfessional(p2);
 
 
@@ -115,8 +132,8 @@ public class Main {
         //System.out.println(d+" "+company.get(d));
         //}
 
-        for (Date d:professionals.keys()) {               //imprime todos os professionals
-          System.out.println(d+" "+professionals.get(d));
-        }
+//        for (Date d:professionals.keys()) {               //imprime todos os professionals
+//          System.out.println(d+" "+professionals.get(d));
+//        }
     }
 }

@@ -71,7 +71,6 @@ public class Company {
         this.location = location;
     }
 
-
     private RedBlackBST<Date,Professional> professional = new RedBlackBST<>();
 
     private Location location;
@@ -93,8 +92,11 @@ public class Company {
         p.setCompany(c);
     }
 
-    public void unregisterProfessional(Date d) {     //remove um profissional da empresa
+    public void unregisterProfessional(Date d,Professional p) {     //remove um profissional da empresa
         this.professional.delete(d);
+        p.setCompany(null);
+        p.setSalary(0.0);
+        p.setId(null);
     }
 
     public void printProForRegistrationDate()   //imprime os profissionais da empresa por data de registo
@@ -117,7 +119,6 @@ public class Company {
         for (Date di:professional.keys()) {
             if(di.compareTo(d)==0)
             {
-                unregisterProfessional(d);
                 registerProfessional(nd,np);
             }
             }
@@ -156,13 +157,6 @@ public class Company {
             }
         }
         return null;
-    }
-
-    public void removeFromCompany(Professional p)     //remove da empresa
-    {
-        p.setCompany(null);
-        p.setSalary(0.0);
-        p.setId(null);
     }
 
     @Override
