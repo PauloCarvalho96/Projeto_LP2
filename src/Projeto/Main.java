@@ -1,7 +1,6 @@
 package Projeto;
 
 import edu.princeton.cs.algs4.RedBlackBST;
-import edu.princeton.cs.algs4.SeparateChainingHashST;
 import edu.princeton.cs.algs4.SeparateChainingHashST_Projeto;
 
 import java.util.ArrayList;
@@ -96,10 +95,8 @@ public class Main {
 
         //c1.unregisterProfessional(d1r,p1);
         //c1.printProForRegistrationDate();
-        //c1.printProForRegistrationDate();
         //c1.editProfessional(p1,d1r,d4r,p4);
         //c1.searchBySkill("Video");
-        //c1.printProForRegistrationDate();
         //c2.printProForRegistrationDate();
 
         ArrayList<String> interestAreas1 = new ArrayList<>();
@@ -139,7 +136,7 @@ public class Main {
 //        System.out.println(d+" "+company.get(d));
 //        }
 
-        for (Date d:professionals.keys()) {               //imprime todos os professionals
+        for (Date d:professionals.keys()) {               //.imprime todos os professionals
           System.out.println(d+" "+professionals.get(d));
         }
     }
