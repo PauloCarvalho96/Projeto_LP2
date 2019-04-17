@@ -12,7 +12,6 @@ public class Company {
 
     private int nif;
 
-
     /**
      * Constructor
      */
@@ -35,6 +34,8 @@ public class Company {
     /**
      * Gets and Sets
      */
+
+
     public String getName() {
         return name;
     }
@@ -78,8 +79,9 @@ public class Company {
     private ArrayList<String> meeting = new ArrayList<>();
 
 
-    public void registerProfessional(Date d,Professional p) {      //adiciona profissional a empresa
+    public void registerProfessional(Date d,Professional p,Company c) {      //adiciona profissional a empresa
         this.professional.put(d,p);
+        p.addCompanyHistoryToPro(c);
     }
 
     public void associateCompanyMeet(Meeting m) // Associa uma company a um meeting
@@ -90,13 +92,6 @@ public class Company {
     public void associatePro(Company c, Professional p)     //associa um profissional a uma empresa
     {
         p.setCompany(c);
-    }
-
-    public void unregisterProfessional(Date d,Professional p) {     //remove um profissional da empresa
-        this.professional.delete(d);
-        p.setCompany(null);
-        p.setSalary(0.0);
-        p.setId(null);
     }
 
     public void printProForRegistrationDate()   //imprime os profissionais da empresa por data de registo
@@ -112,17 +107,6 @@ public class Company {
 
     public void setMeeting(ArrayList<String> meeting) {
         this.meeting = meeting;
-    }
-
-    public void editProfessional(Professional p ,Date d, Date nd, Professional np)       //edita o profissional
-    {
-        for (Date di:professional.keys()) {
-            if(di.compareTo(d)==0)
-            {
-                unregisterProfessional(d,p);
-                registerProfessional(nd,np);
-            }
-            }
     }
 
     public Meeting searchMettings(int nif) {

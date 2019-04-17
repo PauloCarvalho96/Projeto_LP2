@@ -60,6 +60,8 @@ public class Main {
 
         Company c1 = new Company("UFP",252252525,190190190,l2);
         Company c2 = new Company("PR MOTORS",123456789,423567437,l3);
+        ///// Desempregado //////
+        Company c3 =new Company(null,0,0,null);
 
         company.put(dc1,c1);
         company.put(dc2,c2);
@@ -69,35 +71,29 @@ public class Main {
         professionals.put(bdp4,p4);
         professionals.put(bdp5,p5);
 
-        c1.registerProfessional(d1r,p1);
-        p1.setId("1");
+        c1.registerProfessional(d1r,p1,c1);
         c1.associatePro(c1,p1);
         p1.setSalary(1000.0);
 
-        c1.registerProfessional(d2r,p2);
-        p2.setId("2");
+        c1.registerProfessional(d2r,p2,c1);
         c1.associatePro(c1,p2);
         p2.setSalary(5000.0);
 
-        c1.registerProfessional(d3r,p3);
-        p3.setId("3");
+        c1.registerProfessional(d3r,p3,c1);
         c1.associatePro(c1,p3);
         p3.setSalary(3000.0);
 
-        c2.registerProfessional(d4r,p4);
-        p4.setId("4");
+        c2.registerProfessional(d4r,p4,c2);
         c2.associatePro(c2,p4);
         p4.setSalary(2000.0);
 
-        c2.registerProfessional(d5r,p5);
-        p5.setId("5");
+        c2.registerProfessional(d5r,p5,c2);
         c2.associatePro(c2,p5);
         p5.setSalary(8000.0);
 
-        //c1.unregisterProfessional(d1r,p1);
         //c1.printProForRegistrationDate();
         //c1.printProForRegistrationDate();
-        //c1.editProfessional(p1,d1r,d4r,p4);
+
         //c1.searchBySkill("Video");
         //c1.printProForRegistrationDate();
         //c2.printProForRegistrationDate();
@@ -128,16 +124,24 @@ public class Main {
         m1.associateMeetProfessional(p1);   //associa meet a profissional
         m1.associateMeetProfessional(p2);
 
-        //company history
-        //p1.addCompanyHistoryToPro(c2);
+        //company history // FALTAM AS DATAS !!!!!!!!!!!!!!!!!!!!!!!!
+
+        // Caso fique desempregado
+        p2.dissociateProCompany(p2,c3);
+        p1.dissociateProCompany(p1,c3);
+
+        // Caso mude de empresa
+        p1.changeCompany(p1,c2);
+        p1.setSalary(2000);
+
 
         //for (Date d:meetings.keys()) {                    //imprime todos os meetings
-         //   System.out.println(d+" "+meetings.get(d));
+          //  System.out.println(d+" "+meetings.get(d));
        //}
 
-//       for (Date d:company.keys()) {                     //imprime todas as companys
-//        System.out.println(d+" "+company.get(d));
-//        }
+        //for (Date d:company.keys()) {                     //imprime todas as companys
+        //System.out.println(d+" "+company.get(d));
+        //}
 
         for (Date d:professionals.keys()) {               //imprime todos os professionals
           System.out.println(d+" "+professionals.get(d));

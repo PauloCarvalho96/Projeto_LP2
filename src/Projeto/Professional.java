@@ -11,8 +11,6 @@ public class Professional extends Person {
 
     private Date registration;
 
-    private String id;
-
     private Company company;
 
     private ArrayList<String> meet = new ArrayList<>();
@@ -26,8 +24,7 @@ public class Professional extends Person {
     public String toString()
     {
         return "\nEmpresa: "+this.getCompany().getName()+"\nname:"+this.getName()+"\nBirth Date: "+this.getBirth_date()+"\nsexo :"+this.getGender()+
-                "\nSkills: "+this.getSkills()+ "\nLocation: "+this.getLocation()+"\nSalary: "+this.getSalary()+"\nID: "+
-                this.getId()+"\nMeetings: "+this.getMeet()+"\nCompany History: "+this.getCompanyHistory()+"\n--------------------";
+                "\nSkills: "+this.getSkills()+ "\nLocation: "+this.getLocation()+"\nSalary: "+this.getSalary()+"\nMeetings: "+this.getMeet()+"\nCompany History: "+this.getCompanyHistory()+"\n--------------------";
     }
     /**
      * Constructor
@@ -74,14 +71,6 @@ public class Professional extends Person {
 
     public void setRegistration(Date registration) {
         this.registration = registration;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public Company getCompany() {
@@ -139,4 +128,17 @@ public class Professional extends Person {
     {
         this.companyHistory.add(c.getName());
     }
+
+    public void dissociateProCompany( Professional p,Company desem) //////////////////////////////
+    {
+        p.setCompany(desem);
+        p.setSalary(0.0);
+        p.addCompanyHistoryToPro(desem); // alterar o null
+    }
+    public void changeCompany(Professional p,Company c) // muda a empresa em que o funcionario trabalha
+    {
+        p.setCompany(c);
+        p.addCompanyHistoryToPro(c);
+    }
+
 }
