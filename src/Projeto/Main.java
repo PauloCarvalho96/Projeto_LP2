@@ -125,9 +125,14 @@ public class Main {
         m1.associateMeetProfessional(p2);
 
         /** Company History **/
-        ArrayList<CompanyHistory> professionalHp1 = new ArrayList<>();     //historico de profissional
+        ArrayList<CompanyHistory> professionalHp1 = new ArrayList<>();     //historico de profissional p1
+        ArrayList<CompanyHistory> professionalHp2 = new ArrayList<>();     //historico de profissional p2
+        ArrayList<CompanyHistory> professionalHp3 = new ArrayList<>();     //historico de profissional p3
+        ArrayList<CompanyHistory> professionalHp4 = new ArrayList<>();     //historico de profissional p4
+        ArrayList<CompanyHistory> professionalHp5 = new ArrayList<>();     //historico de profissional p5
 
-        Date d1s = new Date (12,4,2019,10,0);
+        //datas de saida das empresas
+        Date d1s = new Date (12,4,2015,10,0);
         Date d2s = new Date (17,4,2019,9,0);
 
         //remove o profissional p1 da empresa c1
@@ -156,12 +161,15 @@ public class Main {
             }
         }
         CompanyHistory p1h2 = new CompanyHistory(d1s,d2s,p1,c2);
-        professionalHp1.add(p1h1);    //adiciona ao historico de empresas
-        professionalHp1.add(p1h2);    //adiciona ao historico de empresas
+
+        //adiciona ao historico de empresas
+        professionalHp1.add(p1h1);
+        professionalHp1.add(p1h2);
 
         //imprime historico de empresas de p1
         for (CompanyHistory h:professionalHp1) {
             System.out.println(h);
+            System.out.println("Experiencia: "+h.YearsExperience(h.getIn(),h.getOut())+" anos");
         }
 
         //c1.printProForRegistrationDate();

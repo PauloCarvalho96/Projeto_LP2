@@ -1,5 +1,8 @@
 package Projeto;
 
+import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
+
 public class CompanyHistory {
 
     private Date in;
@@ -52,6 +55,14 @@ public class CompanyHistory {
         this.company = company;
     }
 
+    public int YearsExperience(Date d1,Date d2)
+    {
+        int diff = d1.getYear()-d2.getYear();
+        if (d1.getMonth() > d2.getMonth() || d1.getMonth() == d2.getMonth() && d1.getDay() > d2.getDay()) {
+             diff--;
+        }
+        return Math.abs(diff);
+    }
 
     @Override
     public String toString()
