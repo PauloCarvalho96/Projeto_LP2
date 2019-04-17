@@ -152,14 +152,15 @@ public class Company {
             }
         }
     }
-    public int numberOfProfessionals(){
-        int i=0,aux=0;
-        for (Date d:professional.keys()) {
-            i++;
-            aux=i;
+    public void numberOfProfessionals(Company c){
+        int i = 0;
+        for (Date d:this.professional.keys()) {
+            if(professional.get(d).getCompany()==c)
+            {
+                i++;
+            }
         }
-        System.out.println("A empresa "+getName()+ " contem:"+aux+" funcionarios");
-        return aux;
+        System.out.println("Numero de profissionais da empresa "+c.getName()+": "+i);
     }
 
     @Override

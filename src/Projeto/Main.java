@@ -98,12 +98,7 @@ public class Main {
         c2.associatePro(c2,p6);
         p5.setSalary(10000.0);
 
-        //c1.printProForRegistrationDate();
-        //c1.printProForRegistrationDate();
-
         //c1.searchBySkill("Video");
-        //c1.printProForRegistrationDate();
-        //c2.printProForRegistrationDate();
 
         ArrayList<String> interestAreas1 = new ArrayList<>();
         interestAreas1.add("Programacao");
@@ -167,43 +162,47 @@ public class Main {
                 professionals.get(d).setSalary(0.0);
             }
         }
-        //CompanyHistory p1h2 = new CompanyHistory(d1s,d2s,p1,c2);
+        CompanyHistory p1h2 = new CompanyHistory(d1s,d2s,p1,c2);
 
         //adiciona ao historico de empresas
-        //professionalHp1.add(p1h1);
-        //professionalHp1.add(p1h2);
+        professionalHp1.add(p1h1);
+        professionalHp1.add(p1h2);
 
         //imprime historico de empresas de p1
-        //for (CompanyHistory h:professionalHp1) {
-            //System.out.println(h);
-          //  System.out.println("Experiencia: "+h.YearsExperience(h.getIn(),h.getOut())+" anos");
-        //}
+//        for (CompanyHistory h:professionalHp1) {
+//            System.out.println(h);
+//            System.out.println("Experiencia: "+h.YearsExperience(h.getIn(),h.getOut())+" anos");
+//        }
 
         //c1.printProForRegistrationDate();
         //c2.printProForRegistrationDate();
 
         //imprime todos os profissionais desempregados
+//        int i =0;
 //        for (Date d:professionals.keys()) {
 //            if(professionals.get(d).getCompany().getName().contains(c3.getName()))
 //            {
 //                System.out.println(professionals.get(d));
+//                i++;
 //            }
 //        }
+//        System.out.println("Profissinais desempregados: "+i);
+
 
         //imprime todos os meetings
 //        for (Date d:meetings.keys()) {                    //imprime todos os meetings
 //            System.out.println(d+" "+meetings.get(d));
 //       }
 
-          //imprime todas as empresas
-//        for (Date d:company.keys()) {                     //imprime todas as companys
-//        System.out.println(d+" "+company.get(d));
-//        }
+          //imprime todas as empresas e numero de profissionais
+        for (Date d:company.keys()) {
+        System.out.println(d+" "+company.get(d));
+        }
+        c1.numberOfProfessionals(c1);
+        c2.numberOfProfessionals(c2);
 
-        //imprime o numero de funcionários de uma empresa
-        c2.numberOfProfessionals();
 
-          //imprime todos os profissionais
+//          imprime todos os profissionais
 //        for (Date d:professionals.keys()) {               //imprime todos os professionals
 //          System.out.println(d+" "+professionals.get(d));
 //        }

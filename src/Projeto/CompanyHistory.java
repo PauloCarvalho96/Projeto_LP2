@@ -1,8 +1,5 @@
 package Projeto;
 
-import java.util.Calendar;
-import java.util.concurrent.TimeUnit;
-
 public class CompanyHistory {
 
     private Date in;
