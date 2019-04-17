@@ -124,7 +124,11 @@ public class Main {
         m1.associateMeetProfessional(p1);   //associa meet a profissional
         m1.associateMeetProfessional(p2);
 
-        //company history // FALTAM AS DATAS !!!!!!!!!!!!!!!!!!!!!!!!
+        /** Company History **/
+        ArrayList<CompanyHistory> professionalHp1 = new ArrayList<>();     //historico de profissional
+
+        Date d1s = new Date (12,4,2019,10,0);
+        Date d2s = new Date (17,4,2019,9,0);
 
         //remove o profissional p1 da empresa c1
         for (Date d:professionals.keys()) {
@@ -135,6 +139,7 @@ public class Main {
                 professionals.get(d).setSalary(0.0);
             }
         }
+        CompanyHistory p1h1 = new CompanyHistory(d1r,d1s,p1,c1);
 
         //regista na empresa c2
         c2.registerProfessional(d1r,p1,c2);
@@ -150,17 +155,25 @@ public class Main {
                 professionals.get(d).setSalary(0.0);
             }
         }
+        CompanyHistory p1h2 = new CompanyHistory(d1s,d2s,p1,c2);
+        professionalHp1.add(p1h1);    //adiciona ao historico de empresas
+        professionalHp1.add(p1h2);    //adiciona ao historico de empresas
+
+        //imprime historico de empresas de p1
+        for (CompanyHistory h:professionalHp1) {
+            System.out.println(h);
+        }
 
         //c1.printProForRegistrationDate();
         //c2.printProForRegistrationDate();
 
         //imprime todos os profissionais desempregados
-        for (Date d:professionals.keys()) {
-            if(professionals.get(d).getCompany().getName().contains(c3.getName()))
-            {
-                System.out.println(professionals.get(d));
-            }
-        }
+//        for (Date d:professionals.keys()) {
+//            if(professionals.get(d).getCompany().getName().contains(c3.getName()))
+//            {
+//                System.out.println(professionals.get(d));
+//            }
+//        }
 
         //imprime todos os meetings
 //        for (Date d:meetings.keys()) {                    //imprime todos os meetings
