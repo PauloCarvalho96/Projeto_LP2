@@ -153,15 +153,6 @@ public class Main {
 
         //c1.printProForRegistrationDate();
 
-        // Caso fique desempregado
-        //p1.dissociateProCompany(p1,c3);     //passa a funçao o profissional e a company desempregado com todos os profissionais desempregados
-        //p2.dissociateProCompany(p2,c3);
-
-        // Caso mude de empresa
-        //p1.changeCompany(p1,c2);
-        //p1.setSalary(2000);
-
-
         //for (Date d:meetings.keys()) {                    //imprime todos os meetings
           //  System.out.println(d+" "+meetings.get(d));
        //}

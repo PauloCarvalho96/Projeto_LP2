@@ -127,15 +127,4 @@ public class Professional extends Person {
         this.companyHistory.add(c.getName());
     }
 
-    public void dissociateProCompany(Professional p,Company c)
-    {
-        p.setCompany(c);
-        p.setSalary(0.0);
-    }
-    public void changeCompany(Professional p,Company c) // muda a empresa em que o funcionario trabalha
-    {
-        p.setCompany(c);
-        p.addCompanyHistoryToPro(c);
-    }
-
 }
