@@ -131,7 +131,21 @@ public class Main {
             if(professionals.get(d).getName().equals(p1.getName()) && professionals.get(d).getCompany()==c1)
             {
                 c1.removePro(p1);
+                professionals.get(d).setCompany(c3);    //desempregado
+                professionals.get(d).setSalary(0.0);
+            }
+        }
 
+        //regista na empresa c2
+        c1.registerProfessional(d1r,p1,c2);
+        c1.associatePro(c2,p1);
+        p1.setSalary(1000.0);
+
+        //remove da empresa c2 e mete a desempregado
+        for (Date d:professionals.keys()) {
+            if(professionals.get(d).getName().equals(p1.getName()) && professionals.get(d).getCompany()==c2)
+            {
+                c2.removePro(p1);
                 professionals.get(d).setCompany(c3);    //desempregado
                 professionals.get(d).setSalary(0.0);
             }
