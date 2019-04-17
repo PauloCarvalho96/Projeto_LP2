@@ -19,6 +19,7 @@ public class Main {
         Date bdp3 = new Date(5,5,1994,3,0);
         Date bdp4 = new Date(4,7,1991,4,0);
         Date bdp5 = new Date(3,10,1993,5,0);
+        Date bdp6 = new Date(21,5,2000,12,0);
 
         //datas de registo
         Date d1r = new Date (10,5,2010,0,0);
@@ -26,6 +27,7 @@ public class Main {
         Date d3r = new Date (7,10,1999,0,0);
         Date d4r = new Date (1,4,1900,0,0);
         Date d5r = new Date (23,10,2005,0,0);
+        Date d6r = new Date (25,23,2009,4,6);
 
         //datas de registo de empresas
         Date dc1 = new Date (3,5,2000,0,0);
@@ -57,6 +59,7 @@ public class Main {
         Professional p3 = new Professional("Jota","Masculino",bdp3,skillsP1,l1);
         Professional p4 = new Professional("Artur","Masculino",bdp4,skillsP2,l1);
         Professional p5 = new Professional("Pedro","Masculino",bdp5,skillsP1,l1);
+        Professional p6 = new Professional("Catarina","Feminino",bdp6,skillsP2,l2);
 
         Company c1 = new Company("UFP",252252525,190190190,l2);
         Company c2 = new Company("PR MOTORS",123456789,423567437,l3);
@@ -90,6 +93,10 @@ public class Main {
         c2.registerProfessional(d5r,p5,c2);
         c2.associatePro(c2,p5);
         p5.setSalary(8000.0);
+
+        c2.registerProfessional(d6r,p6,c2);
+        c2.associatePro(c2,p6);
+        p5.setSalary(10000.0);
 
         //c1.printProForRegistrationDate();
         //c1.printProForRegistrationDate();
@@ -160,17 +167,17 @@ public class Main {
                 professionals.get(d).setSalary(0.0);
             }
         }
-        CompanyHistory p1h2 = new CompanyHistory(d1s,d2s,p1,c2);
+        //CompanyHistory p1h2 = new CompanyHistory(d1s,d2s,p1,c2);
 
         //adiciona ao historico de empresas
-        professionalHp1.add(p1h1);
-        professionalHp1.add(p1h2);
+        //professionalHp1.add(p1h1);
+        //professionalHp1.add(p1h2);
 
         //imprime historico de empresas de p1
-        for (CompanyHistory h:professionalHp1) {
-            System.out.println(h);
-            System.out.println("Experiencia: "+h.YearsExperience(h.getIn(),h.getOut())+" anos");
-        }
+        //for (CompanyHistory h:professionalHp1) {
+            //System.out.println(h);
+          //  System.out.println("Experiencia: "+h.YearsExperience(h.getIn(),h.getOut())+" anos");
+        //}
 
         //c1.printProForRegistrationDate();
         //c2.printProForRegistrationDate();
@@ -192,6 +199,9 @@ public class Main {
 //        for (Date d:company.keys()) {                     //imprime todas as companys
 //        System.out.println(d+" "+company.get(d));
 //        }
+
+        //imprime o numero de funcionários de uma empresa
+        c2.numberOfProfessionals();
 
           //imprime todos os profissionais
 //        for (Date d:professionals.keys()) {               //imprime todos os professionals

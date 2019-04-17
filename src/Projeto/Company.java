@@ -152,6 +152,15 @@ public class Company {
             }
         }
     }
+    public int numberOfProfessionals(){
+        int i=0,aux=0;
+        for (Date d:professional.keys()) {
+            i++;
+            aux=i;
+        }
+        System.out.println("A empresa "+getName()+ " contem:"+aux+" funcionarios");
+        return aux;
+    }
 
     @Override
     public String toString()
