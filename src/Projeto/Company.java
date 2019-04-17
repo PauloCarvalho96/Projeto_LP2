@@ -97,7 +97,7 @@ public class Company {
     public void printProForRegistrationDate()   //imprime os profissionais da empresa por data de registo
     {
         for (Date d:professional.keys()) {
-            System.out.println(d+" "+professional.get(d));
+                System.out.println(d+" "+professional.get(d));
         }
     }
 
@@ -142,6 +142,15 @@ public class Company {
             }
         }
         return null;
+    }
+
+    public void removePro(Professional p)       //elimina profissional da empresa
+    {
+        for (Date d:professional.keys()) {
+            if(professional.get(d).getName().contains(p.getName())) {
+                professional.delete(d);
+            }
+        }
     }
 
     @Override

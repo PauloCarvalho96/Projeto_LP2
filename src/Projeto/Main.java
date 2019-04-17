@@ -126,14 +126,18 @@ public class Main {
 
         //company history // FALTAM AS DATAS !!!!!!!!!!!!!!!!!!!!!!!!
 
+        c1.removePro(p1);
+
+
         // Caso fique desempregado
-        p2.dissociateProCompany(p2,c3);
-        p1.dissociateProCompany(p1,c3);
+        //p1.dissociateProCompany(p1,c3);     //passa a funçao o profissional e a company desempregado com todos os profissionais desempregados
+        //p2.dissociateProCompany(p2,c3);
 
         // Caso mude de empresa
-        p1.changeCompany(p1,c2);
-        p1.setSalary(2000);
+        //p1.changeCompany(p1,c2);
+        //p1.setSalary(2000);
 
+        //c1.printProForRegistrationDate();
 
         //for (Date d:meetings.keys()) {                    //imprime todos os meetings
           //  System.out.println(d+" "+meetings.get(d));

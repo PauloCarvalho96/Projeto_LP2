@@ -1,8 +1,5 @@
 package Projeto;
 
-import edu.princeton.cs.algs4.SeparateChainingHashST;
-import edu.princeton.cs.algs4.SeparateChainingHashST_Projeto;
-
 import java.util.ArrayList;
 
 public class Professional extends Person {
@@ -24,7 +21,8 @@ public class Professional extends Person {
     public String toString()
     {
         return "\nEmpresa: "+this.getCompany().getName()+"\nname:"+this.getName()+"\nBirth Date: "+this.getBirth_date()+"\nsexo :"+this.getGender()+
-                "\nSkills: "+this.getSkills()+ "\nLocation: "+this.getLocation()+"\nSalary: "+this.getSalary()+"\nMeetings: "+this.getMeet()+"\nCompany History: "+this.getCompanyHistory()+"\n--------------------";
+                "\nSkills: "+this.getSkills()+ "\nLocation: "+this.getLocation()+"\nSalary: "+this.getSalary()+"\nMeetings: "+this.getMeet()+
+                "\nCompany History: "+this.getCompanyHistory()+"\n--------------------";
     }
     /**
      * Constructor
@@ -129,11 +127,10 @@ public class Professional extends Person {
         this.companyHistory.add(c.getName());
     }
 
-    public void dissociateProCompany( Professional p,Company desem) //////////////////////////////
+    public void dissociateProCompany(Professional p,Company c)
     {
-        p.setCompany(desem);
+        p.setCompany(c);
         p.setSalary(0.0);
-        p.addCompanyHistoryToPro(desem); // alterar o null
     }
     public void changeCompany(Professional p,Company c) // muda a empresa em que o funcionario trabalha
     {
