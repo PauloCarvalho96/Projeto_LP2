@@ -61,7 +61,7 @@ public class Main {
         Company c1 = new Company("UFP",252252525,190190190,l2);
         Company c2 = new Company("PR MOTORS",123456789,423567437,l3);
         ///// Desempregado //////
-        Company c3 =new Company(null,0,0,null);
+        Company c3 =new Company("Desempregado",0,0,null);
 
         company.put(dc1,c1);
         company.put(dc2,c2);
@@ -126,8 +126,18 @@ public class Main {
 
         //company history // FALTAM AS DATAS !!!!!!!!!!!!!!!!!!!!!!!!
 
-        c1.removePro(p1);
+        //remove o profissional p1 da empresa c1
+        for (Date d:professionals.keys()) {
+            if(professionals.get(d).getName().equals(p1.getName()) && professionals.get(d).getCompany()==c1)
+            {
+                c1.removePro(p1);
 
+                professionals.get(d).setCompany(c3);    //desempregado
+                professionals.get(d).setSalary(0.0);
+            }
+        }
+
+        //c1.printProForRegistrationDate();
 
         // Caso fique desempregado
         //p1.dissociateProCompany(p1,c3);     //passa a funçao o profissional e a company desempregado com todos os profissionais desempregados
@@ -137,15 +147,14 @@ public class Main {
         //p1.changeCompany(p1,c2);
         //p1.setSalary(2000);
 
-        //c1.printProForRegistrationDate();
 
         //for (Date d:meetings.keys()) {                    //imprime todos os meetings
           //  System.out.println(d+" "+meetings.get(d));
        //}
 
-        //for (Date d:company.keys()) {                     //imprime todas as companys
-        //System.out.println(d+" "+company.get(d));
-        //}
+//        for (Date d:company.keys()) {                     //imprime todas as companys
+//        System.out.println(d+" "+company.get(d));
+//        }
 
         for (Date d:professionals.keys()) {               //imprime todos os professionals
           System.out.println(d+" "+professionals.get(d));
