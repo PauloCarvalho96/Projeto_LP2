@@ -137,8 +137,8 @@ public class Main {
         }
 
         //regista na empresa c2
-        c1.registerProfessional(d1r,p1,c2);
-        c1.associatePro(c2,p1);
+        c2.registerProfessional(d1r,p1,c2);
+        c2.associatePro(c2,p1);
         p1.setSalary(1000.0);
 
         //remove da empresa c2 e mete a desempregado
@@ -152,17 +152,29 @@ public class Main {
         }
 
         //c1.printProForRegistrationDate();
+        //c2.printProForRegistrationDate();
 
-        //for (Date d:meetings.keys()) {                    //imprime todos os meetings
-          //  System.out.println(d+" "+meetings.get(d));
-       //}
+        //imprime todos os profissionais desempregados
+        for (Date d:professionals.keys()) {
+            if(professionals.get(d).getCompany().getName().contains(c3.getName()))
+            {
+                System.out.println(professionals.get(d));
+            }
+        }
 
+        //imprime todos os meetings
+//        for (Date d:meetings.keys()) {                    //imprime todos os meetings
+//            System.out.println(d+" "+meetings.get(d));
+//       }
+
+          //imprime todas as empresas
 //        for (Date d:company.keys()) {                     //imprime todas as companys
 //        System.out.println(d+" "+company.get(d));
 //        }
 
-        for (Date d:professionals.keys()) {               //imprime todos os professionals
-          System.out.println(d+" "+professionals.get(d));
-        }
+          //imprime todos os profissionais
+//        for (Date d:professionals.keys()) {               //imprime todos os professionals
+//          System.out.println(d+" "+professionals.get(d));
+//        }
     }
 }
