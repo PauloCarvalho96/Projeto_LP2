@@ -300,14 +300,40 @@ public class Main {
 //        print.printAllMeetings(meetings);
 
           //imprime todas as empresas e numero de profissionais de cada empresa
-//        Company print = new Company(null,0,0,null);
-//        print.printAllCompanys(company);
+        Company print = new Company(null,0,0,null);
+        //print.printAllCompanys(company);
 //        c1.numberOfProfessionals(c1);
 //        c2.numberOfProfessionals(c2);
 //        c3.numberOfProfessionals(c3);
 
+        //imprime a empresa pelo nif
+        //print.searchCompanybynif(company,190190190);
+
+        //imprime a empresa pelo nome
+        //print.searchCompanybyname(company,"Fotogrupo");
+
+        //imprime a empresa pelo numero
+        //print.searchCompanybyphone(company,252759021);
+
+        //imprime a empresa pela localizacao
+        //print.searchCompanybylocation(company,l2);
+
 //          imprime todos os profissionais
-//        Professional print = new Professional(null,null,null,null,null);    //para aceder a classe
-//        print.printAllProfessionals(professionals);
+        Professional print1 = new Professional(null,null,null,null,null);    //para aceder a classe
+//        print1.printAllProfessionals(professionals);
+
+        //imprime profissionais com uma determinada skill
+        //print1.searchProfessionalBySkill(professionals,"Base de dados"); !!!!!! nao consegui
+
+        //imprime profissionais pelo salario
+        //print1.searchProfessionalBySalary(professionals,1000);
+
+        //imprime profissionais pela localizacao
+        //print1.searchProfessionalByLocation(professionals,l1);
+
+        //imprime profissionais pelo nome
+        //print1.searchProfessionalByName(professionals,"Jota");
+
+
     }
 }

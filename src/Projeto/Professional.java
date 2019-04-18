@@ -129,11 +129,41 @@ public class Professional extends Person {
         this.companyHistory.add(c.getName());
     }
 
+    public void searchProfessionalBySalary(SeparateChainingHashST_Projeto<Date,Professional> professionals,int s)
+    {
+        for (Date d : professionals.keys()) {
+            if (professionals.get(d).getSalary() == s) {
+                System.out.println("" + professionals.get(d));
+            }
+        }
+
+    }
+
+    public void searchProfessionalByLocation(SeparateChainingHashST_Projeto<Date,Professional> professionals,Location l)
+    {
+        for (Date d : professionals.keys()) {
+            if (professionals.get(d).getLocation() == l) {
+                System.out.println("" + professionals.get(d));
+            }
+        }
+    }
+
     public void printAllProfessionals(SeparateChainingHashST_Projeto<Date,Professional> professionals)
     {
         for (Date d:professionals.keys()) {
             System.out.println(d+" "+professionals.get(d));
         }
     }
+
+    public void searchProfessionalByName(SeparateChainingHashST_Projeto<Date,Professional> professionals,String n)
+    {
+        for (Date d : professionals.keys()) {
+            if (professionals.get(d).getName() == n) {
+                System.out.println("" + professionals.get(d));
+            }
+        }
+    }
+
+
 
 }

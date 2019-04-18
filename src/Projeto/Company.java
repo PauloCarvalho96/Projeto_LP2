@@ -199,6 +199,37 @@ public class Company {
             System.out.println(d+" "+company.get(d));
         }
     }
+    public void searchCompanybynif(SeparateChainingHashST_Projeto<Date,Company> company,int n)
+    {
+        for (Date d:company.keys()) {
+            if(company.get(d).getNif()==n)
+            System.out.println("Company: "+company.get(d));
+        }
+    }
+
+    public void searchCompanybyname(SeparateChainingHashST_Projeto<Date,Company> company,String n)
+    {
+        for (Date d:company.keys()) {
+            if(company.get(d).getName()==n)
+                System.out.println("Company: "+company.get(d));
+        }
+    }
+
+    public void searchCompanybyphone(SeparateChainingHashST_Projeto<Date,Company> company,int p)
+    {
+        for (Date d:company.keys()) {
+            if(company.get(d).getPhone()==p)
+                System.out.println("Company: "+company.get(d));
+        }
+    }
+
+    public void searchCompanybylocation(SeparateChainingHashST_Projeto<Date,Company> company,Location l)
+    {
+        for (Date d:company.keys()) {
+            if(company.get(d).getLocation()==l)
+                System.out.println("Company: "+company.get(d));
+        }
+    }
 
     @Override
     public String toString()
