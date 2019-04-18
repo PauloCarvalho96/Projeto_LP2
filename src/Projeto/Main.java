@@ -162,7 +162,7 @@ public class Main {
 
         c3.registerProfessional(d10r,p10,c3,650);
         c3.associatePro(c3,p10);
-        
+
         //procura profissionais pela skill
         //c1.searchBySkill("Video");
 
