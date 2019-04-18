@@ -1,5 +1,7 @@
 package Projeto;
 
+import edu.princeton.cs.algs4.SeparateChainingHashST_Projeto;
+
 import java.util.ArrayList;
 
 public class Professional extends Person {
@@ -24,6 +26,7 @@ public class Professional extends Person {
                 "\nSkills: "+this.getSkills()+ "\nLocation: "+this.getLocation()+"\nSalary: "+this.getSalary()+"\nMeetings: "+this.getMeet()+
                 "\nCompany History: "+this.getCompanyHistory()+"\n--------------------";
     }
+
     /**
      * Constructor
      */
@@ -37,7 +40,6 @@ public class Professional extends Person {
     /**
      * Gets and Sets
      */
-
 
     public double getSalary() {
         return salary;
@@ -125,6 +127,13 @@ public class Professional extends Person {
     public void addCompanyHistoryToPro(Company c)
     {
         this.companyHistory.add(c.getName());
+    }
+
+    public void printAllProfessionals(SeparateChainingHashST_Projeto<Date,Professional> professionals)
+    {
+        for (Date d:professionals.keys()) {
+            System.out.println(d+" "+professionals.get(d));
+        }
     }
 
 }
