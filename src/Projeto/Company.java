@@ -1,7 +1,6 @@
 package Projeto;
 
 import edu.princeton.cs.algs4.RedBlackBST;
-import edu.princeton.cs.algs4.SeparateChainingHashST_Projeto;
 
 import java.util.ArrayList;
 
@@ -80,10 +79,9 @@ public class Company {
     private ArrayList<String> meeting = new ArrayList<>();
 
 
-    public void registerProfessional(Date d,Professional p,Company c,double salary) {      //adiciona profissional a empresa
+    public void registerProfessional(Date d,Professional p,Company c) {      //adiciona profissional a empresa
         this.professional.put(d,p);
         p.addCompanyHistoryToPro(c);
-        p.setSalary(salary);
     }
 
     public void associateCompanyMeet(Meeting m) // Associa uma company a um meeting
@@ -163,41 +161,6 @@ public class Company {
             }
         }
         System.out.println("Numero de profissionais da empresa "+c.getName()+": "+i);
-    }
-
-    //remove professional da company
-    public void removeProfessionalCompany(SeparateChainingHashST_Projeto<Date,Professional> professionals,Professional p,Company c,Company c4)
-    {
-        for (Date d:professionals.keys()) {
-            if(professionals.get(d).getName().equals(p.getName()) && professionals.get(d).getCompany()==c)
-            {
-                c.removePro(p);
-                professionals.get(d).setCompany(c4);    //desempregado
-                professionals.get(d).setSalary(0.0);
-            }
-        }
-    }
-
-    //imprime funcionarios sem trabalho
-    public void printProWithoutCompany(SeparateChainingHashST_Projeto<Date,Professional> professionals, Company c4)
-    {
-        int i =0;
-        for (Date d:professionals.keys()) {
-            if(professionals.get(d).getCompany().getName().contains(c4.getName()))
-            {
-                System.out.println(professionals.get(d));
-                i++;
-            }
-        }
-        System.out.println("Profissinais desempregados: "+i);
-    }
-
-    //imprime todas as empresas
-    public void printAllCompanys(SeparateChainingHashST_Projeto<Date,Company> company)
-    {
-        for (Date d:company.keys()) {
-            System.out.println(d+" "+company.get(d));
-        }
     }
 
     @Override

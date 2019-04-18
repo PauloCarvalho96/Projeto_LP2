@@ -1,7 +1,5 @@
 package Projeto;
 
-import edu.princeton.cs.algs4.RedBlackBST;
-
 import java.util.ArrayList;
 
 public class Meeting {
@@ -105,14 +103,6 @@ public class Meeting {
     public void associateMeetProfessional(Professional p)
     {
         this.professional.add(p.getName());
-    }
-
-    //imprime todos os meetings
-    public void printAllMeetings(RedBlackBST<Date,Meeting> meetings)
-    {
-        for (Date d:meetings.keys()) {
-            System.out.println(d+" "+meetings.get(d));
-        }
     }
 
     @Override
