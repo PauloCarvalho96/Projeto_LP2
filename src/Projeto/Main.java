@@ -238,7 +238,13 @@ public class Main {
         ArrayList<CompanyHistory> professionalHp10 = new ArrayList<>();    //historico de profissional p10
 
         //remove empresa
-//        c1.removeCompany(company,c1,professionals,c4);
+//        c1.removeCompany(company,c1,professionals,c4);    //remove empresa c1
+
+        //edita empresa
+//        c1.editCompanyName(company,c1,"Microsoft");
+//        c1.editCompanyPhone(company,c1,252123456);
+//        c1.editCompanyNif(company,c1,123456789);
+//        c1.editCompanyLocation(company,c1,l1);
 
         /**
          * Profissional P1
@@ -322,8 +328,8 @@ public class Main {
         //print.searchCompanybylocation(company,l2);
 
 //          imprime todos os profissionais
-        Professional print1 = new Professional(null,null,null,null,null);    //para aceder a classe
-        print1.printAllProfessionals(professionals);
+//        Professional print1 = new Professional(null,null,null,null,null);    //para aceder a classe
+//        print1.printAllProfessionals(professionals);
 
         //imprime profissionais com uma determinada skill
         //print1.searchProfessionalBySkill(professionals,"Base de dados"); !!!!!! nao consegui
@@ -336,7 +342,5 @@ public class Main {
 
         //imprime profissionais pelo nome
         //print1.searchProfessionalByName(professionals,"Jota");
-
-
     }
 }

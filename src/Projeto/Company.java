@@ -3,6 +3,7 @@ package Projeto;
 import edu.princeton.cs.algs4.RedBlackBST;
 import edu.princeton.cs.algs4.SeparateChainingHashST_Projeto;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Company {
@@ -178,6 +179,7 @@ public class Company {
         }
     }
 
+    //remove empresa
     public void removeCompany(SeparateChainingHashST_Projeto<Date,Company> company, Company c,SeparateChainingHashST_Projeto<Date,Professional> professionals,Company c4)
     {
         for (Date d:company.keys()) {
@@ -195,6 +197,47 @@ public class Company {
                     }
                 }
                 company.delete(d);      //elimina a empresa
+            }
+        }
+    }
+
+    //edita empresa
+    public void editCompanyPhone(SeparateChainingHashST_Projeto<Date,Company> company,Company c,int nphone)
+    {
+        for (Date d:company.keys()) {
+            if(company.get(d)==c)
+            {
+                company.get(d).setPhone(nphone);
+            }
+        }
+    }
+
+    public void editCompanyNif(SeparateChainingHashST_Projeto<Date,Company> company,Company c,int nNif)
+    {
+        for (Date d:company.keys()) {
+            if(company.get(d)==c)
+            {
+                company.get(d).setNif(nNif);
+            }
+        }
+    }
+
+    public void editCompanyLocation(SeparateChainingHashST_Projeto<Date,Company> company, Company c,Location x)
+    {
+        for (Date d:company.keys()) {
+            if(company.get(d)==c)
+            {
+                company.get(d).setLocation(x);
+            }
+        }
+    }
+
+    public void editCompanyName(SeparateChainingHashST_Projeto<Date,Company> company, Company c,String nName)
+    {
+        for (Date d:company.keys()) {
+            if(company.get(d)==c)
+            {
+                company.get(d).setName(nName);
             }
         }
     }
