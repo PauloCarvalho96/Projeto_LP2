@@ -237,6 +237,9 @@ public class Main {
         ArrayList<CompanyHistory> professionalHp9 = new ArrayList<>();     //historico de profissional p9
         ArrayList<CompanyHistory> professionalHp10 = new ArrayList<>();    //historico de profissional p10
 
+        //remove empresa
+//        c1.removeCompany(company,c1,professionals,c4);
+
         /**
          * Profissional P1
          */
@@ -300,11 +303,11 @@ public class Main {
 //        print.printAllMeetings(meetings);
 
           //imprime todas as empresas e numero de profissionais de cada empresa
-        Company print = new Company(null,0,0,null);
-        //print.printAllCompanys(company);
-//        c1.numberOfProfessionals(c1);
-//        c2.numberOfProfessionals(c2);
-//        c3.numberOfProfessionals(c3);
+//        Company print = new Company(null,0,0,null);
+//        print.printAllCompanys(company);
+//        System.out.println("Numero de profissionais da empresa "+c1.getName()+" : "+c1.numberOfProfessionals(c1));
+//        System.out.println("Numero de profissionais da empresa "+c2.getName()+" : "+c2.numberOfProfessionals(c2));
+//        System.out.println("Numero de profissionais da empresa "+c3.getName()+" : "+c3.numberOfProfessionals(c3));
 
         //imprime a empresa pelo nif
         //print.searchCompanybynif(company,190190190);
@@ -320,7 +323,7 @@ public class Main {
 
 //          imprime todos os profissionais
         Professional print1 = new Professional(null,null,null,null,null);    //para aceder a classe
-//        print1.printAllProfessionals(professionals);
+        print1.printAllProfessionals(professionals);
 
         //imprime profissionais com uma determinada skill
         //print1.searchProfessionalBySkill(professionals,"Base de dados"); !!!!!! nao consegui

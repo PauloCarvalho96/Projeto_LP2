@@ -154,7 +154,7 @@ public class Company {
             }
         }
     }
-    public void numberOfProfessionals(Company c){
+    public int numberOfProfessionals(Company c){
         int i = 0;
         for (Date d:this.professional.keys()) {
             if(professional.get(d).getCompany()==c)
@@ -162,7 +162,7 @@ public class Company {
                 i++;
             }
         }
-        System.out.println("Numero de profissionais da empresa "+c.getName()+": "+i);
+        return i;
     }
 
     //remove professional da company
@@ -174,6 +174,27 @@ public class Company {
                 c.removePro(p);
                 professionals.get(d).setCompany(c4);    //desempregado
                 professionals.get(d).setSalary(0.0);
+            }
+        }
+    }
+
+    public void removeCompany(SeparateChainingHashST_Projeto<Date,Company> company, Company c,SeparateChainingHashST_Projeto<Date,Professional> professionals,Company c4)
+    {
+        for (Date d:company.keys()) {
+            if(company.get(d)==c)
+            {
+                if(company.get(d).numberOfProfessionals(c)>0)   //se tiver funcionarios entao ficam todos desempregados
+                {
+                    for (Date di:professionals.keys()) {        //percorre os profissionais
+                        if(professionals.get(di).getCompany()==c)    //se a empresa for a que se quer eliminar mete se o pro desempregado
+                        {
+                            removePro(professionals.get(di));
+                            professionals.get(di).setCompany(c4);
+                            professionals.get(di).setSalary(0.0);
+                        }
+                    }
+                }
+                company.delete(d);      //elimina a empresa
             }
         }
     }
