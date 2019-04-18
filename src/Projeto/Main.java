@@ -1,7 +1,21 @@
+/**
+ * Projeto realizado por:
+ *
+ * ************************
+ * Paulo Carvalho nº37113 *
+ * Pedro Pinheiro nº36763 *
+ **************************
+ *
+ * Linguagens de Programação II / Algoritmos e Estruturas de Dados II
+ * 1º Fase
+ *
+ * Universidade Fernando Pessoa
+ *
+ */
+
 package Projeto;
 
 import edu.princeton.cs.algs4.RedBlackBST;
-import edu.princeton.cs.algs4.SeparateChainingHashST;
 import edu.princeton.cs.algs4.SeparateChainingHashST_Projeto;
 
 import java.util.ArrayList;
@@ -216,6 +230,9 @@ public class Main {
         ArrayList<CompanyHistory> professionalHp9 = new ArrayList<>();     //historico de profissional p9
         ArrayList<CompanyHistory> professionalHp10 = new ArrayList<>();    //historico de profissional p10
 
+        /**
+         * Profissional P1
+         */
         //remove o profissional p1 da empresa c1
         for (Date d:professionals.keys()) {
             if(professionals.get(d).getName().equals(p1.getName()) && professionals.get(d).getCompany()==c1)
@@ -226,68 +243,70 @@ public class Main {
             }
         }
 
-        //regista na empresa em outra empresa ( quando ele muda de empresa )
+        //regista p1 na c2
         c2.registerProfessional(d1r,p1,c2);
         c2.associatePro(c2,p1);
         p1.setSalary(1000.0);
 
-        c3.registerProfessional(d4r,p4,c3);
-        c3.associatePro(c3,p4);
-        p4.setSalary(1200);
-
-        c1.registerProfessional(d9r,p9,c1);
-        c1.associatePro(c1,p9);
-        p9.setSalary(2300);
-
+        // adiciona ao historico de empresas de p1
         CompanyHistory p1h1 = new CompanyHistory(d1r,d1s,p1,c1);
-        CompanyHistory p4h1 = new CompanyHistory(d4r,d2s,p4,c2);
-        CompanyHistory p9h1 = new CompanyHistory(d9r,d3s,p9,c3);
+        professionalHp1.add(p1h1); // p1 -> empresa 1
 
-        //coloca qualquer profissional desempregago
+        //remove p1 de c2
         for (Date d:professionals.keys()) {
             if(professionals.get(d).getName().equals(p1.getName()) && professionals.get(d).getCompany()==c2)
             {
-                c2.removePro(p2);
+                c2.removePro(p1);
                 professionals.get(d).setCompany(c4);    //desempregado
                 professionals.get(d).setSalary(0.0);
             }
         }
-        CompanyHistory p1h2 = new CompanyHistory(d1s,d2s,p1,c2);
-        CompanyHistory p4h2 = new CompanyHistory(d2s,dHoje,p4,c3);
-        CompanyHistory p9h2 = new CompanyHistory(d3s,dHoje,p9,c1);
 
-        //adiciona ao historico de empresas
-        professionalHp1.add(p1h1); // p1 -> empresa 1
+        // adiciona ao historico de empresas de p1
+        CompanyHistory p1h2 = new CompanyHistory(d1s,d2s,p1,c2);
         professionalHp1.add(p1h2); // p1 -> empresa 2
 
-        professionalHp4.add(p4h1);// p4 -> empresa 2
-        professionalHp4.add(p4h2);// p4 -> empresa 3
 
-        professionalHp9.add(p9h1);// p9 -> empresa 3
-        professionalHp9.add(p9h2);// p9 -> empresa 1
+//        c3.registerProfessional(d4r,p4,c3);
+//        c3.associatePro(c3,p4);
+//        p4.setSalary(1200);
+//
+//        c1.registerProfessional(d9r,p9,c1);
+//        c1.associatePro(c1,p9);
+//        p9.setSalary(2300);
 
-        ////////////////////////////////////// Muito dificl de imprimir o histórico de cada profissional, vou tentar melhorar depois //////////////
+//        CompanyHistory p4h1 = new CompanyHistory(d4r,d2s,p4,c2);
+//        CompanyHistory p9h1 = new CompanyHistory(d9r,d3s,p9,c3);
+
+//        CompanyHistory p4h2 = new CompanyHistory(d2s,dHoje,p4,c3);
+//        CompanyHistory p9h2 = new CompanyHistory(d3s,dHoje,p9,c1);
+
+//        professionalHp4.add(p4h1);// p4 -> empresa 2
+//        professionalHp4.add(p4h2);// p4 -> empresa 3
+
+//        professionalHp9.add(p9h1);// p9 -> empresa 3
+//        professionalHp9.add(p9h2);// p9 -> empresa 1
+
+        /**
+         * Prints
+         */
+
+        //para imprimir o historico criou se um objeto para aceder a funçao
+        CompanyHistory print = new CompanyHistory(null,null,null,null);
+
         //imprime historico de empresas de p1
-        //for (CompanyHistory h:professionalHp1) {
-          //  System.out.println(h);
-         //   System.out.println("Experiencia: "+h.YearsExperience(h.getIn(),h.getOut())+" anos");
-        //}
+        print.printCompanyHistoric(professionalHp1);
+
         //imprime historico de empresas de p4
         //for (CompanyHistory h:professionalHp4) {
          //   System.out.println(h);
          //   System.out.println("Experiencia: "+h.YearsExperience(h.getIn(),h.getOut())+" anos");
         //}
-        //imprime historico de empresas de p9
-        //for (CompanyHistory h:professionalHp9) {
-          //  System.out.println(h);
-         //   System.out.println("Experiencia: "+h.YearsExperience(h.getIn(),h.getOut())+" anos");
-       // }
 
-        // RedBlack que ordena os profissionais da empresa por registo, nao está a funcionar bem pois os alterados continuam a aparecer em empresas antigas
-        //c1.printProForRegistrationDate();
-        //c2.printProForRegistrationDate();
-        //////// Erro está a imprimir o feio do osvaldo que ja nao esta no fotogrupo e sim na ufp, talvez por o ter alterado de empresa, temos de resolver isto ////////////////
-        //  -> ESTÀ COM ERRO c3.printProForRegistrationDate();
+        //imprime profissionais de cada empresa
+//        c1.printProForRegistrationDate();
+//        c2.printProForRegistrationDate();
+//        c3.printProForRegistrationDate();
 
         //imprime todos os profissionais desempregados
         //int i =0;
@@ -299,7 +318,6 @@ public class Main {
           //  }
         //}
         //System.out.println("Profissinais desempregados: "+i);
-
 
         //imprime todos os meetings
         //for (Date d:meetings.keys()) {                    //imprime todos os meetings
@@ -314,10 +332,9 @@ public class Main {
         //c2.numberOfProfessionals(c2);
         //c3.numberOfProfessionals(c3);
 
-
 //          imprime todos os profissionais
-        //for (Date d:professionals.keys()) {               //imprime todos os professionals
-        //  System.out.println(d+" "+professionals.get(d));
-      //  }
+//        for (Date d:professionals.keys()) {               //imprime todos os professionals
+//          System.out.println(d+" "+professionals.get(d));
+//        }
     }
 }

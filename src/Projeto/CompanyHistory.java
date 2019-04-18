@@ -1,5 +1,7 @@
 package Projeto;
 
+import java.util.ArrayList;
+
 public class CompanyHistory {
 
     private Date in;
@@ -59,6 +61,14 @@ public class CompanyHistory {
              diff--;
         }
         return Math.abs(diff);
+    }
+
+    public void printCompanyHistoric(ArrayList<CompanyHistory> professional)
+    {
+        for (CompanyHistory hi:professional) {
+            System.out.println(hi);
+            System.out.println("Experiencia: "+hi.YearsExperience(hi.getIn(),hi.getOut())+" anos");
+        }
     }
 
     @Override
