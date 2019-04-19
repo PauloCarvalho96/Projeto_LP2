@@ -16,9 +16,12 @@
 
 package Projeto;
 
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.RedBlackBST;
 import edu.princeton.cs.algs4.SeparateChainingHashST_Projeto;
 
+import java.sql.Struct;
 import java.util.ArrayList;
 
 public class Main {
@@ -305,8 +308,8 @@ public class Main {
 //        c4.printProWithoutCompany(professionals,c4);
 
         //imprime todos os meetings
-//        Meeting print = new Meeting(null,0,null,null,null); //para aceder a classe
-//        print.printAllMeetings(meetings);
+        Meeting print = new Meeting(null,0,null,null,null); //para aceder a classe
+        print.printAllMeetings(meetings);
 
           //imprime todas as empresas e numero de profissionais de cada empresa
 //        Company print = new Company(null,0,0,null);
@@ -342,5 +345,42 @@ public class Main {
 
         //imprime profissionais pelo nome
         //print1.searchProfessionalByName(professionals,"Jota");
+
+        /**
+         * FILES (SAVE)
+         */
+        writeCompanysToTXT(company,".//data//company.txt");
+        writeProfessionalsToTXT(professionals,".//data//professionals.txt");
+        writeMeetingsToTXT(meetings,".//data//meetings.txt");
+    }
+
+    /**
+     * FILES (SAVE)
+     */
+    //companys information
+    private static void writeCompanysToTXT(SeparateChainingHashST_Projeto<Date,Company> company, String path)
+    {
+        Out out = new Out(path);   //abre ficheiro
+        for (Date d:company.keys()) {
+            out.println(company.get(d));
+        }
+    }
+
+    //professionals information
+    private static void writeProfessionalsToTXT(SeparateChainingHashST_Projeto<Date,Professional> professionals,String path)
+    {
+        Out out = new Out(path);   //abre ficheiro
+        for (Date d:professionals.keys()) {
+            out.println(professionals.get(d));
+        }
+    }
+
+    //meetings information
+    private static void writeMeetingsToTXT(RedBlackBST<Date,Meeting> meetings,String path)
+    {
+        Out out = new Out(path);   //abre ficheiro
+        for (Date d:meetings.keys()) {
+            out.println(meetings.get(d));
+        }
     }
 }
