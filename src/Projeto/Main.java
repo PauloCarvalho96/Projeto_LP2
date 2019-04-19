@@ -462,13 +462,40 @@ public class Main {
             company.put(date,c);
             c.associateCompanyMeet(m);
         }
-        Company print = new Company(null,0,0,null);
-        print.printAllCompanys(company);
     }
 
     private static void loadProfessionalsToST(SeparateChainingHashST_Projeto<Date,Professional> professionals,String path)
     {
-
+        In in = new In(path);
+        in.readLine();
+        while (!in.isEmpty()) {
+            ArrayList<String> areas = new ArrayList<>();
+            String[] texto = in.readLine().split(";");
+            String[] d = texto[0].split("/");
+            String[] d2 = texto[3].split("/");
+            String[] l = texto[6].split(",");
+            Date date_key = new Date(Integer.parseInt(d[0]),Integer.parseInt(d[1]),Integer.parseInt(d[2]),0,0);
+            String CompanyName = texto[1];
+            String name = texto[2];
+            Date date_birth = new Date(Integer.parseInt(d2[0]),Integer.parseInt(d2[1]),Integer.parseInt(d2[2]),0,0);
+            String gender = texto[2];
+            areas.add(texto[5]);
+            Location x = new Location(Double.parseDouble(l[0]),Double.parseDouble(l[1]));
+            Double salary = Double.parseDouble(texto[7]);
+            String meets = texto[8];
+            String ch = texto[9];
+            Meeting m = new Meeting(meets,0,null,null,null);
+            Professional p = new Professional(name,gender,date_birth,areas,x);
+            Company c2 = new Company(ch,0,0,null);
+            Company c = new Company(CompanyName,0,0,null);
+            professionals.put(date_key,p);
+            p.setCompany(c);
+            p.setSalary(salary);
+            p.associateProfessionalMeet(m);
+            p.addCompanyHistoryToPro(c2);
+        }
+        Professional print1 = new Professional(null,null,null,null,null);    //para aceder a classe
+        print1.printAllProfessionals(professionals);
     }
 
     private static void loadMeetingsToST(RedBlackBST<Date,Meeting> meetings,String path)
