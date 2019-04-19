@@ -307,7 +307,7 @@ public class Main {
 
         //imprime todos os meetings
 //        Meeting printm = new Meeting(null, 0, null, null, null); //para aceder a classe
-//        print.printAllMeetings(meetings);
+//        printm.printAllMeetings(meetings);
 
         // Imprime meetings por data
 //        printm.searchMeetingsbyDates(meetings,dm2);
@@ -484,7 +484,7 @@ public class Main {
             String CompanyName = texto[1];
             String name = texto[2];
             Date date_birth = new Date(Integer.parseInt(d2[0]),Integer.parseInt(d2[1]),Integer.parseInt(d2[2]),0,0);
-            String gender = texto[2];
+            String gender = texto[4];
             areas.add(texto[5]);
             Location x = new Location(Double.parseDouble(l[0]),Double.parseDouble(l[1]));
             Double salary = Double.parseDouble(texto[7]);
@@ -500,13 +500,29 @@ public class Main {
             p.associateProfessionalMeet(m);
             p.addCompanyHistoryToPro(c2);
         }
-        Professional print1 = new Professional(null,null,null,null,null);    //para aceder a classe
-        print1.printAllProfessionals(professionals);
     }
 
     private static void loadMeetingsToST(RedBlackBST<Date,Meeting> meetings,String path)
     {
+        In in = new In(path);
+        in.readLine();
+        while (!in.isEmpty()) {
+            ArrayList<String> areas = new ArrayList<>();
+            String[] texto = in.readLine().split(";");
+            String[] d = texto[0].split("/");
+            String[] l = texto[4].split(",");
+            Date date = new Date(Integer.parseInt(d[0]),Integer.parseInt(d[1]),Integer.parseInt(d[2]),0,0);
+            String name = texto[1];
+            Company co = new Company(texto[2],0,0,null);
+            Integer dur = Integer.parseInt(texto[3]);
+            Location x = new Location(Double.parseDouble(l[0]),Double.parseDouble(l[1]));
+            areas.add(texto[5]);
+            Professional p = new Professional(texto[6],null,null,null,null);
 
+            Meeting m = new Meeting(name,dur,x,areas,date);
+            meetings.put(date,m);
+            m.associateMeetCompany(co);
+            m.associateMeetProfessional(p);
+        }
     }
-
 }
