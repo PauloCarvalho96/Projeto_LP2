@@ -115,6 +115,36 @@ public class Meeting {
         }
     }
 
+    public void searchMeetingsbyDates(RedBlackBST<Date,Meeting> meetings,Date d1)
+    {
+        for (Date d:meetings.keys()) {
+            if(meetings.get(d).getDate() == d1) {
+                System.out.println(d+" "+meetings.get(d));
+            }
+        }
+    }
+
+    public void searchMeetingsBetweenToDates(RedBlackBST<Date,Meeting> meetings,Date d1,Date d2)
+    {
+        for (Date d:meetings.keys()) {
+            if(meetings.get(d).getDate().afterDate(d1) && meetings.get(d).getDate().beforeDate(d2)) {
+
+                System.out.println(d+" "+meetings.get(d));
+            }
+        }
+    }
+
+    public void searchMeetingsWithNParticipants(RedBlackBST<Date,Meeting> meetings, int n)
+    {
+        int i=1;
+        for (Date d:meetings.keys()) {
+            i++;
+            if(i>=n){
+                System.out.println(d+" "+meetings.get(d));
+            }
+        }
+    }
+
     @Override
     public String toString()
     {
