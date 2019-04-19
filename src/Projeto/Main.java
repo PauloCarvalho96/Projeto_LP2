@@ -308,8 +308,8 @@ public class Main {
 //        c4.printProWithoutCompany(professionals,c4);
 
         //imprime todos os meetings
-        Meeting print = new Meeting(null,0,null,null,null); //para aceder a classe
-        print.printAllMeetings(meetings);
+//        Meeting print = new Meeting(null,0,null,null,null); //para aceder a classe
+//        print.printAllMeetings(meetings);
 
           //imprime todas as empresas e numero de profissionais de cada empresa
 //        Company print = new Company(null,0,0,null);
@@ -352,6 +352,13 @@ public class Main {
         writeCompanysToTXT(company,".//data//company.txt");
         writeProfessionalsToTXT(professionals,".//data//professionals.txt");
         writeMeetingsToTXT(meetings,".//data//meetings.txt");
+
+        /**
+         * FILES (LOAD)
+         */
+        loadCompanyToST(company,".//data//company.txt");
+        loadProfessionalsToST(professionals,".//data//professionals.txt");
+        loadMeetingsToST(meetings,".//data//meetings.txt");
     }
 
     /**
@@ -362,7 +369,11 @@ public class Main {
     {
         Out out = new Out(path);   //abre ficheiro
         for (Date d:company.keys()) {
-            out.println(company.get(d));
+            out.println(company.get(d).getName());
+            out.println(company.get(d).getPhone());
+            out.println(company.get(d).getNif());
+            out.println(company.get(d).getLocation());
+            out.println(company.get(d).getMeeting());
         }
     }
 
@@ -371,7 +382,15 @@ public class Main {
     {
         Out out = new Out(path);   //abre ficheiro
         for (Date d:professionals.keys()) {
-            out.println(professionals.get(d));
+            out.println(professionals.get(d).getCompany().getName());
+            out.println(professionals.get(d).getName());
+            out.println(professionals.get(d).getBirth_date());
+            out.println(professionals.get(d).getGender());
+            out.println(professionals.get(d).getSkills());
+            out.println(professionals.get(d).getLocation());
+            out.println(professionals.get(d).getSalary());
+            out.println(professionals.get(d).getMeet());
+            out.println(professionals.get(d).getCompanyHistory());
         }
     }
 
@@ -380,7 +399,30 @@ public class Main {
     {
         Out out = new Out(path);   //abre ficheiro
         for (Date d:meetings.keys()) {
-            out.println(meetings.get(d));
+            out.println(meetings.get(d).getName());
+            out.println(meetings.get(d).getCompanys());
+            out.println(meetings.get(d).getDuration());
+            out.println(meetings.get(d).getLocation());
+            out.println(meetings.get(d).getInterestAreas());
+            out.println(meetings.get(d).getProfessional());
         }
+    }
+
+    /**
+     * FILES (LOAD)
+     */
+    private static void loadCompanyToST(SeparateChainingHashST_Projeto<Date,Company> company, String path)
+    {
+
+    }
+
+    private static void loadProfessionalsToST(SeparateChainingHashST_Projeto<Date,Professional> professionals,String path)
+    {
+
+    }
+
+    private static void loadMeetingsToST(RedBlackBST<Date,Meeting> meetings,String path)
+    {
+
     }
 }
