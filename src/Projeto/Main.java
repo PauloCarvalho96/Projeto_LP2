@@ -84,20 +84,20 @@ public class Main {
 
         //skills
         ArrayList<String> skillsP1 = new ArrayList<>();
-        skillsP1.add("Programacao C");
-        skillsP1.add("Programacao JAVA");
+//        skillsP1.add("Programacao C");
+//        skillsP1.add("Programacao JAVA");
         ArrayList<String> skillsP2 = new ArrayList<>();
-        skillsP2.add("Fotografia");
-        skillsP2.add("Video");
+//        skillsP2.add("Fotografia");
+//        skillsP2.add("Video");
         ArrayList<String> skillsP3 = new ArrayList<>();
-        skillsP3.add("Base de dados");
-        skillsP3.add("Computacao");
+//        skillsP3.add("Base de dados");
+//        skillsP3.add("Computacao");
         ArrayList<String> skillsP4 = new ArrayList<>();
-        skillsP4.add("Ruby");
-        skillsP4.add("PHP");
+//        skillsP4.add("Ruby");
+//        skillsP4.add("PHP");
         ArrayList<String> skillsP5 = new ArrayList<>();
-        skillsP5.add("Programacao c++");
-        skillsP5.add("Programacao c#");
+//        skillsP5.add("Programacao c++");
+//        skillsP5.add("Programacao c#");
 
         //profissionais
         Professional p1 = new Professional("Paulo","Masculino",bdp1,skillsP1,l1);
@@ -118,67 +118,67 @@ public class Main {
         Company c4 =new Company("Desempregado",0,0,null);       //desempregado
 
         //regista empresas na base de dados
-        company.put(dc1,c1);
-        company.put(dc2,c2);
-        company.put(dc3,c3);
+//        company.put(dc1,c1);
+//        company.put(dc2,c2);
+//        company.put(dc3,c3);
 
         //regista profissionais na base de dados
-        professionals.put(bdp1,p1);
-        professionals.put(bdp2,p2);
-        professionals.put(bdp3,p3);
-        professionals.put(bdp4,p4);
-        professionals.put(bdp5,p5);
-        professionals.put(bdp6,p6);
-        professionals.put(bdp7,p7);
-        professionals.put(bdp8,p8);
-        professionals.put(bdp9,p9);
-        professionals.put(bdp10,p10);
+//        professionals.put(bdp1,p1);
+//        professionals.put(bdp2,p2);
+//        professionals.put(bdp3,p3);
+//        professionals.put(bdp4,p4);
+//        professionals.put(bdp5,p5);
+//        professionals.put(bdp6,p6);
+//        professionals.put(bdp7,p7);
+//        professionals.put(bdp8,p8);
+//        professionals.put(bdp9,p9);
+//        professionals.put(bdp10,p10);
 
         //regista todos os profissionais em empresas
-        c1.registerProfessional(d1r,p1,c1,1000);
-        c1.associatePro(c1,p1);
-
-        c1.registerProfessional(d2r,p2,c1,5000);
-        c1.associatePro(c1,p2);
-
-        c1.registerProfessional(d3r,p3,c1,3000);
-        c1.associatePro(c1,p3);
-
-        c2.registerProfessional(d4r,p4,c2,2000);
-        c2.associatePro(c2,p4);
-
-        c2.registerProfessional(d5r,p5,c2,8000);
-        c2.associatePro(c2,p5);
-
-        c3.registerProfessional(d6r,p6,c3,10000);
-        c3.associatePro(c3,p6);
-
-        c3.registerProfessional(d7r,p7,c3,1000);
-        c3.associatePro(c3,p7);
-
-        c3.registerProfessional(d8r,p8,c3,650);
-        c3.associatePro(c3,p8);
-
-        c3.registerProfessional(d9r,p9,c3,850);
-        c3.associatePro(c3,p9);
-
-        c3.registerProfessional(d10r,p10,c3,650);
-        c3.associatePro(c3,p10);
+//        c1.registerProfessional(d1r,p1,c1,1000);
+//        c1.associatePro(c1,p1);
+//
+//        c1.registerProfessional(d2r,p2,c1,5000);
+//        c1.associatePro(c1,p2);
+//
+//        c1.registerProfessional(d3r,p3,c1,3000);
+//        c1.associatePro(c1,p3);
+//
+//        c2.registerProfessional(d4r,p4,c2,2000);
+//        c2.associatePro(c2,p4);
+//
+//        c2.registerProfessional(d5r,p5,c2,8000);
+//        c2.associatePro(c2,p5);
+//
+//        c3.registerProfessional(d6r,p6,c3,10000);
+//        c3.associatePro(c3,p6);
+//
+//        c3.registerProfessional(d7r,p7,c3,1000);
+//        c3.associatePro(c3,p7);
+//
+//        c3.registerProfessional(d8r,p8,c3,650);
+//        c3.associatePro(c3,p8);
+//
+//        c3.registerProfessional(d9r,p9,c3,850);
+//        c3.associatePro(c3,p9);
+//
+//        c3.registerProfessional(d10r,p10,c3,650);
+//        c3.associatePro(c3,p10);
 
         //procura profissionais pela skill
         //c1.searchBySkill("Video");
 
         //adiona areas de interesse ao array
         ArrayList<String> interestAreas1 = new ArrayList<>();
-        interestAreas1.add("Programacao");
-        interestAreas1.add("POO");
-        interestAreas1.add("APPS");
+//        interestAreas1.add("Programacao");
+//        interestAreas1.add("POO");
+//        interestAreas1.add("APPS");
 
         ArrayList<String> interestAreas2 = new ArrayList<>();
-        interestAreas2.add("Aprender C");
+//        interestAreas2.add("Aprender C");
 
         ArrayList<String> interestAreas3 = new ArrayList<>();
-        interestAreas3.add("Fotografia");
+//        interestAreas3.add("Fotografia");
 
         //meetings
         Meeting m1 = new Meeting("Palestra JAVA",60,l4,interestAreas1,dm1);
@@ -186,45 +186,45 @@ public class Main {
         Meeting m3 = new Meeting("Photoshop",120,l2,interestAreas3,dm3);
 
         //adiciona meetings na base de dados
-        meetings.put(dm1,m1);
-        meetings.put(dm2,m2);
-        meetings.put(dm3,m3);
+//        meetings.put(dm1,m1);
+//        meetings.put(dm2,m2);
+//        meetings.put(dm3,m3);
 
         //associa company a meeting
-        c1.associateCompanyMeet(m1);
-        c1.associateCompanyMeet(m2);
-        c2.associateCompanyMeet(m2);
-        c3.associateCompanyMeet(m3);
+//        c1.associateCompanyMeet(m1);
+//        c1.associateCompanyMeet(m2);
+//        c2.associateCompanyMeet(m2);
+//        c3.associateCompanyMeet(m3);
 
         //associa meeting a company
-        m1.associateMeetCompany(c1);
-        m2.associateMeetCompany(c1);
-        m2.associateMeetCompany(c2);
-        m3.associateMeetCompany(c3);
+//        m1.associateMeetCompany(c1);
+//        m2.associateMeetCompany(c1);
+//        m2.associateMeetCompany(c2);
+//        m3.associateMeetCompany(c3);
 
         //associa profissional a meet
-        p1.associateProfessionalMeet(m1);
-        p2.associateProfessionalMeet(m2);
-        p3.associateProfessionalMeet(m1);
-        p4.associateProfessionalMeet(m2);
-        p5.associateProfessionalMeet(m2);
-        p6.associateProfessionalMeet(m3);
-        p7.associateProfessionalMeet(m3);
-        p8.associateProfessionalMeet(m3);
-        p9.associateProfessionalMeet(m3);
-        p10.associateProfessionalMeet(m3);
+//        p1.associateProfessionalMeet(m1);
+//        p2.associateProfessionalMeet(m2);
+//        p3.associateProfessionalMeet(m1);
+//        p4.associateProfessionalMeet(m2);
+//        p5.associateProfessionalMeet(m2);
+//        p6.associateProfessionalMeet(m3);
+//        p7.associateProfessionalMeet(m3);
+//        p8.associateProfessionalMeet(m3);
+//        p9.associateProfessionalMeet(m3);
+//        p10.associateProfessionalMeet(m3);
 
         //associa meet a profissional
-        m1.associateMeetProfessional(p1);
-        m2.associateMeetProfessional(p2);
-        m1.associateMeetProfessional(p3);
-        m2.associateMeetProfessional(p4);
-        m2.associateMeetProfessional(p5);
-        m3.associateMeetProfessional(p6);
-        m3.associateMeetProfessional(p7);
-        m3.associateMeetProfessional(p8);
-        m3.associateMeetProfessional(p9);
-        m3.associateMeetProfessional(p10);
+//        m1.associateMeetProfessional(p1);
+//        m2.associateMeetProfessional(p2);
+//        m1.associateMeetProfessional(p3);
+//        m2.associateMeetProfessional(p4);
+//        m2.associateMeetProfessional(p5);
+//        m3.associateMeetProfessional(p6);
+//        m3.associateMeetProfessional(p7);
+//        m3.associateMeetProfessional(p8);
+//        m3.associateMeetProfessional(p9);
+//        m3.associateMeetProfessional(p10);
 
         /**
          * Company History
@@ -254,22 +254,22 @@ public class Main {
          * Profissional P1
          */
         //remove o profissional p1 da empresa c1
-        c1.removeProfessionalCompany(professionals,p1,c1,c4);
+//        c1.removeProfessionalCompany(professionals,p1,c1,c4);
 
         //regista p1 na c2
-        c2.registerProfessional(d1r,p1,c2,1000);
-        c2.associatePro(c2,p1);
+//        c2.registerProfessional(d1r,p1,c2,1000);
+//        c2.associatePro(c2,p1);
 
         // adiciona ao historico de empresas de p1
-        CompanyHistory p1h1 = new CompanyHistory(d1r,d1s,p1,c1);
-        professionalHp1.add(p1h1); // p1 -> empresa 1
+//        CompanyHistory p1h1 = new CompanyHistory(d1r,d1s,p1,c1);
+//        professionalHp1.add(p1h1); // p1 -> empresa 1
 
         //remove p1 de c2
-        c2.removeProfessionalCompany(professionals,p1,c2,c4);
+//        c2.removeProfessionalCompany(professionals,p1,c2,c4);
 
         // adiciona ao historico de empresas de p1
-        CompanyHistory p1h2 = new CompanyHistory(d1s,d2s,p1,c2);
-        professionalHp1.add(p1h2); // p1 -> empresa 2
+//        CompanyHistory p1h2 = new CompanyHistory(d1s,d2s,p1,c2);
+//        professionalHp1.add(p1h2); // p1 -> empresa 2
 
 //        c3.registerProfessional(d4r,p4,c3);
 //        c3.associatePro(c3,p4);
@@ -313,8 +313,8 @@ public class Main {
 //        print.printAllMeetings(meetings);
 
           //imprime todas as empresas e numero de profissionais de cada empresa
-        Company print = new Company(null,0,0,null);
-        print.printAllCompanys(company);
+//        Company print = new Company(null,0,0,null);
+//        print.printAllCompanys(company);
 //        System.out.println("Numero de profissionais da empresa "+c1.getName()+" : "+c1.numberOfProfessionals(c1));
 //        System.out.println("Numero de profissionais da empresa "+c2.getName()+" : "+c2.numberOfProfessionals(c2));
 //        System.out.println("Numero de profissionais da empresa "+c3.getName()+" : "+c3.numberOfProfessionals(c3));
@@ -350,16 +350,16 @@ public class Main {
         /**
          * FILES (SAVE)
          */
-        writeCompanysToTXT(company,".//data//company.txt");
-        writeProfessionalsToTXT(professionals,".//data//professionals.txt");
-        writeMeetingsToTXT(meetings,".//data//meetings.txt");
+//        writeCompanysToTXT(company,".//data//company.txt");
+//        writeProfessionalsToTXT(professionals,".//data//professionals.txt");
+//        writeMeetingsToTXT(meetings,".//data//meetings.txt");
 
         /**
          * FILES (LOAD)
          */
-//        loadCompanyToST(company,".//data//company.txt");
-//        loadProfessionalsToST(professionals,".//data//professionals.txt");
-//        loadMeetingsToST(meetings,".//data//meetings.txt");
+        loadCompanyToST(company,".//data//company.txt");
+        loadProfessionalsToST(professionals,".//data//professionals.txt");
+        loadMeetingsToST(meetings,".//data//meetings.txt");
     }
 
     /**
@@ -370,7 +370,8 @@ public class Main {
     {
         Out out = new Out(path);   //abre ficheiro
         for (Date d:company.keys()) {
-            out.print(company.keys());
+            out.print("\n");
+            out.print(d);
             out.print(";");
             out.print(company.get(d).getName());
             out.print(";");
@@ -391,6 +392,9 @@ public class Main {
     {
         Out out = new Out(path);   //abre ficheiro
         for (Date d:professionals.keys()) {
+            out.print("\n");
+            out.print(d);
+            out.print(";");
             out.print(professionals.get(d).getCompany().getName());
             out.print(";");
             out.print(professionals.get(d).getName());
@@ -410,7 +414,6 @@ public class Main {
             out.print(professionals.get(d).getCompanyHistory());
             out.print(";");
             out.print("\n");
-
         }
     }
 
@@ -419,6 +422,9 @@ public class Main {
     {
         Out out = new Out(path);   //abre ficheiro
         for (Date d:meetings.keys()) {
+            out.print("\n");
+            out.print(d);
+            out.print(";");
             out.print(meetings.get(d).getName());
             out.print(";");
             out.print(meetings.get(d).getCompanys());
@@ -444,12 +450,17 @@ public class Main {
         in.readLine();
         while (!in.isEmpty()) {
             String[] texto = in.readLine().split(";");
-            String name = texto[0];
-            Integer phone = Integer.parseInt(texto[1]);
-            Integer nif = Integer.parseInt(texto[2]);
-            Company c = new Company(name,phone,nif,null);
-            Date d = new Date (1,1,1,1,1);
-            company.put(d,c);
+            String[] d = texto[0].split("/");
+            String[] l = texto[4].split(",");
+            Date date = new Date(Integer.parseInt(d[0]),Integer.parseInt(d[1]),Integer.parseInt(d[2]),0,0);
+            String name = texto[1];
+            Integer phone = Integer.parseInt(texto[2]);
+            Integer nif = Integer.parseInt(texto[3]);
+            Location x = new Location(Double.parseDouble(l[0]),Double.parseDouble(l[1]));
+            Meeting m = new Meeting(texto[5],0,null,null,null);
+            Company c = new Company(name,phone,nif,x);
+            company.put(date,c);
+            c.associateCompanyMeet(m);
         }
         Company print = new Company(null,0,0,null);
         print.printAllCompanys(company);

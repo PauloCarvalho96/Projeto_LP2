@@ -12,7 +12,7 @@ public class Location {
     @Override
     public String toString()
     {
-        return "{"+this.getX()+","+this.getY()+"}";
+        return this.getX()+","+this.getY();
     }
 
     /**
