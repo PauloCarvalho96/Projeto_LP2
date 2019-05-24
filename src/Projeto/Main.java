@@ -339,8 +339,8 @@ public class Main {
         //print.searchCompanybylocation(company,l2);
 
 //          imprime todos os profissionais
-//        Professional print1 = new Professional(null, null, null, null, null);    //para aceder a classe
-//        print1.printAllProfessionals(professionals);
+        Professional print1 = new Professional(null, null, null, null, null);    //para aceder a classe
+        print1.printAllProfessionals(professionals);
 
         //imprime profissionais com uma determinada skill
         //print1.searchProfessionalBySkill(professionals,"Base de dados"); !!!!!! nao consegui
@@ -420,6 +420,8 @@ public class Main {
             out.print(professionals.get(d).getCompanyHistory());
             out.print(";");
         }
+        Professional print1 = new Professional(null, null, null, null, null);    //para aceder a classe
+        print1.printAllProfessionals(professionals);
     }
 
     //meetings information
