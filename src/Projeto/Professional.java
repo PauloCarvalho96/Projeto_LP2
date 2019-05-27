@@ -164,6 +164,12 @@ public class Professional extends Person {
         }
     }
 
-
-
+    public void searchProfessionalByNif(SeparateChainingHashST_Projeto<Date,Professional> professionals,Integer n)
+    {
+        for (Date d : professionals.keys()) {
+            if (professionals.get(d).getNif().equals(n)) {
+                System.out.println("" + professionals.get(d));
+            }
+        }
+    }
 }
