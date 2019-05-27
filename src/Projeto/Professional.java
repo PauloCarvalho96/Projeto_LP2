@@ -23,7 +23,7 @@ public class Professional extends Person {
     public String toString()
     {
         return "\nEmpresa: "+this.getCompany().getName()+"\nname:"+this.getName()+"\nBirth Date: "+this.getBirth_date()+"\nsexo :"+this.getGender()+
-                "\nSkills: "+this.getSkills()+ "\nLocation: "+this.getLocation()+"\nSalary: "+this.getSalary()+"\nMeetings: "+this.getMeet()+
+                "\nNIF:"+getNif()+"\nSkills: "+this.getSkills()+ "\nLocation: "+this.getLocation()+"\nSalary: "+this.getSalary()+"\nMeetings: "+this.getMeet()+
                 "\nCompany History: "+this.getCompanyHistory()+"\n--------------------";
     }
 
@@ -31,8 +31,8 @@ public class Professional extends Person {
      * Constructor
      */
 
-    public Professional(String name,String gender,Date birth, ArrayList<String> skills, Location location) {
-        super(name,gender,birth);
+    public Professional(String name,String gender,Date birth, ArrayList<String> skills, Location location,Integer nif) {
+        super(name,gender,birth,nif);
         this.setSkills(skills);
         this.setLocation(location);
     }
@@ -158,7 +158,7 @@ public class Professional extends Person {
     public void searchProfessionalByName(SeparateChainingHashST_Projeto<Date,Professional> professionals,String n)
     {
         for (Date d : professionals.keys()) {
-            if (professionals.get(d).getName() == n) {
+            if (professionals.get(d).getName().equals(n)) {
                 System.out.println("" + professionals.get(d));
             }
         }

@@ -6,21 +6,33 @@ public class Person {
     private String gender;
     private Professional professional;
     private Date birth_date;
+    private Integer nif;
 
     /**
      *  Constructor
      */
-    public Person(String name, String gender,Date birth) {
+    public Person(String name, String gender,Date birth,Integer nif) {
         this.setName(name);
         this.setGender(gender);
         this.setBirth_date(birth);
+        this.nif = nif;
     }
 
     /**
      * Gets and Sets
      */
+
+
     public String getName() {
         return name;
+    }
+
+    public Integer getNif() {
+        return nif;
+    }
+
+    public void setNif(Integer nif) {
+        this.nif = nif;
     }
 
     public void setName(String name) {

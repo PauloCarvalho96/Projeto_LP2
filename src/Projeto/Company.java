@@ -273,7 +273,7 @@ public class Company {
     public void searchCompanybyname(SeparateChainingHashST_Projeto<Date,Company> company,String n)
     {
         for (Date d:company.keys()) {
-            if(company.get(d).getName()==n)
+            if(company.get(d).getName().equals(n))
                 System.out.println("Company: "+company.get(d));
         }
     }
