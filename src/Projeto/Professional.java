@@ -23,7 +23,7 @@ public class Professional extends Person {
     public String toString()
     {
         return "\nEmpresa: "+this.getCompany().getName()+"\nname:"+this.getName()+"\nBirth Date: "+this.getBirth_date()+"\nsexo :"+this.getGender()+
-                "\nNIF:"+getNif()+"\nSkills: "+this.getSkills()+ "\nLocation: "+this.getLocation()+"\nSalary: "+this.getSalary()+"\nMeetings: "+this.getMeet()+
+                "\nNIF:"+getNif()+"\nID:"+getID()+"\nSkills: "+this.getSkills()+ "\nLocation: "+this.getLocation()+"\nSalary: "+this.getSalary()+"\nMeetings: "+this.getMeet()+
                 "\nCompany History: "+this.getCompanyHistory()+"\n--------------------";
     }
 
@@ -31,8 +31,8 @@ public class Professional extends Person {
      * Constructor
      */
 
-    public Professional(String name,String gender,Date birth, ArrayList<String> skills, Location location,Integer nif) {
-        super(name,gender,birth,nif);
+    public Professional(String name,String gender,Date birth, ArrayList<String> skills, Location location,Integer nif,Integer ID) {
+        super(name,gender,birth,nif,ID);
         this.setSkills(skills);
         this.setLocation(location);
     }

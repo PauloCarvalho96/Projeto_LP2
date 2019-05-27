@@ -7,15 +7,25 @@ public class Person {
     private Professional professional;
     private Date birth_date;
     private Integer nif;
+    private Integer ID;
 
     /**
      *  Constructor
      */
-    public Person(String name, String gender,Date birth,Integer nif) {
+    public Person(String name, String gender,Date birth,Integer nif,Integer ID) {
         this.setName(name);
         this.setGender(gender);
         this.setBirth_date(birth);
-        this.nif = nif;
+        this.setNif(nif);
+        this.setID(ID);
+    }
+
+    public Integer getID() {
+        return ID;
+    }
+
+    public void setID(Integer ID) {
+        this.ID = ID;
     }
 
     /**
