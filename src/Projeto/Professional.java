@@ -172,4 +172,12 @@ public class Professional extends Person {
             }
         }
     }
+    public void searchProfessionalByID(SeparateChainingHashST_Projeto<Date,Professional> professionals,Integer n)
+    {
+        for (Date d : professionals.keys()) {
+            if (professionals.get(d).getID().equals(n)) {
+                System.out.println("" + professionals.get(d));
+            }
+        }
+    }
 }

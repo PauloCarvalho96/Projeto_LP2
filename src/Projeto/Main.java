@@ -16,10 +16,7 @@
 
 package Projeto;
 
-import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.Out;
-import edu.princeton.cs.algs4.RedBlackBST;
-import edu.princeton.cs.algs4.SeparateChainingHashST_Projeto;
+import edu.princeton.cs.algs4.*;
 
 import java.awt.*;
 import java.nio.file.Files;
@@ -339,8 +336,8 @@ public class Main {
         //print.searchCompanybylocation(company,l2);
 
 //          imprime todos os profissionais
-        Professional print1 = new Professional(null, null, null, null, null,null,null);    //para aceder a classe
-        print1.printAllProfessionals(professionals);
+//        Professional print1 = new Professional(null, null, null, null, null,null,null);    //para aceder a classe
+//        print1.printAllProfessionals(professionals);
 
         //imprime profissionais com uma determinada skill
         //print1.searchProfessionalBySkill(professionals,"Base de dados"); !!!!!! nao consegui
@@ -357,9 +354,9 @@ public class Main {
         /**
          * FILES (SAVE)
          */
-        writeCompanysToTXT(company,".//data//company.txt");
-        writeProfessionalsToTXT(professionals,".//data//professionals.txt");
-        writeMeetingsToTXT(meetings,".//data//meetings.txt");
+//        writeCompanysToTXT(company,".//data//company.txt");
+//        writeProfessionalsToTXT(professionals,".//data//professionals.txt");
+//        writeMeetingsToTXT(meetings,".//data//meetings.txt");
 
         /**
          * FILES (LOAD)
@@ -367,7 +364,32 @@ public class Main {
 //        loadCompanyToST(company,".//data//company.txt");
 //        loadProfessionalsToST(professionals,".//data//professionals.txt");
 //        loadMeetingsToST(meetings,".//data//meetings.txt");
+
+        /**
+         * GRAPH
+         */
+
+        Graph pessoas = new Graph(4);
+
+        pessoas.addEdge(p1.getID(),p2.getID());
+        pessoas.addEdge(p2.getID(),p3.getID());
+        pessoas.addEdge(p3.getID(),p4.getID());
+        pessoas.addEdge(p4.getID(),p1.getID());
+
+//        System.out.println(pessoas);
+        int s = 0;
+        BreadthFirstPaths bfs = new BreadthFirstPaths(pessoas,s);
+        System.out.println("Pessoas que seguem o utilizador "+p1.getName());
+        int j=0;
+        for (int i : bfs.getEdgeTo()) {
+            if(i == p1.getID() && i!=j) {
+                System.out.println("[" + j + "]:" + i);
+                p1.searchProfessionalByID(professionals,j);
+            }
+            j++;
+        }
     }
+
 
     /**
      * FILES (SAVE)
