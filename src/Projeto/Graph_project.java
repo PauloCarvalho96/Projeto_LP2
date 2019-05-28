@@ -9,13 +9,20 @@ public class Graph_project {
     public void save_professionals_txt_graph(SeparateChainingHashST_Projeto<Integer,Professional> professionals, String path)
     {
         Out out = new Out(path);
-        int i = 0;
         for (Integer d : professionals.keys()) {
-            out.print("\n");
-            out.print(d);
-            out.print(";");
-            out.print(i);
-            i++;
+            out.print("\n"+d+";");
         }
+    }
+
+    public void save_pro_comp_txt_graph(SeparateChainingHashST_Projeto<Integer,Professional> professionals,SeparateChainingHashST_Projeto<Integer,Company> company,String path)
+    {
+        Out out = new Out(path);
+        for (Integer p:professionals.keys()) {
+            out.print("\n"+p+";");
+        }
+        for (Integer c:company.keys()) {
+            out.print("\n"+c+";");
+        }
+
     }
 }

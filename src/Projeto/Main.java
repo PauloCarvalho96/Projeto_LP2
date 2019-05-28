@@ -368,9 +368,23 @@ public class Main {
         /**
          * GRAPH
          */
-        String path = ".//data//professionals_graph.txt";
-        Graph_project g = new Graph_project();
-        g.save_professionals_txt_graph(professionals,path);
+        //grafo de pessoas
+        Graph_project g = new Graph_project();                          //para aceder a classe
+
+        //grafo pessoas
+        String path_pessoas = ".//data//professionals_graph.txt";       //caminho do ficheiro
+        g.save_professionals_txt_graph(professionals,path_pessoas);     //guarda todos os profissionais em ficheiro txt
+        SymbolGraph pessoas = new SymbolGraph(path_pessoas,";");    //cria o symbol graph de profissionais
+        System.out.println(pessoas.graph());
+
+        //grafo profissionais / empresas
+        String path_pessoas_empresas = ".//data//pro_comp_graph.txt";
+        g.save_pro_comp_txt_graph(professionals,company,path_pessoas_empresas);
+        SymbolDigraph pro_comp = new SymbolDigraph(path_pessoas_empresas,";");
+        System.out.println(pro_comp.digraph());
+
+
+
     }
 
 
