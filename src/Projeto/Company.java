@@ -166,9 +166,9 @@ public class Company {
     }
 
     //remove professional da company
-    public void removeProfessionalCompany(SeparateChainingHashST_Projeto<Date,Professional> professionals,Professional p,Company c,Company c4)
+    public void removeProfessionalCompany(SeparateChainingHashST_Projeto<Integer,Professional> professionals,Professional p,Company c,Company c4)
     {
-        for (Date d:professionals.keys()) {
+        for (Integer d:professionals.keys()) {
             if(professionals.get(d).getName().equals(p.getName()) && professionals.get(d).getCompany()==c)
             {
                 c.removePro(p);

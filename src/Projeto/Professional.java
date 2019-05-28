@@ -129,9 +129,9 @@ public class Professional extends Person {
         this.companyHistory.add(c.getName());
     }
 
-    public void searchProfessionalBySalary(SeparateChainingHashST_Projeto<Date,Professional> professionals,int s)
+    public void searchProfessionalBySalary(SeparateChainingHashST_Projeto<Integer,Professional> professionals,int s)
     {
-        for (Date d : professionals.keys()) {
+        for (Integer d : professionals.keys()) {
             if (professionals.get(d).getSalary() == s) {
                 System.out.println("" + professionals.get(d));
             }
@@ -139,34 +139,34 @@ public class Professional extends Person {
 
     }
 
-    public void searchProfessionalByLocation(SeparateChainingHashST_Projeto<Date,Professional> professionals,Location l)
+    public void searchProfessionalByLocation(SeparateChainingHashST_Projeto<Integer,Professional> professionals,Location l)
     {
-        for (Date d : professionals.keys()) {
+        for (Integer d : professionals.keys()) {
             if (professionals.get(d).getLocation() == l) {
                 System.out.println("" + professionals.get(d));
             }
         }
     }
 
-    public void printAllProfessionals(SeparateChainingHashST_Projeto<Date,Professional> professionals)
+    public void printAllProfessionals(SeparateChainingHashST_Projeto<Integer,Professional> professionals)
     {
-        for (Date d:professionals.keys()) {
+        for (Integer d:professionals.keys()) {
             System.out.println(d+" "+professionals.get(d));
         }
     }
 
-    public void searchProfessionalByName(SeparateChainingHashST_Projeto<Date,Professional> professionals,String n)
+    public void searchProfessionalByName(SeparateChainingHashST_Projeto<Integer,Professional> professionals,String n)
     {
-        for (Date d : professionals.keys()) {
+        for (Integer d : professionals.keys()) {
             if (professionals.get(d).getName().equals(n)) {
                 System.out.println("" + professionals.get(d));
             }
         }
     }
 
-    public void searchProfessionalByNif(SeparateChainingHashST_Projeto<Date,Professional> professionals,Integer n)
+    public void searchProfessionalByNif(SeparateChainingHashST_Projeto<Integer,Professional> professionals,Integer n)
     {
-        for (Date d : professionals.keys()) {
+        for (Integer d : professionals.keys()) {
             if (professionals.get(d).getNif().equals(n)) {
                 System.out.println("" + professionals.get(d));
             }

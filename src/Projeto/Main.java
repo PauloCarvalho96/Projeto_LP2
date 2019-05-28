@@ -25,8 +25,8 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        SeparateChainingHashST_Projeto<Date, Company> company = new SeparateChainingHashST_Projeto<>();      //Date é data de registo da empresa
-        SeparateChainingHashST_Projeto<Date, Professional> professionals = new SeparateChainingHashST_Projeto<>();   //Date é data de nascimento do profissional
+        SeparateChainingHashST_Projeto<Integer, Company> company = new SeparateChainingHashST_Projeto<>();      //Date é data de registo da empresa
+        SeparateChainingHashST_Projeto<Integer, Professional> professionals = new SeparateChainingHashST_Projeto<>();   //Date é data de nascimento do profissional
         RedBlackBST<Date, Meeting> meetings = new RedBlackBST<>();       //Date é data de criação do meeting
 
         //datas de nascimento
@@ -115,21 +115,21 @@ public class Main {
         Company c4 = new Company("Desempregado", 0, 0, null);       //desempregado
 
         //regista empresas na base de dados
-        company.put(dc1, c1);
-        company.put(dc2, c2);
-        company.put(dc3, c3);
+        company.put(c1.getNif(), c1);
+        company.put(c2.getNif(), c2);
+        company.put(c3.getNif(), c3);
 
         //regista profissionais na base de dados
-        professionals.put(bdp1, p1);
-        professionals.put(bdp2, p2);
-        professionals.put(bdp3, p3);
-        professionals.put(bdp4, p4);
-        professionals.put(bdp5, p5);
-        professionals.put(bdp6, p6);
-        professionals.put(bdp7, p7);
-        professionals.put(bdp8, p8);
-        professionals.put(bdp9, p9);
-        professionals.put(bdp10, p10);
+        professionals.put(p1.getNif(), p1);
+        professionals.put(p2.getNif(), p2);
+        professionals.put(p3.getNif(), p3);
+        professionals.put(p4.getNif(), p4);
+        professionals.put(p5.getNif(), p5);
+        professionals.put(p6.getNif(), p6);
+        professionals.put(p7.getNif(), p7);
+        professionals.put(p8.getNif(), p8);
+        professionals.put(p9.getNif(), p9);
+        professionals.put(p10.getNif(), p10);
 
         //regista todos os profissionais em empresas
         c1.registerProfessional(d1r, p1, c1, 1000);
@@ -336,7 +336,7 @@ public class Main {
         //print.searchCompanybylocation(company,l2);
 
 //          imprime todos os profissionais
-//        Professional print1 = new Professional(null, null, null, null, null,null,null);    //para aceder a classe
+//        Professional print1 = new Professional(null, null, null, null, null,null);    //para aceder a classe
 //        print1.printAllProfessionals(professionals);
 
         //imprime profissionais com uma determinada skill
@@ -364,16 +364,24 @@ public class Main {
 //        loadCompanyToST(company,".//data//company.txt");
 //        loadProfessionalsToST(professionals,".//data//professionals.txt");
 //        loadMeetingsToST(meetings,".//data//meetings.txt");
+
+        /**
+         * GRAPH
+         */
+        String path = ".//data//professionals_graph.txt";
+        Graph_project g = new Graph_project();
+        g.save_professionals_txt_graph(professionals,path);
     }
+
 
     /**
      * FILES (SAVE)
      */
     //companys information
-    private static void writeCompanysToTXT(SeparateChainingHashST_Projeto<Date,Company> company, String path)
+    private static void writeCompanysToTXT(SeparateChainingHashST_Projeto<Integer,Company> company, String path)
     {
         Out out = new Out(path);   //abre ficheiro
-        for (Date d:company.keys()) {
+        for (Integer d:company.keys()) {
             out.print("\n");
             out.print(d);
             out.print(";");
@@ -391,10 +399,10 @@ public class Main {
     }
 
     //professionals information
-    private static void writeProfessionalsToTXT(SeparateChainingHashST_Projeto<Date,Professional> professionals,String path)
+    private static void writeProfessionalsToTXT(SeparateChainingHashST_Projeto<Integer,Professional> professionals,String path)
     {
         Out out = new Out(path);   //abre ficheiro
-        for (Date d:professionals.keys()) {
+        for (Integer d:professionals.keys()) {
             out.print("\n");
             out.print(d);
             out.print(";");
@@ -447,7 +455,7 @@ public class Main {
     /**
      * FILES (LOAD)
      */
-    private static void loadCompanyToST(SeparateChainingHashST_Projeto<Date,Company> company, String path)
+    private static void loadCompanyToST(SeparateChainingHashST_Projeto<Integer,Company> company, String path)
     {
         In in = new In(path);
         in.readLine();
@@ -462,12 +470,12 @@ public class Main {
             Location x = new Location(Double.parseDouble(l[0]),Double.parseDouble(l[1]));
             Meeting m = new Meeting(texto[5],0,null,null,null);
             Company c = new Company(name,phone,nif,x);
-            company.put(date,c);
+            company.put(nif,c);
             c.associateCompanyMeet(m);
         }
     }
 
-    private static void loadProfessionalsToST(SeparateChainingHashST_Projeto<Date,Professional> professionals,String path)
+    private static void loadProfessionalsToST(SeparateChainingHashST_Projeto<Integer,Professional> professionals,String path)
     {
         In in = new In(path);
         in.readLine();
@@ -491,7 +499,7 @@ public class Main {
             Professional p = new Professional(name,gender,date_birth,areas,x,null);
             Company c2 = new Company(ch,0,0,null);
             Company c = new Company(CompanyName,0,0,null);
-            professionals.put(date_key,p);
+//            professionals.put(,p);
             p.setCompany(c);
             p.setSalary(salary);
             p.associateProfessionalMeet(m);
