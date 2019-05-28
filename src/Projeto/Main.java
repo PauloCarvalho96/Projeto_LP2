@@ -369,25 +369,19 @@ public class Main {
          * GRAPH
          */
 
-        Graph pessoas = new Graph(4);
+        EdgeWeightedGraph pessoas = new EdgeWeightedGraph(10);
 
-        pessoas.addEdge(p1.getID(),p2.getID());
-        pessoas.addEdge(p2.getID(),p3.getID());
-        pessoas.addEdge(p3.getID(),p4.getID());
-        pessoas.addEdge(p4.getID(),p1.getID());
+        Edge v1 = new Edge(p1.getID(),p2.getID(),10);
+        Edge v2 = new Edge(p2.getID(),p3.getID(),20);
+        Edge v3  = new Edge(p3.getID(),p4.getID(),30);
+        Edge v4 = new Edge(p4.getID(),p1.getID(),40);
 
-//        System.out.println(pessoas);
-        int s = 0;
-        BreadthFirstPaths bfs = new BreadthFirstPaths(pessoas,s);
-        System.out.println("Pessoas que seguem o utilizador "+p1.getName());
-        int j=0;
-        for (int i : bfs.getEdgeTo()) {
-            if(i == p1.getID() && i!=j) {
-                System.out.println("[" + j + "]:" + i);
-                p1.searchProfessionalByID(professionals,j);
-            }
-            j++;
-        }
+        pessoas.addEdge(v1);
+        pessoas.addEdge(v2);
+        pessoas.addEdge(v3);
+        pessoas.addEdge(v4);
+
+        System.out.println(pessoas);
     }
 
 
