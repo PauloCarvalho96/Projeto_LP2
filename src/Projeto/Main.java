@@ -97,16 +97,16 @@ public class Main {
         skillsP5.add("Programacao c#");
 
         //profissionais
-        Professional p1 = new Professional("Paulo", "Masculino", bdp1, skillsP1, l1,111111111,0);
-        Professional p2 = new Professional("Carolina", "Feminino", bdp2, skillsP2, l1,222222222,1);
-        Professional p3 = new Professional("Jota", "Masculino", bdp3, skillsP1, l1,333333333,2);
-        Professional p4 = new Professional("Artur", "Masculino", bdp4, skillsP2, l1,444444444,3);
-        Professional p5 = new Professional("Pedro", "Masculino", bdp5, skillsP1, l1,555555555,4);
-        Professional p6 = new Professional("Catarina", "Feminino", bdp6, skillsP2, l2,666666666,5);
-        Professional p7 = new Professional("Joana", "Feminino", bdp7, skillsP3, l3,777777777,6);
-        Professional p8 = new Professional("Maria", "Feminino", bdp8, skillsP4, l4,888888888,7);
-        Professional p9 = new Professional("Osvaldo", "Feminino", bdp9, skillsP5, l2,999999999,8);
-        Professional p10 = new Professional("Andre", "Feminino", bdp10, skillsP3, l3,101010101,9);
+        Professional p1 = new Professional("Paulo", "Masculino", bdp1, skillsP1, l1,111111111);
+        Professional p2 = new Professional("Carolina", "Feminino", bdp2, skillsP2, l1,222222222);
+        Professional p3 = new Professional("Jota", "Masculino", bdp3, skillsP1, l1,333333333);
+        Professional p4 = new Professional("Artur", "Masculino", bdp4, skillsP2, l1,444444444);
+        Professional p5 = new Professional("Pedro", "Masculino", bdp5, skillsP1, l1,555555555);
+        Professional p6 = new Professional("Catarina", "Feminino", bdp6, skillsP2, l2,666666666);
+        Professional p7 = new Professional("Joana", "Feminino", bdp7, skillsP3, l3,777777777);
+        Professional p8 = new Professional("Maria", "Feminino", bdp8, skillsP4, l4,888888888);
+        Professional p9 = new Professional("Osvaldo", "Feminino", bdp9, skillsP5, l2,999999999);
+        Professional p10 = new Professional("Andre", "Feminino", bdp10, skillsP3, l3,101010101);
 
         //companys
         Company c1 = new Company("UFP", 252252525, 190190190, l2);
@@ -364,26 +364,7 @@ public class Main {
 //        loadCompanyToST(company,".//data//company.txt");
 //        loadProfessionalsToST(professionals,".//data//professionals.txt");
 //        loadMeetingsToST(meetings,".//data//meetings.txt");
-
-        /**
-         * GRAPH
-         */
-
-        EdgeWeightedGraph pessoas = new EdgeWeightedGraph(10);
-
-        Edge v1 = new Edge(p1.getID(),p2.getID(),10);
-        Edge v2 = new Edge(p2.getID(),p3.getID(),20);
-        Edge v3  = new Edge(p3.getID(),p4.getID(),30);
-        Edge v4 = new Edge(p4.getID(),p1.getID(),40);
-
-        pessoas.addEdge(v1);
-        pessoas.addEdge(v2);
-        pessoas.addEdge(v3);
-        pessoas.addEdge(v4);
-
-        System.out.println(pessoas);
     }
-
 
     /**
      * FILES (SAVE)
@@ -436,7 +417,7 @@ public class Main {
             out.print(professionals.get(d).getCompanyHistory());
             out.print(";");
         }
-        Professional print1 = new Professional(null, null, null, null, null,null,null);    //para aceder a classe
+        Professional print1 = new Professional(null, null, null, null, null,null);    //para aceder a classe
         print1.printAllProfessionals(professionals);
     }
 
@@ -507,7 +488,7 @@ public class Main {
             String meets = texto[8];
             String ch = texto[9];
             Meeting m = new Meeting(meets,0,null,null,null);
-            Professional p = new Professional(name,gender,date_birth,areas,x,null,null);
+            Professional p = new Professional(name,gender,date_birth,areas,x,null);
             Company c2 = new Company(ch,0,0,null);
             Company c = new Company(CompanyName,0,0,null);
             professionals.put(date_key,p);
@@ -533,7 +514,7 @@ public class Main {
             Integer dur = Integer.parseInt(texto[3]);
             Location x = new Location(Double.parseDouble(l[0]),Double.parseDouble(l[1]));
             areas.add(texto[5]);
-            Professional p = new Professional(texto[6],null,null,null,null,null,null);
+            Professional p = new Professional(texto[6],null,null,null,null,null);
 
             Meeting m = new Meeting(name,dur,x,areas,date);
             meetings.put(date,m);
