@@ -1,8 +1,9 @@
 package Projeto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class CompanyHistory {
+public class CompanyHistory implements Serializable {
 
     private Date in;
     private Date out;

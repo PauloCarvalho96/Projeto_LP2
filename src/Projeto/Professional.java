@@ -4,9 +4,10 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.SeparateChainingHashST_Projeto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Professional extends Person {
+public class Professional extends Person implements Serializable {
 
     private double salary;
 

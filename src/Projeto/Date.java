@@ -1,11 +1,12 @@
 package Projeto;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 /**
  * Created by beatrizgomes on 28/03/18.
  */
-public class Date implements Comparable<Date> {
+public class Date implements Comparable<Date>, Serializable {
 
     private int day;
     private int month;

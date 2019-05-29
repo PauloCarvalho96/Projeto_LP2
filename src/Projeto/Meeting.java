@@ -4,9 +4,10 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.RedBlackBST;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Meeting {
+public class Meeting implements Serializable {
 
     private String name;
 

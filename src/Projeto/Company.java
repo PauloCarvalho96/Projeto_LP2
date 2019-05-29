@@ -5,9 +5,10 @@ import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.RedBlackBST;
 import edu.princeton.cs.algs4.SeparateChainingHashST_Projeto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Company {
+public class Company implements Serializable {
 
     private String name;
 
