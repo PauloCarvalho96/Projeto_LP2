@@ -146,7 +146,7 @@ public class Main {
         c3.registerProfessional(d10r, p10, c3, 650);
 
         //procura profissionais pela skill
-        //c1.searchBySkill("Video");
+//        c1.searchBySkill("Programacao C");
 
 //        adiona areas de interesse ao array
         ArrayList<String> interestAreas1 = new ArrayList<>();
@@ -234,21 +234,21 @@ public class Main {
          * Profissional P1
          */
         //remove o profissional p1 da empresa c1
-        c1.removeProfessionalCompany(professionals, p1, c1, c4);
+//        c1.removeProfessionalCompany(professionals, p1, c1, c4);
 
         //regista p1 na c2
-        c2.registerProfessional(d1r, p1, c2, 1000);
+//        c2.registerProfessional(d1r, p1, c2, 1000);
 
         // adiciona ao historico de empresas de p1
-        CompanyHistory p1h1 = new CompanyHistory(d1r, d1s, p1, c1);
-        professionalHp1.add(p1h1); // p1 -> empresa 1
+//        CompanyHistory p1h1 = new CompanyHistory(d1r, d1s, p1, c1);
+//        professionalHp1.add(p1h1); // p1 -> empresa 1
 
         //remove p1 de c2
-        c2.removeProfessionalCompany(professionals, p1, c2, c4);
+//        c2.removeProfessionalCompany(professionals, p1, c2, c4);
 
         // adiciona ao historico de empresas de p1
-        CompanyHistory p1h2 = new CompanyHistory(d1s, d2s, p1, c2);
-        professionalHp1.add(p1h2); // p1 -> empresa 2
+//        CompanyHistory p1h2 = new CompanyHistory(d1s, d2s, p1, c2);
+//        professionalHp1.add(p1h2); // p1 -> empresa 2
 //
 //        c3.registerProfessional(d4r, p4, c3, 1200);
 //        c3.associatePro(c3, p4);
@@ -318,8 +318,8 @@ public class Main {
         //print.searchCompanybylocation(company,l2);
 
 //          imprime todos os profissionais
-        Professional print1 = new Professional(null, null, null, null, null,null);    //para aceder a classe
-        print1.printAllProfessionals(professionals);
+//        Professional print1 = new Professional(null, null, null, null, null,null);    //para aceder a classe
+//        print1.printAllProfessionals(professionals);
 
         //imprime profissionais com uma determinada skill
         //print1.searchProfessionalBySkill(professionals,"Base de dados"); !!!!!! nao consegui
@@ -336,16 +336,24 @@ public class Main {
         /**
          * FILES (SAVE)
          */
-//        writeCompanysToTXT(company,".//data//company.txt");
-//        writeProfessionalsToTXT(professionals,".//data//professionals.txt");
-//        writeMeetingsToTXT(meetings,".//data//meetings.txt");
+        //companys information
+//        Company c = new Company(null,0,0,null);
+//        c.writeCompanysToTXT(company,".//data//company.txt");
+
+        //professionals information
+//        Professional p = new Professional(null,null,null,null,null,0);
+//        p.writeProfessionalsToTXT(professionals,".//data//professionals.txt");
+
+        //meetings information
+//        Meeting m = new Meeting(null,0,null,null,null);
+//        m.writeMeetingsToTXT(meetings,".//data//meetings.txt");
 
         /**
          * FILES (LOAD)
          */
-//        loadCompanyToST(company,".//data//company.txt");
-//        loadProfessionalsToST(professionals,".//data//professionals.txt");
-//        loadMeetingsToST(meetings,".//data//meetings.txt");
+//        c.loadCompanyToST(company,".//data//company.txt");
+//        p.loadProfessionalsToST(professionals,".//data//professionals.txt");
+//        m.loadMeetingsToST(meetings,".//data//meetings.txt");
 
         /**
          * GRAPH
@@ -365,165 +373,5 @@ public class Main {
         SymbolDigraph pro_comp = new SymbolDigraph(path_pessoas_empresas,";");
 //        System.out.println(pro_comp.digraph());
 
-
-
-    }
-
-
-    /**
-     * FILES (SAVE)
-     */
-    //companys information
-    private static void writeCompanysToTXT(SeparateChainingHashST_Projeto<Integer,Company> company, String path)
-    {
-        Out out = new Out(path);   //abre ficheiro
-        for (Integer d:company.keys()) {
-            out.print("\n");
-            out.print(d);
-            out.print(";");
-            out.print(company.get(d).getName());
-            out.print(";");
-            out.print(company.get(d).getPhone());
-            out.print(";");
-            out.print(company.get(d).getNif());
-            out.print(";");
-            out.print(company.get(d).getLocation());
-            out.print(";");
-            out.print(company.get(d).getMeeting());
-            out.print(";");
-        }
-    }
-
-    //professionals information
-    private static void writeProfessionalsToTXT(SeparateChainingHashST_Projeto<Integer,Professional> professionals,String path)
-    {
-        Out out = new Out(path);   //abre ficheiro
-        for (Integer d:professionals.keys()) {
-            out.print("\n");
-            out.print(d);
-            out.print(";");
-            out.print(professionals.get(d).getCompany().getName());
-            out.print(";");
-            out.print(professionals.get(d).getName());
-            out.print(";");
-            out.print(professionals.get(d).getBirth_date());
-            out.print(";");
-            out.print(professionals.get(d).getGender());
-            out.print(";");
-            out.print(professionals.get(d).getSkills());
-            out.print(";");
-            out.print(professionals.get(d).getLocation());
-            out.print(";");
-            out.print(professionals.get(d).getSalary());
-            out.print(";");
-            out.print(professionals.get(d).getMeet());
-            out.print(";");
-            out.print(professionals.get(d).getCompanyHistory());
-            out.print(";");
-        }
-        Professional print1 = new Professional(null, null, null, null, null,null);    //para aceder a classe
-        print1.printAllProfessionals(professionals);
-    }
-
-    //meetings information
-    private static void writeMeetingsToTXT(RedBlackBST<Date,Meeting> meetings,String path)
-    {
-        Out out = new Out(path);   //abre ficheiro
-        for (Date d:meetings.keys()) {
-            out.print("\n");
-            out.print(d);
-            out.print(";");
-            out.print(meetings.get(d).getName());
-            out.print(";");
-            out.print(meetings.get(d).getCompanys());
-            out.print(";");
-            out.print(meetings.get(d).getDuration());
-            out.print(";");
-            out.print(meetings.get(d).getLocation());
-            out.print(";");
-            out.print(meetings.get(d).getInterestAreas());
-            out.print(";");
-            out.print(meetings.get(d).getProfessional());
-            out.print(";");
-        }
-    }
-
-    /**
-     * FILES (LOAD)
-     */
-    private static void loadCompanyToST(SeparateChainingHashST_Projeto<Integer,Company> company, String path)
-    {
-        In in = new In(path);
-        in.readLine();
-        while (!in.isEmpty()) {
-            String[] texto = in.readLine().split(";");
-            String[] d = texto[0].split("/");
-            String[] l = texto[4].split(",");
-            Date date = new Date(Integer.parseInt(d[0]),Integer.parseInt(d[1]),Integer.parseInt(d[2]),0,0);
-            String name = texto[1];
-            Integer phone = Integer.parseInt(texto[2]);
-            Integer nif = Integer.parseInt(texto[3]);
-            Location x = new Location(Double.parseDouble(l[0]),Double.parseDouble(l[1]));
-            Meeting m = new Meeting(texto[5],0,null,null,null);
-            Company c = new Company(name,phone,nif,x);
-            company.put(nif,c);
-            c.associateCompanyMeet(m);
-        }
-    }
-
-    private static void loadProfessionalsToST(SeparateChainingHashST_Projeto<Integer,Professional> professionals,String path)
-    {
-        In in = new In(path);
-        in.readLine();
-        while (!in.isEmpty()) {
-            ArrayList<String> areas = new ArrayList<>();
-            String[] texto = in.readLine().split(";");
-            String[] d = texto[0].split("/");
-            String[] d2 = texto[3].split("/");
-            String[] l = texto[6].split(",");
-            Date date_key = new Date(Integer.parseInt(d[0]),Integer.parseInt(d[1]),Integer.parseInt(d[2]),0,0);
-            String CompanyName = texto[1];
-            String name = texto[2];
-            Date date_birth = new Date(Integer.parseInt(d2[0]),Integer.parseInt(d2[1]),Integer.parseInt(d2[2]),0,0);
-            String gender = texto[4];
-            areas.add(texto[5]);
-            Location x = new Location(Double.parseDouble(l[0]),Double.parseDouble(l[1]));
-            Double salary = Double.parseDouble(texto[7]);
-            String meets = texto[8];
-            String ch = texto[9];
-            Meeting m = new Meeting(meets,0,null,null,null);
-            Professional p = new Professional(name,gender,date_birth,areas,x,null);
-            Company c2 = new Company(ch,0,0,null);
-            Company c = new Company(CompanyName,0,0,null);
-//            professionals.put(,p);
-            p.setCompany(c);
-            p.setSalary(salary);
-            p.associateProfessionalMeet(m);
-            p.addCompanyHistoryToPro(c2);
-        }
-    }
-
-    private static void loadMeetingsToST(RedBlackBST<Date,Meeting> meetings,String path)
-    {
-        In in = new In(path);
-        in.readLine();
-        while (!in.isEmpty()) {
-            ArrayList<String> areas = new ArrayList<>();
-            String[] texto = in.readLine().split(";");
-            String[] d = texto[0].split("/");
-            String[] l = texto[4].split(",");
-            Date date = new Date(Integer.parseInt(d[0]),Integer.parseInt(d[1]),Integer.parseInt(d[2]),0,0);
-            String name = texto[1];
-            Company co = new Company(texto[2],0,0,null);
-            Integer dur = Integer.parseInt(texto[3]);
-            Location x = new Location(Double.parseDouble(l[0]),Double.parseDouble(l[1]));
-            areas.add(texto[5]);
-            Professional p = new Professional(texto[6],null,null,null,null,null);
-
-            Meeting m = new Meeting(name,dur,x,areas,date);
-            meetings.put(date,m);
-            m.associateMeetCompany(co);
-            m.associateMeetProfessional(p);
-        }
     }
 }

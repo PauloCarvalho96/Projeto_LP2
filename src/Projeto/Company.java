@@ -1,5 +1,7 @@
 package Projeto;
 
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.RedBlackBST;
 import edu.princeton.cs.algs4.SeparateChainingHashST_Projeto;
 
@@ -173,14 +175,14 @@ public class Company {
     }
 
     //remove empresa
-    public void removeCompany(SeparateChainingHashST_Projeto<Date,Company> company, Company c,SeparateChainingHashST_Projeto<Date,Professional> professionals,Company c4)
+    public void removeCompany(SeparateChainingHashST_Projeto<Integer,Company> company, Company c,SeparateChainingHashST_Projeto<Integer,Professional> professionals,Company c4)
     {
-        for (Date d:company.keys()) {
+        for (Integer d:company.keys()) {
             if(company.get(d)==c)
             {
                 if(company.get(d).numberOfProfessionals(c)>0)   //se tiver funcionarios entao ficam todos desempregados
                 {
-                    for (Date di:professionals.keys()) {        //percorre os profissionais
+                    for (Integer di:professionals.keys()) {        //percorre os profissionais
                         if(professionals.get(di).getCompany()==c)    //se a empresa for a que se quer eliminar mete se o pro desempregado
                         {
                             removePro(professionals.get(di));
@@ -195,9 +197,9 @@ public class Company {
     }
 
     //edita empresa
-    public void editCompanyPhone(SeparateChainingHashST_Projeto<Date,Company> company,Company c,int nphone)
+    public void editCompanyPhone(SeparateChainingHashST_Projeto<Integer,Company> company,Company c,int nphone)
     {
-        for (Date d:company.keys()) {
+        for (Integer d:company.keys()) {
             if(company.get(d)==c)
             {
                 company.get(d).setPhone(nphone);
@@ -205,9 +207,9 @@ public class Company {
         }
     }
 
-    public void editCompanyNif(SeparateChainingHashST_Projeto<Date,Company> company,Company c,int nNif)
+    public void editCompanyNif(SeparateChainingHashST_Projeto<Integer,Company> company,Company c,int nNif)
     {
-        for (Date d:company.keys()) {
+        for (Integer d:company.keys()) {
             if(company.get(d)==c)
             {
                 company.get(d).setNif(nNif);
@@ -215,9 +217,9 @@ public class Company {
         }
     }
 
-    public void editCompanyLocation(SeparateChainingHashST_Projeto<Date,Company> company, Company c,Location x)
+    public void editCompanyLocation(SeparateChainingHashST_Projeto<Integer,Company> company, Company c,Location x)
     {
-        for (Date d:company.keys()) {
+        for (Integer d:company.keys()) {
             if(company.get(d)==c)
             {
                 company.get(d).setLocation(x);
@@ -225,9 +227,9 @@ public class Company {
         }
     }
 
-    public void editCompanyName(SeparateChainingHashST_Projeto<Date,Company> company, Company c,String nName)
+    public void editCompanyName(SeparateChainingHashST_Projeto<Integer,Company> company, Company c,String nName)
     {
-        for (Date d:company.keys()) {
+        for (Integer d:company.keys()) {
             if(company.get(d)==c)
             {
                 company.get(d).setName(nName);
@@ -236,10 +238,10 @@ public class Company {
     }
 
     //imprime funcionarios sem trabalho
-    public void printProWithoutCompany(SeparateChainingHashST_Projeto<Date,Professional> professionals, Company c4)
+    public void printProWithoutCompany(SeparateChainingHashST_Projeto<Integer,Professional> professionals, Company c4)
     {
         int i =0;
-        for (Date d:professionals.keys()) {
+        for (Integer d:professionals.keys()) {
             if(professionals.get(d).getCompany().getName().contains(c4.getName()))
             {
                 System.out.println(professionals.get(d));
@@ -250,41 +252,86 @@ public class Company {
     }
 
     //imprime todas as empresas
-    public void printAllCompanys(SeparateChainingHashST_Projeto<Date,Company> company)
+    public void printAllCompanys(SeparateChainingHashST_Projeto<Integer,Company> company)
     {
-        for (Date d:company.keys()) {
+        for (Integer d:company.keys()) {
             System.out.println(d+" "+company.get(d));
         }
     }
-    public void searchCompanybynif(SeparateChainingHashST_Projeto<Date,Company> company,int n)
+    public void searchCompanybynif(SeparateChainingHashST_Projeto<Integer,Company> company,int n)
     {
-        for (Date d:company.keys()) {
+        for (Integer d:company.keys()) {
             if(company.get(d).getNif()==n)
             System.out.println("Company: "+company.get(d));
         }
     }
 
-    public void searchCompanybyname(SeparateChainingHashST_Projeto<Date,Company> company,String n)
+    public void searchCompanybyname(SeparateChainingHashST_Projeto<Integer,Company> company,String n)
     {
-        for (Date d:company.keys()) {
+        for (Integer d:company.keys()) {
             if(company.get(d).getName().equals(n))
                 System.out.println("Company: "+company.get(d));
         }
     }
 
-    public void searchCompanybyphone(SeparateChainingHashST_Projeto<Date,Company> company,int p)
+    public void searchCompanybyphone(SeparateChainingHashST_Projeto<Integer,Company> company,int p)
     {
-        for (Date d:company.keys()) {
+        for (Integer d:company.keys()) {
             if(company.get(d).getPhone()==p)
                 System.out.println("Company: "+company.get(d));
         }
     }
 
-    public void searchCompanybylocation(SeparateChainingHashST_Projeto<Date,Company> company,Location l)
+    public void searchCompanybylocation(SeparateChainingHashST_Projeto<Integer,Company> company,Location l)
     {
-        for (Date d:company.keys()) {
+        for (Integer d:company.keys()) {
             if(company.get(d).getLocation()==l)
                 System.out.println("Company: "+company.get(d));
+        }
+    }
+
+    /**
+     * SAVE FILES
+     */
+    public void writeCompanysToTXT(SeparateChainingHashST_Projeto<Integer,Company> company, String path)
+    {
+        Out out = new Out(path);   //abre ficheiro
+        for (Integer d:company.keys()) {
+            out.print("\n");
+            out.print(d);
+            out.print(";");
+            out.print(company.get(d).getName());
+            out.print(";");
+            out.print(company.get(d).getPhone());
+            out.print(";");
+            out.print(company.get(d).getNif());
+            out.print(";");
+            out.print(company.get(d).getLocation());
+            out.print(";");
+            out.print(company.get(d).getMeeting());
+        }
+    }
+
+    /**
+     * FILES (LOAD)
+     */
+    public void loadCompanyToST(SeparateChainingHashST_Projeto<Integer,Company> company, String path)
+    {
+        In in = new In(path);
+        in.readLine();
+        while (!in.isEmpty()) {
+            String[] texto = in.readLine().split(";");
+            String[] d = texto[0].split("/");
+            String[] l = texto[4].split(",");
+//            Date date = new Date(Integer.parseInt(d[0]),Integer.parseInt(d[1]),Integer.parseInt(d[2]),0,0);
+            String name = texto[1];
+            Integer phone = Integer.parseInt(texto[2]);
+            Integer nif = Integer.parseInt(texto[3]);
+            Location x = new Location(Double.parseDouble(l[0]),Double.parseDouble(l[1]));
+            Meeting m = new Meeting(texto[5],0,null,null,null);
+            Company c = new Company(name,phone,nif,x);
+            company.put(nif,c);
+            c.associateCompanyMeet(m);
         }
     }
 

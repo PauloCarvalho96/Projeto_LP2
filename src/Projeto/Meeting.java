@@ -1,5 +1,7 @@
 package Projeto;
 
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.RedBlackBST;
 
 import java.util.ArrayList;
@@ -142,6 +144,57 @@ public class Meeting {
             if(i>=n){
                 System.out.println(d+" "+meetings.get(d));
             }
+        }
+    }
+
+    /**
+     * SAVE FILES
+     */
+    public void writeMeetingsToTXT(RedBlackBST<Date,Meeting> meetings,String path)
+    {
+        Out out = new Out(path);   //abre ficheiro
+        for (Date d:meetings.keys()) {
+            out.print("\n");
+            out.print(d);
+            out.print(";");
+            out.print(meetings.get(d).getName());
+            out.print(";");
+            out.print(meetings.get(d).getCompanys());
+            out.print(";");
+            out.print(meetings.get(d).getDuration());
+            out.print(";");
+            out.print(meetings.get(d).getLocation());
+            out.print(";");
+            out.print(meetings.get(d).getInterestAreas());
+            out.print(";");
+            out.print(meetings.get(d).getProfessional());
+        }
+    }
+
+    /**
+     * FILES (LOAD)
+     */
+    public void loadMeetingsToST(RedBlackBST<Date,Meeting> meetings,String path)
+    {
+        In in = new In(path);
+        in.readLine();
+        while (!in.isEmpty()) {
+            ArrayList<String> areas = new ArrayList<>();
+            String[] texto = in.readLine().split(";");
+            String[] d = texto[0].split("/");
+            String[] l = texto[4].split(",");
+            Date date = new Date(Integer.parseInt(d[0]),Integer.parseInt(d[1]),Integer.parseInt(d[2]),0,0);
+            String name = texto[1];
+            Company co = new Company(texto[2],0,0,null);
+            Integer dur = Integer.parseInt(texto[3]);
+            Location x = new Location(Double.parseDouble(l[0]),Double.parseDouble(l[1]));
+            areas.add(texto[5]);
+            Professional p = new Professional(texto[6],null,null,null,null,null);
+
+            Meeting m = new Meeting(name,dur,x,areas,date);
+            meetings.put(date,m);
+            m.associateMeetCompany(co);
+            m.associateMeetProfessional(p);
         }
     }
 
