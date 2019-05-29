@@ -68,7 +68,7 @@ package edu.princeton.cs.algs4;
 public class SymbolGraph {
     private ST<String, Integer> st;  // string -> index
     private String[] keys;           // index  -> string
-    private Graph graph;             // the underlying graph
+    private Graph graph;             // the underlying graph            ////substituir por EdgeWheihted graph
 
     /**  
      * Initializes a graph from a file using the specified delimiter.
