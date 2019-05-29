@@ -363,24 +363,23 @@ public class Main {
 
         //grafo pessoas
         String path_pessoas = ".//data//professionals_graph.txt";       //caminho do ficheiro
-        g.save_professionals_txt_graph(professionals, path_pessoas);     //guarda todos os profissionais em ficheiro txt
+        g.save_all_professionals_txt_graph(professionals, path_pessoas);     //guarda todos os profissionais em ficheiro txt
         SymbolGraph pessoas = new SymbolGraph(path_pessoas, ";");    //cria o symbol graph de profissionais
-        Graph pessoas_graph = pessoas.graph();
 
         //liga p1 a p2
-//        g.conect_2_people(p1,p2,pessoas_graph);
-//        g.conect_2_people(p1,p3,pessoas_graph);
-//        g.conect_2_people(p2,p3,pessoas_graph);
-        int v;
-        for (v = 0; v < 10; v++) {
-            for (Integer d : professionals.keys()) {
-                if (Integer.parseInt(pessoas.nameOf(v)) == professionals.get(d).getNif()) {
-                    System.out.println("" + professionals.get(d).getName());
-                    System.out.println(pessoas.nameOf(v)+"\n");
-                }
-            }
-        }
-
+        g.conect_2_people(p1,p2,pessoas,path_pessoas);
+        g.conect_2_people(p1,p3,pessoas,path_pessoas);
+        g.conect_2_people(p2,p3,pessoas,path_pessoas);
+        System.out.println(pessoas.graph());
+//        int v;
+//        for (v = 0; v < 10; v++) {
+//            for (Integer d : professionals.keys()) {
+//                if (Integer.parseInt(pessoas.nameOf(v)) == professionals.get(d).getNif()) {
+//                    System.out.println("" + professionals.get(d).getName());
+//                    System.out.println(pessoas.nameOf(v)+"\n");
+//                }
+//            }
+//        }
 //            System.out.println(pessoas.graph());
 
         //grafo profissionais / empresas

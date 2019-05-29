@@ -7,10 +7,11 @@ import edu.princeton.cs.algs4.SymbolGraph;
 
 public class Graph_project {
 
-    public void save_professionals_txt_graph(SeparateChainingHashST_Projeto<Integer,Professional> professionals, String path)
+    public void save_all_professionals_txt_graph(SeparateChainingHashST_Projeto<Integer,Professional> professionals, String path)
     {
         Out out = new Out(path);
         for (Integer d : professionals.keys()) {
+
             out.print(d+";"+"\n");
         }
     }
@@ -26,8 +27,34 @@ public class Graph_project {
         }
     }
 
-    public void conect_2_people(Professional p1, Professional p2, Graph g)
+    public void write_pro_to_file_txt(SymbolGraph g,String path)
     {
-        g.addEdge(p1.getNif(),p2.getNif());
+        Out out = new Out(path);
+        for (int v = 0; v < g.graph().V(); v++) {       //percorre os vertices
+                out.print(v+";");
+            for (Integer d:g.graph().adj(v)) {
+                out.print(d+";");
+            }
+            out.print("\n");
+        }
+    }
+
+    public void write_pro_to_bin_file()
+    {
+
+    }
+
+    public void conect_2_people(Professional p1, Professional p2, SymbolGraph g,String path)
+    {
+        for (int v = 0; v < g.graph().V(); v++) {       //percorre os vertices
+                if (Integer.parseInt(g.nameOf(v)) == p1.getNif()) {     //se o vertice for igual ao nif do profissional
+                    for (int vi = 0; vi < g.graph().V(); vi++) {
+                            if (Integer.parseInt(g.nameOf(vi)) == p2.getNif()) {
+                                g.graph().addEdge(v,vi);                            //adiciona ligaçao
+                                write_pro_to_file_txt(g,path);
+                            }
+                    }
+                }
+            }
     }
 }
