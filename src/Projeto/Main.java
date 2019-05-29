@@ -364,7 +364,7 @@ public class Main {
         //grafo pessoas
         String path_pessoas = ".//data//professionals_graph.txt";       //caminho do ficheiro
         g.save_all_professionals_txt_graph(professionals, path_pessoas);     //guarda todos os profissionais em ficheiro txt
-        SymbolGraph pessoas = new SymbolGraph(path_pessoas, ";");    //cria o symbol graph de profissionais
+        SymbolGraphWheighted pessoas = new SymbolGraphWheighted(path_pessoas, ";");    //cria o symbol graph de profissionais
 
         //liga p1 a p2
         g.conect_2_people(p1,p2,pessoas,path_pessoas);

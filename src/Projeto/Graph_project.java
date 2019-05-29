@@ -1,9 +1,6 @@
 package Projeto;
 
-import edu.princeton.cs.algs4.Graph;
-import edu.princeton.cs.algs4.Out;
-import edu.princeton.cs.algs4.SeparateChainingHashST_Projeto;
-import edu.princeton.cs.algs4.SymbolGraph;
+import edu.princeton.cs.algs4.*;
 
 public class Graph_project {
 
@@ -27,7 +24,7 @@ public class Graph_project {
         }
     }
 
-    public void write_pro_to_file_txt(SymbolGraph g,String path)
+    public void write_pro_to_file_txt(SymbolGraphWheighted g, String path)
     {
         Out out = new Out(path);
         for (int v = 0; v < g.graph().V(); v++) {       //percorre os vertices
@@ -44,7 +41,7 @@ public class Graph_project {
 
     }
 
-    public void conect_2_people(Professional p1, Professional p2, SymbolGraph g,String path)
+    public void conect_2_people(Professional p1, Professional p2, SymbolGraphWheighted g,String path)
     {
         for (int v = 0; v < g.graph().V(); v++) {       //percorre os vertices
                 if (Integer.parseInt(g.nameOf(v)) == p1.getNif()) {     //se o vertice for igual ao nif do profissional
