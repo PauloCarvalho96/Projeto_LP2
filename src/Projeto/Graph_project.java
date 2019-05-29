@@ -10,7 +10,7 @@ public class Graph_project {
     {
         Out out = new Out(path);
         for (Integer d : professionals.keys()) {
-            out.print(d+";");
+            out.print(d+";"+professionals.get(d)+"\n");
         }
     }
 
@@ -18,10 +18,10 @@ public class Graph_project {
     {
         Out out = new Out(path);
         for (Integer p:professionals.keys()) {
-            out.print(p+";");
+            out.print(p+";"+"\n");
         }
         for (Integer c:company.keys()) {
-            out.print(c+";");
+            out.print(c+";"+"\n");
         }
 
     }
