@@ -133,34 +133,17 @@ public class Main {
 
         //regista todos os profissionais em empresas
         c1.registerProfessional(d1r, p1, c1, 1000);
-        c1.associatePro(c1, p1);
-
         c1.registerProfessional(d2r, p2, c1, 5000);
-        c1.associatePro(c1, p2);
-
         c1.registerProfessional(d3r, p3, c1, 3000);
-        c1.associatePro(c1, p3);
 
         c2.registerProfessional(d4r, p4, c2, 2000);
-        c2.associatePro(c2, p4);
-
         c2.registerProfessional(d5r, p5, c2, 8000);
-        c2.associatePro(c2, p5);
 
         c3.registerProfessional(d6r, p6, c3, 10000);
-        c3.associatePro(c3, p6);
-
         c3.registerProfessional(d7r, p7, c3, 1000);
-        c3.associatePro(c3, p7);
-
         c3.registerProfessional(d8r, p8, c3, 650);
-        c3.associatePro(c3, p8);
-
         c3.registerProfessional(d9r, p9, c3, 850);
-        c3.associatePro(c3, p9);
-
         c3.registerProfessional(d10r, p10, c3, 650);
-        c3.associatePro(c3, p10);
 
         //procura profissionais pela skill
         //c1.searchBySkill("Video");
@@ -255,7 +238,6 @@ public class Main {
 
         //regista p1 na c2
         c2.registerProfessional(d1r, p1, c2, 1000);
-        c2.associatePro(c2, p1);
 
         // adiciona ao historico de empresas de p1
         CompanyHistory p1h1 = new CompanyHistory(d1r, d1s, p1, c1);
@@ -336,8 +318,8 @@ public class Main {
         //print.searchCompanybylocation(company,l2);
 
 //          imprime todos os profissionais
-//        Professional print1 = new Professional(null, null, null, null, null,null);    //para aceder a classe
-//        print1.printAllProfessionals(professionals);
+        Professional print1 = new Professional(null, null, null, null, null,null);    //para aceder a classe
+        print1.printAllProfessionals(professionals);
 
         //imprime profissionais com uma determinada skill
         //print1.searchProfessionalBySkill(professionals,"Base de dados"); !!!!!! nao consegui
@@ -375,13 +357,13 @@ public class Main {
         String path_pessoas = ".//data//professionals_graph.txt";       //caminho do ficheiro
         g.save_professionals_txt_graph(professionals,path_pessoas);     //guarda todos os profissionais em ficheiro txt
         SymbolGraph pessoas = new SymbolGraph(path_pessoas,";");    //cria o symbol graph de profissionais
-        System.out.println(pessoas.graph());
+//        System.out.println(pessoas.graph());
 
         //grafo profissionais / empresas
         String path_pessoas_empresas = ".//data//pro_comp_graph.txt";
         g.save_pro_comp_txt_graph(professionals,company,path_pessoas_empresas);
         SymbolDigraph pro_comp = new SymbolDigraph(path_pessoas_empresas,";");
-        System.out.println(pro_comp.digraph());
+//        System.out.println(pro_comp.digraph());
 
 
 

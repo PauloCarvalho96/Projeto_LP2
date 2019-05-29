@@ -23,7 +23,6 @@ public class Company {
         this.location = location;
     }
 
-
     public RedBlackBST<Date, Professional> getProfessional() {
         return professional;
     }
@@ -35,7 +34,6 @@ public class Company {
     /**
      * Gets and Sets
      */
-
 
     public String getName() {
         return name;
@@ -84,16 +82,12 @@ public class Company {
         this.professional.put(d,p);
         p.addCompanyHistoryToPro(c);
         p.setSalary(salary);
+        p.setCompany(c);
     }
 
     public void associateCompanyMeet(Meeting m) // Associa uma company a um meeting
     {
         this.meeting.add(m.getName());
-    }
-
-    public void associatePro(Company c, Professional p)     //associa um profissional a uma empresa
-    {
-        p.setCompany(c);
     }
 
     public void printProForRegistrationDate()   //imprime os profissionais da empresa por data de registo
