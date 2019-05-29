@@ -1,0 +1,4 @@
+
+7/12/2007;Palestra JAVA;[UFP];60;50.0,30.0;[Programacao, POO, APPS];[Paulo, Jota]
+6/4/2015;Palestra C;[UFP, PR MOTORS];180;1.0,1.0;[Aprender C];[Carolina, Artur, Pedro]
+8/3/2017;Photoshop;[Fotogrupo];120;1.0,1.0;[Fotografia];[Catarina, Joana, Maria, Osvaldo, Andre]

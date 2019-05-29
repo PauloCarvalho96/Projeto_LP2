@@ -1,0 +1,11 @@
+
+888888888;Fotogrupo;Maria;9/1/1987;Feminino;[Ruby, PHP];50.0,30.0;650.0;[Photoshop];[Fotogrupo]
+444444444;PR MOTORS;Artur;4/7/1991;Masculino;[Fotografia, Video];10.0,10.0;2000.0;[Palestra C];[PR MOTORS]
+101010101;Fotogrupo;Andre;30/12/1964;Feminino;[Base de dados, Computacao];4.0,5.0;650.0;[Photoshop];[Fotogrupo]
+777777777;Fotogrupo;Joana;6/10/1975;Feminino;[Base de dados, Computacao];4.0,5.0;1000.0;[Photoshop];[Fotogrupo]
+333333333;UFP;Jota;5/5/1994;Masculino;[Programacao C, Programacao JAVA];10.0,10.0;3000.0;[Palestra JAVA];[UFP]
+666666666;Fotogrupo;Catarina;21/6/2001;Feminino;[Fotografia, Video];1.0,1.0;10000.0;[Photoshop];[Fotogrupo]
+222222222;UFP;Carolina;10/3/1940;Feminino;[Fotografia, Video];10.0,10.0;5000.0;[Palestra C];[UFP]
+999999999;Fotogrupo;Osvaldo;28/3/1973;Feminino;[Programacao c++, Programacao c#];1.0,1.0;850.0;[Photoshop];[Fotogrupo]
+555555555;PR MOTORS;Pedro;3/10/1993;Masculino;[Programacao C, Programacao JAVA];10.0,10.0;8000.0;[Palestra C];[PR MOTORS]
+111111111;UFP;Paulo;21/3/1996;Masculino;[Programacao C, Programacao JAVA];10.0,10.0;1000.0;[Palestra JAVA];[UFP]

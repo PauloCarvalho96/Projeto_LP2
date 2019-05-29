@@ -97,16 +97,16 @@ public class Main {
         skillsP5.add("Programacao c#");
 
         //profissionais
-        Professional p1 = new Professional("Paulo", "Masculino", bdp1, skillsP1, l1,111111111);
-        Professional p2 = new Professional("Carolina", "Feminino", bdp2, skillsP2, l1,222222222);
-        Professional p3 = new Professional("Jota", "Masculino", bdp3, skillsP1, l1,333333333);
-        Professional p4 = new Professional("Artur", "Masculino", bdp4, skillsP2, l1,444444444);
-        Professional p5 = new Professional("Pedro", "Masculino", bdp5, skillsP1, l1,555555555);
-        Professional p6 = new Professional("Catarina", "Feminino", bdp6, skillsP2, l2,666666666);
-        Professional p7 = new Professional("Joana", "Feminino", bdp7, skillsP3, l3,777777777);
-        Professional p8 = new Professional("Maria", "Feminino", bdp8, skillsP4, l4,888888888);
-        Professional p9 = new Professional("Osvaldo", "Feminino", bdp9, skillsP5, l2,999999999);
-        Professional p10 = new Professional("Andre", "Feminino", bdp10, skillsP3, l3,101010101);
+        Professional p1 = new Professional("Paulo", "Masculino", bdp1, skillsP1, l1, 111111111);
+        Professional p2 = new Professional("Carolina", "Feminino", bdp2, skillsP2, l1, 222222222);
+        Professional p3 = new Professional("Jota", "Masculino", bdp3, skillsP1, l1, 333333333);
+        Professional p4 = new Professional("Artur", "Masculino", bdp4, skillsP2, l1, 444444444);
+        Professional p5 = new Professional("Pedro", "Masculino", bdp5, skillsP1, l1, 555555555);
+        Professional p6 = new Professional("Catarina", "Feminino", bdp6, skillsP2, l2, 666666666);
+        Professional p7 = new Professional("Joana", "Feminino", bdp7, skillsP3, l3, 777777777);
+        Professional p8 = new Professional("Maria", "Feminino", bdp8, skillsP4, l4, 888888888);
+        Professional p9 = new Professional("Osvaldo", "Feminino", bdp9, skillsP5, l2, 999999999);
+        Professional p10 = new Professional("Andre", "Feminino", bdp10, skillsP3, l3, 101010101);
 
         //companys
         Company c1 = new Company("UFP", 252252525, 190190190, l2);
@@ -363,11 +363,25 @@ public class Main {
 
         //grafo pessoas
         String path_pessoas = ".//data//professionals_graph.txt";       //caminho do ficheiro
-//        g.save_professionals_txt_graph(professionals,path_pessoas);     //guarda todos os profissionais em ficheiro txt
-        SymbolGraph pessoas = new SymbolGraph(path_pessoas,";");    //cria o symbol graph de profissionais
+        g.save_professionals_txt_graph(professionals, path_pessoas);     //guarda todos os profissionais em ficheiro txt
+        SymbolGraph pessoas = new SymbolGraph(path_pessoas, ";");    //cria o symbol graph de profissionais
+        Graph pessoas_graph = pessoas.graph();
 
+        //liga p1 a p2
+//        g.conect_2_people(p1,p2,pessoas_graph);
+//        g.conect_2_people(p1,p3,pessoas_graph);
+//        g.conect_2_people(p2,p3,pessoas_graph);
+        int v;
+        for (v = 0; v < 10; v++) {
+            for (Integer d : professionals.keys()) {
+                if (Integer.parseInt(pessoas.nameOf(v)) == professionals.get(d).getNif()) {
+                    System.out.println("" + professionals.get(d).getName());
+                    System.out.println(pessoas.nameOf(v)+"\n");
+                }
+            }
+        }
 
-        System.out.println(pessoas.graph());
+//            System.out.println(pessoas.graph());
 
         //grafo profissionais / empresas
 //        String path_pessoas_empresas = ".//data//pro_comp_graph.txt";

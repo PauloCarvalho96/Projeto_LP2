@@ -1,5 +1,6 @@
 package Projeto;
 
+import edu.princeton.cs.algs4.Graph;
 import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.SeparateChainingHashST_Projeto;
 import edu.princeton.cs.algs4.SymbolGraph;
@@ -10,7 +11,7 @@ public class Graph_project {
     {
         Out out = new Out(path);
         for (Integer d : professionals.keys()) {
-            out.print(d+";"+professionals.get(d)+"\n");
+            out.print(d+";"+"\n");
         }
     }
 
@@ -23,6 +24,10 @@ public class Graph_project {
         for (Integer c:company.keys()) {
             out.print(c+";"+"\n");
         }
+    }
 
+    public void conect_2_people(Professional p1, Professional p2, Graph g)
+    {
+        g.addEdge(p1.getNif(),p2.getNif());
     }
 }
