@@ -363,14 +363,14 @@ public class Main {
 
         //grafo pessoas
         String path_pessoas = ".//data//professionals_graph.txt";       //caminho do ficheiro
-        g.save_professionals_txt_graph(professionals,path_pessoas);     //guarda todos os profissionais em ficheiro txt
+//        g.save_professionals_txt_graph(professionals,path_pessoas);     //guarda todos os profissionais em ficheiro txt
         SymbolGraph pessoas = new SymbolGraph(path_pessoas,";");    //cria o symbol graph de profissionais
-//        System.out.println(pessoas.graph());
+        System.out.println(pessoas.graph());
 
         //grafo profissionais / empresas
-        String path_pessoas_empresas = ".//data//pro_comp_graph.txt";
-        g.save_pro_comp_txt_graph(professionals,company,path_pessoas_empresas);
-        SymbolDigraph pro_comp = new SymbolDigraph(path_pessoas_empresas,";");
+//        String path_pessoas_empresas = ".//data//pro_comp_graph.txt";
+//        g.save_pro_comp_txt_graph(professionals,company,path_pessoas_empresas);
+//        SymbolDigraph pro_comp = new SymbolDigraph(path_pessoas_empresas,";");
 //        System.out.println(pro_comp.digraph());
 
     }
