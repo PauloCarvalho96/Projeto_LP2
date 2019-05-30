@@ -30,6 +30,30 @@ public class Graph_project {
         }
     }
 
+    public void save_all_pro_comp_bin_digraph(SymbolDigraphWeighted g, String path)
+    {
+        ObjectOutputStream oos = null;
+        try{
+            oos = new ObjectOutputStream(new FileOutputStream(new File(path)));
+            oos.writeObject(g);
+        }catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void read_pro_comp_bin_file(SymbolDigraphWeighted g,String path)
+    {
+        ObjectInputStream ios = null;
+        try{
+            ios = new ObjectInputStream(new FileInputStream(new File(path)));
+            g = (SymbolDigraphWeighted) ios.readObject();
+            System.out.println(g.digraph());
+        } catch (ClassNotFoundException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void save_pro_comp_txt_graph(SeparateChainingHashST_Projeto<Integer,Professional> professionals,SeparateChainingHashST_Projeto<Integer,Company> company,String path)
     {

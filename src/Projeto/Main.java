@@ -370,11 +370,16 @@ public class Main {
         g.save_all_professionals_bin_graph(pessoas,path_pessoas_bin);   //guarda grafo em ficheiro bin
         g.read_pro_bin_file(pessoas,path_pessoas_bin);                          //le do ficheiro bin
 
-        System.out.println(pessoas.graph());
+//        System.out.println(pessoas.graph());
 
         //grafo profissionais / empresas
-        String path_pessoas_empresas = ".//data//pro_comp_graph.txt";
+        String path_pessoas_empresas_txt = ".//data//pro_comp_graph.txt";
+        String path_pessoas_empresas_bin = ".//data//pro_comp_graph.bin";
+        SymbolDigraphWeighted pessoas_empresas = new SymbolDigraphWeighted(path_pessoas_empresas_txt,";");
 
+//        System.out.println(pessoas_empresas.digraph());
+        g.save_all_pro_comp_bin_digraph(pessoas_empresas,path_pessoas_empresas_bin);
+        g.read_pro_comp_bin_file(pessoas_empresas,path_pessoas_empresas_bin);
 
     }
 }
