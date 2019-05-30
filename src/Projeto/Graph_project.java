@@ -6,6 +6,9 @@ import java.io.*;
 
 public class Graph_project {
 
+    /**
+     * FILES
+     */
     public void save_all_professionals_bin_graph(SymbolGraphWheighted g, String path)
     {
         ObjectOutputStream oos = null;
@@ -24,7 +27,7 @@ public class Graph_project {
         try{
             ios = new ObjectInputStream(new FileInputStream(new File(path)));
             g = (SymbolGraphWheighted) ios.readObject();
-            System.out.println(g.graph());
+//            System.out.println(g.graph());
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
@@ -48,7 +51,7 @@ public class Graph_project {
         try{
             ios = new ObjectInputStream(new FileInputStream(new File(path)));
             g = (SymbolDigraphWeighted) ios.readObject();
-            System.out.println(g.digraph());
+//            System.out.println(g.digraph());
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
@@ -119,6 +122,28 @@ public class Graph_project {
                     if (Integer.parseInt(g.nameOf(vi)) == p2.getNif()) {
                         g.digraph().addEdge(new DirectedEdge(v,vi,w));                            //adiciona ligaçao
                         write_pro_comp_to_file_txt(g,path);
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * PESQUISA
+     */
+    //pesquisa grafo profissionais
+    public void search_pro_followers(Professional p1, SymbolGraphWheighted g,SeparateChainingHashST_Projeto<Integer,Professional> professionals)
+    {
+        System.out.println("Pessoas que seguem o profissional "+p1.getName());
+        for (int v = 0; v < g.graph().V(); v++) {       //percorre os vertices
+            if (Integer.parseInt(g.nameOf(v)) == p1.getNif()) {     //se o vertice for igual ao nif do profissional
+                for (Edge d:g.graph().adj(v)) {             //percorre as Edge
+//                    System.out.println(g.nameOf(d.other(v)));
+                    for (Integer di : professionals.keys()) {       //percorre a ST para encontrar o NIF correspondente
+                        if(professionals.get(di).getNif() == Integer.parseInt(g.nameOf(d.other(v))))    //se o nif for igual imprime
+                        {
+                            System.out.println(professionals.get(di).getName());
+                        }
                     }
                 }
             }

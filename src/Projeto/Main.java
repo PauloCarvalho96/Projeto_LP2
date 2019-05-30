@@ -372,6 +372,11 @@ public class Main {
         g.save_all_professionals_bin_graph(pessoas,path_pessoas_bin);   //guarda grafo em ficheiro bin
         g.read_pro_bin_file(pessoas,path_pessoas_bin);                          //le do ficheiro bin
 
+        //funçoes de pesquisa
+//        g.search_pro_followers(p1,pessoas,professionals);
+//        g.search_pro_followers(p2,pessoas,professionals);
+//        g.search_pro_followers(p3,pessoas,professionals);
+
 //        System.out.println(pessoas.graph());
 
         //grafo profissionais / empresas
