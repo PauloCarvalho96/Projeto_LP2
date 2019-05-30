@@ -8,7 +8,6 @@ public class Graph_project {
     {
         Out out = new Out(path);
         for (Integer d : professionals.keys()) {
-
             out.print(d+";"+"\n");
         }
     }
@@ -29,7 +28,7 @@ public class Graph_project {
         Out out = new Out(path);
         for (int v = 0; v < g.graph().V(); v++) {       //percorre os vertices
                 out.print(v+";");
-            for (Integer d:g.graph().adj(v)) {
+            for (Edge d:g.graph().adj(v)) {
                 out.print(d+";");
             }
             out.print("\n");
@@ -41,13 +40,13 @@ public class Graph_project {
 
     }
 
-    public void conect_2_people(Professional p1, Professional p2, SymbolGraphWheighted g,String path)
+    public void conect_2_people(Professional p1, Professional p2, SymbolGraphWheighted g,String path,Integer w)
     {
         for (int v = 0; v < g.graph().V(); v++) {       //percorre os vertices
                 if (Integer.parseInt(g.nameOf(v)) == p1.getNif()) {     //se o vertice for igual ao nif do profissional
                     for (int vi = 0; vi < g.graph().V(); vi++) {
                             if (Integer.parseInt(g.nameOf(vi)) == p2.getNif()) {
-                                g.graph().addEdge(v,vi);                            //adiciona ligaçao
+                                g.graph().addEdge(new Edge(v,vi,w));                            //adiciona ligaçao
                                 write_pro_to_file_txt(g,path);
                             }
                     }

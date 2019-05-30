@@ -363,14 +363,14 @@ public class Main {
 
         //grafo pessoas
         String path_pessoas = ".//data//professionals_graph.txt";       //caminho do ficheiro
-        g.save_all_professionals_txt_graph(professionals, path_pessoas);     //guarda todos os profissionais em ficheiro txt
+//        g.save_all_professionals_txt_graph(professionals, path_pessoas);     //guarda todos os profissionais em ficheiro txt
         SymbolGraphWheighted pessoas = new SymbolGraphWheighted(path_pessoas, ";");    //cria o symbol graph de profissionais
+        System.out.println(pessoas.graph());
 
         //liga p1 a p2
-        g.conect_2_people(p1,p2,pessoas,path_pessoas);
-        g.conect_2_people(p1,p3,pessoas,path_pessoas);
-        g.conect_2_people(p2,p3,pessoas,path_pessoas);
-        System.out.println(pessoas.graph());
+//        g.conect_2_people(p1,p2,pessoas,path_pessoas,10);
+//        g.conect_2_people(p1,p3,pessoas,path_pessoas,20);
+//        g.conect_2_people(p2,p3,pessoas,path_pessoas,30);
 //        int v;
 //        for (v = 0; v < 10; v++) {
 //            for (Integer d : professionals.keys()) {

@@ -68,7 +68,7 @@ package edu.princeton.cs.algs4;
 public class SymbolGraphWheighted {
     private ST<String, Integer> st;  // string -> index
     private String[] keys;           // index  -> string
-    private Graph graph;             // the underlying graph            ////substituir por EdgeWheihted graph
+    private EdgeWeightedGraph graph;             // the underlying graph            ////substituir por EdgeWheihted graph
 
     /**
      * Initializes a graph from a file using the specified delimiter.
@@ -87,12 +87,13 @@ public class SymbolGraphWheighted {
         // while (in.hasNextLine()) {
         while (!in.isEmpty()) {
             String[] a = in.readLine().split(delimiter);
-            for (int i = 0; i < a.length; i++) {
-                if (!st.contains(a[i]))
-                    st.put(a[i], st.size());
-            }
+                for (int i = 0; i < a.length; i++) {
+                    if (a[i].length() == 9) {           //se for um NIF mete na ST
+                        if (!st.contains(a[i]))
+                            st.put(a[i], st.size());
+                    }
+                }
         }
-
         // inverted index to get string keys in an array
         keys = new String[st.size()];
         for (String name : st.keys()) {
@@ -101,15 +102,14 @@ public class SymbolGraphWheighted {
 
         // second pass builds the graph by connecting first vertex on each
         // line to all others
-        graph = new Graph(st.size());
+        graph = new EdgeWeightedGraph(st.size());
         in = new In(filename);
         while (in.hasNextLine()) {
             String[] a = in.readLine().split(delimiter);
             int v = st.get(a[0]);
-            for (int i = 1; i < a.length; i++) {
-                int w = st.get(a[i]);
-                graph.addEdge(v, w);
-            }
+            int w = st.get(a[1]);
+            int x = Integer.parseInt(a[2]);
+            graph.addEdge(new Edge(v,w,x));
         }
     }
 
@@ -174,7 +174,7 @@ public class SymbolGraphWheighted {
      * @deprecated Replaced by {@link #graph()}.
      */
     @Deprecated
-    public Graph G() {
+    public EdgeWeightedGraph G() {
         return graph;
     }
 
@@ -183,7 +183,7 @@ public class SymbolGraphWheighted {
      * not to mutate the graph.
      * @return the graph associated with the symbol graph
      */
-    public Graph graph() {
+    public EdgeWeightedGraph graph() {
         return graph;
     }
 
@@ -199,24 +199,24 @@ public class SymbolGraphWheighted {
      *
      * @param args the command-line arguments
      */
-    public static void main(String[] args) {
-        String filename  = args[0];
-        String delimiter = args[1];
-        SymbolGraphWheighted sg = new SymbolGraphWheighted(filename, delimiter);
-        Graph graph = sg.graph();
-        while (StdIn.hasNextLine()) {
-            String source = StdIn.readLine();
-            if (sg.contains(source)) {
-                int s = sg.index(source);
-                for (int v : graph.adj(s)) {
-                    StdOut.println("   " + sg.name(v));
-                }
-            }
-            else {
-                StdOut.println("input not contain '" + source + "'");
-            }
-        }
-    }
+//    public static void main(String[] args) {
+//        String filename  = args[0];
+//        String delimiter = args[1];
+//        SymbolGraphWheighted sg = new SymbolGraphWheighted(filename, delimiter);
+//        EdgeWeightedGraph graph = sg.graph();
+//        while (StdIn.hasNextLine()) {
+//            String source = StdIn.readLine();
+//            if (sg.contains(source)) {
+//                int s = sg.index(source);
+//                for (Edge v : graph.adj(s)) {
+//                    StdOut.println("   " + sg);
+//                }
+//            }
+//            else {
+//                StdOut.println("input not contain '" + source + "'");
+//            }
+//        }
+//    }
 }
 
 /******************************************************************************
