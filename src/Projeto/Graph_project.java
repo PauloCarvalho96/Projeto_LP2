@@ -21,16 +21,17 @@ public class Graph_project {
         }
     }
 
-    public void read_pro_bin_file(SymbolGraphWheighted g,String path)
+    public SymbolGraphWheighted read_pro_bin_file(SymbolGraphWheighted g,String path)
     {
         ObjectInputStream ios = null;
         try{
             ios = new ObjectInputStream(new FileInputStream(new File(path)));
             g = (SymbolGraphWheighted) ios.readObject();
-//            System.out.println(g.graph());
+            return g;
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     public void save_all_pro_comp_bin_digraph(SymbolDigraphWeighted g, String path)
@@ -73,6 +74,20 @@ public class Graph_project {
         }
         for (Integer c:company.keys()) {
             out.print(c+";"+"\n");
+        }
+    }
+
+    public void save_pro_comp_meet_txt_graph(SeparateChainingHashST_Projeto<Integer,Professional> professionals,SeparateChainingHashST_Projeto<Integer,Company> company,RedBlackBST<Date, Meeting> meetings,String path)
+    {
+        Out out = new Out(path);
+        for (Integer p:professionals.keys()) {
+            out.print(p+";"+"\n");
+        }
+        for (Integer c:company.keys()) {
+            out.print(c+";"+"\n");
+        }
+        for (Date d:meetings.keys()) {
+            out.print(d+";"+"\n");
         }
     }
 
