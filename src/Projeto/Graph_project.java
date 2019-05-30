@@ -24,7 +24,7 @@ public class Graph_project {
         try{
             ios = new ObjectInputStream(new FileInputStream(new File(path)));
             g = (SymbolGraphWheighted) ios.readObject();
-//            System.out.println(g.graph());
+            System.out.println(g.graph());
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
@@ -54,6 +54,13 @@ public class Graph_project {
         }
     }
 
+    public void save_professionals_txt_graph(SeparateChainingHashST_Projeto<Integer,Professional> professionals, String path)
+    {
+        Out out = new Out(path);
+        for (Integer d : professionals.keys()) {
+            out.print(d+";"+"\n");
+        }
+    }
 
     public void save_pro_comp_txt_graph(SeparateChainingHashST_Projeto<Integer,Professional> professionals,SeparateChainingHashST_Projeto<Integer,Company> company,String path)
     {
@@ -70,7 +77,7 @@ public class Graph_project {
     {
         Out out = new Out(path);
         for (int v = 0; v < g.graph().V(); v++) {       //percorre os vertices
-                out.print(v+";");
+            out.print(v+";");
             for (Edge d:g.graph().adj(v)) {
                 out.print(d+";");
             }

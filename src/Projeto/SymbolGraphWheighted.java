@@ -111,9 +111,15 @@ public class SymbolGraphWheighted implements Serializable {
         while (in.hasNextLine()) {
             String[] a = in.readLine().split(delimiter);
             int v = st.get(a[0]);
-            int w = st.get(a[1]);
-            int x = Integer.parseInt(a[2]);
-            graph.addEdge(new Edge(v,w,x));
+            for(int i = 1;i<a.length;i=i+2)
+            {
+                for(int j = 2;j<a.length;j=j+2)
+                {
+                    int w = st.get(a[i]);
+                    int x = Integer.parseInt(a[j]);
+                    graph.addEdge(new Edge(v,w,x));
+                }
+            }
         }
     }
 
