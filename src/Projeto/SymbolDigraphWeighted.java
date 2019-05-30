@@ -63,6 +63,7 @@ public class SymbolDigraphWeighted implements Serializable {
         // First pass builds the index by reading strings to associate
         // distinct strings with an index
         In in = new In(filename);
+        // while (in.hasNextLine()) {
         while (!in.isEmpty()) {
             String[] a = in.readLine().split(delimiter);
             for (int i = 0; i < a.length; i++) {
@@ -72,25 +73,31 @@ public class SymbolDigraphWeighted implements Serializable {
                 }
             }
         }
-
         // inverted index to get string keys in an array
         keys = new String[st.size()];
         for (String name : st.keys()) {
             keys[st.get(name)] = name;
         }
 
-        // second pass builds the digraph by connecting first vertex on each
+        // second pass builds the graph by connecting first vertex on each
         // line to all others
         graph = new EdgeWeightedDigraph(st.size());
         in = new In(filename);
         while (in.hasNextLine()) {
             String[] a = in.readLine().split(delimiter);
             int v = st.get(a[0]);
-            int w = st.get(a[1]);
-            int x = Integer.parseInt(a[2]);
-            graph.addEdge(new DirectedEdge(v,w,x));
+            for(int i = 1;i<a.length;i=i+2)
+            {
+                for(int j = 2;j<a.length;j=j+2)
+                {
+                    int w = st.get(a[i]);
+                    int x = Integer.parseInt(a[j]);
+                    graph.addEdge(new DirectedEdge(v,w,x));
+                }
+            }
         }
     }
+
 
     /**
      * Does the digraph contain the vertex named {@code s}?

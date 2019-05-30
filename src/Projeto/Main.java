@@ -368,7 +368,7 @@ public class Main {
         g.conect_2_people(p1,p3,pessoas,path_pessoas_txt,20);
         g.conect_2_people(p2,p3,pessoas,path_pessoas_txt,30);
 
-//        g.save_all_professionals_bin_graph(pessoas,path_pessoas_bin);   //guarda grafo em ficheiro bin
+        g.save_all_professionals_bin_graph(pessoas,path_pessoas_bin);   //guarda grafo em ficheiro bin
         g.read_pro_bin_file(pessoas,path_pessoas_bin);                          //le do ficheiro bin
 
 //        System.out.println(pessoas.graph());
@@ -376,11 +376,17 @@ public class Main {
         //grafo profissionais / empresas
         String path_pessoas_empresas_txt = ".//data//pro_comp_graph.txt";
         String path_pessoas_empresas_bin = ".//data//pro_comp_graph.bin";
+        g.save_pro_comp_txt_graph(professionals,company,path_pessoas_empresas_txt);
         SymbolDigraphWeighted pessoas_empresas = new SymbolDigraphWeighted(path_pessoas_empresas_txt,";");
 
+        g.conect_pro_comp(p1,c1,pessoas_empresas,path_pessoas_empresas_txt,10);
+        g.conect_pro_comp(p2,c1,pessoas_empresas,path_pessoas_empresas_txt,20);
+        g.conect_pro_comp(p3,c1,pessoas_empresas,path_pessoas_empresas_txt,30);
+
+        g.save_all_pro_comp_bin_digraph(pessoas_empresas,path_pessoas_empresas_bin);
+        g.read_pro_comp_bin_file(pessoas_empresas,path_pessoas_empresas_bin);
+
 //        System.out.println(pessoas_empresas.digraph());
-//        g.save_all_pro_comp_bin_digraph(pessoas_empresas,path_pessoas_empresas_bin);
-//        g.read_pro_comp_bin_file(pessoas_empresas,path_pessoas_empresas_bin);
 
     }
 }

@@ -98,4 +98,31 @@ public class Graph_project {
                 }
             }
     }
+
+
+    public void write_pro_comp_to_file_txt(SymbolDigraphWeighted g, String path)
+    {
+        Out out = new Out(path);
+        for (int v = 0; v < g.digraph().V(); v++) {       //percorre os vertices
+            out.print(v+";");
+            for (DirectedEdge d:g.digraph().adj(v)) {
+                out.print(d+";");
+            }
+            out.print("\n");
+        }
+    }
+
+    public void conect_pro_comp(Professional p1,Company p2,SymbolDigraphWeighted g,String path,Integer w)
+    {
+        for (int v = 0; v < g.digraph().V(); v++) {       //percorre os vertices
+            if (Integer.parseInt(g.nameOf(v)) == p1.getNif()) {     //se o vertice for igual ao nif do profissional
+                for (int vi = 0; vi < g.digraph().V(); vi++) {
+                    if (Integer.parseInt(g.nameOf(vi)) == p2.getNif()) {
+                        g.digraph().addEdge(new DirectedEdge(v,vi,w));                            //adiciona ligaçao
+                        write_pro_comp_to_file_txt(g,path);
+                    }
+                }
+            }
+        }
+    }
 }
