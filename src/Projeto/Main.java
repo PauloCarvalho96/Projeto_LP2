@@ -365,14 +365,14 @@ public class Main {
         String path_pessoas_txt = ".//data//professionals_graph.txt";       //caminho do ficheiro
         String path_pessoas_bin = ".//data//professionals_graph.bin";       //caminho do ficheiro
         SymbolGraphWheighted pessoas = new SymbolGraphWheighted(path_pessoas_txt, ";");    //cria o symbol graph de profissionais
-
+//        System.out.println(pessoas.graph());
         //liga p1 a p2
-        g.conect_2_people(p1,p2,pessoas,path_pessoas_txt,10);
-        g.conect_2_people(p1,p3,pessoas,path_pessoas_txt,20);
-        g.conect_2_people(p2,p3,pessoas,path_pessoas_txt,30);
+//        g.conect_2_people(p1,p2,pessoas,path_pessoas_txt,10);
+//        g.conect_2_people(p1,p3,pessoas,path_pessoas_txt,20);
+//        g.conect_2_people(p2,p3,pessoas,path_pessoas_txt,30);
 
         g.save_all_professionals_bin_graph(pessoas,path_pessoas_bin);   //guarda grafo em ficheiro bin
-//        g.read_pro_bin_file(path_pessoas_bin);                          //le do ficheiro bin
+        g.read_pro_bin_file(path_pessoas_bin);                          //le do ficheiro bin
 
 
 //        int v;
