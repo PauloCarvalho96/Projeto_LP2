@@ -14,17 +14,17 @@ public class Graph_project {
             oos.writeObject(g);
         }catch (IOException e)
         {
-            System.out.println();
+            e.printStackTrace();
         }
     }
 
-    public void read_pro_bin_file(String path)
+    public void read_pro_bin_file(SymbolGraphWheighted g,String path)
     {
         ObjectInputStream ios = null;
         try{
             ios = new ObjectInputStream(new FileInputStream(new File(path)));
-            SymbolGraphWheighted g = (SymbolGraphWheighted) ios.readObject();
-            System.out.println(g.graph());
+            g = (SymbolGraphWheighted) ios.readObject();
+//            System.out.println(g.graph());
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }

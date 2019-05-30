@@ -18,9 +18,6 @@ package Projeto;
 
 import edu.princeton.cs.algs4.*;
 
-import java.awt.*;
-import java.nio.file.Files;
-import java.sql.Struct;
 import java.util.ArrayList;
 
 public class Main {
@@ -358,39 +355,26 @@ public class Main {
         /**
          * GRAPH
          */
-        //grafo de pessoas
         Graph_project g = new Graph_project();                          //para aceder a classe
 
         //grafo pessoas
         String path_pessoas_txt = ".//data//professionals_graph.txt";       //caminho do ficheiro
         String path_pessoas_bin = ".//data//professionals_graph.bin";       //caminho do ficheiro
         SymbolGraphWheighted pessoas = new SymbolGraphWheighted(path_pessoas_txt, ";");    //cria o symbol graph de profissionais
-//        System.out.println(pessoas.graph());
+
         //liga p1 a p2
 //        g.conect_2_people(p1,p2,pessoas,path_pessoas_txt,10);
 //        g.conect_2_people(p1,p3,pessoas,path_pessoas_txt,20);
 //        g.conect_2_people(p2,p3,pessoas,path_pessoas_txt,30);
 
         g.save_all_professionals_bin_graph(pessoas,path_pessoas_bin);   //guarda grafo em ficheiro bin
-        g.read_pro_bin_file(path_pessoas_bin);                          //le do ficheiro bin
+        g.read_pro_bin_file(pessoas,path_pessoas_bin);                          //le do ficheiro bin
 
-
-//        int v;
-//        for (v = 0; v < 10; v++) {
-//            for (Integer d : professionals.keys()) {
-//                if (Integer.parseInt(pessoas.nameOf(v)) == professionals.get(d).getNif()) {
-//                    System.out.println("" + professionals.get(d).getName());
-//                    System.out.println(pessoas.nameOf(v)+"\n");
-//                }
-//            }
-//        }
-//            System.out.println(pessoas.graph());
+        System.out.println(pessoas.graph());
 
         //grafo profissionais / empresas
-//        String path_pessoas_empresas = ".//data//pro_comp_graph.txt";
-//        g.save_pro_comp_txt_graph(professionals,company,path_pessoas_empresas);
-//        SymbolDigraph pro_comp = new SymbolDigraph(path_pessoas_empresas,";");
-//        System.out.println(pro_comp.digraph());
+        String path_pessoas_empresas = ".//data//pro_comp_graph.txt";
+
 
     }
 }
