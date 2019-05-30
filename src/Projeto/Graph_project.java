@@ -2,15 +2,34 @@ package Projeto;
 
 import edu.princeton.cs.algs4.*;
 
+import java.io.*;
+
 public class Graph_project {
 
-    public void save_all_professionals_txt_graph(SeparateChainingHashST_Projeto<Integer,Professional> professionals, String path)
+    public void save_all_professionals_bin_graph(SymbolGraphWheighted g, String path)
     {
-        Out out = new Out(path);
-        for (Integer d : professionals.keys()) {
-            out.print(d+";"+"\n");
+        ObjectOutputStream oos = null;
+        try{
+            oos = new ObjectOutputStream(new FileOutputStream(new File(path)));
+            oos.writeObject(g);
+        }catch (IOException e)
+        {
+            System.out.println();
         }
     }
+
+    public void read_pro_bin_file(String path)
+    {
+        ObjectInputStream ios = null;
+        try{
+            ios = new ObjectInputStream(new FileInputStream(new File(path)));
+            SymbolGraphWheighted g = (SymbolGraphWheighted) ios.readObject();
+            System.out.println(g.graph());
+        } catch (ClassNotFoundException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void save_pro_comp_txt_graph(SeparateChainingHashST_Projeto<Integer,Professional> professionals,SeparateChainingHashST_Projeto<Integer,Company> company,String path)
     {
@@ -33,11 +52,6 @@ public class Graph_project {
             }
             out.print("\n");
         }
-    }
-
-    public void write_pro_to_bin_file()
-    {
-
     }
 
     public void conect_2_people(Professional p1, Professional p2, SymbolGraphWheighted g,String path,Integer w)

@@ -43,6 +43,8 @@
 
 package edu.princeton.cs.algs4;
 
+import java.io.Serializable;
+
 /**
  *  The {@code SymbolGraph} class represents an undirected graph, where the
  *  vertex names are arbitrary strings.
@@ -65,7 +67,7 @@ package edu.princeton.cs.algs4;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class SymbolGraphWheighted {
+public class SymbolGraphWheighted implements Serializable {
     private ST<String, Integer> st;  // string -> index
     private String[] keys;           // index  -> string
     private EdgeWeightedGraph graph;             // the underlying graph            ////substituir por EdgeWheihted graph
