@@ -99,7 +99,6 @@ public class Graph_project {
             }
     }
 
-
     public void write_pro_comp_to_file_txt(SymbolDigraphWeighted g, String path)
     {
         Out out = new Out(path);
