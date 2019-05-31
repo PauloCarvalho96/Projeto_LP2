@@ -372,15 +372,13 @@ public class Main {
 //        g.save_all_professionals_bin_graph(pessoas,path_pessoas_bin);   //guarda grafo em ficheiro bin
         pessoas = g.read_pro_bin_file(pessoas,path_pessoas_bin);          //le do ficheiro bin
 
-//        System.out.println(pessoas.graph());
-
         //funçoes de pesquisa
         //pesquisa profissionais que seguem outro profissional
 //        g.search_pro_followers(p1,pessoas,professionals);
 //        g.search_pro_followers(p2,pessoas,professionals);
 //        g.search_pro_followers(p3,pessoas,professionals);
 
-//        System.out.println(pessoas.graph());
+        System.out.println(pessoas.graph());
 
         //grafo profissionais / empresas
         String path_pessoas_empresas_txt = ".//data//pro_comp_graph.txt";
@@ -409,6 +407,6 @@ public class Main {
         //ligaçoes
 
 
-        System.out.println(pro_comp_meet.digraph());
+//        System.out.println(pro_comp_meet.digraph());
     }
 }
