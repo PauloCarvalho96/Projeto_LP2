@@ -32,6 +32,7 @@
                         <MenuItem mnemonicParsing="false" onAction="#handleCreateProfessionalsGraphAction" text="Professionals Graph" />
                         <MenuItem fx:id="companiesGraph" mnemonicParsing="false" onAction="#handleCreateCompaniesGraphAction" text="Companies , Meetings &amp; Paths Graph" />
                         <MenuItem fx:id="professionalGraph" mnemonicParsing="false" onAction="#handleCreateProfessionalsCompaniesGraphAction" text="Professionals &amp; Companies Graph" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleReadFileAction" text="Open File" />
                      </items>
                   </Menu>
             </items>
@@ -101,7 +102,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="-2.0" prefHeight="313.0" prefWidth="621.0">
+                        <TableView fx:id="professionalTable" layoutX="-2.0" prefHeight="313.0" prefWidth="621.0">
                           <columns>
                             <TableColumn fx:id="nameCol" prefWidth="193.0" text="Nome" />
                             <TableColumn fx:id="nifCol" prefWidth="196.0" text="nif" />
@@ -195,9 +196,9 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="319.0" fitWidth="540.0" layoutX="121.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="308.0" fitWidth="621.0" pickOnBounds="true">
                            <image>
-                              <Image url="file:/C:/Users/Asus/Downloads/61565532_300142944256179_8876004517997445120_n.jpg" />
+                              <Image url="file:/C:/Users/paulo/Documents/GitHub/Projeto_1fase_LP2/data/map.jpg" />
                            </image>
                         </ImageView>
                         <Group fx:id="graphGroup" layoutX="129.0" layoutY="115.0" />
