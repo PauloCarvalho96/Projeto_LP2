@@ -21,7 +21,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="385.0" prefWidth="621.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Projeto.Fase2_JavaFX.GraphCreatorFXMLController">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Projeto.Fase2_JavaFX.GraphCreatorFXMLController">
    <children>
       <MenuBar layoutX="-2.0" prefHeight="32.0" prefWidth="621.0">
         <menus>
@@ -196,7 +196,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="308.0" fitWidth="621.0" pickOnBounds="true">
+                        <ImageView fitHeight="309.0" fitWidth="621.0" pickOnBounds="true">
                            <image>
                               <Image url="file:/C:/Users/paulo/Documents/GitHub/Projeto_1fase_LP2/data/map.jpg" />
                            </image>

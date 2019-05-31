@@ -95,9 +95,9 @@ public class Graph_project {
     {
         Out out = new Out(path);
         for (int v = 0; v < g.graph().V(); v++) {       //percorre os vertices
-            out.print(v+";");
+            out.print(g.nameOf(v)+";");
             for (Edge d:g.graph().adj(v)) {
-                out.print(d+";");
+                out.print(g.nameOf(d.other(v))+";"+d.weight()+";");
             }
             out.print("\n");
         }
