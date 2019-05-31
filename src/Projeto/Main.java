@@ -364,13 +364,13 @@ public class Main {
         SymbolGraphWheighted pessoas = new SymbolGraphWheighted(path_pessoas_txt, ";");    //cria o symbol graph de profissionais
 
         //ligaçoes
-        g.conect_2_people(p1,p2,pessoas,path_pessoas_txt,10);
-        g.conect_2_people(p1,p3,pessoas,path_pessoas_txt,20);
-        g.conect_2_people(p2,p3,pessoas,path_pessoas_txt,30);
+//        g.conect_2_people(p1,p2,pessoas,path_pessoas_txt,10);
+//        g.conect_2_people(p1,p3,pessoas,path_pessoas_txt,20);
+//        g.conect_2_people(p2,p3,pessoas,path_pessoas_txt,30);
 
         //guarda e carrega de bin
 //        g.save_all_professionals_bin_graph(pessoas,path_pessoas_bin);   //guarda grafo em ficheiro bin
-        pessoas = g.read_pro_bin_file(pessoas,path_pessoas_bin);          //le do ficheiro bin
+//        pessoas = g.read_pro_bin_file(pessoas,path_pessoas_bin);          //le do ficheiro bin
 
         //funçoes de pesquisa
         //pesquisa profissionais que seguem outro profissional
@@ -378,7 +378,7 @@ public class Main {
 //        g.search_pro_followers(p2,pessoas,professionals);
 //        g.search_pro_followers(p3,pessoas,professionals);
 
-        System.out.println(pessoas.graph());
+//        System.out.println(pessoas.graph());
 
         //grafo profissionais / empresas
         String path_pessoas_empresas_txt = ".//data//pro_comp_graph.txt";
@@ -392,17 +392,16 @@ public class Main {
         g.conect_pro_comp(p3,c1,pessoas_empresas,path_pessoas_empresas_txt,30);
 
         //guarda e carrega de bin
-        g.save_all_pro_comp_bin_digraph(pessoas_empresas,path_pessoas_empresas_bin);
-        g.read_pro_comp_bin_file(pessoas_empresas,path_pessoas_empresas_bin);
+//        g.save_all_pro_comp_bin_digraph(pessoas_empresas,path_pessoas_empresas_bin);
+//        g.read_pro_comp_bin_file(pessoas_empresas,path_pessoas_empresas_bin);
 
-        //        System.out.println(pessoas_empresas.digraph());
-
+        System.out.println(pessoas_empresas.digraph());
 
         //grafo profissionais/empresas/meetings
         String path_pro_comp_meet_txt = ".//data//pro_comp_meet.txt";
         String path_pro_comp_meet_bin = ".//data//pro_comp_meet.bin";
         g.save_pro_comp_meet_txt_graph(professionals,company,meetings,path_pro_comp_meet_txt);
-        SymbolDigraphWeighted pro_comp_meet = new SymbolDigraphWeighted(path_pro_comp_meet_txt,";");
+//        SymbolDigraphWeighted pro_comp_meet = new SymbolDigraphWeighted(path_pro_comp_meet_txt,";");
 
         //ligaçoes
 
