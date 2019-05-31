@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Projeto.GraphCreatorFXMLController">
+    <children>
+        <MenuBar layoutY="8.0" prefHeight="29.0" prefWidth="600.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleReadBinFileAction" text="Open bin File" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleSaveBinFileAction" text="Save to Bin File" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleReadFileAction" text="Open File" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleSaveFileAction" text="Save to File" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleExitAction" text="Exit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <TabPane layoutX="-1.0" layoutY="37.0" prefHeight="361.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Professionals">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="328.0" prefWidth="598.0">
+                            <children>
+                                <VBox prefHeight="333.0" prefWidth="600.0">
+                                    <children>
+                                        <TableView prefHeight="413.0" prefWidth="600.0">
+                                            <columns>
+                                                <TableColumn fx:id="nameCol" prefWidth="154.0" text="Name" />
+                                                <TableColumn fx:id="nifCol" minWidth="0.0" prefWidth="185.0" text="NIF" />
+                                                <TableColumn fx:id="compCol" prefWidth="260.0" text="Company" />
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Companys">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                </Tab>
+                <Tab text="Meetings">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</AnchorPane>
