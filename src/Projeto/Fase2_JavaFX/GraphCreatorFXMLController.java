@@ -1,8 +1,6 @@
 package Projeto.Fase2_JavaFX;
 
-import Projeto.Company;
-import Projeto.Professional;
-import Projeto.SymbolGraphWheighted;
+import Projeto.*;
 import edu.princeton.cs.algs4.In;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -37,36 +35,23 @@ public class GraphCreatorFXMLController implements Initializable {
     public Button createButton;
     public MenuItem companiesGraph;
     public MenuItem professionalGraph;
+    public TableColumn professionalsCompanyCol;
+    public TableView<Professional> professionalTable;
     public TableColumn<Professional,String> nameCol;
     public TableColumn<Professional, Integer> nifCol;
     public TableColumn<Professional, String> companyCol;
-    public TableColumn<Object, Object> companyNameCol;
-    public TableColumn<Object, Object> companyNifCol;
-    public TableColumn professionalsCompanyCol;
-    public TableColumn meetingsNameCol;
-    public TableColumn meetingDataCol;
-    public TableColumn meetingDuracaoCol;
-    public TableView<Professional> professionalTable;
     public TableView<Company> companyTable;
-    public TableColumn<Object, Object> phoneCompany;
+    public TableColumn<Company, String> companyNameCol;
+    public TableColumn<Company, String> companyNifCol;
+    public TableColumn<Company, String> phoneCompany;
+    public TableView<Meeting> meetTable;
+    public TableColumn<Meeting,String> meetingsNameCol;
+    public TableColumn<Meeting,String> meetingDataCol;
+    public TableColumn<Meeting,String> meetingDuracaoCol;
     private Graph graph;
     private String delimeter = ";";
     private double radius = 10.0;
-    String path_pessoas_txt = ".//data//professionals_graph.txt";
-
-
-    public SymbolGraphWheighted read_pro_bin_file(SymbolGraphWheighted g, String path)
-    {
-        ObjectInputStream ios = null;
-        try{
-            ios = new ObjectInputStream(new FileInputStream(new File(path)));
-            g = (SymbolGraphWheighted) ios.readObject();
-            return g;
-        } catch (ClassNotFoundException | IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+    private String path_pessoas_txt = ".//data//professionals_graph.txt";
 
     public void handleCreateButtonAction(ActionEvent actionEvent) {
 //        int vNumber = Integer.parseInt(verticesNumberField.getText());
@@ -136,6 +121,11 @@ public class GraphCreatorFXMLController implements Initializable {
         companyNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         companyNifCol.setCellValueFactory(new PropertyValueFactory<>("nif"));
         phoneCompany.setCellValueFactory(new PropertyValueFactory<>("phone"));
+
+        //meetings
+        meetingsNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        meetingDataCol.setCellValueFactory(new PropertyValueFactory<>("date"));
+        meetingDuracaoCol.setCellValueFactory(new PropertyValueFactory<>("duration"));
     }
 
     public void handleReadFileAction(ActionEvent actionEvent) {
@@ -166,6 +156,22 @@ public class GraphCreatorFXMLController implements Initializable {
             Integer phone = Integer.parseInt(texto[2]);
             Company c = new Company(name_c,phone,nif,null);
             companyTable.getItems().addAll(c);
+        }
+        in.close();
+    }
+
+    public void handleReadMeetFileAction(ActionEvent actionEvent) {
+        meetTable.getItems().clear();
+        In in = new In(".//data//meets_JAVAFX.txt");
+        in.readLine();
+        while (!in.isEmpty()) {
+            String[] texto = in.readLine().split(";");
+            String[] d = texto[1].split("/");
+            String meet_name = texto[0];
+            Integer dur = Integer.parseInt(texto[2]);
+            Date date = new Date(Integer.parseInt(d[0]),Integer.parseInt(d[1]),Integer.parseInt(d[2]),0,0);
+            Meeting m = new Meeting(meet_name,dur,null,null,date);
+            meetTable.getItems().addAll(m);
         }
         in.close();
     }

@@ -344,8 +344,9 @@ public class Main {
 //        p.write_pro_to_txt_JAVAFX(professionals,".//data//professionals_JAVAFX.txt");
 
         //meetings information
-//        Meeting m = new Meeting(null,0,null,null,null);
+        Meeting m = new Meeting(null,0,null,null,null);
 //        m.writeMeetingsToTXT(meetings,".//data//meetings.txt");
+        m.write_meet_to_txt_JAVAFX(meetings,".//data//meets_JAVAFX.txt");
 
         /**
          * FILES (LOAD)
@@ -374,7 +375,7 @@ public class Main {
         g.save_all_professionals_bin_graph(pessoas,path_pessoas_bin);   //guarda grafo em ficheiro bin
         pessoas = g.read_pro_bin_file(pessoas,path_pessoas_bin);          //le do ficheiro bin
 
-        System.out.println(pessoas.graph());
+//        System.out.println(pessoas.graph());
 
         //funçoes de pesquisa
         //pesquisa profissionais que seguem outro profissional

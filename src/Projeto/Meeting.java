@@ -3,6 +3,7 @@ package Projeto;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.RedBlackBST;
+import edu.princeton.cs.algs4.SeparateChainingHashST_Projeto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -149,6 +150,16 @@ public class Meeting implements Serializable {
     /**
      * SAVE FILES
      */
+    public void write_meet_to_txt_JAVAFX(RedBlackBST<Date,Meeting> meetings, String path)
+    {
+        Out out = new Out(path);
+        for (Date d:meetings.keys()) {
+            out.print("\n");
+            out.print(meetings.get(d).getName()+";"+meetings.get(d).getDate()+";"+meetings.get(d).getDuration());
+        }
+        out.close();
+    }
+
     public void writeMeetingsToTXT(RedBlackBST<Date,Meeting> meetings,String path)
     {
         Out out = new Out(path);   //abre ficheiro

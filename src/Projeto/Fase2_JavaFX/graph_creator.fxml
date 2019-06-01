@@ -21,11 +21,12 @@
             <items>
                   <Menu mnemonicParsing="false" text="Open ">
                      <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleReadFileAction" text="Open File with all professionals" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleReadCompanyFileAction" text="Open File with all companies" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleReadMeetFileAction" text="Open File with all meetings" />
                         <MenuItem mnemonicParsing="false" onAction="#handleCreateProfessionalsGraphAction" text="Professionals Graph" />
                         <MenuItem mnemonicParsing="false" onAction="#handleCreateProfessionalsCompaniesGraphAction" text="Professionals &amp; Companies Graph" />
                         <MenuItem mnemonicParsing="false" onAction="#handleCreateCompaniesGraphAction" text="Companies , Meetings &amp; Paths Graph" />
-                        <MenuItem mnemonicParsing="false" onAction="#handleReadFileAction" text="Open File with all professionals" />
-                        <MenuItem mnemonicParsing="false" onAction="#handleReadCompanyFileAction" text="Open File with all companies" />
                      </items>
                   </Menu>
             </items>
@@ -124,11 +125,11 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutY="-1.0" prefHeight="314.0" prefWidth="621.0">
+                        <TableView fx:id="meetTable" layoutY="-1.0" prefHeight="314.0" prefWidth="621.0">
                           <columns>
                             <TableColumn fx:id="meetingsNameCol" prefWidth="200.0" text="Nome" />
                             <TableColumn fx:id="meetingDataCol" prefWidth="202.0" text="Data" />
-                              <TableColumn fx:id="meetingDuracaoCol" prefWidth="218.0" text="Duracao" />
+                              <TableColumn fx:id="meetingDuracaoCol" prefWidth="218.0" text="Duração (min)" />
                           </columns>
                         </TableView>
                      </children>

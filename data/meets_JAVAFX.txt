@@ -1,0 +1,4 @@
+
+Palestra JAVA;7/12/2007;60
+Palestra C;6/4/2015;180
+Photoshop;8/3/2017;120
