@@ -52,6 +52,7 @@ public class GraphCreatorFXMLController implements Initializable {
     private String delimeter = ";";
     private double radius = 10.0;
     private String path_pessoas_txt = ".//data//professionals_graph.txt";
+    private String path_companies_txt = ".//data//pro_comp_graph.txt";
 
     public void handleCreateButtonAction(ActionEvent actionEvent) {
 //        int vNumber = Integer.parseInt(verticesNumberField.getText());
@@ -105,6 +106,13 @@ public class GraphCreatorFXMLController implements Initializable {
     }
 
     public void handleCreateCompaniesGraphAction(ActionEvent actionEvent) {
+        String delimiter = ";";
+        In in = new In(path_companies_txt);
+        while (in.hasNextLine()) {
+            String[] a = in.readLine().split(delimiter);
+            int v = Integer.parseInt(a[0]);
+            create_vertice_in_graph(v);
+        }
     }
 
     public void handleCreateProfessionalsCompaniesGraphAction(ActionEvent actionEvent) {
