@@ -4,6 +4,8 @@ import Projeto.Company;
 import Projeto.Date;
 import Projeto.Professional;
 import Projeto.SymbolGraphWheighted;
+import edu.princeton.cs.algs4.DirectedEdge;
+import edu.princeton.cs.algs4.In;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
@@ -70,26 +72,25 @@ public class GraphCreatorFXMLController implements Initializable {
     public void handleCreateButtonAction(ActionEvent actionEvent) {
 //        int vNumber = Integer.parseInt(verticesNumberField.getText());
 //        graph = new Graph(vNumber);
-//        createGraphGroup(vNumber);
-
-        String[] lines = edgesField.getText().split("\n");
-        for(String li : lines)
-        {
-            String[] a = li.split(delimeter);
-            int v = Integer.parseInt(a[0]);
-            StackPane spv = (StackPane) graphGroup.getChildren().get(v);
-            Circle cv = (Circle) spv.getChildren().get(0);
-            for(int i = 1; i<a.length;i++)
-            {
-                int w=Integer.parseInt(a[i]);
-                graph.addEdge(v,w);
-                StackPane spw = (StackPane) graphGroup.getChildren().get(w);
-                Circle cw = (Circle) spw.getChildren().get(0);
-                Line line = new Line(cv.getCenterX(),cv.getCenterY(),cw.getCenterX(),cw.getCenterY());
-                graphGroup.getChildren().add(line);
-            }
-        }
-        System.out.println(graph);
+//        create_vertice_in_graph(vNumber);
+//        String[] lines = edgesField.getText().split("\n");
+//        for(String li : lines)
+//        {
+//            String[] a = li.split(delimeter);
+//            int v = Integer.parseInt(a[0]);
+//            StackPane spv = (StackPane) graphGroup.getChildren().get(v);
+//            Circle cv = (Circle) spv.getChildren().get(0);
+//            for(int i = 1; i<a.length;i++)
+//            {
+//                int w=Integer.parseInt(a[i]);
+//                graph.addEdge(v,w);
+//                StackPane spw = (StackPane) graphGroup.getChildren().get(w);
+//                Circle cw = (Circle) spw.getChildren().get(0);
+//                Line line = new Line(cv.getCenterX(),cv.getCenterY(),cw.getCenterX(),cw.getCenterY());
+//                graphGroup.getChildren().add(line);
+//            }
+//        }
+//        System.out.println(graph);
     }
 
     public void create_vertice_in_graph(int v)
@@ -109,9 +110,14 @@ public class GraphCreatorFXMLController implements Initializable {
         graphGroup.getChildren().add(stack);
     }
 
-
-
     public void handleCreateProfessionalsGraphAction(ActionEvent actionEvent) {
+        String delimiter = ";";
+        In in = new In(path_pessoas_txt);
+        while (in.hasNextLine()) {
+            String[] a = in.readLine().split(delimiter);
+            int v = Integer.parseInt(a[0]);
+            create_vertice_in_graph(v);
+        }
     }
 
     public void handleCreateCompaniesGraphAction(ActionEvent actionEvent) {
@@ -131,8 +137,8 @@ public class GraphCreatorFXMLController implements Initializable {
         Date d1 = new Date(1,1,1111,2,3);
         Professional p1 = new Professional("Paulo", "macho",d1,null,null,123456789);
         Professional p2 = new Professional("Pedro", "macho",d1,null,null,123456789);
-        Company c1 = new Company("2",0,0,null);
-        Company c2 = new Company("1",0,0,null);
+        Company c1 = new Company("Empresa 1",0,0,null);
+        Company c2 = new Company("Empresa 2",0,0,null);
         p1.setCompany(c1);
         p2.setCompany(c2);
         professionalTable.getItems().addAll(p1);

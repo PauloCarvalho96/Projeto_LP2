@@ -102,11 +102,11 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="professionalTable" layoutX="-2.0" prefHeight="313.0" prefWidth="621.0">
+                        <TableView fx:id="professionalTable" layoutY="-3.0" prefHeight="313.0" prefWidth="621.0">
                           <columns>
-                            <TableColumn fx:id="nameCol" prefWidth="193.0" text="Nome" />
-                            <TableColumn fx:id="nifCol" prefWidth="196.0" text="nif" />
-                              <TableColumn fx:id="companyCol" prefWidth="231.0" text="Company" />
+                            <TableColumn fx:id="nameCol" prefWidth="159.0" text="Nome" />
+                            <TableColumn fx:id="nifCol" minWidth="0.0" prefWidth="173.0" text="nif" />
+                              <TableColumn fx:id="companyCol" minWidth="0.0" prefWidth="290.0" text="Company" />
                           </columns>
                         </TableView>
                      </children></AnchorPane>
