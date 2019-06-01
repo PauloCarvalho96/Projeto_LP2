@@ -134,14 +134,8 @@ public class GraphCreatorFXMLController implements Initializable {
     }
 
     public void handleReadFileAction(ActionEvent actionEvent) {
-        Date d1 = new Date(1,1,1111,2,3);
-        Professional p1 = new Professional("Paulo", "macho",d1,null,null,123456789);
-        Professional p2 = new Professional("Pedro", "macho",d1,null,null,123456789);
-        Company c1 = new Company("Empresa 1",0,0,null);
-        Company c2 = new Company("Empresa 2",0,0,null);
-        p1.setCompany(c1);
-        p2.setCompany(c2);
-        professionalTable.getItems().addAll(p1);
-        professionalTable.getItems().addAll(p2);
+
+        professionalTable.getItems().addAll();
+        professionalTable.getItems().addAll();
     }
 }
