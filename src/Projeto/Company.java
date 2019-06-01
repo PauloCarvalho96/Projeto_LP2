@@ -9,12 +9,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Company implements Serializable {
-
     private String name;
-
     private int phone;
-
     private int nif;
+    private RedBlackBST<Date,Professional> professional = new RedBlackBST<>();
+    private Location location;
+    private ArrayList<String> meeting = new ArrayList<>();
 
     /**
      * Constructor
@@ -73,13 +73,6 @@ public class Company implements Serializable {
     public void setLocation(Location location) {
         this.location = location;
     }
-
-    private RedBlackBST<Date,Professional> professional = new RedBlackBST<>();
-
-    private Location location;
-
-    private ArrayList<String> meeting = new ArrayList<>();
-
 
     public void registerProfessional(Date d,Professional p,Company c,double salary) {      //adiciona profissional a empresa
         this.professional.put(d,p);
@@ -294,6 +287,16 @@ public class Company implements Serializable {
     /**
      * SAVE FILES
      */
+    public void write_comp_to_txt_JAVAFX(SeparateChainingHashST_Projeto<Integer,Company> companys,String path)
+    {
+        Out out = new Out(path);
+        for (Integer d:companys.keys()) {
+            out.print("\n");
+            out.print(companys.get(d).getName()+";"+companys.get(d).getNif()+";"+companys.get(d).getPhone());
+        }
+        out.close();
+    }
+
     public void writeCompanysToTXT(SeparateChainingHashST_Projeto<Integer,Company> company, String path)
     {
         Out out = new Out(path);   //abre ficheiro

@@ -1,10 +1,8 @@
 package Projeto.Fase2_JavaFX;
 
 import Projeto.Company;
-import Projeto.Date;
 import Projeto.Professional;
 import Projeto.SymbolGraphWheighted;
-import edu.princeton.cs.algs4.DirectedEdge;
 import edu.princeton.cs.algs4.In;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -14,7 +12,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import edu.princeton.cs.algs4.Graph;
 import javafx.scene.control.Button;
@@ -43,13 +40,15 @@ public class GraphCreatorFXMLController implements Initializable {
     public TableColumn<Professional,String> nameCol;
     public TableColumn<Professional, Integer> nifCol;
     public TableColumn<Professional, String> companyCol;
-    public TableColumn companyNameCol;
-    public TableColumn companyNifCol;
+    public TableColumn<Object, Object> companyNameCol;
+    public TableColumn<Object, Object> companyNifCol;
     public TableColumn professionalsCompanyCol;
     public TableColumn meetingsNameCol;
     public TableColumn meetingDataCol;
     public TableColumn meetingDuracaoCol;
     public TableView<Professional> professionalTable;
+    public TableView<Company> companyTable;
+    public TableColumn<Object, Object> phoneCompany;
     private Graph graph;
     private String delimeter = ";";
     private double radius = 10.0;
@@ -128,9 +127,15 @@ public class GraphCreatorFXMLController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //profissionais
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         nifCol.setCellValueFactory(new PropertyValueFactory<>("nif"));
         companyCol.setCellValueFactory(new PropertyValueFactory<>("company_name"));
+
+        //empresas
+        companyNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        companyNifCol.setCellValueFactory(new PropertyValueFactory<>("nif"));
+        phoneCompany.setCellValueFactory(new PropertyValueFactory<>("phone"));
     }
 
     public void handleReadFileAction(ActionEvent actionEvent) {
@@ -146,6 +151,21 @@ public class GraphCreatorFXMLController implements Initializable {
             Company test1 = new Company(comp_name,0,0,null);
             test.setCompany(test1);
             professionalTable.getItems().addAll(test);
+        }
+        in.close();
+    }
+
+    public void handleReadCompanyFileAction(ActionEvent actionEvent) {
+        companyTable.getItems().clear();
+        In in = new In(".//data//company_JAVAFX.txt");
+        in.readLine();
+        while (!in.isEmpty()) {
+            String[] texto = in.readLine().split(";");
+            String name_c = texto[0];
+            Integer nif = Integer.parseInt(texto[1]);
+            Integer phone = Integer.parseInt(texto[2]);
+            Company c = new Company(name_c,phone,nif,null);
+            companyTable.getItems().addAll(c);
         }
         in.close();
     }

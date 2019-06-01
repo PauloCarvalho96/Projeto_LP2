@@ -336,6 +336,7 @@ public class Main {
         //companys information
 //        Company c = new Company(null,0,0,null);
 //        c.writeCompanysToTXT(company,".//data//company.txt");
+//        c.write_comp_to_txt_JAVAFX(company,".//data//company_JAVAFX.txt");
 
         //professionals information
 //        Professional p = new Professional(null,null,null,null,null,0);

@@ -8,10 +8,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Meeting implements Serializable {
-
     private String name;
-
     private int duration;
+    private ArrayList<String> professional = new ArrayList<>();
+    private ArrayList<String> companys = new ArrayList<>();
+    private Location location;
+    private ArrayList<String> interestAreas = new ArrayList<>();
+    private Date date;
 
     /**
      * Constructor
@@ -94,11 +97,6 @@ public class Meeting implements Serializable {
         this.date = date;
     }
 
-    private ArrayList<String> professional = new ArrayList<>();
-    private ArrayList<String> companys = new ArrayList<>();
-    private Location location;
-    private ArrayList<String> interestAreas = new ArrayList<>();
-    private Date date;
 
     public void associateMeetCompany(Company c) // Associa um Meeting a uma Empresa
     {
