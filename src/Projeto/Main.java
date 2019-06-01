@@ -370,12 +370,23 @@ public class Main {
         g.conect_2_people(p1,p2,pessoas,path_pessoas_txt,10);
         g.conect_2_people(p1,p3,pessoas,path_pessoas_txt,20);
         g.conect_2_people(p2,p3,pessoas,path_pessoas_txt,30);
+        g.conect_2_people(p2,p5,pessoas,path_pessoas_txt,15);
+        g.conect_2_people(p2,p4,pessoas,path_pessoas_txt,8);
+        g.conect_2_people(p3,p4,pessoas,path_pessoas_txt,3);
+        g.conect_2_people(p4,p5,pessoas,path_pessoas_txt,5);
+        g.conect_2_people(p6,p8,pessoas,path_pessoas_txt,5);
+        g.conect_2_people(p6,p9,pessoas,path_pessoas_txt,5);
+        g.conect_2_people(p7,p9,pessoas,path_pessoas_txt,5);
+        g.conect_2_people(p7,p10,pessoas,path_pessoas_txt,5);
+        g.conect_2_people(p8,p9,pessoas,path_pessoas_txt,5);
+        g.conect_2_people(p9,p10,pessoas,path_pessoas_txt,5);
+
 
         //guarda e carrega de bin
         g.save_all_professionals_bin_graph(pessoas,path_pessoas_bin);   //guarda grafo em ficheiro bin
-        pessoas = g.read_pro_bin_file(pessoas,path_pessoas_bin);          //le do ficheiro bin
+//        pessoas = g.read_pro_bin_file(pessoas,path_pessoas_bin);          //le do ficheiro bin
 
-//        System.out.println(pessoas.graph());
+        System.out.println(pessoas.graph());
 
         //funçoes de pesquisa
         //pesquisa profissionais que seguem outro profissional
@@ -398,7 +409,7 @@ public class Main {
 //        g.save_all_pro_comp_bin_digraph(pessoas_empresas,path_pessoas_empresas_bin);
 //        g.read_pro_comp_bin_file(pessoas_empresas,path_pessoas_empresas_bin);
 
-        System.out.println(pessoas_empresas.digraph());
+//        System.out.println(pessoas_empresas.digraph());
 
         //grafo profissionais/empresas/meetings
         String path_pro_comp_meet_txt = ".//data//pro_comp_meet.txt";

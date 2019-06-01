@@ -10,6 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import edu.princeton.cs.algs4.Graph;
 import javafx.scene.control.Button;
@@ -86,7 +87,7 @@ public class GraphCreatorFXMLController implements Initializable {
         double posY = r.nextDouble()*500;
         Circle c = new Circle(posX,posY,radius);
         c.setOpacity(0.6);
-        c.setFill(Color.DEEPSKYBLUE);
+        c.setFill(Color.RED);
         c.setId(""+v);
         Text text = new Text(""+v);
         StackPane stack = new StackPane();
@@ -96,7 +97,8 @@ public class GraphCreatorFXMLController implements Initializable {
         graphGroup.getChildren().add(stack);
     }
 
-    public void handleCreateProfessionalsGraphAction(ActionEvent actionEvent) {
+    public void drawGraph()
+    {
         String delimiter = ";";
         In in = new In(path_pessoas_txt);
         while (in.hasNextLine()) {
@@ -104,6 +106,28 @@ public class GraphCreatorFXMLController implements Initializable {
             int v = Integer.parseInt(a[0]);
             create_vertice_in_ProGraph(v);
         }
+        in.close();
+    }
+
+    public void handleCreateProfessionalsGraphAction(ActionEvent actionEvent) {
+        drawGraph();
+        String delimiter = ";";
+        In in = new In(path_pessoas_txt);
+        while (in.hasNextLine()) {
+            String[] a = in.readLine().split(delimiter);
+            int v = Integer.parseInt(a[0]);
+            StackPane spv = (StackPane) graphGroup.getChildren().get(v);
+            Circle cv = (Circle) spv.getChildren().get(0);
+            for(int i = 1;i<a.length;i=i+2)
+            {
+                int w=Integer.parseInt(a[i]);
+                StackPane spw = (StackPane) graphGroup.getChildren().get(w);
+                Circle cw = (Circle) spw.getChildren().get(0);
+                Line line = new Line(cv.getCenterX(),cv.getCenterY(),cw.getCenterX(),cw.getCenterY());
+                graphGroup.getChildren().add(line);
+            }
+        }
+        in.close();
     }
 
     public void create_vertice_in_ProCompGraph(int v)
@@ -131,6 +155,7 @@ public class GraphCreatorFXMLController implements Initializable {
             int v = Integer.parseInt(a[0]);
             create_vertice_in_ProCompGraph(v);
         }
+        in.close();
     }
 
     public void handleCreateProCompMeetGraphAction(ActionEvent actionEvent) {
