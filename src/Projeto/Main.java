@@ -386,7 +386,7 @@ public class Main {
         g.save_all_professionals_bin_graph(pessoas,path_pessoas_bin);   //guarda grafo em ficheiro bin
 //        pessoas = g.read_pro_bin_file(pessoas,path_pessoas_bin);          //le do ficheiro bin
 
-        System.out.println(pessoas.graph());
+//        System.out.println(pessoas.graph());
 
         //funçoes de pesquisa
         //pesquisa profissionais que seguem outro profissional
@@ -409,12 +409,12 @@ public class Main {
 //        g.save_all_pro_comp_bin_digraph(pessoas_empresas,path_pessoas_empresas_bin);
 //        g.read_pro_comp_bin_file(pessoas_empresas,path_pessoas_empresas_bin);
 
-//        System.out.println(pessoas_empresas.digraph());
+        System.out.println(pessoas_empresas.digraph());
 
         //grafo profissionais/empresas/meetings
         String path_pro_comp_meet_txt = ".//data//pro_comp_meet.txt";
         String path_pro_comp_meet_bin = ".//data//pro_comp_meet.bin";
-        g.save_pro_comp_meet_txt_graph(professionals,company,meetings,path_pro_comp_meet_txt);
+//        g.save_pro_comp_meet_txt_graph(professionals,company,meetings,path_pro_comp_meet_txt);
 //        SymbolDigraphWeighted pro_comp_meet = new SymbolDigraphWeighted(path_pro_comp_meet_txt,";");
 
         //ligaçoes
