@@ -121,11 +121,35 @@ public class Graph_project {
             }
     }
 
-    public void write_pro_comp_to_file_txt(SymbolDigraphWeighted g, String path)
+    public int pro_or_comp(SymbolDigraphWeighted g,int v,SeparateChainingHashST_Projeto<Integer,Professional> professionals,SeparateChainingHashST_Projeto<Integer,Company> company) {
+        for (Integer p : professionals.keys()) {          //percorre os profissionais
+            if (p == Integer.parseInt(g.nameOf(v))) {     //se o nif coicidir entao é profissional
+                return 0;
+            } else {
+                for (Integer c : company.keys()) {
+                    if (c == Integer.parseInt(g.nameOf(v))) {     //se o nif coicidir entao é empresa
+                        return 1;
+                    }
+                }
+            }
+        }
+        return 2;
+    }
+
+    public void write_pro_comp_to_file_txt(SymbolDigraphWeighted g, String path,SeparateChainingHashST_Projeto<Integer,Professional> professionals,SeparateChainingHashST_Projeto<Integer,Company> company)
     {
         Out out = new Out(path);
         for (int v = 0; v < g.digraph().V(); v++) {       //percorre os vertices
-            out.print(v+";");
+            int i = pro_or_comp(g,v,professionals,company); //procura a ver se é profissional ou empresa
+            if(i==0){
+                out.print("p"+";"+v+";");
+            }else {
+                if(i==1){
+                    out.print("c"+";"+v+";");
+                }else{
+                    System.out.println("erro ao ler");
+                }
+            }
             for (DirectedEdge d:g.digraph().adj(v)) {
                 out.print(d.to()+";"+d.weight()+";");
             }
@@ -134,14 +158,14 @@ public class Graph_project {
         out.close();
     }
 
-    public void conect_pro_comp(Professional p1,Company p2,SymbolDigraphWeighted g,String path,Integer w)
+    public void conect_pro_comp(Professional p1,Company p2,SymbolDigraphWeighted g,String path,Integer w,SeparateChainingHashST_Projeto<Integer,Professional> professionals,SeparateChainingHashST_Projeto<Integer,Company> company)
     {
         for (int v = 0; v < g.digraph().V(); v++) {       //percorre os vertices
             if (Integer.parseInt(g.nameOf(v)) == p1.getNif()) {     //se o vertice for igual ao nif do profissional
                 for (int vi = 0; vi < g.digraph().V(); vi++) {
                     if (Integer.parseInt(g.nameOf(vi)) == p2.getNif()) {
                         g.digraph().addEdge(new DirectedEdge(v,vi,w));                            //adiciona ligaçao
-                        write_pro_comp_to_file_txt(g,path);
+                        write_pro_comp_to_file_txt(g,path,professionals,company);
                     }
                 }
             }

@@ -108,14 +108,31 @@ public class GraphCreatorFXMLController implements Initializable {
         in.close();
     }
 
-    public void create_vertice_in_ProCompGraph(int v)
+    public void create_vertex_in_ProCompGraph_Pro(int v)        //vertex Pro
     {
         Random r = new Random();
         double posX = r.nextDouble()*500;
         double posY = r.nextDouble()*500;
         Circle c = new Circle(posX,posY,radius);
         c.setOpacity(0.6);
-        c.setFill(Color.DEEPSKYBLUE);
+        c.setFill(Color.RED);
+        c.setId(""+v);
+        Text text = new Text(""+v);
+        StackPane stack = new StackPane();
+        stack.setLayoutX(posX-radius);
+        stack.setLayoutY(posY-radius);
+        stack.getChildren().addAll(c,text);
+        graphGroup1.getChildren().add(stack);
+    }
+
+    public void create_vertex_in_ProCompGraph_Comp(int v)        //vertex Company
+    {
+        Random r = new Random();
+        double posX = r.nextDouble()*500;
+        double posY = r.nextDouble()*500;
+        Circle c = new Circle(posX,posY,radius);
+        c.setOpacity(0.6);
+        c.setFill(Color.BLUE);
         c.setId(""+v);
         Text text = new Text(""+v);
         StackPane stack = new StackPane();
@@ -131,8 +148,14 @@ public class GraphCreatorFXMLController implements Initializable {
         In in = new In(path_companies_txt);
         while (in.hasNextLine()) {
             String[] a = in.readLine().split(delimiter);
-            int v = Integer.parseInt(a[0]);
-            create_vertice_in_ProCompGraph(v);
+            String type = a[0];
+            int v = Integer.parseInt(a[1]);
+            if(type.compareTo("p")==0)
+            {
+                create_vertex_in_ProCompGraph_Pro(v);
+            }else{
+                create_vertex_in_ProCompGraph_Comp(v);
+            }
         }
         in.close();
     }
@@ -143,10 +166,10 @@ public class GraphCreatorFXMLController implements Initializable {
         In in = new In(path_companies_txt);
         while (in.hasNextLine()) {
             String[] a = in.readLine().split(delimiter);
-            int v = Integer.parseInt(a[0]);
+            int v = Integer.parseInt(a[1]);
             StackPane spv = (StackPane) graphGroup1.getChildren().get(v);
             Circle cv = (Circle) spv.getChildren().get(0);
-            for(int i = 1;i<a.length;i=i+2)
+            for(int i = 2;i<a.length;i=i+2)
             {
                 int w=Integer.parseInt(a[i]);
                 StackPane spw = (StackPane) graphGroup1.getChildren().get(w);

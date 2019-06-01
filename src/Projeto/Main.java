@@ -401,9 +401,9 @@ public class Main {
         SymbolDigraphWeighted pessoas_empresas = new SymbolDigraphWeighted(path_pessoas_empresas_txt,";");
 
         //ligaçoes
-        g.conect_pro_comp(p1,c1,pessoas_empresas,path_pessoas_empresas_txt,10);
-        g.conect_pro_comp(p2,c1,pessoas_empresas,path_pessoas_empresas_txt,20);
-        g.conect_pro_comp(p3,c1,pessoas_empresas,path_pessoas_empresas_txt,30);
+        g.conect_pro_comp(p1,c1,pessoas_empresas,path_pessoas_empresas_txt,10,professionals,company);
+        g.conect_pro_comp(p2,c1,pessoas_empresas,path_pessoas_empresas_txt,20,professionals,company);
+        g.conect_pro_comp(p3,c1,pessoas_empresas,path_pessoas_empresas_txt,30,professionals,company);
 
         //guarda e carrega de bin
 //        g.save_all_pro_comp_bin_digraph(pessoas_empresas,path_pessoas_empresas_bin);
