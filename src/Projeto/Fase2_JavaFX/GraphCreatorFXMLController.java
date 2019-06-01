@@ -81,8 +81,8 @@ public class GraphCreatorFXMLController implements Initializable {
     public void create_vertice_in_graph(int v)
     {
         Random r = new Random();
-        double posX = r.nextDouble()*150;
-        double posY = r.nextDouble()*130;
+        double posX = r.nextDouble()*500;
+        double posY = r.nextDouble()*500;
         Circle c = new Circle(posX,posY,radius);
         c.setOpacity(0.6);
         c.setFill(Color.DEEPSKYBLUE);
@@ -137,23 +137,28 @@ public class GraphCreatorFXMLController implements Initializable {
     }
 
     public void handleReadFileAction(ActionEvent actionEvent) {
-        professionalTable.getItems().clear();
-        In in = new In(".//data//professionals_JAVAFX.txt");
+        readProfessionalFile();
+        readCompanyFile();
+        readMeetFile();
+    }
+
+    public void readMeetFile() {
+        meetTable.getItems().clear();
+        In in = new In(".//data//meets_JAVAFX.txt");
         in.readLine();
         while (!in.isEmpty()) {
             String[] texto = in.readLine().split(";");
-            String name_pro = texto[0];
-            Integer nif = Integer.parseInt(texto[1]);
-            Professional test = new Professional(name_pro,null,null,null,null,nif);
-            String comp_name = texto[2];
-            Company test1 = new Company(comp_name,0,0,null);
-            test.setCompany(test1);
-            professionalTable.getItems().addAll(test);
+            String[] d = texto[1].split("/");
+            String meet_name = texto[0];
+            Integer dur = Integer.parseInt(texto[2]);
+            Date date = new Date(Integer.parseInt(d[0]),Integer.parseInt(d[1]),Integer.parseInt(d[2]),0,0);
+            Meeting m = new Meeting(meet_name,dur,null,null,date);
+            meetTable.getItems().addAll(m);
         }
         in.close();
     }
 
-    public void handleReadCompanyFileAction(ActionEvent actionEvent) {
+    public void readCompanyFile() {
         companyTable.getItems().clear();
         In in = new In(".//data//company_JAVAFX.txt");
         in.readLine();
@@ -168,18 +173,19 @@ public class GraphCreatorFXMLController implements Initializable {
         in.close();
     }
 
-    public void handleReadMeetFileAction(ActionEvent actionEvent) {
-        meetTable.getItems().clear();
-        In in = new In(".//data//meets_JAVAFX.txt");
+    public void readProfessionalFile() {
+        professionalTable.getItems().clear();
+        In in = new In(".//data//professionals_JAVAFX.txt");
         in.readLine();
         while (!in.isEmpty()) {
             String[] texto = in.readLine().split(";");
-            String[] d = texto[1].split("/");
-            String meet_name = texto[0];
-            Integer dur = Integer.parseInt(texto[2]);
-            Date date = new Date(Integer.parseInt(d[0]),Integer.parseInt(d[1]),Integer.parseInt(d[2]),0,0);
-            Meeting m = new Meeting(meet_name,dur,null,null,date);
-            meetTable.getItems().addAll(m);
+            String name_pro = texto[0];
+            Integer nif = Integer.parseInt(texto[1]);
+            Professional test = new Professional(name_pro,null,null,null,null,nif);
+            String comp_name = texto[2];
+            Company test1 = new Company(comp_name,0,0,null);
+            test.setCompany(test1);
+            professionalTable.getItems().addAll(test);
         }
         in.close();
     }
