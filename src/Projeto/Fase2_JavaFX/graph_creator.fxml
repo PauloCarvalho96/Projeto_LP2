@@ -170,7 +170,7 @@
                               <Image url="file:/C:/Users/paulo/Documents/GitHub/Projeto_1fase_LP2/data/map.png" />
                            </image>
                         </ImageView>
-                        <Group fx:id="graphGroup11" layoutX="129.0" layoutY="115.0" />
+                        <Group fx:id="graphGroup2" layoutX="129.0" layoutY="115.0" />
                      </children>
                   </AnchorPane>
                </content>

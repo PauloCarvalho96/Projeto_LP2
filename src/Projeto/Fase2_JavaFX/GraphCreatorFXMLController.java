@@ -39,6 +39,7 @@ public class GraphCreatorFXMLController implements Initializable {
     public TableColumn professionalsCompanyCol;
     public Group graphGroup;
     public Group graphGroup1;
+    public Group graphGroup2;
     public TableView<Professional> professionalTable;
     public TableColumn<Professional,String> nameCol;
     public TableColumn<Professional, Integer> nifCol;
@@ -56,6 +57,7 @@ public class GraphCreatorFXMLController implements Initializable {
     private double radius = 10.0;
     private String path_pessoas_txt = ".//data//professionals_graph.txt";
     private String path_companies_txt = ".//data//pro_comp_graph.txt";
+    private String path_pro_comp_meet_txt = ".//data//pro_comp_meet.txt";
 
 
     public void create_vertice_in_ProGraph(int v)
@@ -181,7 +183,99 @@ public class GraphCreatorFXMLController implements Initializable {
         in.close();
     }
 
+    public void create_vertex_in_ProCompMeetGraph_Pro(int v)        //vertex Pro
+    {
+        Random r = new Random();
+        double posX = r.nextDouble()*500;
+        double posY = r.nextDouble()*500;
+        Circle c = new Circle(posX,posY,radius);
+        c.setOpacity(0.6);
+        c.setFill(Color.RED);
+        c.setId(""+v);
+        Text text = new Text(""+v);
+        StackPane stack = new StackPane();
+        stack.setLayoutX(posX-radius);
+        stack.setLayoutY(posY-radius);
+        stack.getChildren().addAll(c,text);
+        graphGroup2.getChildren().add(stack);
+    }
+
+    public void create_vertex_in_ProCompMeetGraph_Comp(int v)        //vertex Pro
+    {
+        Random r = new Random();
+        double posX = r.nextDouble()*500;
+        double posY = r.nextDouble()*500;
+        Circle c = new Circle(posX,posY,radius);
+        c.setOpacity(0.6);
+        c.setFill(Color.BLUE);
+        c.setId(""+v);
+        Text text = new Text(""+v);
+        StackPane stack = new StackPane();
+        stack.setLayoutX(posX-radius);
+        stack.setLayoutY(posY-radius);
+        stack.getChildren().addAll(c,text);
+        graphGroup2.getChildren().add(stack);
+    }
+
+    public void create_vertex_in_ProCompMeetGraph_Meet(int v)        //vertex Pro
+    {
+        Random r = new Random();
+        double posX = r.nextDouble()*500;
+        double posY = r.nextDouble()*500;
+        Circle c = new Circle(posX,posY,radius);
+        c.setOpacity(0.6);
+        c.setFill(Color.ORANGE);
+        c.setId(""+v);
+        Text text = new Text(""+v);
+        StackPane stack = new StackPane();
+        stack.setLayoutX(posX-radius);
+        stack.setLayoutY(posY-radius);
+        stack.getChildren().addAll(c,text);
+        graphGroup2.getChildren().add(stack);
+    }
+
+    public void drawGraph_Pro_Comp_Meet()
+    {
+        String delimiter = ";";
+        In in = new In(path_pro_comp_meet_txt);
+        while (in.hasNextLine()) {
+            String[] a = in.readLine().split(delimiter);
+            String type = a[0];
+            int v = Integer.parseInt(a[1]);
+            if(type.compareTo("p")==0)
+            {
+                create_vertex_in_ProCompMeetGraph_Pro(v);
+            }else{
+                if(type.compareTo("c")==0){
+                    create_vertex_in_ProCompMeetGraph_Comp(v);
+                }else {
+                    create_vertex_in_ProCompMeetGraph_Meet(v);
+                }
+            }
+        }
+        in.close();
+    }
+
     public void handleCreateProCompMeetGraphAction(ActionEvent actionEvent) {
+        drawGraph_Pro_Comp_Meet();
+        String delimiter = ";";
+        In in = new In(path_pro_comp_meet_txt);
+        while (in.hasNextLine()) {
+            String[] a = in.readLine().split(delimiter);
+            int v = Integer.parseInt(a[1]);
+            StackPane spv = (StackPane) graphGroup2.getChildren().get(v);
+            Circle cv = (Circle) spv.getChildren().get(0);
+            for(int i = 2;i<a.length;i=i+2)
+            {
+                int w=Integer.parseInt(a[i]);
+                StackPane spw = (StackPane) graphGroup2.getChildren().get(w);
+                Circle cw = (Circle) spw.getChildren().get(0);
+                Line line = new Line(cv.getCenterX(),cv.getCenterY(),cw.getCenterX(),cw.getCenterY());
+                graphGroup2.getChildren().add(line);
+            }
+        }
+        in.close();
+
     }
 
     @Override

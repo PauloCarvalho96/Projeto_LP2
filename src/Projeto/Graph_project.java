@@ -121,26 +121,31 @@ public class Graph_project {
             }
     }
 
-    public int pro_or_comp(SymbolDigraphWeighted g,int v,SeparateChainingHashST_Projeto<Integer,Professional> professionals,SeparateChainingHashST_Projeto<Integer,Company> company) {
+
+    public int pro_or_comp_or_meet(SymbolDigraphWeighted g,int v,SeparateChainingHashST_Projeto<Integer,Professional> professionals,SeparateChainingHashST_Projeto<Integer,Company> company,RedBlackBST<Date, Meeting> meetings) {
+        for (Date d : meetings.keys()) {
+            if (d.toString().compareTo(g.nameOf(v))==0) {     //se a data coicidir entao é meeting
+                return 2;
+            }
+        }
         for (Integer p : professionals.keys()) {          //percorre os profissionais
             if (p == Integer.parseInt(g.nameOf(v))) {     //se o nif coicidir entao é profissional
                 return 0;
-            } else {
-                for (Integer c : company.keys()) {
-                    if (c == Integer.parseInt(g.nameOf(v))) {     //se o nif coicidir entao é empresa
-                        return 1;
-                    }
-                }
             }
         }
-        return 2;
+        for (Integer c : company.keys()) {
+            if (c == Integer.parseInt(g.nameOf(v))) {     //se o nif coicidir entao é empresa
+                return 1;
+            }
+        }
+        return 3;
     }
 
-    public void write_pro_comp_to_file_txt(SymbolDigraphWeighted g, String path,SeparateChainingHashST_Projeto<Integer,Professional> professionals,SeparateChainingHashST_Projeto<Integer,Company> company)
+    public void write_pro_comp_to_file_txt(SymbolDigraphWeighted g, String path,SeparateChainingHashST_Projeto<Integer,Professional> professionals,SeparateChainingHashST_Projeto<Integer,Company> company,RedBlackBST<Date, Meeting> meetings)
     {
         Out out = new Out(path);
         for (int v = 0; v < g.digraph().V(); v++) {       //percorre os vertices
-            int i = pro_or_comp(g,v,professionals,company); //procura a ver se é profissional ou empresa
+            int i = pro_or_comp_or_meet(g,v,professionals,company,meetings); //procura a ver se é profissional ou empresa
             if(i==0){
                 out.print("p"+";"+v+";");
             }else {
@@ -158,18 +163,40 @@ public class Graph_project {
         out.close();
     }
 
-    public void conect_pro_comp(Professional p1,Company p2,SymbolDigraphWeighted g,String path,Integer w,SeparateChainingHashST_Projeto<Integer,Professional> professionals,SeparateChainingHashST_Projeto<Integer,Company> company)
+    public void conect_pro_comp(Professional p1,Company p2,SymbolDigraphWeighted g,String path,Integer w,SeparateChainingHashST_Projeto<Integer,Professional> professionals,SeparateChainingHashST_Projeto<Integer,Company> company,RedBlackBST<Date, Meeting> meetings)
     {
         for (int v = 0; v < g.digraph().V(); v++) {       //percorre os vertices
             if (Integer.parseInt(g.nameOf(v)) == p1.getNif()) {     //se o vertice for igual ao nif do profissional
                 for (int vi = 0; vi < g.digraph().V(); vi++) {
                     if (Integer.parseInt(g.nameOf(vi)) == p2.getNif()) {
                         g.digraph().addEdge(new DirectedEdge(v,vi,w));                            //adiciona ligaçao
-                        write_pro_comp_to_file_txt(g,path,professionals,company);
+                        write_pro_comp_to_file_txt(g,path,professionals,company,meetings);
                     }
                 }
             }
         }
+    }
+
+    public void pro_comp_meet_vertex(SymbolDigraphWeighted g,String path,SeparateChainingHashST_Projeto<Integer,Professional> professionals,SeparateChainingHashST_Projeto<Integer,Company> company,RedBlackBST<Date, Meeting> meetings)
+    {
+        Out out = new Out(path);
+        for (int v = 0; v < g.digraph().V(); v++) {
+            int i = pro_or_comp_or_meet(g,v,professionals,company,meetings);
+            if(i==0){
+                out.print("p"+";"+v+";"+"\n");
+            }else {
+                if(i==1){
+                    out.print("c"+";"+v+";"+"\n");
+                }else{
+                    if (i==2){
+                        out.print("d"+";"+v+";"+"\n");
+                    }else{
+                        System.out.println("erro");
+                    }
+                }
+            }
+        }
+        out.close();
     }
 
     /**
@@ -182,7 +209,6 @@ public class Graph_project {
         for (int v = 0; v < g.graph().V(); v++) {       //percorre os vertices
             if (Integer.parseInt(g.nameOf(v)) == p1.getNif()) {     //se o vertice for igual ao nif do profissional
                 for (Edge d:g.graph().adj(v)) {             //percorre as Edge
-//                    System.out.println(g.nameOf(d.other(v)));
                     for (Integer di : professionals.keys()) {       //percorre a ST para encontrar o NIF correspondente
                         if(professionals.get(di).getNif() == Integer.parseInt(g.nameOf(d.other(v))))    //se o nif for igual imprime
                         {
