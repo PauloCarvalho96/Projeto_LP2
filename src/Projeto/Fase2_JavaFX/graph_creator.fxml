@@ -24,7 +24,7 @@
                         <MenuItem mnemonicParsing="false" onAction="#handleReadFileAction" text="Open File with all data" />
                         <MenuItem mnemonicParsing="false" onAction="#handleCreateProfessionalsGraphAction" text="Professionals Graph" />
                         <MenuItem mnemonicParsing="false" onAction="#handleCreateProfessionalsCompaniesGraphAction" text="Professionals &amp; Companies Graph" />
-                        <MenuItem mnemonicParsing="false" onAction="#handleCreateCompaniesGraphAction" text="Companies , Meetings &amp; Paths Graph" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleCreateProCompMeetGraphAction" text="Companies , Meetings &amp; Paths Graph" />
                      </items>
                   </Menu>
             </items>

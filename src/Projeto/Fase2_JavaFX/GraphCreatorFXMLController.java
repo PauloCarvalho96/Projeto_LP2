@@ -28,7 +28,6 @@ public class GraphCreatorFXMLController implements Initializable {
 
     public TextField verticesNumberField;
     public TextArea edgesField;
-    public Group graphGroup;
     public MenuItem openGraph;
     public MenuItem editGraph;
     public MenuItem editGraph1;
@@ -36,6 +35,8 @@ public class GraphCreatorFXMLController implements Initializable {
     public MenuItem companiesGraph;
     public MenuItem professionalGraph;
     public TableColumn professionalsCompanyCol;
+    public Group graphGroup;
+    public Group graphGroup1;
     public TableView<Professional> professionalTable;
     public TableColumn<Professional,String> nameCol;
     public TableColumn<Professional, Integer> nifCol;
@@ -78,7 +79,7 @@ public class GraphCreatorFXMLController implements Initializable {
 //        System.out.println(graph);
     }
 
-    public void create_vertice_in_graph(int v)
+    public void create_vertice_in_ProGraph(int v)
     {
         Random r = new Random();
         double posX = r.nextDouble()*500;
@@ -101,21 +102,38 @@ public class GraphCreatorFXMLController implements Initializable {
         while (in.hasNextLine()) {
             String[] a = in.readLine().split(delimiter);
             int v = Integer.parseInt(a[0]);
-            create_vertice_in_graph(v);
+            create_vertice_in_ProGraph(v);
         }
     }
 
-    public void handleCreateCompaniesGraphAction(ActionEvent actionEvent) {
+    public void create_vertice_in_ProCompGraph(int v)
+    {
+        Random r = new Random();
+        double posX = r.nextDouble()*500;
+        double posY = r.nextDouble()*500;
+        Circle c = new Circle(posX,posY,radius);
+        c.setOpacity(0.6);
+        c.setFill(Color.DEEPSKYBLUE);
+        c.setId(""+v);
+        Text text = new Text(""+v);
+        StackPane stack = new StackPane();
+        stack.setLayoutX(posX-radius);
+        stack.setLayoutY(posY-radius);
+        stack.getChildren().addAll(c,text);
+        graphGroup1.getChildren().add(stack);
+    }
+
+    public void handleCreateProfessionalsCompaniesGraphAction(ActionEvent actionEvent) {
         String delimiter = ";";
         In in = new In(path_companies_txt);
         while (in.hasNextLine()) {
             String[] a = in.readLine().split(delimiter);
             int v = Integer.parseInt(a[0]);
-            create_vertice_in_graph(v);
+            create_vertice_in_ProCompGraph(v);
         }
     }
 
-    public void handleCreateProfessionalsCompaniesGraphAction(ActionEvent actionEvent) {
+    public void handleCreateProCompMeetGraphAction(ActionEvent actionEvent) {
     }
 
     @Override

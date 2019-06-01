@@ -98,10 +98,8 @@ public class Graph_project {
     {
         Out out = new Out(path);
         for (int v = 0; v < g.graph().V(); v++) {       //percorre os vertices
-//            out.print(g.nameOf(v)+";");
             out.print(v+";");
             for (Edge d:g.graph().adj(v)) {
-//                out.print(g.nameOf(d.other(v))+";"+d.weight()+";");
                 out.print(d.other(v)+";"+d.weight()+";");
             }
             out.print("\n");
@@ -129,7 +127,7 @@ public class Graph_project {
         for (int v = 0; v < g.digraph().V(); v++) {       //percorre os vertices
             out.print(v+";");
             for (DirectedEdge d:g.digraph().adj(v)) {
-                out.print(d+";");
+                out.print(d.to()+";"+d.weight()+";");
             }
             out.print("\n");
         }

@@ -344,9 +344,9 @@ public class Main {
 //        p.write_pro_to_txt_JAVAFX(professionals,".//data//professionals_JAVAFX.txt");
 
         //meetings information
-        Meeting m = new Meeting(null,0,null,null,null);
+//        Meeting m = new Meeting(null,0,null,null,null);
 //        m.writeMeetingsToTXT(meetings,".//data//meetings.txt");
-        m.write_meet_to_txt_JAVAFX(meetings,".//data//meets_JAVAFX.txt");
+//        m.write_meet_to_txt_JAVAFX(meetings,".//data//meets_JAVAFX.txt");
 
         /**
          * FILES (LOAD)
@@ -387,18 +387,18 @@ public class Main {
         String path_pessoas_empresas_txt = ".//data//pro_comp_graph.txt";
         String path_pessoas_empresas_bin = ".//data//pro_comp_graph.bin";
         g.save_pro_comp_txt_graph(professionals,company,path_pessoas_empresas_txt);
-//        SymbolDigraphWeighted pessoas_empresas = new SymbolDigraphWeighted(path_pessoas_empresas_txt,";");
+        SymbolDigraphWeighted pessoas_empresas = new SymbolDigraphWeighted(path_pessoas_empresas_txt,";");
 
         //ligaçoes
-//        g.conect_pro_comp(p1,c1,pessoas_empresas,path_pessoas_empresas_txt,10);
-//        g.conect_pro_comp(p2,c1,pessoas_empresas,path_pessoas_empresas_txt,20);
-//        g.conect_pro_comp(p3,c1,pessoas_empresas,path_pessoas_empresas_txt,30);
+        g.conect_pro_comp(p1,c1,pessoas_empresas,path_pessoas_empresas_txt,10);
+        g.conect_pro_comp(p2,c1,pessoas_empresas,path_pessoas_empresas_txt,20);
+        g.conect_pro_comp(p3,c1,pessoas_empresas,path_pessoas_empresas_txt,30);
 
         //guarda e carrega de bin
 //        g.save_all_pro_comp_bin_digraph(pessoas_empresas,path_pessoas_empresas_bin);
 //        g.read_pro_comp_bin_file(pessoas_empresas,path_pessoas_empresas_bin);
 
-//        System.out.println(pessoas_empresas.digraph());
+        System.out.println(pessoas_empresas.digraph());
 
         //grafo profissionais/empresas/meetings
         String path_pro_comp_meet_txt = ".//data//pro_comp_meet.txt";
