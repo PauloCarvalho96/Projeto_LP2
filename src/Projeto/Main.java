@@ -340,6 +340,7 @@ public class Main {
         //professionals information
 //        Professional p = new Professional(null,null,null,null,null,0);
 //        p.writeProfessionalsToTXT(professionals,".//data//professionals.txt");
+//        p.write_pro_to_txt_JAVAFX(professionals,".//data//professionals_JAVAFX.txt");
 
         //meetings information
 //        Meeting m = new Meeting(null,0,null,null,null);

@@ -130,12 +130,23 @@ public class GraphCreatorFXMLController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         nifCol.setCellValueFactory(new PropertyValueFactory<>("nif"));
-        companyCol.setCellValueFactory(new PropertyValueFactory<>("company"));
+        companyCol.setCellValueFactory(new PropertyValueFactory<>("company_name"));
     }
 
     public void handleReadFileAction(ActionEvent actionEvent) {
-
-        professionalTable.getItems().addAll();
-        professionalTable.getItems().addAll();
+        professionalTable.getItems().clear();
+        In in = new In(".//data//professionals_JAVAFX.txt");
+        in.readLine();
+        while (!in.isEmpty()) {
+            String[] texto = in.readLine().split(";");
+            String name_pro = texto[0];
+            Integer nif = Integer.parseInt(texto[1]);
+            Professional test = new Professional(name_pro,null,null,null,null,nif);
+            String comp_name = texto[2];
+            Company test1 = new Company(comp_name,0,0,null);
+            test.setCompany(test1);
+            professionalTable.getItems().addAll(test);
+        }
+        in.close();
     }
 }

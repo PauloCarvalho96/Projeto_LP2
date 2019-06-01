@@ -64,6 +64,7 @@ public class Graph_project {
         for (Integer d : professionals.keys()) {
             out.print(d+";"+"\n");
         }
+        out.close();
     }
 
     public void save_pro_comp_txt_graph(SeparateChainingHashST_Projeto<Integer,Professional> professionals,SeparateChainingHashST_Projeto<Integer,Company> company,String path)
@@ -75,6 +76,7 @@ public class Graph_project {
         for (Integer c:company.keys()) {
             out.print(c+";"+"\n");
         }
+        out.close();
     }
 
     public void save_pro_comp_meet_txt_graph(SeparateChainingHashST_Projeto<Integer,Professional> professionals,SeparateChainingHashST_Projeto<Integer,Company> company,RedBlackBST<Date, Meeting> meetings,String path)
@@ -89,6 +91,7 @@ public class Graph_project {
         for (Date d:meetings.keys()) {
             out.print(d+";"+"\n");
         }
+        out.close();
     }
 
     public void write_pro_to_file_txt(SymbolGraphWheighted g, String path)
@@ -103,6 +106,7 @@ public class Graph_project {
             }
             out.print("\n");
         }
+        out.close();
     }
 
     public void conect_2_people(Professional p1, Professional p2, SymbolGraphWheighted g,String path,Integer w)
@@ -129,6 +133,7 @@ public class Graph_project {
             }
             out.print("\n");
         }
+        out.close();
     }
 
     public void conect_pro_comp(Professional p1,Company p2,SymbolDigraphWeighted g,String path,Integer w)

@@ -15,6 +15,8 @@ public class Professional extends Person implements Serializable {
 
     private Company company;
 
+    private String company_name;
+
     private ArrayList<String> meet = new ArrayList<>();
     private Person person;
     private Date date;
@@ -46,6 +48,14 @@ public class Professional extends Person implements Serializable {
 
     public double getSalary() {
         return salary;
+    }
+
+    public String getCompany_name() {
+        return getCompany().getName();
+    }
+
+    public void setCompany_name(String company_name) {
+        this.company_name = company_name;
     }
 
     public ArrayList<String> getCompanyHistory() {
@@ -179,6 +189,16 @@ public class Professional extends Person implements Serializable {
     /**
      * SAVE FILES
      */
+    public void write_pro_to_txt_JAVAFX(SeparateChainingHashST_Projeto<Integer,Professional> professionals,String path)
+    {
+        Out out = new Out(path);
+        for (Integer d:professionals.keys()) {
+            out.print("\n");
+            out.print(professionals.get(d).getName()+";"+professionals.get(d).getNif()+";"+professionals.get(d).getCompany().getName()+ ";");
+        }
+        out.close();
+    }
+
     public void writeProfessionalsToTXT(SeparateChainingHashST_Projeto<Integer,Professional> professionals,String path)
     {
         Out out = new Out(path);   //abre ficheiro
@@ -204,6 +224,7 @@ public class Professional extends Person implements Serializable {
             out.print(";");
             out.print(professionals.get(d).getCompanyHistory());
         }
+        out.close();
     }
 
     /**
@@ -239,5 +260,6 @@ public class Professional extends Person implements Serializable {
             p.associateProfessionalMeet(m);
             p.addCompanyHistoryToPro(c2);
         }
+        in.close();
     }
 }
