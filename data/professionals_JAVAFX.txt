@@ -1,6 +1,7 @@
 
 Maria;888888888;Fotogrupo;
 Artur;444444444;PR MOTORS;
+Jorge;765397865;Desempregado;
 Andre;101010101;Fotogrupo;
 Joana;777777777;Fotogrupo;
 Jota;333333333;UFP;

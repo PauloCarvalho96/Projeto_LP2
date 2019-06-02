@@ -1,6 +1,7 @@
 
 888888888;Fotogrupo;Maria;9/1/1987;Feminino;[Ruby, PHP];50.0,30.0;650.0;[Photoshop];[Fotogrupo]
 444444444;PR MOTORS;Artur;4/7/1991;Masculino;[Fotografia, Video];10.0,10.0;2000.0;[Palestra C];[PR MOTORS]
+765397865;Desempregado;Jorge;30/12/1964;Masculino;[Base de dados, Computacao];4.0,5.0;0.0;[];[Desempregado]
 101010101;Fotogrupo;Andre;30/12/1964;Feminino;[Base de dados, Computacao];4.0,5.0;650.0;[Photoshop];[Fotogrupo]
 777777777;Fotogrupo;Joana;6/10/1975;Feminino;[Base de dados, Computacao];4.0,5.0;1000.0;[Photoshop];[Fotogrupo]
 333333333;UFP;Jota;5/5/1994;Masculino;[Programacao C, Programacao JAVA];10.0,10.0;3000.0;[Palestra JAVA];[UFP]

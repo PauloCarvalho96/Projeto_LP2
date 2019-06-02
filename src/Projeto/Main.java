@@ -104,6 +104,7 @@ public class Main {
         Professional p8 = new Professional("Maria", "Feminino", bdp8, skillsP4, l4, 888888888);
         Professional p9 = new Professional("Osvaldo", "Feminino", bdp9, skillsP5, l2, 999999999);
         Professional p10 = new Professional("Andre", "Feminino", bdp10, skillsP3, l3, 101010101);
+        Professional p11 = new Professional("Jorge", "Masculino", bdp10, skillsP3, l3, 765397865);
 
         //companys
         Company c1 = new Company("UFP", 252252525, 190190190, l2);
@@ -127,20 +128,20 @@ public class Main {
         professionals.put(p8.getNif(), p8);
         professionals.put(p9.getNif(), p9);
         professionals.put(p10.getNif(), p10);
+        professionals.put(p11.getNif(),p11);
 
         //regista todos os profissionais em empresas
         c1.registerProfessional(d1r, p1, c1, 1000);
         c1.registerProfessional(d2r, p2, c1, 5000);
         c1.registerProfessional(d3r, p3, c1, 3000);
-
         c2.registerProfessional(d4r, p4, c2, 2000);
         c2.registerProfessional(d5r, p5, c2, 8000);
-
         c3.registerProfessional(d6r, p6, c3, 10000);
         c3.registerProfessional(d7r, p7, c3, 1000);
         c3.registerProfessional(d8r, p8, c3, 650);
         c3.registerProfessional(d9r, p9, c3, 850);
         c3.registerProfessional(d10r, p10, c3, 650);
+        c4.registerProfessional(d1r,p11,c4,0);
 
         //procura profissionais pela skill
 //        c1.searchBySkill("Programacao C");
@@ -383,7 +384,7 @@ public class Main {
 
         //guarda e carrega de bin
         g.save_all_professionals_bin_graph(pessoas,path_pessoas_bin);   //guarda grafo em ficheiro bin
-//        pessoas = g.read_pro_bin_file(pessoas,path_pessoas_bin);          //le do ficheiro bin
+        pessoas = g.read_pro_bin_file(pessoas,path_pessoas_bin);          //le do ficheiro bin
 
 //        System.out.println(pessoas.graph());
 
@@ -478,9 +479,12 @@ public class Main {
 //        g.search_comp_pro_followers(c3,pro_comp_meet,professionals,company,meetings);
 
         //todos os profissionais que participaram num meet
-
 //        g.search_meet_pro_followers(m1,pro_comp_meet,professionals,company,meetings);
 //        g.search_meet_pro_followers(m2,pro_comp_meet,professionals,company,meetings);
 //        g.search_meet_pro_followers(m3,pro_comp_meet,professionals,company,meetings);
+
+        //pesquisar profissional desempregado com determinada skill
+//        g.search_pro_without_comp_and_skills(pro_comp_meet,c4,"Base de dados",professionals,company,meetings);
+//        g.search_pro_without_comp_and_skills(pro_comp_meet,c4,"Computacao",professionals,company,meetings);
     }
 }
