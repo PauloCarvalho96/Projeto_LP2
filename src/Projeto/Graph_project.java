@@ -41,15 +41,17 @@ public class Graph_project {
         }
     }
 
-    public void read_pro_comp_bin_file(SymbolDigraphWeighted g, String path) {
+    public SymbolDigraphWeighted read_pro_comp_bin_file(SymbolDigraphWeighted g, String path) {
         ObjectInputStream ios = null;
         try {
             ios = new ObjectInputStream(new FileInputStream(new File(path)));
             g = (SymbolDigraphWeighted) ios.readObject();
+            return g;
 //            System.out.println(g.digraph());
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     public void save_professionals_txt_graph(SeparateChainingHashST_Projeto<Integer, Professional> professionals, String path) {
@@ -277,11 +279,11 @@ public class Graph_project {
     public void conect_meet_meet_graphProCompMeet(Company p1, Company p2, SymbolDigraphWeighted g, String path, Integer w, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings) {
         for (int v = 0; v < g.digraph().V(); v++) {       //percorre os vertices
             int i = pro_or_comp_or_meet(g, v, professionals, company, meetings);
-            if (i == 2) {
+            if (i == 1) {
                 if (Integer.parseInt(g.nameOf(v)) == p1.getNif()) {
                     for (int vi = 0; vi < g.digraph().V(); vi++) {
                         int x = pro_or_comp_or_meet(g, vi, professionals, company, meetings);
-                        if (x == 2) {
+                        if (x == 1) {
                             if (Integer.parseInt(g.nameOf(vi)) == p2.getNif()) {
                                 g.digraph().addEdge(new DirectedEdge(v, vi, w));
                                 write_pro_comp_to_file_txt(g, path, professionals, company, meetings);
@@ -331,6 +333,34 @@ public class Graph_project {
                                 if (professionals.get(di).getNif() == Integer.parseInt(g.nameOf(d.to()))){
                                     System.out.println(professionals.get(di).getName());
                                 }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void short_path_between_CompMeet(SymbolDigraphWeighted g,Company c, Meeting m,SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings)
+    {
+        System.out.println("Caminho mais curto de "+c.getName()+" a "+m.getName());
+        System.out.println(c.getName()+"-"+m.getName()+" "+"Distancia");
+        for (int v = 0; v < g.digraph().V(); v++) {
+            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings);
+            if(i==1)
+            {
+                if(c.getNif() == Integer.parseInt(g.nameOf(v))){
+                    for (int vi = 0; vi < g.digraph().V(); vi++) {
+                        int x = pro_or_comp_or_meet(g, vi, professionals, company, meetings);
+                        if(x==2)
+                        {
+                            if(m.getDate().toString().compareTo(g.nameOf(vi))==0){
+                                DijkstraSP_Projeto sp = new DijkstraSP_Projeto(g,v);
+                                    if(sp.hasPathTo(vi)){
+                                        System.out.println(v+"-"+vi+" "+sp.distTo(vi));
+                                    }else{
+                                        System.out.println("Sem caminho possivel!");
+                                    }
                             }
                         }
                     }

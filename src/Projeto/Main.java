@@ -408,7 +408,7 @@ public class Main {
 
         //guarda e carrega de bin
         g.save_all_pro_comp_bin_digraph(pessoas_empresas,path_pessoas_empresas_bin);
-//        g.read_pro_comp_bin_file(pessoas_empresas,path_pessoas_empresas_bin);
+        pessoas_empresas = g.read_pro_comp_bin_file(pessoas_empresas,path_pessoas_empresas_bin);
 
 //        System.out.println(pessoas_empresas.digraph());
 
@@ -446,8 +446,8 @@ public class Main {
         g.conect_pro_meet_graphProCompMeet(p1,m1,pro_comp_meet,path_pro_comp_meet_txt,14,professionals,company,meetings);
         g.conect_pro_meet_graphProCompMeet(p3,m1,pro_comp_meet,path_pro_comp_meet_txt,14,professionals,company,meetings);
         g.conect_comp_meet_graphProCompMeet(c1,m1,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
-        g.conect_comp_meet_graphProCompMeet(c1,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
-        g.conect_comp_meet_graphProCompMeet(c2,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
+        g.conect_comp_meet_graphProCompMeet(c1,m2,pro_comp_meet,path_pro_comp_meet_txt,17,professionals,company,meetings);
+        g.conect_comp_meet_graphProCompMeet(c2,m2,pro_comp_meet,path_pro_comp_meet_txt,25,professionals,company,meetings);
         g.conect_pro_meet_graphProCompMeet(p2,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
         g.conect_pro_meet_graphProCompMeet(p4,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
         g.conect_pro_meet_graphProCompMeet(p5,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
@@ -457,11 +457,19 @@ public class Main {
         g.conect_pro_meet_graphProCompMeet(p8,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
         g.conect_pro_meet_graphProCompMeet(p9,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
         g.conect_pro_meet_graphProCompMeet(p10,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
+
+        //guarda e carrega de bin
+        g.save_all_pro_comp_bin_digraph(pro_comp_meet,path_pro_comp_meet_bin);
+        pro_comp_meet = g.read_pro_comp_bin_file(pro_comp_meet,path_pro_comp_meet_bin);
+
 //        System.out.println(pro_comp_meet.digraph());
 
         /**
          * Funçoes de Pesquisa em Grafos
          */
+        //caminho mais curto entre meet e empresa  (Dijkstra)
+        g.short_path_between_CompMeet(pro_comp_meet,c1,m3,professionals,company,meetings);
+
         //todos os profissionais que seguem uma empresa
 //        g.search_comp_pro_followers(c1,pro_comp_meet,professionals,company,meetings);
 //        g.search_comp_pro_followers(c2,pro_comp_meet,professionals,company,meetings);
