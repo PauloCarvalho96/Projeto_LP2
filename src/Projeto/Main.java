@@ -387,12 +387,6 @@ public class Main {
 
 //        System.out.println(pessoas.graph());
 
-        //funçoes de pesquisa
-        //pesquisa profissionais que seguem outro profissional
-//        g.search_pro_followers(p1,pessoas,professionals);
-//        g.search_pro_followers(p2,pessoas,professionals);
-//        g.search_pro_followers(p3,pessoas,professionals);
-
         //grafo profissionais / empresas
         String path_pessoas_empresas_txt = ".//data//pro_comp_graph.txt";
         String path_pessoas_empresas_bin = ".//data//pro_comp_graph.bin";
@@ -401,17 +395,6 @@ public class Main {
         g.pro_comp_meet_vertex(pessoas_empresas,path_pessoas_empresas_txt,professionals,company,meetings);
 
         //ligaçoes (funçoes teste)
-        g.conect_pro_comp_graphProCompMeet(p1,c1,pessoas_empresas,path_pessoas_empresas_txt,10,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p2,c1,pessoas_empresas,path_pessoas_empresas_txt,20,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p3,c1,pessoas_empresas,path_pessoas_empresas_txt,30,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p4,c2,pessoas_empresas,path_pessoas_empresas_txt,12,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p5,c2,pessoas_empresas,path_pessoas_empresas_txt,17,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p6,c3,pessoas_empresas,path_pessoas_empresas_txt,22,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p7,c3,pessoas_empresas,path_pessoas_empresas_txt,24,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p8,c3,pessoas_empresas,path_pessoas_empresas_txt,14,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p9,c3,pessoas_empresas,path_pessoas_empresas_txt,37,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p10,c3,pessoas_empresas,path_pessoas_empresas_txt,27,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p1,c1,pessoas_empresas,path_pessoas_empresas_txt,10,professionals,company,meetings);
         g.conect_pro_comp_graphProCompMeet(p1,c1,pessoas_empresas,path_pessoas_empresas_txt,10,professionals,company,meetings);
         g.conect_pro_comp_graphProCompMeet(p2,c1,pessoas_empresas,path_pessoas_empresas_txt,20,professionals,company,meetings);
         g.conect_pro_comp_graphProCompMeet(p3,c1,pessoas_empresas,path_pessoas_empresas_txt,30,professionals,company,meetings);
@@ -437,17 +420,6 @@ public class Main {
         g.pro_comp_meet_vertex(pro_comp_meet,path_pro_comp_meet_txt,professionals,company,meetings);
 
         //ligaçoes (funçoes teste)
-        g.conect_pro_comp_graphProCompMeet(p1,c1,pro_comp_meet,path_pro_comp_meet_txt,10,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p2,c1,pro_comp_meet,path_pro_comp_meet_txt,20,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p3,c1,pro_comp_meet,path_pro_comp_meet_txt,30,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p4,c2,pro_comp_meet,path_pro_comp_meet_txt,12,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p5,c2,pro_comp_meet,path_pro_comp_meet_txt,17,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p6,c3,pro_comp_meet,path_pro_comp_meet_txt,22,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p7,c3,pro_comp_meet,path_pro_comp_meet_txt,24,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p8,c3,pro_comp_meet,path_pro_comp_meet_txt,14,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p9,c3,pro_comp_meet,path_pro_comp_meet_txt,37,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p10,c3,pro_comp_meet,path_pro_comp_meet_txt,27,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p1,c1,pro_comp_meet,path_pro_comp_meet_txt,10,professionals,company,meetings);
         g.conect_pro_comp_graphProCompMeet(p1,c1,pro_comp_meet,path_pro_comp_meet_txt,10,professionals,company,meetings);
         g.conect_pro_comp_graphProCompMeet(p2,c1,pro_comp_meet,path_pro_comp_meet_txt,20,professionals,company,meetings);
         g.conect_pro_comp_graphProCompMeet(p3,c1,pro_comp_meet,path_pro_comp_meet_txt,30,professionals,company,meetings);
@@ -486,5 +458,12 @@ public class Main {
         g.conect_pro_meet_graphProCompMeet(p9,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
         g.conect_pro_meet_graphProCompMeet(p10,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
 //        System.out.println(pro_comp_meet.digraph());
+
+        /**
+         * Funçoes de Pesquisa em Grafos
+         */
+//        g.search_comp_pro_followers(c1,pro_comp_meet,professionals,company,meetings);   //profissionais que seguem 1 empresa
+//        g.search_comp_pro_followers(c2,pro_comp_meet,professionals,company,meetings);   //profissionais que seguem 1 empresa
+//        g.search_comp_pro_followers(c3,pro_comp_meet,professionals,company,meetings);   //profissionais que seguem 1 empresa
     }
 }
