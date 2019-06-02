@@ -2,7 +2,6 @@ package Projeto.Fase2_JavaFX;
 
 import Projeto.*;
 import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.SeparateChainingHashST_Projeto;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
@@ -18,11 +17,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-import java.awt.geom.Line2D;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -53,13 +47,15 @@ public class GraphCreatorFXMLController implements Initializable {
     public TableColumn<Meeting,String> meetingsNameCol;
     public TableColumn<Meeting,String> meetingDataCol;
     public TableColumn<Meeting,String> meetingDuracaoCol;
+    public TableView<Professional> searchTable;
+    public TableColumn<Professional,String> searchNameCol;
+    public TableColumn<Professional,String> searchProMeet;
     private Graph graph;
     private String delimeter = ";";
     private double radius = 10.0;
     private String path_pessoas_txt = ".//data//professionals_graph.txt";
     private String path_companies_txt = ".//data//pro_comp_graph.txt";
     private String path_pro_comp_meet_txt = ".//data//pro_comp_meet.txt";
-
 
     public void create_vertice_in_ProGraph(int v)
     {
@@ -347,6 +343,30 @@ public class GraphCreatorFXMLController implements Initializable {
             Company test1 = new Company(comp_name,0,0,null);
             test.setCompany(test1);
             professionalTable.getItems().addAll(test);
+        }
+        in.close();
+    }
+
+    public void handleSearchProComp(ActionEvent actionEvent) {
+        searchProComp();
+    }
+
+    public void handleSearchProMeet(ActionEvent actionEvent) {
+    }
+
+    public void searchProComp(){
+        searchTable.getItems().clear();
+        String path_search_comp_pro_txt = ".//data//search_comp_pro.txt";
+        In in = new In(path_search_comp_pro_txt);
+        in.readLine();
+        while (!in.isEmpty()){
+            String[] texto = in.readLine().split(";");
+            String comp_name = texto[0];
+            Company comp = new Company(comp_name,0,0,null);
+            String name_pro = texto[1];
+            Professional pro = new Professional(name_pro,null,null,null,null,null);
+            pro.setCompany(comp);
+            searchTable.getItems().addAll(pro);
         }
         in.close();
     }
