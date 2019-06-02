@@ -468,7 +468,9 @@ public class Main {
          * Funçoes de Pesquisa em Grafos
          */
         //caminho mais curto entre meet e empresa  (Dijkstra)
-        g.short_path_between_CompMeet(pro_comp_meet,c1,m3,professionals,company,meetings);
+        String path_search_pro_comp = ".//data//search_comp_pro.txt";
+        g.write_search_comp_pro(pro_comp_meet,path_search_pro_comp,professionals,company,meetings);
+//        g.short_path_between_CompMeet(pro_comp_meet,c1,m3,professionals,company,meetings);
 
         //todos os profissionais que seguem uma empresa
 //        g.search_comp_pro_followers(c1,pro_comp_meet,professionals,company,meetings);
@@ -476,6 +478,7 @@ public class Main {
 //        g.search_comp_pro_followers(c3,pro_comp_meet,professionals,company,meetings);
 
         //todos os profissionais que participaram num meet
+
 //        g.search_meet_pro_followers(m1,pro_comp_meet,professionals,company,meetings);
 //        g.search_meet_pro_followers(m2,pro_comp_meet,professionals,company,meetings);
 //        g.search_meet_pro_followers(m3,pro_comp_meet,professionals,company,meetings);

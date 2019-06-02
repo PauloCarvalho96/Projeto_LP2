@@ -295,6 +295,33 @@ public class Graph_project {
         }
     }
 
+    public void write_search_comp_pro(SymbolDigraphWeighted g,String path,SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company,RedBlackBST<Date, Meeting> meetings)
+    {
+        Out out = new Out(path);
+        for (int v = 0; v < g.digraph().V(); v++) {
+            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings);
+            if (i == 1) {
+                for (Integer d:company.keys()) {
+                    if(company.get(d).getNif()==Integer.parseInt(g.nameOf(v))){
+                        out.print(company.get(d).getName()+";");
+                        for (DirectedEdge e:g.digraph().adj(v)) {
+                            int x = pro_or_comp_or_meet(g, e.to(), professionals, company, meetings);
+                            if(x==0){
+                                for (Integer t:professionals.keys()) {
+                                    if(professionals.get(t).getNif()==Integer.parseInt(g.nameOf(e.to()))){
+                                        out.print(professionals.get(t).getName()+";");
+                                    }
+                                }
+                            }
+                        }
+                        out.print("\n");
+                    }
+                }
+            }
+        }
+        out.close();
+    }
+
     /**
      * PESQUISA EM GRAFOS
      */

@@ -1,0 +1,3 @@
+Fotogrupo;Andre;Osvaldo;Maria;Joana;Catarina;
+PR MOTORS;Pedro;Artur;
+UFP;Jota;Carolina;Paulo;
