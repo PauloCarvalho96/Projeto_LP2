@@ -317,4 +317,25 @@ public class Graph_project {
             }
         }
     }
+
+    public void search_meet_pro_followers(Meeting p2, SymbolDigraphWeighted g, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings) {
+        System.out.println("Profissionais que participaram no encontro " + p2.getName());
+        for (int v = 0; v < g.digraph().V(); v++) {
+            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings);
+            if (i == 2) {
+                if (p2.getDate().toString().compareTo(g.nameOf(v))==0) {
+                    for (DirectedEdge d:g.digraph().adj(v)) {
+                        int y = pro_or_comp_or_meet(g, d.to(), professionals, company, meetings);
+                        if(y==0) {
+                            for (Integer di:professionals.keys()) {
+                                if (professionals.get(di).getNif() == Integer.parseInt(g.nameOf(d.to()))){
+                                    System.out.println(professionals.get(di).getName());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

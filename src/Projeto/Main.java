@@ -462,8 +462,14 @@ public class Main {
         /**
          * Funçoes de Pesquisa em Grafos
          */
-//        g.search_comp_pro_followers(c1,pro_comp_meet,professionals,company,meetings);   //profissionais que seguem 1 empresa
-//        g.search_comp_pro_followers(c2,pro_comp_meet,professionals,company,meetings);   //profissionais que seguem 1 empresa
-//        g.search_comp_pro_followers(c3,pro_comp_meet,professionals,company,meetings);   //profissionais que seguem 1 empresa
+        //todos os profissionais que seguem uma empresa
+//        g.search_comp_pro_followers(c1,pro_comp_meet,professionals,company,meetings);
+//        g.search_comp_pro_followers(c2,pro_comp_meet,professionals,company,meetings);
+//        g.search_comp_pro_followers(c3,pro_comp_meet,professionals,company,meetings);
+
+        //todos os profissionais que participaram num meet
+//        g.search_meet_pro_followers(m1,pro_comp_meet,professionals,company,meetings);
+//        g.search_meet_pro_followers(m2,pro_comp_meet,professionals,company,meetings);
+//        g.search_meet_pro_followers(m3,pro_comp_meet,professionals,company,meetings);
     }
 }
