@@ -425,10 +425,55 @@ public class Main {
         SymbolDigraphWeighted pro_comp_meet = new SymbolDigraphWeighted(path_pro_comp_meet_txt,";");
         g.pro_comp_meet_vertex(pro_comp_meet,path_pro_comp_meet_txt,professionals,company,meetings);
 
-        //ligaçoes
+        //ligaçoes (funçoes teste)
         g.conect_pro_comp_graphProCompMeet(p1,c1,pro_comp_meet,path_pro_comp_meet_txt,10,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p2,c1,pro_comp_meet,path_pro_comp_meet_txt,20,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p3,c1,pro_comp_meet,path_pro_comp_meet_txt,30,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p4,c2,pro_comp_meet,path_pro_comp_meet_txt,12,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p5,c2,pro_comp_meet,path_pro_comp_meet_txt,17,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p6,c3,pro_comp_meet,path_pro_comp_meet_txt,22,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p7,c3,pro_comp_meet,path_pro_comp_meet_txt,24,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p8,c3,pro_comp_meet,path_pro_comp_meet_txt,14,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p9,c3,pro_comp_meet,path_pro_comp_meet_txt,37,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p10,c3,pro_comp_meet,path_pro_comp_meet_txt,27,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p1,c1,pro_comp_meet,path_pro_comp_meet_txt,10,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p1,c1,pro_comp_meet,path_pro_comp_meet_txt,10,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p2,c1,pro_comp_meet,path_pro_comp_meet_txt,20,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p3,c1,pro_comp_meet,path_pro_comp_meet_txt,30,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p4,c2,pro_comp_meet,path_pro_comp_meet_txt,12,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p5,c2,pro_comp_meet,path_pro_comp_meet_txt,17,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p6,c3,pro_comp_meet,path_pro_comp_meet_txt,22,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p7,c3,pro_comp_meet,path_pro_comp_meet_txt,24,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p8,c3,pro_comp_meet,path_pro_comp_meet_txt,14,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p9,c3,pro_comp_meet,path_pro_comp_meet_txt,37,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p10,c3,pro_comp_meet,path_pro_comp_meet_txt,27,professionals,company,meetings);
+        g.conect_pro_pro_graphProCompMeet(p1,p2,pro_comp_meet,path_pro_comp_meet_txt,1,professionals,company,meetings);
+        g.conect_pro_pro_graphProCompMeet(p1,p3,pro_comp_meet,path_pro_comp_meet_txt,2,professionals,company,meetings);
+        g.conect_pro_pro_graphProCompMeet(p2,p3,pro_comp_meet,path_pro_comp_meet_txt,3,professionals,company,meetings);
+        g.conect_pro_pro_graphProCompMeet(p2,p5,pro_comp_meet,path_pro_comp_meet_txt,4,professionals,company,meetings);
+        g.conect_pro_pro_graphProCompMeet(p2,p4,pro_comp_meet,path_pro_comp_meet_txt,5,professionals,company,meetings);
+        g.conect_pro_pro_graphProCompMeet(p3,p4,pro_comp_meet,path_pro_comp_meet_txt,6,professionals,company,meetings);
+        g.conect_pro_pro_graphProCompMeet(p4,p5,pro_comp_meet,path_pro_comp_meet_txt,7,professionals,company,meetings);
+        g.conect_pro_pro_graphProCompMeet(p6,p8,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
+        g.conect_pro_pro_graphProCompMeet(p6,p9,pro_comp_meet,path_pro_comp_meet_txt,9,professionals,company,meetings);
+        g.conect_pro_pro_graphProCompMeet(p7,p9,pro_comp_meet,path_pro_comp_meet_txt,10,professionals,company,meetings);
+        g.conect_pro_pro_graphProCompMeet(p7,p10,pro_comp_meet,path_pro_comp_meet_txt,11,professionals,company,meetings);
+        g.conect_pro_pro_graphProCompMeet(p8,p9,pro_comp_meet,path_pro_comp_meet_txt,12,professionals,company,meetings);
+        g.conect_pro_pro_graphProCompMeet(p9,p10,pro_comp_meet,path_pro_comp_meet_txt,13,professionals,company,meetings);
         g.conect_pro_meet_graphProCompMeet(p1,m1,pro_comp_meet,path_pro_comp_meet_txt,14,professionals,company,meetings);
+        g.conect_pro_meet_graphProCompMeet(p3,m1,pro_comp_meet,path_pro_comp_meet_txt,14,professionals,company,meetings);
         g.conect_comp_meet_graphProCompMeet(c1,m1,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
+        g.conect_comp_meet_graphProCompMeet(c1,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
+        g.conect_comp_meet_graphProCompMeet(c2,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
+        g.conect_pro_meet_graphProCompMeet(p2,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
+        g.conect_pro_meet_graphProCompMeet(p4,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
+        g.conect_pro_meet_graphProCompMeet(p5,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
+        g.conect_comp_meet_graphProCompMeet(c3,m3,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
+        g.conect_pro_meet_graphProCompMeet(p6,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
+        g.conect_pro_meet_graphProCompMeet(p7,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
+        g.conect_pro_meet_graphProCompMeet(p8,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
+        g.conect_pro_meet_graphProCompMeet(p9,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
+        g.conect_pro_meet_graphProCompMeet(p10,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
 //        System.out.println(pro_comp_meet.digraph());
     }
 }
