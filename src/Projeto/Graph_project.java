@@ -167,20 +167,6 @@ public class Graph_project {
         out.close();
     }
 
-    public void conect_pro_comp(Professional p1,Company p2,SymbolDigraphWeighted g,String path,Integer w,SeparateChainingHashST_Projeto<Integer,Professional> professionals,SeparateChainingHashST_Projeto<Integer,Company> company,RedBlackBST<Date, Meeting> meetings)
-    {
-        for (int v = 0; v < g.digraph().V(); v++) {       //percorre os vertices
-            if (Integer.parseInt(g.nameOf(v)) == p1.getNif()) {     //se o vertice for igual ao nif do profissional
-                for (int vi = 0; vi < g.digraph().V(); vi++) {
-                    if (Integer.parseInt(g.nameOf(vi)) == p2.getNif()) {
-                        g.digraph().addEdge(new DirectedEdge(v,vi,w));                            //adiciona ligaçao
-                        write_pro_comp_to_file_txt(g,path,professionals,company,meetings);
-                    }
-                }
-            }
-        }
-    }
-
     public void pro_comp_meet_vertex(SymbolDigraphWeighted g,String path,SeparateChainingHashST_Projeto<Integer,Professional> professionals,SeparateChainingHashST_Projeto<Integer,Company> company,RedBlackBST<Date, Meeting> meetings)
     {
         Out out = new Out(path);

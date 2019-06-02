@@ -366,7 +366,7 @@ public class Main {
         g.save_professionals_txt_graph(professionals,path_pessoas_txt);     //guarda todas os profissionais no txt (NIF)
         SymbolGraphWheighted pessoas = new SymbolGraphWheighted(path_pessoas_txt, ";");    //cria o symbol graph de profissionais
 
-        //ligaçoes
+        //ligaçoes (funçoes teste)
         g.conect_2_people(p1,p2,pessoas,path_pessoas_txt,10);
         g.conect_2_people(p1,p3,pessoas,path_pessoas_txt,20);
         g.conect_2_people(p2,p3,pessoas,path_pessoas_txt,30);
@@ -380,7 +380,6 @@ public class Main {
         g.conect_2_people(p7,p10,pessoas,path_pessoas_txt,5);
         g.conect_2_people(p8,p9,pessoas,path_pessoas_txt,5);
         g.conect_2_people(p9,p10,pessoas,path_pessoas_txt,5);
-
 
         //guarda e carrega de bin
         g.save_all_professionals_bin_graph(pessoas,path_pessoas_bin);   //guarda grafo em ficheiro bin
@@ -399,18 +398,30 @@ public class Main {
         String path_pessoas_empresas_bin = ".//data//pro_comp_graph.bin";
         g.save_pro_comp_txt_graph(professionals,company,path_pessoas_empresas_txt);
         SymbolDigraphWeighted pessoas_empresas = new SymbolDigraphWeighted(path_pessoas_empresas_txt,";");
+        g.pro_comp_meet_vertex(pessoas_empresas,path_pessoas_empresas_txt,professionals,company,meetings);
 
-        //ligaçoes
-        g.conect_pro_comp(p1,c1,pessoas_empresas,path_pessoas_empresas_txt,10,professionals,company,meetings);
-        g.conect_pro_comp(p2,c1,pessoas_empresas,path_pessoas_empresas_txt,20,professionals,company,meetings);
-        g.conect_pro_comp(p3,c1,pessoas_empresas,path_pessoas_empresas_txt,30,professionals,company,meetings);
-        g.conect_pro_comp(p4,c2,pessoas_empresas,path_pessoas_empresas_txt,12,professionals,company,meetings);
-        g.conect_pro_comp(p5,c2,pessoas_empresas,path_pessoas_empresas_txt,17,professionals,company,meetings);
-        g.conect_pro_comp(p6,c3,pessoas_empresas,path_pessoas_empresas_txt,22,professionals,company,meetings);
-        g.conect_pro_comp(p7,c3,pessoas_empresas,path_pessoas_empresas_txt,24,professionals,company,meetings);
-        g.conect_pro_comp(p8,c3,pessoas_empresas,path_pessoas_empresas_txt,14,professionals,company,meetings);
-        g.conect_pro_comp(p9,c3,pessoas_empresas,path_pessoas_empresas_txt,37,professionals,company,meetings);
-        g.conect_pro_comp(p10,c3,pessoas_empresas,path_pessoas_empresas_txt,27,professionals,company,meetings);
+        //ligaçoes (funçoes teste)
+        g.conect_pro_comp_graphProCompMeet(p1,c1,pessoas_empresas,path_pessoas_empresas_txt,10,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p2,c1,pessoas_empresas,path_pessoas_empresas_txt,20,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p3,c1,pessoas_empresas,path_pessoas_empresas_txt,30,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p4,c2,pessoas_empresas,path_pessoas_empresas_txt,12,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p5,c2,pessoas_empresas,path_pessoas_empresas_txt,17,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p6,c3,pessoas_empresas,path_pessoas_empresas_txt,22,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p7,c3,pessoas_empresas,path_pessoas_empresas_txt,24,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p8,c3,pessoas_empresas,path_pessoas_empresas_txt,14,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p9,c3,pessoas_empresas,path_pessoas_empresas_txt,37,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p10,c3,pessoas_empresas,path_pessoas_empresas_txt,27,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p1,c1,pessoas_empresas,path_pessoas_empresas_txt,10,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p1,c1,pessoas_empresas,path_pessoas_empresas_txt,10,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p2,c1,pessoas_empresas,path_pessoas_empresas_txt,20,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p3,c1,pessoas_empresas,path_pessoas_empresas_txt,30,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p4,c2,pessoas_empresas,path_pessoas_empresas_txt,12,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p5,c2,pessoas_empresas,path_pessoas_empresas_txt,17,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p6,c3,pessoas_empresas,path_pessoas_empresas_txt,22,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p7,c3,pessoas_empresas,path_pessoas_empresas_txt,24,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p8,c3,pessoas_empresas,path_pessoas_empresas_txt,14,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p9,c3,pessoas_empresas,path_pessoas_empresas_txt,37,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p10,c3,pessoas_empresas,path_pessoas_empresas_txt,27,professionals,company,meetings);
 
         //guarda e carrega de bin
         g.save_all_pro_comp_bin_digraph(pessoas_empresas,path_pessoas_empresas_bin);
