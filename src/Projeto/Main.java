@@ -404,6 +404,13 @@ public class Main {
         g.conect_pro_comp(p1,c1,pessoas_empresas,path_pessoas_empresas_txt,10,professionals,company,meetings);
         g.conect_pro_comp(p2,c1,pessoas_empresas,path_pessoas_empresas_txt,20,professionals,company,meetings);
         g.conect_pro_comp(p3,c1,pessoas_empresas,path_pessoas_empresas_txt,30,professionals,company,meetings);
+        g.conect_pro_comp(p4,c2,pessoas_empresas,path_pessoas_empresas_txt,12,professionals,company,meetings);
+        g.conect_pro_comp(p5,c2,pessoas_empresas,path_pessoas_empresas_txt,17,professionals,company,meetings);
+        g.conect_pro_comp(p6,c3,pessoas_empresas,path_pessoas_empresas_txt,22,professionals,company,meetings);
+        g.conect_pro_comp(p7,c3,pessoas_empresas,path_pessoas_empresas_txt,24,professionals,company,meetings);
+        g.conect_pro_comp(p8,c3,pessoas_empresas,path_pessoas_empresas_txt,14,professionals,company,meetings);
+        g.conect_pro_comp(p9,c3,pessoas_empresas,path_pessoas_empresas_txt,37,professionals,company,meetings);
+        g.conect_pro_comp(p10,c3,pessoas_empresas,path_pessoas_empresas_txt,27,professionals,company,meetings);
 
         //guarda e carrega de bin
         g.save_all_pro_comp_bin_digraph(pessoas_empresas,path_pessoas_empresas_bin);
@@ -419,8 +426,9 @@ public class Main {
         g.pro_comp_meet_vertex(pro_comp_meet,path_pro_comp_meet_txt,professionals,company,meetings);
 
         //ligaçoes
-
-
+        g.conect_pro_comp_graphProCompMeet(p1,c1,pro_comp_meet,path_pro_comp_meet_txt,10,professionals,company,meetings);
+        g.conect_pro_meet_graphProCompMeet(p1,m1,pro_comp_meet,path_pro_comp_meet_txt,14,professionals,company,meetings);
+        g.conect_comp_meet_graphProCompMeet(c1,m1,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
 //        System.out.println(pro_comp_meet.digraph());
     }
 }

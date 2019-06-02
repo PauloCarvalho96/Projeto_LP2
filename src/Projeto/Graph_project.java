@@ -121,7 +121,6 @@ public class Graph_project {
             }
     }
 
-
     public int pro_or_comp_or_meet(SymbolDigraphWeighted g,int v,SeparateChainingHashST_Projeto<Integer,Professional> professionals,SeparateChainingHashST_Projeto<Integer,Company> company,RedBlackBST<Date, Meeting> meetings) {
         for (Date d : meetings.keys()) {
             if (d.toString().compareTo(g.nameOf(v))==0) {     //se a data coicidir entao é meeting
@@ -152,7 +151,12 @@ public class Graph_project {
                 if(i==1){
                     out.print("c"+";"+v+";");
                 }else{
-                    System.out.println("erro ao ler");
+                    if(i==2)
+                    {
+                        out.print("d"+";"+v+";");
+                    }else{
+                        System.out.println("erro ao ler");
+                    }
                 }
             }
             for (DirectedEdge d:g.digraph().adj(v)) {
@@ -197,6 +201,69 @@ public class Graph_project {
             }
         }
         out.close();
+    }
+
+    public void conect_pro_comp_graphProCompMeet(Professional p1,Company p2,SymbolDigraphWeighted g,String path,Integer w,SeparateChainingHashST_Projeto<Integer,Professional> professionals,SeparateChainingHashST_Projeto<Integer,Company> company,RedBlackBST<Date, Meeting> meetings)
+    {
+        for (int v = 0; v < g.digraph().V(); v++) {       //percorre os vertices
+            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings);
+                if(i==0)
+                {
+                    if (Integer.parseInt(g.nameOf(v)) == p1.getNif()) {
+                        for (int vi = 0; vi < g.digraph().V(); vi++) {
+                            int x = pro_or_comp_or_meet(g, vi, professionals, company, meetings);
+                            if(x==1){
+                                if (Integer.parseInt(g.nameOf(vi)) == p2.getNif()) {
+                                    g.digraph().addEdge(new DirectedEdge(v,vi,w));
+                                    write_pro_comp_to_file_txt(g,path,professionals,company,meetings);
+                                }
+                            }
+                        }
+                    }
+                }
+        }
+    }
+
+    public void conect_pro_meet_graphProCompMeet(Professional p1,Meeting p2,SymbolDigraphWeighted g,String path,Integer w,SeparateChainingHashST_Projeto<Integer,Professional> professionals,SeparateChainingHashST_Projeto<Integer,Company> company,RedBlackBST<Date, Meeting> meetings)
+    {
+        for (int v = 0; v < g.digraph().V(); v++) {       //percorre os vertices
+            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings);
+            if(i==0)
+            {
+                if (Integer.parseInt(g.nameOf(v)) == p1.getNif()) {
+                    for (int vi = 0; vi < g.digraph().V(); vi++) {
+                        int x = pro_or_comp_or_meet(g, vi, professionals, company, meetings);
+                        if(x==2){
+                            if (p2.getDate().toString().compareTo(g.nameOf(vi))==0) {
+                                g.digraph().addEdge(new DirectedEdge(v,vi,w));
+                                write_pro_comp_to_file_txt(g,path,professionals,company,meetings);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void conect_comp_meet_graphProCompMeet(Company p1,Meeting p2,SymbolDigraphWeighted g,String path,Integer w,SeparateChainingHashST_Projeto<Integer,Professional> professionals,SeparateChainingHashST_Projeto<Integer,Company> company,RedBlackBST<Date, Meeting> meetings)
+    {
+        for (int v = 0; v < g.digraph().V(); v++) {       //percorre os vertices
+            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings);
+            if(i==1)
+            {
+                if (Integer.parseInt(g.nameOf(v)) == p1.getNif()) {
+                    for (int vi = 0; vi < g.digraph().V(); vi++) {
+                        int x = pro_or_comp_or_meet(g, vi, professionals, company, meetings);
+                        if(x==2){
+                            if (p2.getDate().toString().compareTo(g.nameOf(vi))==0) {
+                                g.digraph().addEdge(new DirectedEdge(v,vi,w));
+                                write_pro_comp_to_file_txt(g,path,professionals,company,meetings);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     /**
