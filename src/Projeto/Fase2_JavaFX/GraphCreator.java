@@ -1,16 +1,16 @@
 package Projeto.Fase2_JavaFX;
-
+import Projeto.Main;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class GraphCreator extends Application {
 
     public static void main(String[] args) {
+        Main.main(null);
         launch(args);
     }
 

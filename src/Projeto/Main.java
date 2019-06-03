@@ -16,6 +16,7 @@
 
 package Projeto;
 
+import Projeto.Fase2_JavaFX.GraphCreator;
 import edu.princeton.cs.algs4.*;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class Main {
         SeparateChainingHashST_Projeto<Integer, Company> company = new SeparateChainingHashST_Projeto<>();      //Date é data de registo da empresa
         SeparateChainingHashST_Projeto<Integer, Professional> professionals = new SeparateChainingHashST_Projeto<>();   //Date é data de nascimento do profissional
         RedBlackBST<Date, Meeting> meetings = new RedBlackBST<>();       //Date é data de criação do meeting
+        SeparateChainingHashST_Projeto<Integer, PontosDeEncontro> pontosDeEncontro = new SeparateChainingHashST_Projeto<>();
 
         //datas de nascimento
         Date bdp1 = new Date(21, 3, 1996, 3, 34);
@@ -111,6 +113,18 @@ public class Main {
         Company c2 = new Company("PR MOTORS", 252759021, 423567437, l3);
         Company c3 = new Company("Fotogrupo", 252846792, 425678241, l4);
         Company c4 = new Company("Desempregado", 0, 0, null);       //desempregado
+
+        //Pontos de encontro
+        PontosDeEncontro pe1 = new PontosDeEncontro("Estadio do Dragao",l1,0);
+        PontosDeEncontro pe2 = new PontosDeEncontro("Bolhao",l2,1);
+        PontosDeEncontro pe3 = new PontosDeEncontro("Aliados",l3,2);
+        PontosDeEncontro pe4 = new PontosDeEncontro("Aliados",l4,3);
+
+        //insere pontos de encontro da ST
+        pontosDeEncontro.put(pe1.getId(),pe1);
+        pontosDeEncontro.put(pe2.getId(),pe2);
+        pontosDeEncontro.put(pe3.getId(),pe3);
+        pontosDeEncontro.put(pe4.getId(),pe4);
 
         //regista empresas na base de dados
         company.put(c1.getNif(), c1);
@@ -394,19 +408,19 @@ public class Main {
         String path_pessoas_empresas_bin = ".//data//pro_comp_graph.bin";
         g.save_pro_comp_txt_graph(professionals,company,path_pessoas_empresas_txt);
         SymbolDigraphWeighted pessoas_empresas = new SymbolDigraphWeighted(path_pessoas_empresas_txt,";");
-        g.pro_comp_meet_vertex(pessoas_empresas,path_pessoas_empresas_txt,professionals,company,meetings);
+        g.pro_comp_meet_vertex(pessoas_empresas,path_pessoas_empresas_txt,professionals,company,meetings,pontosDeEncontro);
 
         //ligaçoes (funçoes teste)
-        g.conect_pro_comp_graphProCompMeet(p1,c1,pessoas_empresas,path_pessoas_empresas_txt,10,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p2,c1,pessoas_empresas,path_pessoas_empresas_txt,20,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p3,c1,pessoas_empresas,path_pessoas_empresas_txt,30,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p4,c2,pessoas_empresas,path_pessoas_empresas_txt,12,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p5,c2,pessoas_empresas,path_pessoas_empresas_txt,17,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p6,c3,pessoas_empresas,path_pessoas_empresas_txt,22,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p7,c3,pessoas_empresas,path_pessoas_empresas_txt,24,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p8,c3,pessoas_empresas,path_pessoas_empresas_txt,14,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p9,c3,pessoas_empresas,path_pessoas_empresas_txt,37,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p10,c3,pessoas_empresas,path_pessoas_empresas_txt,27,professionals,company,meetings);
+        g.conect_pro_comp_graphProCompMeet(p1,c1,pessoas_empresas,path_pessoas_empresas_txt,10,professionals,company,meetings,pontosDeEncontro);
+        g.conect_pro_comp_graphProCompMeet(p2,c1,pessoas_empresas,path_pessoas_empresas_txt,20,professionals,company,meetings,pontosDeEncontro);
+        g.conect_pro_comp_graphProCompMeet(p3,c1,pessoas_empresas,path_pessoas_empresas_txt,30,professionals,company,meetings,pontosDeEncontro);
+        g.conect_pro_comp_graphProCompMeet(p4,c2,pessoas_empresas,path_pessoas_empresas_txt,12,professionals,company,meetings,pontosDeEncontro);
+        g.conect_pro_comp_graphProCompMeet(p5,c2,pessoas_empresas,path_pessoas_empresas_txt,17,professionals,company,meetings,pontosDeEncontro);
+        g.conect_pro_comp_graphProCompMeet(p6,c3,pessoas_empresas,path_pessoas_empresas_txt,22,professionals,company,meetings,pontosDeEncontro);
+        g.conect_pro_comp_graphProCompMeet(p7,c3,pessoas_empresas,path_pessoas_empresas_txt,24,professionals,company,meetings,pontosDeEncontro);
+        g.conect_pro_comp_graphProCompMeet(p8,c3,pessoas_empresas,path_pessoas_empresas_txt,14,professionals,company,meetings,pontosDeEncontro);
+        g.conect_pro_comp_graphProCompMeet(p9,c3,pessoas_empresas,path_pessoas_empresas_txt,37,professionals,company,meetings,pontosDeEncontro);
+        g.conect_pro_comp_graphProCompMeet(p10,c3,pessoas_empresas,path_pessoas_empresas_txt,27,professionals,company,meetings,pontosDeEncontro);
 
         //guarda e carrega de bin
         g.save_all_pro_comp_bin_digraph(pessoas_empresas,path_pessoas_empresas_bin);
@@ -414,55 +428,20 @@ public class Main {
 
 //        System.out.println(pessoas_empresas.digraph());
 
-        //grafo profissionais/empresas/meetings
-        String path_pro_comp_meet_txt = ".//data//pro_comp_meet.txt";
-        String path_pro_comp_meet_bin = ".//data//pro_comp_meet.bin";
-        g.save_pro_comp_meet_txt_graph(professionals,company,meetings,path_pro_comp_meet_txt);
-        SymbolDigraphWeighted pro_comp_meet = new SymbolDigraphWeighted(path_pro_comp_meet_txt,";");
-        g.pro_comp_meet_vertex(pro_comp_meet,path_pro_comp_meet_txt,professionals,company,meetings);
+        //grafo pontos de encontro/empresas/meetings
+        String path_point_comp_meet_txt = ".//data//point_comp_meet.txt";
+        String path_point_comp_meet_bin = ".//data//point_comp_meet.bin";
+        g.save_pro_comp_meet_txt_graph(pontosDeEncontro,company,meetings,path_point_comp_meet_txt);
+        SymbolDigraphWeighted point_comp_meet = new SymbolDigraphWeighted(path_point_comp_meet_txt,";");
+        g.pro_comp_meet_vertex(point_comp_meet,path_point_comp_meet_txt,professionals,company,meetings,pontosDeEncontro);
 
         //ligaçoes (funçoes teste)
-        g.conect_pro_comp_graphProCompMeet(p1,c1,pro_comp_meet,path_pro_comp_meet_txt,10,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p2,c1,pro_comp_meet,path_pro_comp_meet_txt,20,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p3,c1,pro_comp_meet,path_pro_comp_meet_txt,30,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p4,c2,pro_comp_meet,path_pro_comp_meet_txt,12,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p5,c2,pro_comp_meet,path_pro_comp_meet_txt,17,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p6,c3,pro_comp_meet,path_pro_comp_meet_txt,22,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p7,c3,pro_comp_meet,path_pro_comp_meet_txt,24,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p8,c3,pro_comp_meet,path_pro_comp_meet_txt,14,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p9,c3,pro_comp_meet,path_pro_comp_meet_txt,37,professionals,company,meetings);
-        g.conect_pro_comp_graphProCompMeet(p10,c3,pro_comp_meet,path_pro_comp_meet_txt,27,professionals,company,meetings);
-        g.conect_pro_pro_graphProCompMeet(p1,p2,pro_comp_meet,path_pro_comp_meet_txt,1,professionals,company,meetings);
-        g.conect_pro_pro_graphProCompMeet(p1,p3,pro_comp_meet,path_pro_comp_meet_txt,2,professionals,company,meetings);
-        g.conect_pro_pro_graphProCompMeet(p2,p3,pro_comp_meet,path_pro_comp_meet_txt,3,professionals,company,meetings);
-        g.conect_pro_pro_graphProCompMeet(p2,p5,pro_comp_meet,path_pro_comp_meet_txt,4,professionals,company,meetings);
-        g.conect_pro_pro_graphProCompMeet(p2,p4,pro_comp_meet,path_pro_comp_meet_txt,5,professionals,company,meetings);
-        g.conect_pro_pro_graphProCompMeet(p3,p4,pro_comp_meet,path_pro_comp_meet_txt,6,professionals,company,meetings);
-        g.conect_pro_pro_graphProCompMeet(p4,p5,pro_comp_meet,path_pro_comp_meet_txt,7,professionals,company,meetings);
-        g.conect_pro_pro_graphProCompMeet(p6,p8,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
-        g.conect_pro_pro_graphProCompMeet(p6,p9,pro_comp_meet,path_pro_comp_meet_txt,9,professionals,company,meetings);
-        g.conect_pro_pro_graphProCompMeet(p7,p9,pro_comp_meet,path_pro_comp_meet_txt,10,professionals,company,meetings);
-        g.conect_pro_pro_graphProCompMeet(p7,p10,pro_comp_meet,path_pro_comp_meet_txt,11,professionals,company,meetings);
-        g.conect_pro_pro_graphProCompMeet(p8,p9,pro_comp_meet,path_pro_comp_meet_txt,12,professionals,company,meetings);
-        g.conect_pro_pro_graphProCompMeet(p9,p10,pro_comp_meet,path_pro_comp_meet_txt,13,professionals,company,meetings);
-        g.conect_pro_meet_graphProCompMeet(p1,m1,pro_comp_meet,path_pro_comp_meet_txt,14,professionals,company,meetings);
-        g.conect_pro_meet_graphProCompMeet(p3,m1,pro_comp_meet,path_pro_comp_meet_txt,14,professionals,company,meetings);
-        g.conect_comp_meet_graphProCompMeet(c1,m1,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
-        g.conect_comp_meet_graphProCompMeet(c1,m2,pro_comp_meet,path_pro_comp_meet_txt,17,professionals,company,meetings);
-        g.conect_comp_meet_graphProCompMeet(c2,m2,pro_comp_meet,path_pro_comp_meet_txt,25,professionals,company,meetings);
-        g.conect_pro_meet_graphProCompMeet(p2,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
-        g.conect_pro_meet_graphProCompMeet(p4,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
-        g.conect_pro_meet_graphProCompMeet(p5,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
-        g.conect_comp_meet_graphProCompMeet(c3,m3,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
-        g.conect_pro_meet_graphProCompMeet(p6,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
-        g.conect_pro_meet_graphProCompMeet(p7,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
-        g.conect_pro_meet_graphProCompMeet(p8,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
-        g.conect_pro_meet_graphProCompMeet(p9,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
-        g.conect_pro_meet_graphProCompMeet(p10,m2,pro_comp_meet,path_pro_comp_meet_txt,8,professionals,company,meetings);
+        g.conect_comp_point_graphProCompMeet(c1,pe1,point_comp_meet,path_point_comp_meet_txt,10,professionals,company,meetings,pontosDeEncontro);
+        g.conect_meet_point_graphProCompMeet(pe1,m1,point_comp_meet,path_point_comp_meet_txt,13,professionals,company,meetings,pontosDeEncontro);
 
         //guarda e carrega de bin
-        g.save_all_pro_comp_bin_digraph(pro_comp_meet,path_pro_comp_meet_bin);
-        pro_comp_meet = g.read_pro_comp_bin_file(pro_comp_meet,path_pro_comp_meet_bin);
+        g.save_all_pro_comp_bin_digraph(point_comp_meet,path_point_comp_meet_bin);
+        point_comp_meet = g.read_pro_comp_bin_file(point_comp_meet,path_point_comp_meet_bin);
 
 //        System.out.println(pro_comp_meet.digraph());
 
@@ -476,9 +455,16 @@ public class Main {
 //        g.graph_pessoas_conected(pessoas);
 
         //caminho mais curto entre meet e empresa  (Dijkstra)
+//        g.short_path_between_CompMeet(point_comp_meet,c1,m3,professionals,company,meetings,pontosDeEncontro);
+//        g.short_path_between_CompMeet(point_comp_meet,c1,m1,professionals,company,meetings,pontosDeEncontro);
+
+        //todos os profissionais que seguem uma empresa
         String path_search_pro_comp = ".//data//search_comp_pro.txt";
-        g.write_search_comp_pro(pro_comp_meet,path_search_pro_comp,professionals,company,meetings);
-//        g.short_path_between_CompMeet(pro_comp_meet,c1,m3,professionals,company,meetings);
+        g.write_search_comp_pro(pessoas_empresas,path_search_pro_comp,professionals,company,meetings,pontosDeEncontro);
+
+        //todos os profissionais que foram a um meeting
+        String path_search_meet_pro = ".//data//search_meet_pro.txt";
+        g.write_search_meet_pro(point_comp_meet,pessoas_empresas,path_search_meet_pro,professionals,company,meetings,pontosDeEncontro);
 
         //todos os profissionais que seguem uma empresa
 //        g.search_comp_pro_followers(c1,pro_comp_meet,professionals,company,meetings);
@@ -491,7 +477,8 @@ public class Main {
 //        g.search_meet_pro_followers(m3,pro_comp_meet,professionals,company,meetings);
 
         //pesquisar profissional desempregado com determinada skill
-//        g.search_pro_without_comp_and_skills(pro_comp_meet,c4,"Base de dados",professionals,company,meetings);
+//        g.search_pro_without_comp_and_skills(point_comp_meet,c4,"Base de dados",professionals,company,meetings,pontosDeEncontro);
 //        g.search_pro_without_comp_and_skills(pro_comp_meet,c4,"Computacao",professionals,company,meetings);
     }
 }
+

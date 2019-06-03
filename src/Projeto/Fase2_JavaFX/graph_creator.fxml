@@ -90,6 +90,7 @@
             <Menu mnemonicParsing="false" text="Search">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#handleSelectCompanyFiles" text="Select Company Files" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleSelectMeetFiles" text="Select Meet Files" />
                </items>
             </Menu>
         </menus>
@@ -147,11 +148,6 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="691.0" fitWidth="865.0" pickOnBounds="true">
-                           <image>
-                              <Image url="file:/C:/Users/paulo/Documents/GitHub/Projeto_1fase_LP2/data/map.png" />
-                           </image>
-                        </ImageView>
                         <Group fx:id="graphGroup" layoutX="129.0" layoutY="115.0" />
                      </children></AnchorPane>
             </content>
@@ -160,17 +156,12 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="691.0" fitWidth="865.0" pickOnBounds="true">
-                           <image>
-                              <Image url="file:/C:/Users/paulo/Documents/GitHub/Projeto_1fase_LP2/data/map.png" />
-                           </image>
-                        </ImageView>
                         <Group fx:id="graphGroup1" layoutX="129.0" layoutY="115.0" />
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="ProCompMeets Graph Visualization">
+            <Tab text="ProCompPoint Graph Visualization">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -184,7 +175,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="Search">
+            <Tab text="SearchCompPro">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="582.0" prefWidth="865.0">
                      <children>
@@ -199,6 +190,27 @@
                                  </columns>
                               </TableView>
                               <HBox fx:id="addSearchBox" prefHeight="72.0" prefWidth="871.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="SearchMeetPro">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="582.0" prefWidth="865.0">
+                     <children>
+                        <VBox prefHeight="690.0" prefWidth="871.0">
+                           <children>
+                              <Label prefHeight="42.0" prefWidth="833.0" text="Meetings" />
+                              <ComboBox fx:id="selectMeetComboBox" onAction="#handleSelectMeet" prefHeight="31.0" prefWidth="873.0" promptText="Select Company" />
+                              <TableView fx:id="searchTableMeet" prefHeight="543.0" prefWidth="768.0">
+                                 <columns>
+                                    <TableColumn fx:id="searchProCol" prefWidth="437.0" text="Professional" />
+                                    <TableColumn fx:id="searchMeetCol" minWidth="0.0" prefWidth="427.0" text="Meet" />
+                                 </columns>
+                              </TableView>
+                              <HBox fx:id="addSearchBox1" prefHeight="72.0" prefWidth="871.0" />
                            </children>
                         </VBox>
                      </children>

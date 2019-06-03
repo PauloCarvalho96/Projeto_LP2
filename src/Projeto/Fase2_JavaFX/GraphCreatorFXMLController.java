@@ -1,6 +1,5 @@
 package Projeto.Fase2_JavaFX;
 import Projeto.*;
-import Projeto.Company;
 import edu.princeton.cs.algs4.In;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -53,13 +52,18 @@ public class GraphCreatorFXMLController implements Initializable {
     public TableColumn<Professional,String> searchCompCol;
     public ComboBox<String> selectComComboBox;
     public HBox addSearchBox;
+    public ComboBox <String>selectMeetComboBox;
+    public TableView <Professional>searchTableMeet;
+    public TableColumn<Professional,String> searchProCol;
+    public TableColumn<Professional,String> searchMeetCol;
+    public HBox addSearchBox1;
     private Company cc =new Company("ola",334444,43434,null);
     private Graph graph;
     private String delimeter = ";";
     private double radius = 10.0;
     private String path_pessoas_txt = ".//data//professionals_graph.txt";
     private String path_companies_txt = ".//data//pro_comp_graph.txt";
-    private String path_pro_comp_meet_txt = ".//data//pro_comp_meet.txt";
+    private String path_pro_comp_meet_txt = ".//data//point_comp_meet.txt";
 
     public void create_vertice_in_ProGraph(int v)
     {
@@ -235,6 +239,23 @@ public class GraphCreatorFXMLController implements Initializable {
         graphGroup2.getChildren().add(stack);
     }
 
+    public void create_vertex_in_ProCompMeetGraph_point(int v)        //vertex Pro
+    {
+        Random r = new Random();
+        double posX = r.nextDouble()*500;
+        double posY = r.nextDouble()*500;
+        Circle c = new Circle(posX,posY,radius);
+        c.setOpacity(0.6);
+        c.setFill(Color.PINK);
+        c.setId(""+v);
+        Text text = new Text(""+v);
+        StackPane stack = new StackPane();
+        stack.setLayoutX(posX-radius);
+        stack.setLayoutY(posY-radius);
+        stack.getChildren().addAll(c,text);
+        graphGroup2.getChildren().add(stack);
+    }
+
     public void drawGraph_Pro_Comp_Meet()
     {
         String delimiter = ";";
@@ -243,9 +264,9 @@ public class GraphCreatorFXMLController implements Initializable {
             String[] a = in.readLine().split(delimiter);
             String type = a[0];
             int v = Integer.parseInt(a[1]);
-            if(type.compareTo("p")==0)
+            if(type.compareTo("pe")==0)
             {
-                create_vertex_in_ProCompMeetGraph_Pro(v);
+                create_vertex_in_ProCompMeetGraph_point(v);
             }else{
                 if(type.compareTo("c")==0){
                     create_vertex_in_ProCompMeetGraph_Comp(v);
@@ -299,6 +320,9 @@ public class GraphCreatorFXMLController implements Initializable {
         //search
         searchCompCol.setCellValueFactory(new PropertyValueFactory<>("company_name"));
         searchNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        searchMeetCol.setCellValueFactory(new PropertyValueFactory<>("meet"));
+        searchProCol.setCellValueFactory(new PropertyValueFactory<>("name"));
     }
 
     public void handleReadFileAction(ActionEvent actionEvent) {
@@ -359,6 +383,11 @@ public class GraphCreatorFXMLController implements Initializable {
         addCompaniesToComboBox();
     }
 
+
+    public void handleSelectMeetFiles(ActionEvent actionEvent) {
+        addMeetingsToComboBox();
+    }
+
     public void addCompaniesToComboBox(){
         selectComComboBox.getItems().clear();
         String path_search_comp_pro_txt = ".//data//search_comp_pro.txt";
@@ -371,6 +400,20 @@ public class GraphCreatorFXMLController implements Initializable {
         }
         in.close();
     }
+
+    public void addMeetingsToComboBox(){
+        selectMeetComboBox.getItems().clear();
+        String path_search_meet_pro_txt = ".//data//search_meet_pro.txt";
+        In in = new In(path_search_meet_pro_txt);
+        while (!in.isEmpty()) {
+            String[] texto = in.readLine().split(";");
+            String name_m = texto[0];
+            Meeting m = new Meeting(name_m,0,null,null,null);
+            selectMeetComboBox.getItems().addAll(m.getName());
+        }
+        in.close();
+    }
+
 
     public void handleSelectCompany(ActionEvent actionEvent) {
         searchTable.getItems().clear();
@@ -388,6 +431,28 @@ public class GraphCreatorFXMLController implements Initializable {
                     Professional pro = new Professional(name_pro, null, null, null, null, null);
                     pro.setCompany(comp);
                     searchTable.getItems().addAll(pro);
+                }
+            }
+        }
+        in.close();
+    }
+
+    public void handleSelectMeet(ActionEvent actionEvent) {
+        searchTableMeet.getItems().clear();
+        String dname = selectMeetComboBox.getValue();
+        String path_search_meet_pro_txt = ".//data//search_meet_pro.txt";
+        In in = new In(path_search_meet_pro_txt);
+        while (!in.isEmpty()) {
+            String[] texto = in.readLine().split(";");
+            String meet_name = texto[0];
+            Meeting m = new Meeting(meet_name,0,null,null,null);
+            if (m.getName().equals(dname)) {
+                String name_pro = null;
+                for (int i = 1; i < texto.length; i++) {
+                    name_pro = texto[i];
+                    Professional pro = new Professional(name_pro, null, null, null, null, null);
+                    pro.associateProfessionalMeet(m);
+                    searchTableMeet.getItems().addAll(pro);
                 }
             }
         }

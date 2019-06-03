@@ -73,10 +73,10 @@ public class Graph_project {
         out.close();
     }
 
-    public void save_pro_comp_meet_txt_graph(SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings, String path) {
+    public void save_pro_comp_meet_txt_graph(SeparateChainingHashST_Projeto<Integer, PontosDeEncontro> pontosDeEncontro, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings, String path) {
         Out out = new Out(path);
-        for (Integer p : professionals.keys()) {
-            out.print(p + ";" + "\n");
+        for (Integer pe : pontosDeEncontro.keys()) {
+            out.print(pe + ";" + "\n");
         }
         for (Integer c : company.keys()) {
             out.print(c + ";" + "\n");
@@ -112,7 +112,7 @@ public class Graph_project {
         }
     }
 
-    public int pro_or_comp_or_meet(SymbolDigraphWeighted g, int v, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings) {
+    public int pro_or_comp_or_meet(SymbolDigraphWeighted g, int v, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings,SeparateChainingHashST_Projeto<Integer, PontosDeEncontro> pontosDeEncontro) {
         for (Date d : meetings.keys()) {
             if (d.toString().compareTo(g.nameOf(v)) == 0) {     //se a data coicidir entao é meeting
                 return 2;
@@ -128,13 +128,18 @@ public class Graph_project {
                 return 1;
             }
         }
-        return 3;
+        for (Integer pe : pontosDeEncontro.keys()) {
+            if (pe == Integer.parseInt(g.nameOf(v))) {     //se o nif coicidir entao é ponto de encontro
+                return 3;
+            }
+        }
+        return 4;
     }
 
-    public void write_pro_comp_to_file_txt(SymbolDigraphWeighted g, String path, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings) {
+    public void write_pro_comp_to_file_txt(SymbolDigraphWeighted g, String path, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings,SeparateChainingHashST_Projeto<Integer, PontosDeEncontro> pontosDeEncontro) {
         Out out = new Out(path);
         for (int v = 0; v < g.digraph().V(); v++) {       //percorre os vertices
-            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings); //procura a ver se é profissional ou empresa ou meet
+            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings,pontosDeEncontro); //procura a ver se é profissional ou empresa ou meet
             if (i == 0) {
                 out.print("p" + ";" + v + ";");
             } else {
@@ -144,6 +149,9 @@ public class Graph_project {
                     if (i == 2) {
                         out.print("d" + ";" + v + ";");
                     } else {
+                        if(i == 3){
+                            out.print("pe" + ";" + v + ";");
+                        }else
                         System.out.println("erro ao ler");
                     }
                 }
@@ -156,10 +164,10 @@ public class Graph_project {
         out.close();
     }
 
-    public void pro_comp_meet_vertex(SymbolDigraphWeighted g, String path, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings) {
+    public void pro_comp_meet_vertex(SymbolDigraphWeighted g, String path, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings,SeparateChainingHashST_Projeto<Integer, PontosDeEncontro> pontosDeEncontro) {
         Out out = new Out(path);
         for (int v = 0; v < g.digraph().V(); v++) {
-            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings);
+            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings,pontosDeEncontro);
             if (i == 0) {
                 out.print("p" + ";" + v + ";" + "\n");
             } else {
@@ -169,7 +177,10 @@ public class Graph_project {
                     if (i == 2) {
                         out.print("d" + ";" + v + ";" + "\n");
                     } else {
-                        System.out.println("erro");
+                        if(i==3){
+                            out.print("pe" + ";" + v + ";" + "\n");
+                        }else
+                            System.out.println("erro");
                     }
                 }
             }
@@ -177,18 +188,18 @@ public class Graph_project {
         out.close();
     }
 
-    public void conect_pro_comp_graphProCompMeet(Professional p1, Company p2, SymbolDigraphWeighted g, String path, Integer w, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings) {
+    public void conect_pro_comp_graphProCompMeet(Professional p1, Company p2, SymbolDigraphWeighted g, String path, Integer w, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings,SeparateChainingHashST_Projeto<Integer, PontosDeEncontro> pontosDeEncontro) {
         for (int v = 0; v < g.digraph().V(); v++) {       //percorre os vertices
-            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings);
+            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings,pontosDeEncontro);
             if (i == 0) {
                 if (Integer.parseInt(g.nameOf(v)) == p1.getNif()) {
                     for (int vi = 0; vi < g.digraph().V(); vi++) {
-                        int x = pro_or_comp_or_meet(g, vi, professionals, company, meetings);
+                        int x = pro_or_comp_or_meet(g, vi, professionals, company, meetings,pontosDeEncontro);
                         if (x == 1) {
                             if (Integer.parseInt(g.nameOf(vi)) == p2.getNif()) {
                                 g.digraph().addEdge(new DirectedEdge(v, vi, w));
                                 g.digraph().addEdge(new DirectedEdge(vi, v, w));
-                                write_pro_comp_to_file_txt(g, path, professionals, company, meetings);
+                                write_pro_comp_to_file_txt(g, path, professionals, company, meetings,pontosDeEncontro);
                             }
                         }
                     }
@@ -197,18 +208,18 @@ public class Graph_project {
         }
     }
 
-    public void conect_pro_meet_graphProCompMeet(Professional p1, Meeting p2, SymbolDigraphWeighted g, String path, Integer w, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings) {
+    public void conect_meet_point_graphProCompMeet(PontosDeEncontro p1, Meeting p2, SymbolDigraphWeighted g, String path, Integer w, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings,SeparateChainingHashST_Projeto<Integer, PontosDeEncontro> pontosDeEncontro) {
         for (int v = 0; v < g.digraph().V(); v++) {       //percorre os vertices
-            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings);
-            if (i == 0) {
-                if (Integer.parseInt(g.nameOf(v)) == p1.getNif()) {
+            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings,pontosDeEncontro);
+            if (i == 3) {
+                if (Integer.parseInt(g.nameOf(v)) == p1.getId()) {
                     for (int vi = 0; vi < g.digraph().V(); vi++) {
-                        int x = pro_or_comp_or_meet(g, vi, professionals, company, meetings);
+                        int x = pro_or_comp_or_meet(g, vi, professionals, company, meetings,pontosDeEncontro);
                         if (x == 2) {
                             if (p2.getDate().toString().compareTo(g.nameOf(vi)) == 0) {
                                 g.digraph().addEdge(new DirectedEdge(v, vi, w));
                                 g.digraph().addEdge(new DirectedEdge(vi, v, w));
-                                write_pro_comp_to_file_txt(g, path, professionals, company, meetings);
+                                write_pro_comp_to_file_txt(g, path, professionals, company, meetings,pontosDeEncontro);
                             }
                         }
                     }
@@ -217,18 +228,18 @@ public class Graph_project {
         }
     }
 
-    public void conect_comp_meet_graphProCompMeet(Company p1, Meeting p2, SymbolDigraphWeighted g, String path, Integer w, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings) {
+    public void conect_comp_point_graphProCompMeet(Company p1, PontosDeEncontro p2, SymbolDigraphWeighted g, String path, Integer w, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings,SeparateChainingHashST_Projeto<Integer, PontosDeEncontro> pontosDeEncontro) {
         for (int v = 0; v < g.digraph().V(); v++) {       //percorre os vertices
-            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings);
+            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings,pontosDeEncontro);
             if (i == 1) {
                 if (Integer.parseInt(g.nameOf(v)) == p1.getNif()) {
                     for (int vi = 0; vi < g.digraph().V(); vi++) {
-                        int x = pro_or_comp_or_meet(g, vi, professionals, company, meetings);
-                        if (x == 2) {
-                            if (p2.getDate().toString().compareTo(g.nameOf(vi)) == 0) {
+                        int x = pro_or_comp_or_meet(g, vi, professionals, company, meetings,pontosDeEncontro);
+                        if (x == 3) {
+                            if (p2.getId().toString().compareTo(g.nameOf(vi)) == 0) {
                                 g.digraph().addEdge(new DirectedEdge(v, vi, w));
                                 g.digraph().addEdge(new DirectedEdge(vi, v, w));
-                                write_pro_comp_to_file_txt(g, path, professionals, company, meetings);
+                                write_pro_comp_to_file_txt(g, path, professionals, company, meetings,pontosDeEncontro);
                             }
                         }
                     }
@@ -237,18 +248,18 @@ public class Graph_project {
         }
     }
 
-    public void conect_pro_pro_graphProCompMeet(Professional p1, Professional p2, SymbolDigraphWeighted g, String path, Integer w, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings) {
+    public void conect_pro_pro_graphProCompMeet(Professional p1, Professional p2, SymbolDigraphWeighted g, String path, Integer w, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings,SeparateChainingHashST_Projeto<Integer, PontosDeEncontro> pontosDeEncontro) {
         for (int v = 0; v < g.digraph().V(); v++) {       //percorre os vertices
-            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings);
+            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings,pontosDeEncontro);
             if (i == 0) {
                 if (Integer.parseInt(g.nameOf(v)) == p1.getNif()) {
                     for (int vi = 0; vi < g.digraph().V(); vi++) {
-                        int x = pro_or_comp_or_meet(g, vi, professionals, company, meetings);
+                        int x = pro_or_comp_or_meet(g, vi, professionals, company, meetings,pontosDeEncontro);
                         if (x == 0) {
                             if (Integer.parseInt(g.nameOf(vi)) == p2.getNif()) {
                                 g.digraph().addEdge(new DirectedEdge(v, vi, w));
                                 g.digraph().addEdge(new DirectedEdge(vi, v, w));
-                                write_pro_comp_to_file_txt(g, path, professionals, company, meetings);
+                                write_pro_comp_to_file_txt(g, path, professionals, company, meetings,pontosDeEncontro);
                             }
                         }
                     }
@@ -257,17 +268,17 @@ public class Graph_project {
         }
     }
 
-    public void conect_comp_comp_graphProCompMeet(Company p1, Company p2, SymbolDigraphWeighted g, String path, Integer w, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings) {
+    public void conect_comp_comp(Company p1, Company p2, SymbolDigraphWeighted g, String path, Integer w, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings,SeparateChainingHashST_Projeto<Integer, PontosDeEncontro> pontosDeEncontro) {
         for (int v = 0; v < g.digraph().V(); v++) {       //percorre os vertices
-            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings);
+            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings,pontosDeEncontro);
             if (i == 1) {
                 if (Integer.parseInt(g.nameOf(v)) == p1.getNif()) {
                     for (int vi = 0; vi < g.digraph().V(); vi++) {
-                        int x = pro_or_comp_or_meet(g, vi, professionals, company, meetings);
+                        int x = pro_or_comp_or_meet(g, vi, professionals, company, meetings,pontosDeEncontro);
                         if (x == 1) {
                             if (Integer.parseInt(g.nameOf(vi)) == p2.getNif()) {
                                 g.digraph().addEdge(new DirectedEdge(v, vi, w));
-                                write_pro_comp_to_file_txt(g, path, professionals, company, meetings);
+                                write_pro_comp_to_file_txt(g, path, professionals, company, meetings,pontosDeEncontro);
                             }
                         }
                     }
@@ -276,17 +287,17 @@ public class Graph_project {
         }
     }
 
-    public void conect_meet_meet_graphProCompMeet(Company p1, Company p2, SymbolDigraphWeighted g, String path, Integer w, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings) {
+    public void conect_meet_meet_graphProCompMeet(Company p1, Company p2, SymbolDigraphWeighted g, String path, Integer w, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings,SeparateChainingHashST_Projeto<Integer, PontosDeEncontro> pontosDeEncontro) {
         for (int v = 0; v < g.digraph().V(); v++) {       //percorre os vertices
-            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings);
+            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings,pontosDeEncontro);
             if (i == 1) {
                 if (Integer.parseInt(g.nameOf(v)) == p1.getNif()) {
                     for (int vi = 0; vi < g.digraph().V(); vi++) {
-                        int x = pro_or_comp_or_meet(g, vi, professionals, company, meetings);
+                        int x = pro_or_comp_or_meet(g, vi, professionals, company, meetings,pontosDeEncontro);
                         if (x == 1) {
                             if (Integer.parseInt(g.nameOf(vi)) == p2.getNif()) {
                                 g.digraph().addEdge(new DirectedEdge(v, vi, w));
-                                write_pro_comp_to_file_txt(g, path, professionals, company, meetings);
+                                write_pro_comp_to_file_txt(g, path, professionals, company, meetings,pontosDeEncontro);
                             }
                         }
                     }
@@ -295,16 +306,16 @@ public class Graph_project {
         }
     }
 
-    public void write_search_comp_pro(SymbolDigraphWeighted g, String path, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings) {
+    public void write_search_comp_pro(SymbolDigraphWeighted g, String path, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings,SeparateChainingHashST_Projeto<Integer, PontosDeEncontro> pontosDeEncontro) {
         Out out = new Out(path);
         for (int v = 0; v < g.digraph().V(); v++) {
-            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings);
+            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings,pontosDeEncontro);
             if (i == 1) {
                 for (Integer d : company.keys()) {
                     if (company.get(d).getNif() == Integer.parseInt(g.nameOf(v))) {
                         out.print(company.get(d).getName() + ";");
                         for (DirectedEdge e : g.digraph().adj(v)) {
-                            int x = pro_or_comp_or_meet(g, e.to(), professionals, company, meetings);
+                            int x = pro_or_comp_or_meet(g, e.to(), professionals, company, meetings,pontosDeEncontro);
                             if (x == 0) {
                                 for (Integer t : professionals.keys()) {
                                     if (professionals.get(t).getNif() == Integer.parseInt(g.nameOf(e.to()))) {
@@ -321,18 +332,39 @@ public class Graph_project {
         out.close();
     }
 
+    public void write_search_meet_pro(SymbolDigraphWeighted g,SymbolDigraphWeighted gi, String path, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings,SeparateChainingHashST_Projeto<Integer, PontosDeEncontro> pontosDeEncontro) {
+        Out out = new Out(path);
+        for (int v = 0; v < g.digraph().V(); v++) {
+            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings,pontosDeEncontro);
+            if (i == 2) {
+                for (Date d : meetings.keys()) {
+                    if (meetings.get(d).getDate().toString().compareTo(g.nameOf(v))==0) {
+                        out.print(meetings.get(d).getName()+ ";");
+                        for (Integer c:professionals.keys()) {
+                            if(professionals.get(c).getMeet().contains(meetings.get(d).getName())){
+                                out.print(professionals.get(c).getName()+ ";");
+                            }
+                        }
+                        out.print("\n");
+                    }
+                }
+            }
+        }
+        out.close();
+    }
+
     /**
      * PESQUISA EM GRAFOS
      */
     //pesquisa de profissionais que seguem uma empresa
-    public void search_comp_pro_followers(Company p2, SymbolDigraphWeighted g, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings) {
+    public void search_comp_pro_followers(Company p2, SymbolDigraphWeighted g, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings,SeparateChainingHashST_Projeto<Integer, PontosDeEncontro> pontosDeEncontro) {
         System.out.println("Profissionais que seguem a empresa " + p2.getName());
         for (int v = 0; v < g.digraph().V(); v++) {
-            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings);
+            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings,pontosDeEncontro);
             if (i == 1) {
                 if (Integer.parseInt(g.nameOf(v)) == p2.getNif()) {
                     for (DirectedEdge d : g.digraph().adj(v)) {
-                        int y = pro_or_comp_or_meet(g, d.to(), professionals, company, meetings);
+                        int y = pro_or_comp_or_meet(g, d.to(), professionals, company, meetings,pontosDeEncontro);
                         if (y == 0) {
                             for (Integer di : professionals.keys()) {
                                 if (professionals.get(di).getNif() == Integer.parseInt(g.nameOf(d.to()))) {
@@ -347,14 +379,14 @@ public class Graph_project {
     }
 
     //pesquisa profissionais que participaram num encontro
-    public void search_meet_pro_followers(Meeting p2, SymbolDigraphWeighted g, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings) {
+    public void search_meet_pro_followers(Meeting p2, SymbolDigraphWeighted g, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings,SeparateChainingHashST_Projeto<Integer, PontosDeEncontro> pontosDeEncontro) {
         System.out.println("Profissionais que participaram no encontro " + p2.getName());
         for (int v = 0; v < g.digraph().V(); v++) {
-            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings);
+            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings,pontosDeEncontro);
             if (i == 2) {
                 if (p2.getDate().toString().compareTo(g.nameOf(v)) == 0) {
                     for (DirectedEdge d : g.digraph().adj(v)) {
-                        int y = pro_or_comp_or_meet(g, d.to(), professionals, company, meetings);
+                        int y = pro_or_comp_or_meet(g, d.to(), professionals, company, meetings,pontosDeEncontro);
                         if (y == 0) {
                             for (Integer di : professionals.keys()) {
                                 if (professionals.get(di).getNif() == Integer.parseInt(g.nameOf(d.to()))) {
@@ -369,15 +401,15 @@ public class Graph_project {
     }
 
     //menor caminho entre empresa e encontro
-    public void short_path_between_CompMeet(SymbolDigraphWeighted g, Company c, Meeting m, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings) {
+    public void short_path_between_CompMeet(SymbolDigraphWeighted g, Company c, Meeting m, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings,SeparateChainingHashST_Projeto<Integer, PontosDeEncontro> pontosDeEncontro) {
         System.out.println("Caminho mais curto de " + c.getName() + " a " + m.getName());
         System.out.println(c.getName() + "-" + m.getName() + " " + "Distancia");
         for (int v = 0; v < g.digraph().V(); v++) {
-            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings);
+            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings,pontosDeEncontro);
             if (i == 1) {
                 if (c.getNif() == Integer.parseInt(g.nameOf(v))) {
                     for (int vi = 0; vi < g.digraph().V(); vi++) {
-                        int x = pro_or_comp_or_meet(g, vi, professionals, company, meetings);
+                        int x = pro_or_comp_or_meet(g, vi, professionals, company, meetings,pontosDeEncontro);
                         if (x == 2) {
                             if (m.getDate().toString().compareTo(g.nameOf(vi)) == 0) {
                                 DijkstraSP_Projeto sp = new DijkstraSP_Projeto(g, v);
@@ -394,14 +426,14 @@ public class Graph_project {
         }
     }
 
-    public void search_pro_without_comp_and_skills(SymbolDigraphWeighted g, Company c, String skill, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings) {
+    public void search_pro_without_comp_and_skills(SymbolDigraphWeighted g, Company c, String skill, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings,SeparateChainingHashST_Projeto<Integer, PontosDeEncontro> pontosDeEncontro) {
         System.out.println("Profissionais desempregados e com a skill "+skill);
         for (int v = 0; v < g.digraph().V(); v++) {
-            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings);
+            int i = pro_or_comp_or_meet(g, v, professionals, company, meetings,pontosDeEncontro);
             if (i == 0) {
                     for (Integer d : professionals.keys()) {
                             if (professionals.get(d).getNif() == Integer.parseInt(g.nameOf(v)) && professionals.get(d).getCompany() == c && professionals.get(d).getSkills().contains(skill)) {
-                            System.out.println(professionals.get(d));
+                                System.out.println(professionals.get(d));
                     }
                 }
             }
