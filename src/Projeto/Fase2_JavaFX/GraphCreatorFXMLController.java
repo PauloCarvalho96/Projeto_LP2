@@ -1,8 +1,8 @@
 package Projeto.Fase2_JavaFX;
 import Projeto.*;
-import edu.princeton.cs.algs4.In;
+import Projeto.Date;
+import edu.princeton.cs.algs4.*;
 import edu.princeton.cs.algs4.SeparateChainingHashST_Projeto;
-import edu.princeton.cs.algs4.SymbolDigraph;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
@@ -14,17 +14,19 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
-import edu.princeton.cs.algs4.Graph;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 
 public class GraphCreatorFXMLController implements Initializable {
-
     public TextField verticesNumberField;
     public TextArea edgesField;
     public MenuItem openGraph;
@@ -72,6 +74,20 @@ public class GraphCreatorFXMLController implements Initializable {
     private String path_pessoas_txt = ".//data//professionals_graph.txt";
     private String path_companies_txt = ".//data//pro_comp_graph.txt";
     private String path_pro_comp_meet_txt = ".//data//point_comp_meet.txt";
+
+    //carrega ST de profissionais
+    public SeparateChainingHashST_Projeto<Integer, Professional> read_pro_bin_file(String path) {
+        ObjectInputStream ios = null;
+        try {
+            ios = new ObjectInputStream(new FileInputStream(new File(path)));
+            SeparateChainingHashST_Projeto<Integer, Professional> professionals;
+            professionals = (SeparateChainingHashST_Projeto<Integer, Professional>) ios.readObject();
+            return professionals;
+        } catch (ClassNotFoundException | IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public void create_vertice_in_ProGraph(int v)
     {
@@ -332,7 +348,7 @@ public class GraphCreatorFXMLController implements Initializable {
         searchMeetCol.setCellValueFactory(new PropertyValueFactory<>("meet"));
         searchProCol.setCellValueFactory(new PropertyValueFactory<>("name"));
     }
-    Graph_project g = new Graph_project();
+
     public void handleReadFileAction(ActionEvent actionEvent) {
         readProfessionalFile();
         readCompanyFile();
@@ -487,16 +503,12 @@ public class GraphCreatorFXMLController implements Initializable {
         in.close();
     }
 
-    public void addProToComboBox(){
+    public void addProToComboBox(){                 //mostra profissionais disponiveis a eliminar na comboBox
         selecProRemoveComboBox.getItems().clear();
-        In in = new In(".//data//professionals_JAVAFX.txt");
-        in.readLine();
-        while (!in.isEmpty()) {
-            String[] texto = in.readLine().split(";");
-            String name_pro = texto[0];
-            Professional p1 = new Professional(name_pro,null,null,null,null,null);
-            selecProRemoveComboBox.getItems().addAll(p1.getName());
+        Graph_project g = new Graph_project();
+        SymbolGraphWheighted pessoas = new SymbolGraphWheighted(".//data//professionals_graph.txt",";");
+        for(int i=0;i<pessoas.graph().V();i++){
+
         }
-        in.close();
     }
 }

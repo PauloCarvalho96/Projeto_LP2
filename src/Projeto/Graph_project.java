@@ -9,6 +9,18 @@ public class Graph_project {
     /**
      * FILES
      */
+    //guarda a ST profissionais em ficheiro bin
+    public void save_professioanls_ST(SeparateChainingHashST_Projeto<Integer, Professional> professionals, String path) {
+        ObjectOutputStream oos = null;
+        try {
+            oos = new ObjectOutputStream(new FileOutputStream(new File(path)));
+            oos.writeObject(professionals);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public void save_all_professionals_bin_graph(SymbolGraphWheighted g, String path) {
         ObjectOutputStream oos = null;
         try {

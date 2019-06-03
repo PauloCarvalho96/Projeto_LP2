@@ -426,7 +426,16 @@ public class GraphCreator extends Application {
 
         //ligaçoes (funçoes teste)
         g.conect_comp_point_graphProCompMeet(c1,pe1,point_comp_meet,path_point_comp_meet_txt,10,professionals,company,meetings,pontosDeEncontro);
+        g.conect_comp_point_graphProCompMeet(c1,pe2,point_comp_meet,path_point_comp_meet_txt,10,professionals,company,meetings,pontosDeEncontro);
+        g.conect_comp_point_graphProCompMeet(c2,pe2,point_comp_meet,path_point_comp_meet_txt,10,professionals,company,meetings,pontosDeEncontro);
+        g.conect_comp_point_graphProCompMeet(c3,pe3,point_comp_meet,path_point_comp_meet_txt,10,professionals,company,meetings,pontosDeEncontro);
+        g.conect_comp_point_graphProCompMeet(c3,pe4,point_comp_meet,path_point_comp_meet_txt,10,professionals,company,meetings,pontosDeEncontro);
         g.conect_meet_point_graphProCompMeet(m1,pe1,point_comp_meet,path_point_comp_meet_txt,13,professionals,company,meetings,pontosDeEncontro);
+        g.conect_meet_point_graphProCompMeet(m1,pe2,point_comp_meet,path_point_comp_meet_txt,13,professionals,company,meetings,pontosDeEncontro);
+        g.conect_meet_point_graphProCompMeet(m1,pe2,point_comp_meet,path_point_comp_meet_txt,13,professionals,company,meetings,pontosDeEncontro);
+        g.conect_meet_point_graphProCompMeet(m2,pe2,point_comp_meet,path_point_comp_meet_txt,13,professionals,company,meetings,pontosDeEncontro);
+        g.conect_meet_point_graphProCompMeet(m2,pe3,point_comp_meet,path_point_comp_meet_txt,13,professionals,company,meetings,pontosDeEncontro);
+        g.conect_meet_point_graphProCompMeet(m3,pe4,point_comp_meet,path_point_comp_meet_txt,13,professionals,company,meetings,pontosDeEncontro);
 
 
         //guarda e carrega de bin
@@ -470,14 +479,12 @@ public class GraphCreator extends Application {
 //        g.search_pro_without_comp_and_skills(point_comp_meet,c4,"Base de dados",professionals,company,meetings,pontosDeEncontro);
 //        g.search_pro_without_comp_and_skills(pro_comp_meet,c4,"Computacao",professionals,company,meetings);
 
+        //guarda ST professionals em bin
+        String professionals_st = ".//data//professionalsST.bin";
+        g.save_professioanls_ST(professionals,professionals_st);
+        GraphCreatorFXMLController i = new GraphCreatorFXMLController();
+        i.read_pro_bin_file(".//data//professionalsST.bin");
         launch(args);
-
-        /**
-         * Pesquisa em JAVAFX
-         */
-
-
-
     }
 
     @Override
