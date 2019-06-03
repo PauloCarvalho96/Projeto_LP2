@@ -407,4 +407,24 @@ public class Graph_project {
             }
         }
     }
+
+    //verifica se o grafo é bipartido
+    public void graph_proComp_isBipartite(SymbolDigraphWeighted g){
+        Bipartite_Projeto bp = new Bipartite_Projeto(g);
+
+        System.out.println("Grafo Profissionais/Empresas é bipartido?"+"\n"+bp.isBipartite());
+    }
+
+    //verifica se o grafo é conexo (DFS)
+    public void graph_pessoas_conected(SymbolGraphWheighted g){
+        DepthFirstSearch_Project dfs = new DepthFirstSearch_Project(g,0);
+
+        for (int v = 0; v < g.graph().V(); v++) {
+            if (dfs.marked(v))
+                StdOut.print(v + " ");
+        }
+        StdOut.println();
+        if (dfs.count() != g.graph().V()) StdOut.println("NOT connected");
+        else                         StdOut.println("connected");
+    }
 }

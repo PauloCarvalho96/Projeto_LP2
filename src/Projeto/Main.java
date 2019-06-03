@@ -370,6 +370,7 @@ public class Main {
         //ligaçoes (funçoes teste)
         g.conect_2_people(p1,p2,pessoas,path_pessoas_txt,10);
         g.conect_2_people(p1,p3,pessoas,path_pessoas_txt,20);
+        g.conect_2_people(p1,p4,pessoas,path_pessoas_txt,20);
         g.conect_2_people(p2,p3,pessoas,path_pessoas_txt,30);
         g.conect_2_people(p2,p5,pessoas,path_pessoas_txt,15);
         g.conect_2_people(p2,p4,pessoas,path_pessoas_txt,8);
@@ -468,6 +469,12 @@ public class Main {
         /**
          * Funçoes de Pesquisa em Grafos
          */
+        //grafo pessoas_empresas é bipartito
+//        g.graph_proComp_isBipartite(pessoas_empresas);
+
+        //grafo pessoas é conexo
+        g.graph_pessoas_conected(pessoas);
+
         //caminho mais curto entre meet e empresa  (Dijkstra)
         String path_search_pro_comp = ".//data//search_comp_pro.txt";
         g.write_search_comp_pro(pro_comp_meet,path_search_pro_comp,professionals,company,meetings);
