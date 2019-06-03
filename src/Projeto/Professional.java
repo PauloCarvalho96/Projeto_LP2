@@ -6,6 +6,10 @@ import edu.princeton.cs.algs4.SeparateChainingHashST_Projeto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import static Projeto.Fase2_JavaFX.GraphCreator.professionals;
+import static Projeto.Fase2_JavaFX.GraphCreator.company;
+import static Projeto.Fase2_JavaFX.GraphCreator.meetings;
+import static Projeto.Fase2_JavaFX.GraphCreator.pontosDeEncontro;
 
 public class Professional extends Person implements Serializable {
     private double salary;
@@ -141,7 +145,7 @@ public class Professional extends Person implements Serializable {
         this.companyHistory.add(c.getName());
     }
 
-    public void searchProfessionalBySalary(SeparateChainingHashST_Projeto<Integer,Professional> professionals,int s)
+    public void searchProfessionalBySalary(int s)
     {
         for (Integer d : professionals.keys()) {
             if (professionals.get(d).getSalary() == s) {
@@ -151,7 +155,7 @@ public class Professional extends Person implements Serializable {
 
     }
 
-    public void searchProfessionalByLocation(SeparateChainingHashST_Projeto<Integer,Professional> professionals,Location l)
+    public void searchProfessionalByLocation(Location l)
     {
         for (Integer d : professionals.keys()) {
             if (professionals.get(d).getLocation() == l) {
@@ -160,14 +164,14 @@ public class Professional extends Person implements Serializable {
         }
     }
 
-    public void printAllProfessionals(SeparateChainingHashST_Projeto<Integer,Professional> professionals)
+    public void printAllProfessionals()
     {
         for (Integer d:professionals.keys()) {
             System.out.println(d+" "+professionals.get(d));
         }
     }
 
-    public void searchProfessionalByName(SeparateChainingHashST_Projeto<Integer,Professional> professionals,String n)
+    public void searchProfessionalByName(String n)
     {
         for (Integer d : professionals.keys()) {
             if (professionals.get(d).getName().equals(n)) {
@@ -176,7 +180,7 @@ public class Professional extends Person implements Serializable {
         }
     }
 
-    public void searchProfessionalByNif(SeparateChainingHashST_Projeto<Integer,Professional> professionals,Integer n)
+    public void searchProfessionalByNif(Integer n)
     {
         for (Integer d : professionals.keys()) {
             if (professionals.get(d).getNif().equals(n)) {
@@ -188,17 +192,7 @@ public class Professional extends Person implements Serializable {
     /**
      * SAVE FILES
      */
-    public void write_pro_to_txt_JAVAFX(SeparateChainingHashST_Projeto<Integer,Professional> professionals,String path)
-    {
-        Out out = new Out(path);
-        for (Integer d:professionals.keys()) {
-            out.print("\n");
-            out.print(professionals.get(d).getName()+";"+professionals.get(d).getNif()+";"+professionals.get(d).getCompany().getName()+ ";");
-        }
-        out.close();
-    }
-
-    public void writeProfessionalsToTXT(SeparateChainingHashST_Projeto<Integer,Professional> professionals,String path)
+    public void writeProfessionalsToTXT(String path)
     {
         Out out = new Out(path);   //abre ficheiro
         for (Integer d:professionals.keys()) {
@@ -229,7 +223,7 @@ public class Professional extends Person implements Serializable {
     /**
      * FILES (LOAD)
      */
-    public void loadProfessionalsToST(SeparateChainingHashST_Projeto<Integer,Professional> professionals,String path)
+    public void loadProfessionalsToST(String path)
     {
         In in = new In(path);
         in.readLine();

@@ -1,3 +1,0 @@
-Palestra JAVA;Jota;Paulo;
-Palestra C;Artur;Carolina;Pedro;
-Photoshop;Maria;Andre;Joana;Catarina;Osvaldo;

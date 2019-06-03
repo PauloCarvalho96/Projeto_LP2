@@ -8,6 +8,11 @@ import edu.princeton.cs.algs4.SeparateChainingHashST_Projeto;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import static Projeto.Fase2_JavaFX.GraphCreator.professionals;
+import static Projeto.Fase2_JavaFX.GraphCreator.company;
+import static Projeto.Fase2_JavaFX.GraphCreator.meetings;
+import static Projeto.Fase2_JavaFX.GraphCreator.pontosDeEncontro;
+
 public class Company implements Serializable {
     private String name;
     private int phone;
@@ -156,7 +161,7 @@ public class Company implements Serializable {
     }
 
     //remove professional da company
-    public void removeProfessionalCompany(SeparateChainingHashST_Projeto<Integer,Professional> professionals,Professional p,Company c,Company c4)
+    public void removeProfessionalCompany(Professional p,Company c,Company c4)
     {
         for (Integer d:professionals.keys()) {
             if(professionals.get(d).getName().equals(p.getName()) && professionals.get(d).getCompany()==c)
@@ -169,7 +174,7 @@ public class Company implements Serializable {
     }
 
     //remove empresa
-    public void removeCompany(SeparateChainingHashST_Projeto<Integer,Company> company, Company c,SeparateChainingHashST_Projeto<Integer,Professional> professionals,Company c4)
+    public void removeCompany(Company c,Company c4)
     {
         for (Integer d:company.keys()) {
             if(company.get(d)==c)
@@ -191,7 +196,7 @@ public class Company implements Serializable {
     }
 
     //edita empresa
-    public void editCompanyPhone(SeparateChainingHashST_Projeto<Integer,Company> company,Company c,int nphone)
+    public void editCompanyPhone(Company c,int nphone)
     {
         for (Integer d:company.keys()) {
             if(company.get(d)==c)
@@ -201,7 +206,7 @@ public class Company implements Serializable {
         }
     }
 
-    public void editCompanyNif(SeparateChainingHashST_Projeto<Integer,Company> company,Company c,int nNif)
+    public void editCompanyNif(Company c,int nNif)
     {
         for (Integer d:company.keys()) {
             if(company.get(d)==c)
@@ -211,7 +216,7 @@ public class Company implements Serializable {
         }
     }
 
-    public void editCompanyLocation(SeparateChainingHashST_Projeto<Integer,Company> company, Company c,Location x)
+    public void editCompanyLocation(Company c,Location x)
     {
         for (Integer d:company.keys()) {
             if(company.get(d)==c)
@@ -221,7 +226,7 @@ public class Company implements Serializable {
         }
     }
 
-    public void editCompanyName(SeparateChainingHashST_Projeto<Integer,Company> company, Company c,String nName)
+    public void editCompanyName(Company c,String nName)
     {
         for (Integer d:company.keys()) {
             if(company.get(d)==c)
@@ -232,7 +237,7 @@ public class Company implements Serializable {
     }
 
     //imprime funcionarios sem trabalho
-    public void printProWithoutCompany(SeparateChainingHashST_Projeto<Integer,Professional> professionals, Company c4)
+    public void printProWithoutCompany(Company c4)
     {
         int i =0;
         for (Integer d:professionals.keys()) {
@@ -246,13 +251,13 @@ public class Company implements Serializable {
     }
 
     //imprime todas as empresas
-    public void printAllCompanys(SeparateChainingHashST_Projeto<Integer,Company> company)
+    public void printAllCompanys()
     {
         for (Integer d:company.keys()) {
             System.out.println(d+" "+company.get(d));
         }
     }
-    public void searchCompanybynif(SeparateChainingHashST_Projeto<Integer,Company> company,int n)
+    public void searchCompanybynif(int n)
     {
         for (Integer d:company.keys()) {
             if(company.get(d).getNif()==n)
@@ -260,7 +265,7 @@ public class Company implements Serializable {
         }
     }
 
-    public void searchCompanybyname(SeparateChainingHashST_Projeto<Integer,Company> company,String n)
+    public void searchCompanybyname(String n)
     {
         for (Integer d:company.keys()) {
             if(company.get(d).getName().equals(n))
@@ -268,7 +273,7 @@ public class Company implements Serializable {
         }
     }
 
-    public void searchCompanybyphone(SeparateChainingHashST_Projeto<Integer,Company> company,int p)
+    public void searchCompanybyphone(int p)
     {
         for (Integer d:company.keys()) {
             if(company.get(d).getPhone()==p)
@@ -276,7 +281,7 @@ public class Company implements Serializable {
         }
     }
 
-    public void searchCompanybylocation(SeparateChainingHashST_Projeto<Integer,Company> company,Location l)
+    public void searchCompanybylocation(Location l)
     {
         for (Integer d:company.keys()) {
             if(company.get(d).getLocation()==l)
@@ -287,17 +292,7 @@ public class Company implements Serializable {
     /**
      * SAVE FILES
      */
-    public void write_comp_to_txt_JAVAFX(SeparateChainingHashST_Projeto<Integer,Company> companys,String path)
-    {
-        Out out = new Out(path);
-        for (Integer d:companys.keys()) {
-            out.print("\n");
-            out.print(companys.get(d).getName()+";"+companys.get(d).getNif()+";"+companys.get(d).getPhone());
-        }
-        out.close();
-    }
-
-    public void writeCompanysToTXT(SeparateChainingHashST_Projeto<Integer,Company> company, String path)
+    public void writeCompanysToTXT(String path)
     {
         Out out = new Out(path);   //abre ficheiro
         for (Integer d:company.keys()) {
@@ -319,7 +314,7 @@ public class Company implements Serializable {
     /**
      * FILES (LOAD)
      */
-    public void loadCompanyToST(SeparateChainingHashST_Projeto<Integer,Company> company, String path)
+    public void loadCompanyToST(String path)
     {
         In in = new In(path);
         in.readLine();

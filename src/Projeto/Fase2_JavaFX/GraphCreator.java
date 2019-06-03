@@ -11,12 +11,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class GraphCreator extends Application {
-    public static void main(String[] args) {
-        SeparateChainingHashST_Projeto<Integer, Company> company = new SeparateChainingHashST_Projeto<>();      //Date é data de registo da empresa
-        SeparateChainingHashST_Projeto<Integer, Professional> professionals = new SeparateChainingHashST_Projeto<>();   //Date é data de nascimento do profissional
-        RedBlackBST<Date, Meeting> meetings = new RedBlackBST<>();       //Date é data de criação do meeting
-        SeparateChainingHashST_Projeto<Integer, PontosDeEncontro> pontosDeEncontro = new SeparateChainingHashST_Projeto<>();
+    public static SeparateChainingHashST_Projeto<Integer, Company> company = new SeparateChainingHashST_Projeto<>();      //Date é data de registo da empresa
+    public static SeparateChainingHashST_Projeto<Integer, Professional> professionals = new SeparateChainingHashST_Projeto<>();   //Date é data de nascimento do profissional
+    public static RedBlackBST<Date, Meeting> meetings = new RedBlackBST<>();       //Date é data de criação do meeting
+    public static SeparateChainingHashST_Projeto<Integer, PontosDeEncontro> pontosDeEncontro = new SeparateChainingHashST_Projeto<>();
 
+    public static void main(String[] args) {
         //datas de nascimento
         Date bdp1 = new Date(21, 3, 1996, 3, 34);
         Date bdp2 = new Date(10, 3, 1940, 6, 47);
@@ -319,38 +319,32 @@ public class GraphCreator extends Application {
         //print.searchCompanybylocation(company,l2);
 
 //          imprime todos os profissionais
-//        Professional print1 = new Professional(null, null, null, null, null,null);    //para aceder a classe
-//        print1.printAllProfessionals(professionals);
-
-        //imprime profissionais com uma determinada skill
-        //print1.searchProfessionalBySkill(professionals,"Base de dados"); !!!!!! nao consegui
+        Professional print1 = new Professional(null, null, null, null, null,null);    //para aceder a classe
+//        print1.printAllProfessionals();
 
         //imprime profissionais pelo salario
-        //print1.searchProfessionalBySalary(professionals,1000);
+//        print1.searchProfessionalBySalary(1000);
 
         //imprime profissionais pela localizacao
-        //print1.searchProfessionalByLocation(professionals,l1);
+//        print1.searchProfessionalByLocation(l1);
 
         //imprime profissionais pelo nome
-        //print1.searchProfessionalByName(professionals,"Jota");
+//        print1.searchProfessionalByName("Jota");
 
         /**
          * FILES (SAVE)
          */
         //companys information
 //        Company c = new Company(null,0,0,null);
-//        c.writeCompanysToTXT(company,".//data//company.txt");
-//        c.write_comp_to_txt_JAVAFX(company,".//data//company_JAVAFX.txt");
+//        c.writeCompanysToTXT(".//data//company.txt");
 
         //professionals information
 //        Professional p = new Professional(null,null,null,null,null,0);
-//        p.writeProfessionalsToTXT(professionals,".//data//professionals.txt");
-//        p.write_pro_to_txt_JAVAFX(professionals,".//data//professionals_JAVAFX.txt");
+//        p.writeProfessionalsToTXT(".//data//professionals.txt");
 
         //meetings information
 //        Meeting m = new Meeting(null,0,null,null,null);
-//        m.writeMeetingsToTXT(meetings,".//data//meetings.txt");
-//        m.write_meet_to_txt_JAVAFX(meetings,".//data//meets_JAVAFX.txt");
+//        m.writeMeetingsToTXT(".//data//meetings.txt");
 
         /**
          * FILES (LOAD)
@@ -367,7 +361,7 @@ public class GraphCreator extends Application {
         //grafo pessoas
         String path_pessoas_txt = ".//data//professionals_graph.txt";       //caminho do ficheiro
         String path_pessoas_bin = ".//data//professionals_graph.bin";       //caminho do ficheiro
-        g.save_professionals_txt_graph(professionals,path_pessoas_txt);     //guarda todas os profissionais no txt (NIF)
+        g.save_professionals_txt_graph(path_pessoas_txt);     //guarda todas os profissionais no txt (NIF)
         SymbolGraphWheighted pessoas = new SymbolGraphWheighted(path_pessoas_txt, ";");    //cria o symbol graph de profissionais
 
         //ligaçoes (funçoes teste)
@@ -395,21 +389,21 @@ public class GraphCreator extends Application {
         //grafo profissionais / empresas
         String path_pessoas_empresas_txt = ".//data//pro_comp_graph.txt";
         String path_pessoas_empresas_bin = ".//data//pro_comp_graph.bin";
-        g.save_pro_comp_txt_graph(professionals,company,path_pessoas_empresas_txt);
+        g.save_pro_comp_txt_graph(path_pessoas_empresas_txt);
         SymbolDigraphWeighted pessoas_empresas = new SymbolDigraphWeighted(path_pessoas_empresas_txt,";");
-        g.pro_comp_meet_vertex(pessoas_empresas,path_pessoas_empresas_txt,professionals,company,meetings,pontosDeEncontro);
+        g.pro_comp_meet_vertex(pessoas_empresas,path_pessoas_empresas_txt);
 
         //ligaçoes (funçoes teste)
-        g.conect_pro_comp_graphProCompMeet(p1,c1,pessoas_empresas,path_pessoas_empresas_txt,10,professionals,company,meetings,pontosDeEncontro);
-        g.conect_pro_comp_graphProCompMeet(p2,c1,pessoas_empresas,path_pessoas_empresas_txt,20,professionals,company,meetings,pontosDeEncontro);
-        g.conect_pro_comp_graphProCompMeet(p3,c1,pessoas_empresas,path_pessoas_empresas_txt,30,professionals,company,meetings,pontosDeEncontro);
-        g.conect_pro_comp_graphProCompMeet(p4,c2,pessoas_empresas,path_pessoas_empresas_txt,12,professionals,company,meetings,pontosDeEncontro);
-        g.conect_pro_comp_graphProCompMeet(p5,c2,pessoas_empresas,path_pessoas_empresas_txt,17,professionals,company,meetings,pontosDeEncontro);
-        g.conect_pro_comp_graphProCompMeet(p6,c3,pessoas_empresas,path_pessoas_empresas_txt,22,professionals,company,meetings,pontosDeEncontro);
-        g.conect_pro_comp_graphProCompMeet(p7,c3,pessoas_empresas,path_pessoas_empresas_txt,24,professionals,company,meetings,pontosDeEncontro);
-        g.conect_pro_comp_graphProCompMeet(p8,c3,pessoas_empresas,path_pessoas_empresas_txt,14,professionals,company,meetings,pontosDeEncontro);
-        g.conect_pro_comp_graphProCompMeet(p9,c3,pessoas_empresas,path_pessoas_empresas_txt,37,professionals,company,meetings,pontosDeEncontro);
-        g.conect_pro_comp_graphProCompMeet(p10,c3,pessoas_empresas,path_pessoas_empresas_txt,27,professionals,company,meetings,pontosDeEncontro);
+        g.conect_pro_comp_graphProCompMeet(p1,c1,pessoas_empresas,path_pessoas_empresas_txt,10);
+        g.conect_pro_comp_graphProCompMeet(p2,c1,pessoas_empresas,path_pessoas_empresas_txt,20);
+        g.conect_pro_comp_graphProCompMeet(p3,c1,pessoas_empresas,path_pessoas_empresas_txt,30);
+        g.conect_pro_comp_graphProCompMeet(p4,c2,pessoas_empresas,path_pessoas_empresas_txt,12);
+        g.conect_pro_comp_graphProCompMeet(p5,c2,pessoas_empresas,path_pessoas_empresas_txt,17);
+        g.conect_pro_comp_graphProCompMeet(p6,c3,pessoas_empresas,path_pessoas_empresas_txt,22);
+        g.conect_pro_comp_graphProCompMeet(p7,c3,pessoas_empresas,path_pessoas_empresas_txt,24);
+        g.conect_pro_comp_graphProCompMeet(p8,c3,pessoas_empresas,path_pessoas_empresas_txt,14);
+        g.conect_pro_comp_graphProCompMeet(p9,c3,pessoas_empresas,path_pessoas_empresas_txt,37);
+        g.conect_pro_comp_graphProCompMeet(p10,c3,pessoas_empresas,path_pessoas_empresas_txt,27);
 
         //guarda e carrega de bin
         g.save_all_pro_comp_bin_digraph(pessoas_empresas,path_pessoas_empresas_bin);
@@ -420,29 +414,29 @@ public class GraphCreator extends Application {
         //grafo pontos de encontro/empresas/meetings
         String path_point_comp_meet_txt = ".//data//point_comp_meet.txt";
         String path_point_comp_meet_bin = ".//data//point_comp_meet.bin";
-        g.save_pro_comp_meet_txt_graph(pontosDeEncontro,company,meetings,path_point_comp_meet_txt);
+        g.save_pro_comp_meet_txt_graph(path_point_comp_meet_txt);
         SymbolDigraphWeighted point_comp_meet = new SymbolDigraphWeighted(path_point_comp_meet_txt,";");
-        g.pro_comp_meet_vertex(point_comp_meet,path_point_comp_meet_txt,professionals,company,meetings,pontosDeEncontro);
+        g.pro_comp_meet_vertex(point_comp_meet,path_point_comp_meet_txt);
 
         //ligaçoes (funçoes teste)
-        g.conect_comp_point_graphProCompMeet(c1,pe1,point_comp_meet,path_point_comp_meet_txt,10,professionals,company,meetings,pontosDeEncontro);
-        g.conect_comp_point_graphProCompMeet(c1,pe2,point_comp_meet,path_point_comp_meet_txt,10,professionals,company,meetings,pontosDeEncontro);
-        g.conect_comp_point_graphProCompMeet(c2,pe2,point_comp_meet,path_point_comp_meet_txt,10,professionals,company,meetings,pontosDeEncontro);
-        g.conect_comp_point_graphProCompMeet(c3,pe3,point_comp_meet,path_point_comp_meet_txt,10,professionals,company,meetings,pontosDeEncontro);
-        g.conect_comp_point_graphProCompMeet(c3,pe4,point_comp_meet,path_point_comp_meet_txt,10,professionals,company,meetings,pontosDeEncontro);
-        g.conect_meet_point_graphProCompMeet(m1,pe1,point_comp_meet,path_point_comp_meet_txt,13,professionals,company,meetings,pontosDeEncontro);
-        g.conect_meet_point_graphProCompMeet(m1,pe2,point_comp_meet,path_point_comp_meet_txt,13,professionals,company,meetings,pontosDeEncontro);
-        g.conect_meet_point_graphProCompMeet(m1,pe2,point_comp_meet,path_point_comp_meet_txt,13,professionals,company,meetings,pontosDeEncontro);
-        g.conect_meet_point_graphProCompMeet(m2,pe2,point_comp_meet,path_point_comp_meet_txt,13,professionals,company,meetings,pontosDeEncontro);
-        g.conect_meet_point_graphProCompMeet(m2,pe3,point_comp_meet,path_point_comp_meet_txt,13,professionals,company,meetings,pontosDeEncontro);
-        g.conect_meet_point_graphProCompMeet(m3,pe4,point_comp_meet,path_point_comp_meet_txt,13,professionals,company,meetings,pontosDeEncontro);
+        g.conect_comp_point_graphProCompMeet(c1,pe1,point_comp_meet,path_point_comp_meet_txt,10);
+        g.conect_comp_point_graphProCompMeet(c1,pe2,point_comp_meet,path_point_comp_meet_txt,10);
+        g.conect_comp_point_graphProCompMeet(c2,pe2,point_comp_meet,path_point_comp_meet_txt,10);
+        g.conect_comp_point_graphProCompMeet(c3,pe3,point_comp_meet,path_point_comp_meet_txt,10);
+        g.conect_comp_point_graphProCompMeet(c3,pe4,point_comp_meet,path_point_comp_meet_txt,10);
+        g.conect_meet_point_graphProCompMeet(m1,pe1,point_comp_meet,path_point_comp_meet_txt,13);
+        g.conect_meet_point_graphProCompMeet(m1,pe2,point_comp_meet,path_point_comp_meet_txt,13);
+        g.conect_meet_point_graphProCompMeet(m1,pe2,point_comp_meet,path_point_comp_meet_txt,13);
+        g.conect_meet_point_graphProCompMeet(m2,pe2,point_comp_meet,path_point_comp_meet_txt,13);
+        g.conect_meet_point_graphProCompMeet(m2,pe3,point_comp_meet,path_point_comp_meet_txt,13);
+        g.conect_meet_point_graphProCompMeet(m3,pe4,point_comp_meet,path_point_comp_meet_txt,13);
 
 
         //guarda e carrega de bin
         g.save_all_pro_comp_bin_digraph(point_comp_meet,path_point_comp_meet_bin);
         point_comp_meet = g.read_pro_comp_bin_file(point_comp_meet,path_point_comp_meet_bin);
 
-//        System.out.println(pro_comp_meet.digraph());
+//        System.out.println(point_comp_meet.digraph());
 
         /**
          * Funçoes de Pesquisa em Grafos
@@ -454,36 +448,23 @@ public class GraphCreator extends Application {
 //        g.graph_pessoas_conected(pessoas);
 
         //caminho mais curto entre meet e empresa  (Dijkstra)
-//        g.short_path_between_CompMeet(point_comp_meet,c1,m3,professionals,company,meetings,pontosDeEncontro);
-//        g.short_path_between_CompMeet(point_comp_meet,c1,m1,professionals,company,meetings,pontosDeEncontro);
+//        g.short_path_between_CompMeet(point_comp_meet,c1,m3);
+//        g.short_path_between_CompMeet(point_comp_meet,c1,m1);
 
         //todos os profissionais que seguem uma empresa
-        String path_search_pro_comp = ".//data//search_comp_pro.txt";
-        g.write_search_comp_pro(pessoas_empresas,path_search_pro_comp,professionals,company,meetings,pontosDeEncontro);
-
-        //todos os profissionais que foram a um meeting
-        String path_search_meet_pro = ".//data//search_meet_pro.txt";
-        g.write_search_meet_pro(point_comp_meet,pessoas_empresas,path_search_meet_pro,professionals,company,meetings,pontosDeEncontro);
-
-        //todos os profissionais que seguem uma empresa
-//        g.search_comp_pro_followers(c1,pro_comp_meet,professionals,company,meetings);
-//        g.search_comp_pro_followers(c2,pro_comp_meet,professionals,company,meetings);
-//        g.search_comp_pro_followers(c3,pro_comp_meet,professionals,company,meetings);
+//        g.search_comp_pro_followers(c1,pessoas_empresas);
+//        g.search_comp_pro_followers(c2,pessoas_empresas);
+//        g.search_comp_pro_followers(c3,pessoas_empresas);
 
         //todos os profissionais que participaram num meet
-//        g.search_meet_pro_followers(m1,pro_comp_meet,professionals,company,meetings);
-//        g.search_meet_pro_followers(m2,pro_comp_meet,professionals,company,meetings);
-//        g.search_meet_pro_followers(m3,pro_comp_meet,professionals,company,meetings);
+//        g.search_meet_pro_followers(m1,point_comp_meet);
+//        g.search_meet_pro_followers(m2,point_comp_meet);
+//        g.search_meet_pro_followers(m3,point_comp_meet);
 
         //pesquisar profissional desempregado com determinada skill
-//        g.search_pro_without_comp_and_skills(point_comp_meet,c4,"Base de dados",professionals,company,meetings,pontosDeEncontro);
-//        g.search_pro_without_comp_and_skills(pro_comp_meet,c4,"Computacao",professionals,company,meetings);
+//        g.search_pro_without_comp_and_skills(pessoas_empresas,c4,"Base de dados");
+//        g.search_pro_without_comp_and_skills(pessoas_empresas,c4,"Computacao");
 
-        //guarda ST professionals em bin
-        String professionals_st = ".//data//professionalsST.bin";
-        g.save_professioanls_ST(professionals,professionals_st);
-        GraphCreatorFXMLController i = new GraphCreatorFXMLController();
-        i.read_pro_bin_file(".//data//professionalsST.bin");
         launch(args);
     }
 

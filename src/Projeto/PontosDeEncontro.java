@@ -1,4 +1,8 @@
 package Projeto;
+import static Projeto.Fase2_JavaFX.GraphCreator.professionals;
+import static Projeto.Fase2_JavaFX.GraphCreator.company;
+import static Projeto.Fase2_JavaFX.GraphCreator.meetings;
+import static Projeto.Fase2_JavaFX.GraphCreator.pontosDeEncontro;
 
 public class PontosDeEncontro {
     private String name;

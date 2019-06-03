@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -11,6 +12,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -232,6 +234,40 @@
                                  </columns>
                               </TableView>
                               <HBox fx:id="addSearchBox11" prefHeight="72.0" prefWidth="871.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="searchUnemployedBySkill">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="582.0" prefWidth="865.0">
+                     <children>
+                        <VBox prefHeight="690.0" prefWidth="871.0">
+                           <children>
+                              <Label prefHeight="56.0" prefWidth="833.0" text="Unemployed" />
+                              <TableView fx:id="removeUnemployedTable" prefHeight="597.0" prefWidth="871.0">
+                                 <columns>
+                                    <TableColumn fx:id="searchUnemployed" prefWidth="437.0" text="Professional" />
+                                    <TableColumn fx:id="searchSkill" minWidth="0.0" prefWidth="427.0" text="Skill" />
+                                 </columns>
+                              </TableView>
+                              <HBox fx:id="addSearchBox111" prefHeight="105.0" prefWidth="871.0">
+                                 <children>
+                                    <TextField fx:id="skillName" promptText="Skill Name">
+                                       <HBox.margin>
+                                          <Insets left="50.0" top="20.0" />
+                                       </HBox.margin></TextField>
+                                    <Button mnemonicParsing="false" onAction="#handleInsertSkillButton" text="Add">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <HBox.margin>
+                                          <Insets left="500.0" top="20.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children></HBox>
                            </children>
                         </VBox>
                      </children>

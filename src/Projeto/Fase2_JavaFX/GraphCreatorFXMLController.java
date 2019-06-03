@@ -17,7 +17,6 @@ import javafx.scene.text.Text;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -25,6 +24,11 @@ import java.io.ObjectInputStream;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
+
+import static Projeto.Fase2_JavaFX.GraphCreator.professionals;
+import static Projeto.Fase2_JavaFX.GraphCreator.company;
+import static Projeto.Fase2_JavaFX.GraphCreator.meetings;
+import static Projeto.Fase2_JavaFX.GraphCreator.pontosDeEncontro;
 
 public class GraphCreatorFXMLController implements Initializable {
     public TextField verticesNumberField;
@@ -67,6 +71,12 @@ public class GraphCreatorFXMLController implements Initializable {
     public TableColumn searchMeetCol1;
     public HBox addSearchBox11;
     public TableView <Professional>removeTable;
+    public HBox addSearchBox111;
+    public TextField skillName;
+    public TableColumn searchSkill;
+    public TableColumn searchUnemployed;
+    public TableView removeUnemployedTable;
+    public MenuItem removeEdge;
     private Company cc =new Company("ola",334444,43434,null);
     private Graph graph;
     private String delimeter = ";";
@@ -74,20 +84,6 @@ public class GraphCreatorFXMLController implements Initializable {
     private String path_pessoas_txt = ".//data//professionals_graph.txt";
     private String path_companies_txt = ".//data//pro_comp_graph.txt";
     private String path_pro_comp_meet_txt = ".//data//point_comp_meet.txt";
-
-    //carrega ST de profissionais
-    public SeparateChainingHashST_Projeto<Integer, Professional> read_pro_bin_file(String path) {
-        ObjectInputStream ios = null;
-        try {
-            ios = new ObjectInputStream(new FileInputStream(new File(path)));
-            SeparateChainingHashST_Projeto<Integer, Professional> professionals;
-            professionals = (SeparateChainingHashST_Projeto<Integer, Professional>) ios.readObject();
-            return professionals;
-        } catch (ClassNotFoundException | IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
     public void create_vertice_in_ProGraph(int v)
     {
@@ -510,5 +506,8 @@ public class GraphCreatorFXMLController implements Initializable {
         for(int i=0;i<pessoas.graph().V();i++){
 
         }
+    }
+
+    public void handleInsertSkillButton(ActionEvent actionEvent) {
     }
 }
