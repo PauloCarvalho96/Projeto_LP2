@@ -1,12 +1,13 @@
 package Projeto.Fase2_JavaFX;
-
 import Projeto.*;
+import Projeto.Company;
 import edu.princeton.cs.algs4.In;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -49,7 +50,10 @@ public class GraphCreatorFXMLController implements Initializable {
     public TableColumn<Meeting,String> meetingDuracaoCol;
     public TableView<Professional> searchTable;
     public TableColumn<Professional,String> searchNameCol;
-    public TableColumn<Professional,String> searchProMeet;
+    public TableColumn<Professional,String> searchCompCol;
+    public ComboBox<String> selectComComboBox;
+    public HBox addSearchBox;
+    private Company cc =new Company("ola",334444,43434,null);
     private Graph graph;
     private String delimeter = ";";
     private double radius = 10.0;
@@ -291,6 +295,10 @@ public class GraphCreatorFXMLController implements Initializable {
         meetingsNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         meetingDataCol.setCellValueFactory(new PropertyValueFactory<>("date"));
         meetingDuracaoCol.setCellValueFactory(new PropertyValueFactory<>("duration"));
+
+        //search
+        searchCompCol.setCellValueFactory(new PropertyValueFactory<>("company_name"));
+        searchNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
     }
 
     public void handleReadFileAction(ActionEvent actionEvent) {
@@ -347,26 +355,41 @@ public class GraphCreatorFXMLController implements Initializable {
         in.close();
     }
 
-    public void handleSearchProComp(ActionEvent actionEvent) {
-        searchProComp();
+    public void handleSelectCompanyFiles(ActionEvent actionEvent) {
+        addCompaniesToComboBox();
     }
 
-    public void handleSearchProMeet(ActionEvent actionEvent) {
-    }
-
-    public void searchProComp(){
-        searchTable.getItems().clear();
+    public void addCompaniesToComboBox(){
+        selectComComboBox.getItems().clear();
         String path_search_comp_pro_txt = ".//data//search_comp_pro.txt";
         In in = new In(path_search_comp_pro_txt);
-        in.readLine();
-        while (!in.isEmpty()){
+        while (!in.isEmpty()) {
+            String[] texto = in.readLine().split(";");
+            String name_c = texto[0];
+            Company c = new Company(name_c,0,0,null);
+            selectComComboBox.getItems().addAll(c.getName());
+        }
+        in.close();
+    }
+
+    public void handleSelectCompany(ActionEvent actionEvent) {
+        searchTable.getItems().clear();
+        String dname = selectComComboBox.getValue();
+        String path_search_comp_pro_txt = ".//data//search_comp_pro.txt";
+        In in = new In(path_search_comp_pro_txt);
+        while (!in.isEmpty()) {
             String[] texto = in.readLine().split(";");
             String comp_name = texto[0];
-            Company comp = new Company(comp_name,0,0,null);
-            String name_pro = texto[1];
-            Professional pro = new Professional(name_pro,null,null,null,null,null);
-            pro.setCompany(comp);
-            searchTable.getItems().addAll(pro);
+            Company comp = new Company(comp_name, 0, 0, null);
+            if (comp.getName().equals(dname)) {
+                String name_pro = null;
+                for (int i = 1; i < texto.length; i++) {
+                    name_pro = texto[i];
+                    Professional pro = new Professional(name_pro, null, null, null, null, null);
+                    pro.setCompany(comp);
+                    searchTable.getItems().addAll(pro);
+                }
+            }
         }
         in.close();
     }

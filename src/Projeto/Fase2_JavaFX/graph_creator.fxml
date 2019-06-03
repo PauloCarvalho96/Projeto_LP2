@@ -2,6 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -12,6 +14,8 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="756.0" prefWidth="859.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Projeto.Fase2_JavaFX.GraphCreatorFXMLController">
    <children>
@@ -83,6 +87,11 @@
                   </Menu>
                </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Search">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleSelectCompanyFiles" text="Select Company Files" />
+               </items>
+            </Menu>
         </menus>
          <opaqueInsets>
             <Insets />
@@ -171,6 +180,27 @@
                            </image>
                         </ImageView>
                         <Group fx:id="graphGroup2" layoutX="129.0" layoutY="115.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Search">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="582.0" prefWidth="865.0">
+                     <children>
+                        <VBox prefHeight="690.0" prefWidth="871.0">
+                           <children>
+                              <Label prefHeight="42.0" prefWidth="833.0" text=" Companies" />
+                              <ComboBox fx:id="selectComComboBox" onAction="#handleSelectCompany" prefHeight="31.0" prefWidth="873.0" promptText="Select Company" />
+                              <TableView fx:id="searchTable" prefHeight="543.0" prefWidth="768.0">
+                                 <columns>
+                                    <TableColumn fx:id="searchNameCol" prefWidth="437.0" text="Professional" />
+                                    <TableColumn fx:id="searchCompCol" minWidth="0.0" prefWidth="427.0" text="Company" />
+                                 </columns>
+                              </TableView>
+                              <HBox fx:id="addSearchBox" prefHeight="72.0" prefWidth="871.0" />
+                           </children>
+                        </VBox>
                      </children>
                   </AnchorPane>
                </content>

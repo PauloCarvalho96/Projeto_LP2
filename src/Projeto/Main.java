@@ -473,7 +473,7 @@ public class Main {
 //        g.graph_proComp_isBipartite(pessoas_empresas);
 
         //grafo pessoas é conexo
-        g.graph_pessoas_conected(pessoas);
+//        g.graph_pessoas_conected(pessoas);
 
         //caminho mais curto entre meet e empresa  (Dijkstra)
         String path_search_pro_comp = ".//data//search_comp_pro.txt";
