@@ -1,6 +1,8 @@
 package Projeto.Fase2_JavaFX;
 import Projeto.*;
 import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.SeparateChainingHashST_Projeto;
+import edu.princeton.cs.algs4.SymbolDigraph;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
@@ -57,10 +59,16 @@ public class GraphCreatorFXMLController implements Initializable {
     public TableColumn<Professional,String> searchProCol;
     public TableColumn<Professional,String> searchMeetCol;
     public HBox addSearchBox1;
+    public ComboBox <String>selecProRemoveComboBox;
+    public TableView searchTableMeet1;
+    public TableColumn searchProCol1; //
+    public TableColumn searchMeetCol1;
+    public HBox addSearchBox11;
+    public TableView <Professional>removeTable;
     private Company cc =new Company("ola",334444,43434,null);
     private Graph graph;
     private String delimeter = ";";
-    private double radius = 10.0;
+    private double radius = 30.0;
     private String path_pessoas_txt = ".//data//professionals_graph.txt";
     private String path_companies_txt = ".//data//pro_comp_graph.txt";
     private String path_pro_comp_meet_txt = ".//data//point_comp_meet.txt";
@@ -324,7 +332,7 @@ public class GraphCreatorFXMLController implements Initializable {
         searchMeetCol.setCellValueFactory(new PropertyValueFactory<>("meet"));
         searchProCol.setCellValueFactory(new PropertyValueFactory<>("name"));
     }
-
+    Graph_project g = new Graph_project();
     public void handleReadFileAction(ActionEvent actionEvent) {
         readProfessionalFile();
         readCompanyFile();
@@ -455,6 +463,39 @@ public class GraphCreatorFXMLController implements Initializable {
                     searchTableMeet.getItems().addAll(pro);
                 }
             }
+        }
+        in.close();
+    }
+
+    public void handleRemoveEdgePro(ActionEvent actionEvent) {
+        addProToComboBox();
+        //removeProEge();
+    }
+    public void removeProEge(){
+    }
+
+    public void handleSelectProRemove(ActionEvent actionEvent) {
+        removeTable.getItems().clear();
+        In in = new In(".//data//professionals_JAVAFX.txt");
+        in.readLine();
+        while (!in.isEmpty()) {
+            String[] texto = in.readLine().split(";");
+            String name_pro = texto[0];
+            Professional test = new Professional(name_pro,null,null,null,null,null);
+            removeTable.getItems().addAll(test);
+        }
+        in.close();
+    }
+
+    public void addProToComboBox(){
+        selecProRemoveComboBox.getItems().clear();
+        In in = new In(".//data//professionals_JAVAFX.txt");
+        in.readLine();
+        while (!in.isEmpty()) {
+            String[] texto = in.readLine().split(";");
+            String name_pro = texto[0];
+            Professional p1 = new Professional(name_pro,null,null,null,null,null);
+            selecProRemoveComboBox.getItems().addAll(p1.getName());
         }
         in.close();
     }

@@ -39,7 +39,7 @@
                     <items>
                         <Menu mnemonicParsing="false" text="Remover Vertice">
                           <items>
-                              <MenuItem mnemonicParsing="false" text="Remove Professionals" />
+                              <MenuItem fx:id="removeEdge" mnemonicParsing="false" onAction="#handleRemoveEdgePro" text="Remove Professionals" />
                             <MenuItem mnemonicParsing="false" text="Remove Companies" />
                               <MenuItem mnemonicParsing="false" text="Remove Meetings" />
                           </items>
@@ -211,6 +211,27 @@
                                  </columns>
                               </TableView>
                               <HBox fx:id="addSearchBox1" prefHeight="72.0" prefWidth="871.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="RemoveEdgePro">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="582.0" prefWidth="865.0">
+                     <children>
+                        <VBox prefHeight="690.0" prefWidth="871.0">
+                           <children>
+                              <Label prefHeight="42.0" prefWidth="833.0" text="Professionals" />
+                              <ComboBox fx:id="selecProRemoveComboBox" onAction="#handleSelectProRemove" prefHeight="31.0" prefWidth="873.0" promptText="Select Professional" />
+                              <TableView fx:id="removeTable" prefHeight="543.0" prefWidth="768.0">
+                                 <columns>
+                                    <TableColumn fx:id="searchProCol1" prefWidth="437.0" text="Professional" />
+                                    <TableColumn fx:id="searchMeetCol1" minWidth="0.0" prefWidth="427.0" text="Meet" />
+                                 </columns>
+                              </TableView>
+                              <HBox fx:id="addSearchBox11" prefHeight="72.0" prefWidth="871.0" />
                            </children>
                         </VBox>
                      </children>

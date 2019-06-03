@@ -208,7 +208,7 @@ public class Graph_project {
         }
     }
 
-    public void conect_meet_point_graphProCompMeet(PontosDeEncontro p1, Meeting p2, SymbolDigraphWeighted g, String path, Integer w, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings,SeparateChainingHashST_Projeto<Integer, PontosDeEncontro> pontosDeEncontro) {
+    public void conect_meet_point_graphProCompMeet(Meeting p2,PontosDeEncontro p1, SymbolDigraphWeighted g, String path, Integer w, SeparateChainingHashST_Projeto<Integer, Professional> professionals, SeparateChainingHashST_Projeto<Integer, Company> company, RedBlackBST<Date, Meeting> meetings,SeparateChainingHashST_Projeto<Integer, PontosDeEncontro> pontosDeEncontro) {
         for (int v = 0; v < g.digraph().V(); v++) {       //percorre os vertices
             int i = pro_or_comp_or_meet(g, v, professionals, company, meetings,pontosDeEncontro);
             if (i == 3) {
