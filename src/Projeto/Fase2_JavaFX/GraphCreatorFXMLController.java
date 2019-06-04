@@ -19,6 +19,7 @@ import javafx.scene.control.TextField;
 
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -85,6 +86,19 @@ public class GraphCreatorFXMLController implements Initializable {
     public TableView<String> tabelaparadistancia2;
     public TableColumn<Object, Object> shortestPathDistance1;
     public TextField textFieldDistance;
+    public TableView addTable;
+    public TableColumn addProCol1;
+    public TextField professionalNameField;
+    public TextField genderField;
+    public TextField birthDateField;
+    public TextField skillsField;
+    public TextField locationField;
+    public TextField nifField;
+    public TextField birthDateDayField;
+    public TextField birthDateMonthField;
+    public TextField birthDateYearField;
+    public TextField locationXField;
+    public TextField locationYField;
     private Company cc =new Company("ola",334444,43434,null);
     private Graph graph;
     private String delimeter = ";";
@@ -551,12 +565,33 @@ public class GraphCreatorFXMLController implements Initializable {
 //        }
 //        in.close();
     }
-    public void addProToComboBox(){                 //mostra profissionais disponiveis a eliminar na comboBox
-//        selecProRemoveComboBox.getItems().clear();
-//        Graph_project g = new Graph_project();
-//        SymbolGraphWheighted pessoas = new SymbolGraphWheighted(".//data//professionals_graph.txt",";");
-//        for(int i=0;i<pessoas.graph().V();i++){
-//
-//        }
+
+
+    /// Adicionar Profissional ///
+
+    public void handlerAddProFile1(ActionEvent actionEvent) {
+
+    }
+
+    public void handleAddProAction(ActionEvent actionEvent) {
+        String name = professionalNameField.getText();
+        String gender = genderField.getText();
+        // data
+        int dia = Integer.parseInt(birthDateDayField.getText());
+        int mes = Integer.parseInt(birthDateMonthField.getText());
+        int ano = Integer.parseInt(birthDateYearField.getText());
+        Date d1 = new Date(dia,mes,ano,0,0);
+        // localizacao
+        int x = Integer.parseInt(locationXField.getText());
+        int y = Integer.parseInt(locationYField.getText());
+        Location l1 = new Location(x,y);
+        //nif
+        int nif = Integer.parseInt(nifField.getText());
+        //skills
+        ArrayList<String> skillsP1 = new ArrayList<>();
+        String skills = skillsField.getText();
+        skillsP1.add(skills);
+        Professional p1 = new Professional(name,gender,d1,skillsP1,l1,nif);
+        System.out.println(p1.getName()+" "+p1.getGender()+" "+p1.getBirth_date()+" "+"" +p1.getLocation()+" "+p1.getSkills()+" "+p1.getNif());
     }
 }

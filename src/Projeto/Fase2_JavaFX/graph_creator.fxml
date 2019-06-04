@@ -48,7 +48,7 @@
                         </Menu>
                         <Menu mnemonicParsing="false" text="Adicionar Edge">
                            <items>
-                              <MenuItem mnemonicParsing="false" text="Persons Graph" />
+                              <MenuItem mnemonicParsing="false" onAction="#handlerAddProFile1" text="Persons Graph" />
                               <MenuItem mnemonicParsing="false" text="Company Graph" />
                               <MenuItem mnemonicParsing="false" text="Meeting Graph" />
                            </items>
@@ -387,6 +387,78 @@
                                                    </columns>
                                                 </TableView>
                                                 <HBox fx:id="addSearchBox11" prefHeight="72.0" prefWidth="871.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="AddEdgePro">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="582.0" prefWidth="865.0">
+                                       <children>
+                                          <VBox prefHeight="690.0" prefWidth="871.0">
+                                             <children>
+                                                <Label prefHeight="42.0" prefWidth="833.0" text="Professionals" />
+                                                <TableView fx:id="addTable" prefHeight="543.0" prefWidth="768.0">
+                                                   <columns>
+                                                      <TableColumn fx:id="addProCol1" prefWidth="870.0" text="Professional" />
+                                                   </columns>
+                                                </TableView>
+                                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <TextField fx:id="professionalNameField" prefHeight="27.0" prefWidth="165.0" promptText="Professional Name">
+                                                         <HBox.margin>
+                                                            <Insets bottom="10.0" left="10.0" top="10.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                      <TextField fx:id="genderField" prefHeight="27.0" prefWidth="92.0" promptText="Gender">
+                                                         <HBox.margin>
+                                                            <Insets bottom="10.0" left="10.0" top="10.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                      <TextField fx:id="birthDateDayField" layoutX="606.0" layoutY="10.0" prefHeight="31.0" prefWidth="37.0" promptText="D">
+                                                         <HBox.margin>
+                                                            <Insets left="10.0" top="10.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                      <TextField fx:id="birthDateMonthField" prefHeight="31.0" prefWidth="37.0" promptText="M">
+                                                         <HBox.margin>
+                                                            <Insets bottom="10.0" top="10.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                      <TextField fx:id="birthDateYearField" layoutX="297.0" layoutY="20.0" prefHeight="31.0" prefWidth="37.0" promptText="A">
+                                                         <HBox.margin>
+                                                            <Insets top="10.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                      <TextField fx:id="skillsField" prefHeight="31.0" prefWidth="63.0" promptText="Skills">
+                                                         <HBox.margin>
+                                                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                      <TextField fx:id="locationXField" layoutX="408.0" layoutY="20.0" prefHeight="31.0" prefWidth="29.0" promptText="x">
+                                                         <HBox.margin>
+                                                            <Insets bottom="10.0" top="10.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                      <TextField fx:id="locationYField" layoutX="543.0" layoutY="20.0" prefHeight="31.0" prefWidth="29.0" promptText="y">
+                                                         <HBox.margin>
+                                                            <Insets top="10.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                      <TextField fx:id="nifField" layoutX="543.0" layoutY="10.0" prefHeight="31.0" prefWidth="53.0" promptText="Nif">
+                                                         <HBox.margin>
+                                                            <Insets bottom="10.0" left="10.0" top="10.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                      <Button mnemonicParsing="false" onAction="#handleAddProAction" text="Add">
+                                                         <HBox.margin>
+                                                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                         </HBox.margin>
+                                                      </Button>
+                                                   </children>
+                                                </HBox>
                                              </children>
                                           </VBox>
                                        </children>
