@@ -18,6 +18,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+import static Projeto.Fase2_JavaFX.GraphCreator.company;
+import static Projeto.Fase2_JavaFX.GraphCreator.meetings;
+import static Projeto.Fase2_JavaFX.GraphCreator.pontosDeEncontro;
+import static Projeto.Fase2_JavaFX.GraphCreator.professionals;
+import static Projeto.Fase2_JavaFX.GraphCreator.company;
+import static Projeto.Fase2_JavaFX.GraphCreator.meetings;
+import static Projeto.Fase2_JavaFX.GraphCreator.pontosDeEncontro;
+
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -76,15 +84,6 @@ public class GraphCreatorFXMLController implements Initializable {
     private String path_pessoas_txt = ".//data//professionals_graph.txt";
     private String path_companies_txt = ".//data//pro_comp_graph.txt";
     private String path_pro_comp_meet_txt = ".//data//point_comp_meet.txt";
-
-    /// estas estou a usar
-//    private String path_pessoas_empresas_txt = ".//data//pro_comp_graph.txt";
-//    private String path_pessoas_empresas_bin = ".//data//pro_comp_graph.bin";
-//    private String path_pessoas_txt = ".//data//professionals_graph.txt";       //caminho do ficheiro
-//    private String path_pessoas_bin = ".//data//professionals_graph.bin";       //caminho do ficheiro
-    Graph_project g = new Graph_project();
-    //private SymbolGraphWheighted pessoas = new SymbolGraphWheighted(path_pessoas_txt, ";");    //cria o symbol graph de profissionais
-    public static SeparateChainingHashST_Projeto<Integer, Professional> professionals = new SeparateChainingHashST_Projeto<>();
     public void create_vertice_in_ProGraph(int v)
     {
         Random r = new Random();
@@ -325,7 +324,7 @@ public class GraphCreatorFXMLController implements Initializable {
         //profissionais
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         nifCol.setCellValueFactory(new PropertyValueFactory<>("nif"));
-        //companyCol.setCellValueFactory(new PropertyValueFactory<>("company_name"));
+        companyCol.setCellValueFactory(new PropertyValueFactory<>("company_name"));
 
         //empresas
         companyNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -383,9 +382,16 @@ public class GraphCreatorFXMLController implements Initializable {
     }
     public void readProfessionalFile() {
         professionalTable.getItems().clear();
-        for (Integer d:professionals.keys()) {
-            //Professional p=new Professional(professionals.get(d).getName(),null,null,null,null,professionals.get(d).getNif());
-            professionalTable.getItems().addAll(professionals.get(d).getProfessional());
+        for(Integer c:company.keys()){
+            Company co =new Company(company.get(c).getName(),0,0,null);
+            for (Integer d:professionals.keys()) {
+                Professional pr = new Professional(professionals.get(d).getName(),null,null,null,null,professionals.get(d).getNif());
+                if(pr.getCompany().getName().equals(co.getName()))
+                {
+                    pr.setCompany(co);
+                    professionalTable.getItems().addAll(pr);
+                }
+            }
         }
     }
 
