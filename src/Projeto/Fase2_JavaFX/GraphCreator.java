@@ -15,6 +15,9 @@ public class GraphCreator extends Application {
     public static SeparateChainingHashST_Projeto<Integer, Professional> professionals = new SeparateChainingHashST_Projeto<>();   //Date é data de nascimento do profissional
     public static RedBlackBST<Date, Meeting> meetings = new RedBlackBST<>();       //Date é data de criação do meeting
     public static SeparateChainingHashST_Projeto<Integer, PontosDeEncontro> pontosDeEncontro = new SeparateChainingHashST_Projeto<>();
+    public static SymbolGraphWheighted pessoas ;//= new SymbolGraphWheighted(".//data//professionals_graph.txt", ";");    //cria o symbol graph de profissionais
+    public static SymbolDigraphWeighted pessoas_empresas ;//= new SymbolDigraphWeighted(".//data//pro_comp_graph.txt",";");
+    public static SymbolDigraphWeighted point_comp_meet; //= new SymbolDigraphWeighted(".//data//point_comp_meet.txt",";");
 
     public static void main(String[] args) {
         //datas de nascimento
@@ -362,7 +365,7 @@ public class GraphCreator extends Application {
         String path_pessoas_txt = ".//data//professionals_graph.txt";       //caminho do ficheiro
         String path_pessoas_bin = ".//data//professionals_graph.bin";       //caminho do ficheiro
         g.save_professionals_txt_graph(path_pessoas_txt);     //guarda todas os profissionais no txt (NIF)
-        SymbolGraphWheighted pessoas = new SymbolGraphWheighted(path_pessoas_txt, ";");    //cria o symbol graph de profissionais
+        pessoas = new SymbolGraphWheighted(path_pessoas_txt,";");
 
         //ligaçoes (funçoes teste)
         g.conect_2_people(p1,p2,pessoas,path_pessoas_txt,10);
@@ -390,7 +393,7 @@ public class GraphCreator extends Application {
         String path_pessoas_empresas_txt = ".//data//pro_comp_graph.txt";
         String path_pessoas_empresas_bin = ".//data//pro_comp_graph.bin";
         g.save_pro_comp_txt_graph(path_pessoas_empresas_txt);
-        SymbolDigraphWeighted pessoas_empresas = new SymbolDigraphWeighted(path_pessoas_empresas_txt,";");
+        pessoas_empresas = new SymbolDigraphWeighted(path_pessoas_empresas_txt,";");
         g.pro_comp_meet_vertex(pessoas_empresas,path_pessoas_empresas_txt);
 
         //ligaçoes (funçoes teste)
@@ -415,7 +418,7 @@ public class GraphCreator extends Application {
         String path_point_comp_meet_txt = ".//data//point_comp_meet.txt";
         String path_point_comp_meet_bin = ".//data//point_comp_meet.bin";
         g.save_pro_comp_meet_txt_graph(path_point_comp_meet_txt);
-        SymbolDigraphWeighted point_comp_meet = new SymbolDigraphWeighted(path_point_comp_meet_txt,";");
+        point_comp_meet = new SymbolDigraphWeighted(path_point_comp_meet_txt,";");
         g.pro_comp_meet_vertex(point_comp_meet,path_point_comp_meet_txt);
 
         //ligaçoes (funçoes teste)

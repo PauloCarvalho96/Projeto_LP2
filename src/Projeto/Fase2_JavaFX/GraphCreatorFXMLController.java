@@ -17,13 +17,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-import static Projeto.Fase2_JavaFX.GraphCreator.company;
-import static Projeto.Fase2_JavaFX.GraphCreator.meetings;
-import static Projeto.Fase2_JavaFX.GraphCreator.professionals;
 
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
+
+import static Projeto.Fase2_JavaFX.GraphCreator.*;
 
 public class GraphCreatorFXMLController implements Initializable {
     public TextField verticesNumberField;
@@ -73,6 +72,10 @@ public class GraphCreatorFXMLController implements Initializable {
     public TableView<Professional> removeUnemployedTable;
     public MenuItem removeEdge;
     public TextField addSkillName;
+    public ComboBox<String> selectGraphComboBox;
+    public TableView<Boolean> bipartiteTable;
+    public TableColumn isBipartite;
+    public HBox addSearchBox12;
     private Company cc =new Company("ola",334444,43434,null);
     private Graph graph;
     private String delimeter = ";";
@@ -80,6 +83,7 @@ public class GraphCreatorFXMLController implements Initializable {
     private String path_pessoas_txt = ".//data//professionals_graph.txt";
     private String path_companies_txt = ".//data//pro_comp_graph.txt";
     private String path_pro_comp_meet_txt = ".//data//point_comp_meet.txt";
+    Graph_project gi = new Graph_project();
     public void create_vertice_in_ProGraph(int v)
     {
         Random r = new Random();
@@ -358,8 +362,8 @@ public class GraphCreatorFXMLController implements Initializable {
 
     public void readCompanyFile() {
         companyTable.getItems().clear();
-        for (Integer d:company.keys()) {
-            companyTable.getItems().addAll(company.get(d));
+        for (Integer d : company.keys()) {
+                companyTable.getItems().addAll(company.get(d));
         }
     }
 
@@ -396,29 +400,43 @@ public class GraphCreatorFXMLController implements Initializable {
     public void handleSelectCompany(ActionEvent actionEvent) {
         searchTable.getItems().clear();
         String dname = selectComComboBox.getValue();
-        for (Integer c:company.keys()) {
-            if (company.get(c).getName().equals(dname)) {
-                for (Integer po : professionals.keys()) {
-                    if(professionals.get(po).getCompany()==company.get(c))
-                        searchTable.getItems().addAll(professionals.get(po));
+        for(int i=0;i<pessoas_empresas.digraph().V();i++) {
+            int j = gi.pro_or_comp_or_meet(pessoas_empresas, i);
+                if (j == 1) {
+                    for (Integer c:company.keys()) {
+                        if(company.get(c).getNif()==Integer.parseInt(pessoas_empresas.nameOf(i))){
+                            if(company.get(c).getName().equals(dname)){
+                                for (Integer p:professionals.keys()) {
+                                    if(professionals.get(p).getCompany().equals(company.get(c))){
+                                        searchTable.getItems().addAll(professionals.get(p));
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    public void handleSelectMeet(ActionEvent actionEvent) {
+        searchTableMeet.getItems().clear();
+        String dname = selectMeetComboBox.getValue();
+        for (int i = 0; i < point_comp_meet.digraph().V(); i++) {
+            int j = gi.pro_or_comp_or_meet(point_comp_meet, i);
+            if (j == 2) {
+                for (Date d : meetings.keys()) {
+                    if (meetings.get(d).getDate().toString().compareTo(point_comp_meet.nameOf(i)) == 0) {
+                        if (meetings.get(d).getName().equals(dname)) {
+                            for (Integer po : professionals.keys()) {
+                                if (professionals.get(po).getMeet().contains(meetings.get(d).getName()))
+                                    searchTableMeet.getItems().addAll(professionals.get(po));
+                            }
+                        }
+                    }
                 }
             }
         }
     }
-    /////// NAO FUNCIONA CORRETAMENTE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    public void handleSelectMeet(ActionEvent actionEvent) {
-        searchTableMeet.getItems().clear();
-        String dname = selectMeetComboBox.getValue();
-        for (Date d:meetings.keys()) {
-            if (meetings.get(d).getName().equals(dname)) {
-                for (Integer po : professionals.keys()) {
-                    if(professionals.get(po).getMeet().contains((meetings.get(d).getName())))
-                        searchTableMeet.getItems().addAll(professionals.get(po));
-                }
-            }
-        }
-   }
-
 
     public void handleRemoveEdgePro(ActionEvent actionEvent) {
         //addProToComboBox();
@@ -461,5 +479,24 @@ public class GraphCreatorFXMLController implements Initializable {
                 }
             }
         }
+    }
+
+    /// Graph Bipartite
+    public void handlebipartite(ActionEvent actionEvent) {
+        bipartiteTable.getItems().clear();
+        String grafo_pessoas = selectGraphComboBox.getValue();
+
+        Bipartite_Projeto bp = new Bipartite_Projeto(pessoas_empresas);
+
+        bipartiteTable.getItems().addAll(bp.isBipartite());
+    }
+
+    public void handleSelectGraphFiles(ActionEvent actionEvent) {
+        addGraphBipartiteComboBox();
+    }
+
+    public void addGraphBipartiteComboBox(){
+        selectGraphComboBox.getItems().clear();
+        selectGraphComboBox.getItems().addAll(pessoas_empresas.toString());
     }
 }

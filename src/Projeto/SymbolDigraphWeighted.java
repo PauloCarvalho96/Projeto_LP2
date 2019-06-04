@@ -98,7 +98,6 @@ public class SymbolDigraphWeighted implements Serializable {
         }
     }
 
-
     /**
      * Does the digraph contain the vertex named {@code s}?
      * @param s the name of a vertex
@@ -179,6 +178,11 @@ public class SymbolDigraphWeighted implements Serializable {
         int V = graph.V();
         if (v < 0 || v >= V)
             throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+    }
+
+    @Override
+    public String toString() {
+        return "Grafo Pessoas Empresas";
     }
 
     /**

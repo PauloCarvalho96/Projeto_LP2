@@ -93,6 +93,7 @@
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#handleSelectCompanyFiles" text="Select Company Files" />
                   <MenuItem mnemonicParsing="false" onAction="#handleSelectMeetFiles" text="Select Meet Files" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleSelectGraphFiles" text="Select Graph" />
                </items>
             </Menu>
         </menus>
@@ -185,7 +186,7 @@
                            <children>
                               <Label prefHeight="42.0" prefWidth="833.0" text=" Companies" />
                               <ComboBox fx:id="selectComComboBox" onAction="#handleSelectCompany" prefHeight="31.0" prefWidth="873.0" promptText="Select Company" />
-                              <TableView fx:id="searchTable" prefHeight="543.0" prefWidth="768.0">
+                              <TableView fx:id="searchTable" onSort="#handleSelectCompany" prefHeight="543.0" prefWidth="768.0">
                                  <columns>
                                     <TableColumn fx:id="searchNameCol" prefWidth="437.0" text="Professional" />
                                     <TableColumn fx:id="searchCompCol" minWidth="0.0" prefWidth="427.0" text="Company" />
@@ -267,6 +268,49 @@
                                        </HBox.margin>
                                     </Button>
                                  </children></HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="bipartite">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="582.0" prefWidth="865.0">
+                     <children>
+                        <VBox prefHeight="690.0" prefWidth="871.0">
+                           <children>
+                              <Label prefHeight="42.0" prefWidth="833.0" text="Graphs">
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin></Label>
+                              <HBox fx:id="addSearchBox12" prefHeight="72.0" prefWidth="871.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Graph Persons Companies is bipartite?">
+                                       <HBox.margin>
+                                          <Insets left="10.0" top="15.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <HBox prefHeight="72.0" prefWidth="383.0">
+                                       <HBox.margin>
+                                          <Insets left="100.0" />
+                                       </HBox.margin>
+                                    </HBox>
+                                 </children></HBox>
+                              <HBox fx:id="addSearchBox121" layoutX="10.0" layoutY="52.0" prefHeight="72.0" prefWidth="871.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Graph Persons Companies is conexo?">
+                                       <HBox.margin>
+                                          <Insets left="10.0" top="15.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <HBox prefHeight="72.0" prefWidth="383.0">
+                                       <HBox.margin>
+                                          <Insets left="100.0" />
+                                       </HBox.margin>
+                                    </HBox>
+                                 </children>
+                              </HBox>
                            </children>
                         </VBox>
                      </children>
