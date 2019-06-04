@@ -468,6 +468,9 @@ public class GraphCreator extends Application {
   //      g.search_pro_without_comp_and_skills(pessoas_empresas,c4,"Base de dados");
 //        g.search_pro_without_comp_and_skills(pessoas_empresas,c4,"Computacao");
 
+        /// Eliminar profissional
+//        g.remove_professional_from_Graph_pessoas_empresas(p1);
+
         launch(args);
     }
 

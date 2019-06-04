@@ -4,10 +4,7 @@ import edu.princeton.cs.algs4.*;
 
 import java.io.*;
 
-import static Projeto.Fase2_JavaFX.GraphCreator.professionals;
-import static Projeto.Fase2_JavaFX.GraphCreator.company;
-import static Projeto.Fase2_JavaFX.GraphCreator.meetings;
-import static Projeto.Fase2_JavaFX.GraphCreator.pontosDeEncontro;
+import static Projeto.Fase2_JavaFX.GraphCreator.*;
 
 public class Graph_project {
 
@@ -412,5 +409,22 @@ public class Graph_project {
         StdOut.println();
         if (dfs.count() != g.graph().V()) StdOut.println("NOT connected");
         else                         StdOut.println("connected");
+    }
+    public void remove_professional_from_Graph_pessoas_empresas(Professional p)
+    {
+        for(int v = 0;v<pessoas_empresas.digraph().V();v++){
+            int x = pro_or_comp_or_meet(pessoas_empresas,v);
+            if(x==0){
+                for (Integer pi:professionals.keys()) {
+                    if(professionals.get(pi).getNif()==Integer.parseInt(pessoas_empresas.nameOf(v))){       //temos o profissional
+                        for (DirectedEdge e:pessoas_empresas.digraph().adj(v)) {
+//                            System.out.println(e);
+                        }
+//                        professionals.delete(pi);
+                        write_pro_comp_to_file_txt(pessoas_empresas,".//data//pro_comp_graph.txt");
+                    }
+                }
+            }
+        }
     }
 }

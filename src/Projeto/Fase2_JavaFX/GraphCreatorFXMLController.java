@@ -86,6 +86,7 @@ public class GraphCreatorFXMLController implements Initializable {
     public TableColumn<Object, Object> shortestPathMetting1;
     public TableView<String> tabelaparadistancia2;
     public TableColumn<Object, Object> shortestPathDistance1;
+    public TextField textFieldDistance;
     private Company cc =new Company("ola",334444,43434,null);
     private Graph graph;
     private String delimeter = ";";
@@ -94,6 +95,7 @@ public class GraphCreatorFXMLController implements Initializable {
     private String path_companies_txt = ".//data//pro_comp_graph.txt";
     private String path_pro_comp_meet_txt = ".//data//point_comp_meet.txt";
     Graph_project gi = new Graph_project();
+
     public void create_vertice_in_ProGraph(int v)
     {
         Random r = new Random();
@@ -359,7 +361,6 @@ public class GraphCreatorFXMLController implements Initializable {
         //calcular distancia
         shortestPathCompany.setCellValueFactory(new PropertyValueFactory<>("name"));
         shortestPathMetting1.setCellValueFactory(new PropertyValueFactory<>("name"));
-        shortestPathDistance1.setCellValueFactory(new PropertyValueFactory<>("value"));
 
     }
 
@@ -454,35 +455,6 @@ public class GraphCreatorFXMLController implements Initializable {
         }
     }
 
-    public void handleRemoveEdgePro(ActionEvent actionEvent) {
-        //addProToComboBox();
-        //removeProEge();
-    }
-    public void removeProEge(){
-    }
-
-    public void handleSelectProRemove(ActionEvent actionEvent) {
-//        removeTable.getItems().clear();
-//        In in = new In(".//data//professionals_JAVAFX.txt");
-//        in.readLine();
-//        while (!in.isEmpty()) {
-//            String[] texto = in.readLine().split(";");
-//            String name_pro = texto[0];
-//            Professional test = new Professional(name_pro,null,null,null,null,null);
-//            removeTable.getItems().addAll(test);
-//        }
-//        in.close();
-    }
-
-    public void addProToComboBox(){                 //mostra profissionais disponiveis a eliminar na comboBox
-//        selecProRemoveComboBox.getItems().clear();
-//        Graph_project g = new Graph_project();
-//        SymbolGraphWheighted pessoas = new SymbolGraphWheighted(".//data//professionals_graph.txt",";");
-//        for(int i=0;i<pessoas.graph().V();i++){
-//
-//        }
-    }
-
     /// Pesquisar profissionais desempregados por skill
 
     public void handleInsertSkillButton(ActionEvent actionEvent) {
@@ -545,14 +517,13 @@ public class GraphCreatorFXMLController implements Initializable {
     }
 
     public void handleCalculeDistance(ActionEvent actionEvent) {
-        tabelaparadistancia2.getItems().clear();
         String compName=selectCoComboBox2.getValue();
         String meetName=selectMeComboBox1.getValue();
         for (Integer c:company.keys()) {
             if(company.get(c).getName().equals(compName)){
                 for (Date d:meetings.keys()) {
                     if ((meetings.get(d).getName().equals(meetName))){
-                        /////////////////////////////////////////////
+                        /////////////// CODIGO DO (Dijkstra) //////////////////
                         for (int v = 0; v < point_comp_meet.digraph().V(); v++) {
                             int i = gi.pro_or_comp_or_meet(point_comp_meet, v);
                             if (i == 1) {
@@ -563,9 +534,9 @@ public class GraphCreatorFXMLController implements Initializable {
                                             if (meetings.get(d).getDate().toString().compareTo(point_comp_meet.nameOf(vi)) == 0) {
                                                 DijkstraSP_Projeto sp = new DijkstraSP_Projeto(point_comp_meet, v);
                                                 if (sp.hasPathTo(vi)) {
-                                                    tabelaparadistancia2.getItems().setAll(""+sp.distTo(vi));
+                                                    textFieldDistance.setText(v + "-" + vi + " " + sp.distTo(vi));
                                                 } else {
-                                                    tabelaparadistancia2.getItems().setAll("Sem Caminho Possivel");
+                                                    textFieldDistance.setText("Sem Caminho Possivel");
                                                 }
                                             }
                                         }
@@ -577,5 +548,33 @@ public class GraphCreatorFXMLController implements Initializable {
                 }
             }
         }
+    }
+    /// Adicionar/Eliminar Edge ///
+
+    public void handleRemoveEdgePro(ActionEvent actionEvent) {
+        //addProToComboBox();
+        //removeProEge();
+    }
+    public void removeProEge(){
+    }
+    public void handleSelectProRemove(ActionEvent actionEvent) {
+//        removeTable.getItems().clear();
+//        In in = new In(".//data//professionals_JAVAFX.txt");
+//        in.readLine();
+//        while (!in.isEmpty()) {
+//            String[] texto = in.readLine().split(";");
+//            String name_pro = texto[0];
+//            Professional test = new Professional(name_pro,null,null,null,null,null);
+//            removeTable.getItems().addAll(test);
+//        }
+//        in.close();
+    }
+    public void addProToComboBox(){                 //mostra profissionais disponiveis a eliminar na comboBox
+//        selecProRemoveComboBox.getItems().clear();
+//        Graph_project g = new Graph_project();
+//        SymbolGraphWheighted pessoas = new SymbolGraphWheighted(".//data//professionals_graph.txt",";");
+//        for(int i=0;i<pessoas.graph().V();i++){
+//
+//        }
     }
 }

@@ -160,219 +160,276 @@
                   </AnchorPane>
               </content>
             </Tab>
-          <Tab text="Pro Graph Visualization">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <Tab text="Graph Vizualization">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Group fx:id="graphGroup" layoutX="129.0" layoutY="115.0" />
-                     </children></AnchorPane>
-            </content>
-          </Tab>
-            <Tab text="ProComp Graph Visualization">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Group fx:id="graphGroup1" layoutX="129.0" layoutY="115.0" />
+                        <TabPane prefHeight="758.0" prefWidth="967.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="Pro Graph Visualization">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Group fx:id="graphGroup" layoutX="129.0" layoutY="115.0" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                              <Tab text="ProComp Graph Visualization">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Group fx:id="graphGroup1" layoutX="129.0" layoutY="115.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="ProCompPoint Graph Visualization">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <ImageView fitHeight="688.0" fitWidth="865.0" pickOnBounds="true">
+                                             <image>
+                                                <Image url="file:/C:/Users/paulo/Documents/GitHub/Projeto_1fase_LP2/data/map.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Group fx:id="graphGroup2" layoutX="129.0" layoutY="115.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
                      </children>
                   </AnchorPane>
-               </content>
+              </content>
             </Tab>
-            <Tab text="ProCompPoint Graph Visualization">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <Tab text="Searchs">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="688.0" fitWidth="865.0" pickOnBounds="true">
-                           <image>
-                              <Image url="file:/C:/Users/paulo/Documents/GitHub/Projeto_1fase_LP2/data/map.png" />
-                           </image>
-                        </ImageView>
-                        <Group fx:id="graphGroup2" layoutX="129.0" layoutY="115.0" />
+                        <TabPane prefHeight="741.0" prefWidth="890.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                              <Tab text="SearchCompPro">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="582.0" prefWidth="865.0">
+                                       <children>
+                                          <VBox prefHeight="690.0" prefWidth="871.0">
+                                             <children>
+                                                <Label prefHeight="42.0" prefWidth="833.0" text=" Companies" />
+                                                <ComboBox fx:id="selectComComboBox" onAction="#handleSelectCompany" prefHeight="31.0" prefWidth="873.0" promptText="Select Company" />
+                                                <TableView fx:id="searchTable" onSort="#handleSelectCompany" prefHeight="543.0" prefWidth="768.0">
+                                                   <columns>
+                                                      <TableColumn fx:id="searchNameCol" prefWidth="437.0" text="Professional" />
+                                                      <TableColumn fx:id="searchCompCol" minWidth="0.0" prefWidth="427.0" text="Company" />
+                                                   </columns>
+                                                </TableView>
+                                                <HBox fx:id="addSearchBox" prefHeight="72.0" prefWidth="871.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="SearchMeetPro">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="582.0" prefWidth="865.0">
+                                       <children>
+                                          <VBox prefHeight="690.0" prefWidth="871.0">
+                                             <children>
+                                                <Label prefHeight="42.0" prefWidth="833.0" text="Meetings" />
+                                                <ComboBox fx:id="selectMeetComboBox" onAction="#handleSelectMeet" prefHeight="31.0" prefWidth="873.0" promptText="Select Company" />
+                                                <TableView fx:id="searchTableMeet" prefHeight="543.0" prefWidth="768.0">
+                                                   <columns>
+                                                      <TableColumn fx:id="searchProCol" prefWidth="437.0" text="Professional" />
+                                                      <TableColumn fx:id="searchMeetCol" minWidth="0.0" prefWidth="427.0" text="Meet" />
+                                                   </columns>
+                                                </TableView>
+                                                <HBox fx:id="addSearchBox1" prefHeight="72.0" prefWidth="871.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="searchUnemployedBySkill">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="582.0" prefWidth="865.0">
+                                       <children>
+                                          <VBox prefHeight="690.0" prefWidth="871.0">
+                                             <children>
+                                                <TableView fx:id="removeUnemployedTable" prefHeight="597.0" prefWidth="871.0">
+                                                   <columns>
+                                                      <TableColumn fx:id="searchUnemployed" prefWidth="437.0" text="Professional" />
+                                                      <TableColumn fx:id="searchSkill" minWidth="0.0" prefWidth="427.0" text="Skill" />
+                                                   </columns>
+                                                </TableView>
+                                                <HBox fx:id="addSearchBox111" prefHeight="105.0" prefWidth="871.0">
+                                                   <children>
+                                                      <TextField fx:id="addSkillName" promptText="Skill Name">
+                                                         <HBox.margin>
+                                                            <Insets left="50.0" top="20.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                      <Button mnemonicParsing="false" onAction="#handleInsertSkillButton" text="Add">
+                                                         <opaqueInsets>
+                                                            <Insets />
+                                                         </opaqueInsets>
+                                                         <HBox.margin>
+                                                            <Insets left="500.0" top="20.0" />
+                                                         </HBox.margin>
+                                                      </Button>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="searchGraph">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="582.0" prefWidth="865.0">
+                                       <children>
+                                          <VBox prefHeight="690.0" prefWidth="871.0">
+                                             <children>
+                                                <Label prefHeight="42.0" prefWidth="833.0" text="Graphs">
+                                                   <VBox.margin>
+                                                      <Insets left="20.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <HBox fx:id="addSearchBox12" prefHeight="72.0" prefWidth="871.0">
+                                                   <children>
+                                                      <Button mnemonicParsing="false" onAction="#handleProCompBipartite" text="Graph Persons Companies is bipartite?">
+                                                         <HBox.margin>
+                                                            <Insets left="10.0" top="15.0" />
+                                                         </HBox.margin>
+                                                      </Button>
+                                                      <TextField fx:id="bipartiteTextField" prefHeight="31.0" prefWidth="138.0">
+                                                         <HBox.margin>
+                                                            <Insets left="250.0" top="15.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                   </children>
+                                                </HBox>
+                                                <HBox fx:id="addSearchBox121" layoutX="10.0" layoutY="52.0" prefHeight="72.0" prefWidth="871.0">
+                                                   <children>
+                                                      <Button mnemonicParsing="false" onAction="#handleProConexo" prefHeight="31.0" prefWidth="274.0" text="Graph Persons Companies is conexo?">
+                                                         <HBox.margin>
+                                                            <Insets left="10.0" top="15.0" />
+                                                         </HBox.margin>
+                                                      </Button>
+                                                      <TextField fx:id="printConexo" prefHeight="31.0" prefWidth="141.0">
+                                                         <HBox.margin>
+                                                            <Insets left="250.0" top="15.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="63.0" prefWidth="871.0">
+                                                   <children>
+                                                      <ComboBox fx:id="selectCoComboBox2" onAction="#handleSelectCoComboBox" prefWidth="150.0" promptText="select Company">
+                                                         <HBox.margin>
+                                                            <Insets left="70.0" top="15.0" />
+                                                         </HBox.margin>
+                                                      </ComboBox>
+                                                      <ComboBox fx:id="selectMeComboBox1" onAction="#handleSeleMeetComboBox1" prefWidth="150.0" promptText="select Meet">
+                                                         <HBox.margin>
+                                                            <Insets left="200.0" top="15.0" />
+                                                         </HBox.margin>
+                                                      </ComboBox>
+                                                      <Button mnemonicParsing="false" onAction="#handleCalculeDistance" text="Calcule Dist">
+                                                         <HBox.margin>
+                                                            <Insets left="100.0" top="15.0" />
+                                                         </HBox.margin>
+                                                      </Button>
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <TableView fx:id="tabelaparadistancia" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="286.0" prefWidth="283.0">
+                                                        <columns>
+                                                          <TableColumn fx:id="shortestPathCompany" prefWidth="198.0" text="Company" />
+                                                        </columns>
+                                                         <columnResizePolicy>
+                                                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                         </columnResizePolicy>
+                                                         <HBox.margin>
+                                                            <Insets left="20.0" />
+                                                         </HBox.margin>
+                                                      </TableView>
+                                                      <TableView fx:id="tabelaparadistancia1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="286.0" prefWidth="293.0">
+                                                         <columnResizePolicy>
+                                                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                         </columnResizePolicy>
+                                                         <columns>
+                                                            <TableColumn fx:id="shortestPathMetting1" prefWidth="198.0" text="Meeting" />
+                                                         </columns>
+                                                         <HBox.margin>
+                                                            <Insets left="20.0" />
+                                                         </HBox.margin>
+                                                      </TableView>
+                                                      <HBox prefHeight="205.0" prefWidth="280.0">
+                                                         <children>
+                                                            <TextField fx:id="textFieldDistance" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="199.0">
+                                                               <HBox.margin>
+                                                                  <Insets left="50.0" top="100.0" />
+                                                               </HBox.margin>
+                                                               <padding>
+                                                                  <Insets right="20.0" />
+                                                               </padding>
+                                                            </TextField>
+                                                         </children>
+                                                         <HBox.margin>
+                                                            <Insets right="20.0" />
+                                                         </HBox.margin>
+                                                      </HBox>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
                      </children>
                   </AnchorPane>
-               </content>
+              </content>
             </Tab>
-            <Tab text="SearchCompPro">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="582.0" prefWidth="865.0">
+            <Tab text="Edge">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <VBox prefHeight="690.0" prefWidth="871.0">
-                           <children>
-                              <Label prefHeight="42.0" prefWidth="833.0" text=" Companies" />
-                              <ComboBox fx:id="selectComComboBox" onAction="#handleSelectCompany" prefHeight="31.0" prefWidth="873.0" promptText="Select Company" />
-                              <TableView fx:id="searchTable" onSort="#handleSelectCompany" prefHeight="543.0" prefWidth="768.0">
-                                 <columns>
-                                    <TableColumn fx:id="searchNameCol" prefWidth="437.0" text="Professional" />
-                                    <TableColumn fx:id="searchCompCol" minWidth="0.0" prefWidth="427.0" text="Company" />
-                                 </columns>
-                              </TableView>
-                              <HBox fx:id="addSearchBox" prefHeight="72.0" prefWidth="871.0" />
-                           </children>
-                        </VBox>
+                        <TabPane prefHeight="690.0" prefWidth="865.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                              <Tab text="RemoveEdgePro">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="582.0" prefWidth="865.0">
+                                       <children>
+                                          <VBox prefHeight="690.0" prefWidth="871.0">
+                                             <children>
+                                                <Label prefHeight="42.0" prefWidth="833.0" text="Professionals" />
+                                                <ComboBox fx:id="selecProRemoveComboBox" onAction="#handleSelectProRemove" prefHeight="31.0" prefWidth="873.0" promptText="Select Professional" />
+                                                <TableView fx:id="removeTable" prefHeight="543.0" prefWidth="768.0">
+                                                   <columns>
+                                                      <TableColumn fx:id="searchProCol1" prefWidth="437.0" text="Professional" />
+                                                      <TableColumn fx:id="searchMeetCol1" minWidth="0.0" prefWidth="427.0" text="Meet" />
+                                                   </columns>
+                                                </TableView>
+                                                <HBox fx:id="addSearchBox11" prefHeight="72.0" prefWidth="871.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
                      </children>
                   </AnchorPane>
-               </content>
-            </Tab>
-            <Tab text="SearchMeetPro">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="582.0" prefWidth="865.0">
-                     <children>
-                        <VBox prefHeight="690.0" prefWidth="871.0">
-                           <children>
-                              <Label prefHeight="42.0" prefWidth="833.0" text="Meetings" />
-                              <ComboBox fx:id="selectMeetComboBox" onAction="#handleSelectMeet" prefHeight="31.0" prefWidth="873.0" promptText="Select Company" />
-                              <TableView fx:id="searchTableMeet" prefHeight="543.0" prefWidth="768.0">
-                                 <columns>
-                                    <TableColumn fx:id="searchProCol" prefWidth="437.0" text="Professional" />
-                                    <TableColumn fx:id="searchMeetCol" minWidth="0.0" prefWidth="427.0" text="Meet" />
-                                 </columns>
-                              </TableView>
-                              <HBox fx:id="addSearchBox1" prefHeight="72.0" prefWidth="871.0" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab text="RemoveEdgePro">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="582.0" prefWidth="865.0">
-                     <children>
-                        <VBox prefHeight="690.0" prefWidth="871.0">
-                           <children>
-                              <Label prefHeight="42.0" prefWidth="833.0" text="Professionals" />
-                              <ComboBox fx:id="selecProRemoveComboBox" onAction="#handleSelectProRemove" prefHeight="31.0" prefWidth="873.0" promptText="Select Professional" />
-                              <TableView fx:id="removeTable" prefHeight="543.0" prefWidth="768.0">
-                                 <columns>
-                                    <TableColumn fx:id="searchProCol1" prefWidth="437.0" text="Professional" />
-                                    <TableColumn fx:id="searchMeetCol1" minWidth="0.0" prefWidth="427.0" text="Meet" />
-                                 </columns>
-                              </TableView>
-                              <HBox fx:id="addSearchBox11" prefHeight="72.0" prefWidth="871.0" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab text="searchUnemployedBySkill">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="582.0" prefWidth="865.0">
-                     <children>
-                        <VBox prefHeight="690.0" prefWidth="871.0">
-                           <children>
-                              <TableView fx:id="removeUnemployedTable" prefHeight="597.0" prefWidth="871.0">
-                                 <columns>
-                                    <TableColumn fx:id="searchUnemployed" prefWidth="437.0" text="Professional" />
-                                    <TableColumn fx:id="searchSkill" minWidth="0.0" prefWidth="427.0" text="Skill" />
-                                 </columns>
-                              </TableView>
-                              <HBox fx:id="addSearchBox111" prefHeight="105.0" prefWidth="871.0">
-                                 <children>
-                                    <TextField fx:id="addSkillName" promptText="Skill Name">
-                                       <HBox.margin>
-                                          <Insets left="50.0" top="20.0" />
-                                       </HBox.margin></TextField>
-                                    <Button mnemonicParsing="false" onAction="#handleInsertSkillButton" text="Add">
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <HBox.margin>
-                                          <Insets left="500.0" top="20.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                 </children></HBox>
-                           </children>
-                        </VBox>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab text="searchGraph">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="582.0" prefWidth="865.0">
-                     <children>
-                        <VBox prefHeight="690.0" prefWidth="871.0">
-                           <children>
-                              <Label prefHeight="42.0" prefWidth="833.0" text="Graphs">
-                                 <VBox.margin>
-                                    <Insets left="20.0" />
-                                 </VBox.margin></Label>
-                              <HBox fx:id="addSearchBox12" prefHeight="72.0" prefWidth="871.0">
-                                 <children>
-                                    <Button mnemonicParsing="false" onAction="#handleProCompBipartite" text="Graph Persons Companies is bipartite?">
-                                       <HBox.margin>
-                                          <Insets left="10.0" top="15.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                    <TextField fx:id="bipartiteTextField" prefHeight="31.0" prefWidth="138.0">
-                                       <HBox.margin>
-                                          <Insets left="250.0" top="15.0" />
-                                       </HBox.margin></TextField>
-                                 </children></HBox>
-                              <HBox fx:id="addSearchBox121" layoutX="10.0" layoutY="52.0" prefHeight="72.0" prefWidth="871.0">
-                                 <children>
-                                    <Button mnemonicParsing="false" onAction="#handleProConexo" prefHeight="31.0" prefWidth="274.0" text="Graph Persons Companies is conexo?">
-                                       <HBox.margin>
-                                          <Insets left="10.0" top="15.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                    <TextField fx:id="printConexo" prefHeight="31.0" prefWidth="141.0">
-                                       <HBox.margin>
-                                          <Insets left="250.0" top="15.0" />
-                                       </HBox.margin>
-                                    </TextField>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="63.0" prefWidth="871.0">
-                                 <children>
-                                    <ComboBox fx:id="selectCoComboBox2" onAction="#handleSelectCoComboBox" prefWidth="150.0" promptText="select Company">
-                                       <HBox.margin>
-                                          <Insets left="150.0" top="15.0" />
-                                       </HBox.margin></ComboBox>
-                                    <ComboBox fx:id="selectMeComboBox1" onAction="#handleSeleMeetComboBox1" prefWidth="150.0" promptText="select Meet">
-                                       <HBox.margin>
-                                          <Insets left="200.0" top="15.0" />
-                                       </HBox.margin></ComboBox>
-                                    <Button mnemonicParsing="false" onAction="#handleCalculeDistance" text="Calcule Dist">
-                                       <HBox.margin>
-                                          <Insets left="100.0" top="15.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="100.0" prefWidth="200.0">
-                                 <children>
-                                    <TableView fx:id="tabelaparadistancia" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="286.0" prefWidth="283.0">
-                                      <columns>
-                                        <TableColumn fx:id="shortestPathCompany" prefWidth="198.0" text="Company" />
-                                      </columns>
-                                       <columnResizePolicy>
-                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                       </columnResizePolicy>
-                                    </TableView>
-                                    <TableView fx:id="tabelaparadistancia1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="286.0" prefWidth="293.0">
-                                       <columns>
-                                          <TableColumn fx:id="shortestPathMetting1" prefWidth="198.0" text="Meeting" />
-                                       </columns>
-                                       <columnResizePolicy>
-                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                       </columnResizePolicy>
-                                    </TableView>
-                                    <TableView fx:id="tabelaparadistancia2" layoutX="293.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="286.0" prefWidth="300.0">
-                                       <columns>
-                                          <TableColumn fx:id="shortestPathDistance1" prefWidth="198.0" text="Distance" />
-                                       </columns>
-                                       <columnResizePolicy>
-                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                       </columnResizePolicy>
-                                    </TableView>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </children>
-                  </AnchorPane>
-               </content>
+              </content>
             </Tab>
         </tabs>
       </TabPane>
