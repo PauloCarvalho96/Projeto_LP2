@@ -380,18 +380,11 @@ public class GraphCreatorFXMLController implements Initializable {
         }
         in.close();
     }
+
     public void readProfessionalFile() {
         professionalTable.getItems().clear();
-        for(Integer c:company.keys()){
-            Company co =new Company(company.get(c).getName(),0,0,null);
-            for (Integer d:professionals.keys()) {
-                Professional pr = new Professional(professionals.get(d).getName(),null,null,null,null,professionals.get(d).getNif());
-                if(pr.getCompany().getName().equals(co.getName()))
-                {
-                    pr.setCompany(co);
-                    professionalTable.getItems().addAll(pr);//
-                }
-            }
+        for (Integer d:professionals.keys()) {
+            professionalTable.getItems().addAll(professionals.get(d));
         }
     }
 
