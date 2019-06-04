@@ -37,31 +37,6 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
                <items>
-                  <Menu mnemonicParsing="false" text="Vertex">
-                    <items>
-                        <Menu mnemonicParsing="false" text="Remover Vertice">
-                          <items>
-                              <MenuItem fx:id="removeEdge" mnemonicParsing="false" onAction="#handleRemoveEdgePro" text="Remove Professionals" />
-                            <MenuItem mnemonicParsing="false" text="Remove Companies" />
-                              <MenuItem mnemonicParsing="false" text="Remove Meetings" />
-                          </items>
-                        </Menu>
-                        <Menu mnemonicParsing="false" text="Adicionar Vertice">
-                          <items>
-                            <MenuItem mnemonicParsing="false" text="Persons Graph" />
-                            <MenuItem mnemonicParsing="false" text="Company Graph" />
-                              <MenuItem mnemonicParsing="false" text="Meeting Graph" />
-                          </items>
-                        </Menu>
-                        <Menu mnemonicParsing="false" text="Editar Vertice">
-                          <items>
-                              <MenuItem mnemonicParsing="false" text="Edit Professionals" />
-                            <MenuItem mnemonicParsing="false" text="Edit Companies" />
-                              <MenuItem mnemonicParsing="false" text="Edit Meetings" />
-                          </items>
-                        </Menu>
-                    </items>
-                  </Menu>
                   <Menu mnemonicParsing="false" text="Edge">
                      <items>
                         <Menu mnemonicParsing="false" text="Remover Edge">
@@ -76,13 +51,6 @@
                               <MenuItem mnemonicParsing="false" text="Persons Graph" />
                               <MenuItem mnemonicParsing="false" text="Company Graph" />
                               <MenuItem mnemonicParsing="false" text="Meeting Graph" />
-                           </items>
-                        </Menu>
-                        <Menu mnemonicParsing="false" text="Editar Edge">
-                           <items>
-                              <MenuItem mnemonicParsing="false" text="Edit Professionals" />
-                              <MenuItem mnemonicParsing="false" text="Edit Companies" />
-                              <MenuItem mnemonicParsing="false" text="Edit Meetings" />
                            </items>
                         </Menu>
                      </items>

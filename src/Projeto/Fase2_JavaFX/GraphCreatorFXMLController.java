@@ -28,8 +28,6 @@ public class GraphCreatorFXMLController implements Initializable {
     public TextField verticesNumberField;
     public TextArea edgesField;
     public MenuItem openGraph;
-    public MenuItem editGraph;
-    public MenuItem editGraph1;
     public Button createButton;
     public MenuItem companiesGraph;
     public MenuItem professionalGraph;
