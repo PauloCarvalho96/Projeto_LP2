@@ -393,13 +393,13 @@ public class GraphCreatorFXMLController implements Initializable {
     }
 
     public void handleSelectCompany(ActionEvent actionEvent) {
-        searchTableMeet.getItems().clear();
+        searchTable.getItems().clear();
         String dname = selectComComboBox.getValue();
         for (Integer c:company.keys()) {
             if (company.get(c).getName().equals(dname)) {
                 for (Integer po : professionals.keys()) {
                     if(professionals.get(po).getCompany()==company.get(c))
-                        searchTableMeet.getItems().addAll(professionals.get(po));
+                        searchTable.getItems().addAll(professionals.get(po));
                 }
             }
         }
