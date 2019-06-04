@@ -219,23 +219,6 @@ public class GraphCreatorFXMLController implements Initializable {
         in.close();
     }
 
-    public void create_vertex_in_ProCompMeetGraph_Pro(int v)        //vertex Pro
-    {
-        Random r = new Random();
-        double posX = r.nextDouble()*500;
-        double posY = r.nextDouble()*500;
-        Circle c = new Circle(posX,posY,radius);
-        c.setOpacity(0.6);
-        c.setFill(Color.RED);
-        c.setId(""+v);
-        Text text = new Text(""+v);
-        StackPane stack = new StackPane();
-        stack.setLayoutX(posX-radius);
-        stack.setLayoutY(posY-radius);
-        stack.getChildren().addAll(c,text);
-        graphGroup2.getChildren().add(stack);
-    }
-
     public void create_vertex_in_ProCompMeetGraph_Comp(int v)        //vertex Pro
     {
         Random r = new Random();
@@ -461,6 +444,7 @@ public class GraphCreatorFXMLController implements Initializable {
         String desempregado="Desempregado";
         removeUnemployedTable.getItems().clear();
         String name = addSkillName.getText();
+        name = name.toLowerCase();
         for (Integer d:professionals.keys()) {
             if(professionals.get(d).getSkills().contains(name)){
                 if(professionals.get(d).getCompany().getName().contains(desempregado)){

@@ -230,6 +230,27 @@ public class Graph_project {
         }
     }
 
+    public void conect_point_point_graphProCompMeet(PontosDeEncontro p1,PontosDeEncontro p2, SymbolDigraphWeighted g, String path, Integer w) {
+        for (int v = 0; v < g.digraph().V(); v++) {       //percorre os vertices
+            int i = pro_or_comp_or_meet(g, v);
+            if (i == 3) {
+                if (Integer.parseInt(g.nameOf(v)) == p1.getId()) {
+                    for (int vi = 0; vi < g.digraph().V(); vi++) {
+                        int x = pro_or_comp_or_meet(g, vi);
+                        if (x == 3) {
+                            if (Integer.parseInt(g.nameOf(vi)) == p2.getId()) {
+                                g.digraph().addEdge(new DirectedEdge(v, vi, w));
+                                g.digraph().addEdge(new DirectedEdge(vi, v, w));
+                                write_pro_comp_to_file_txt(g, path);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
     public void conect_comp_point_graphProCompMeet(Company p1, PontosDeEncontro p2, SymbolDigraphWeighted g, String path, Integer w) {
         for (int v = 0; v < g.digraph().V(); v++) {       //percorre os vertices
             int i = pro_or_comp_or_meet(g, v);

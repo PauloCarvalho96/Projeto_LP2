@@ -72,20 +72,20 @@ public class GraphCreator extends Application {
 
         //skills
         ArrayList<String> skillsP1 = new ArrayList<>();
-        skillsP1.add("Programacao C");
-        skillsP1.add("Programacao JAVA");
+        skillsP1.add("programacao c");
+        skillsP1.add("Programacao java");
         ArrayList<String> skillsP2 = new ArrayList<>();
-        skillsP2.add("Fotografia");
-        skillsP2.add("Video");
+        skillsP2.add("fotografia");
+        skillsP2.add("video");
         ArrayList<String> skillsP3 = new ArrayList<>();
-        skillsP3.add("Base de dados");
-        skillsP3.add("Computacao");
+        skillsP3.add("base de dados");
+        skillsP3.add("computacao");
         ArrayList<String> skillsP4 = new ArrayList<>();
-        skillsP4.add("Ruby");
-        skillsP4.add("PHP");
+        skillsP4.add("ruby");
+        skillsP4.add("php");
         ArrayList<String> skillsP5 = new ArrayList<>();
-        skillsP5.add("Programacao c++");
-        skillsP5.add("Programacao c#");
+        skillsP5.add("programacao c++");
+        skillsP5.add("programacao c#");
 
         //profissionais
         Professional p1 = new Professional("Paulo", "Masculino", bdp1, skillsP1, l1, 111111111);
@@ -433,6 +433,9 @@ public class GraphCreator extends Application {
         g.conect_meet_point_graphProCompMeet(m2,pe2,point_comp_meet,path_point_comp_meet_txt,13);
         g.conect_meet_point_graphProCompMeet(m2,pe3,point_comp_meet,path_point_comp_meet_txt,13);
         g.conect_meet_point_graphProCompMeet(m3,pe4,point_comp_meet,path_point_comp_meet_txt,13);
+        g.conect_point_point_graphProCompMeet(pe1,pe2,point_comp_meet,path_point_comp_meet_txt,13);
+        g.conect_point_point_graphProCompMeet(pe2,pe3,point_comp_meet,path_point_comp_meet_txt,13);
+        g.conect_point_point_graphProCompMeet(pe3,pe4,point_comp_meet,path_point_comp_meet_txt,13);
 
 
         //guarda e carrega de bin
@@ -453,6 +456,8 @@ public class GraphCreator extends Application {
         //caminho mais curto entre meet e empresa  (Dijkstra)
 //        g.short_path_between_CompMeet(point_comp_meet,c1,m3);
 //        g.short_path_between_CompMeet(point_comp_meet,c1,m1);
+//        g.short_path_between_CompMeet(point_comp_meet,c3,m1);
+//        g.short_path_between_CompMeet(point_comp_meet,c1,m2);
 
         //todos os profissionais que seguem uma empresa
 //        g.search_comp_pro_followers(c1,pessoas_empresas);
