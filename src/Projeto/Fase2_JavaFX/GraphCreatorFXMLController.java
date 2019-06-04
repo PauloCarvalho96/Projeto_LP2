@@ -72,10 +72,20 @@ public class GraphCreatorFXMLController implements Initializable {
     public TableView<Professional> removeUnemployedTable;
     public MenuItem removeEdge;
     public TextField addSkillName;
-    public ComboBox<String> selectGraphComboBox;
-    public TableView<Boolean> bipartiteTable;
-    public TableColumn isBipartite;
     public HBox addSearchBox12;
+    public TextField printConexo;
+    public HBox bipartiteHBOX;
+    public TextField bipartiteTextField;
+    public ComboBox<String> selectMeComboBox1;
+    public TableColumn<Object, Object> shortestPathCompany;
+    public TableColumn<Object, Object> shortestPathMeeting;
+    public TableColumn shortestDistance;
+    public ComboBox<String> selectCoComboBox2;
+    public TableView<Object> tabelaparadistancia;
+    public TableView<Meeting> tabelaparadistancia1;
+    public TableColumn<Object, Object> shortestPathMetting1;
+    public TableView<String> tabelaparadistancia2;
+    public TableColumn<Object, Object> shortestPathDistance1;
     private Company cc =new Company("ola",334444,43434,null);
     private Graph graph;
     private String delimeter = ";";
@@ -345,6 +355,12 @@ public class GraphCreatorFXMLController implements Initializable {
 
         searchUnemployed.setCellValueFactory(new PropertyValueFactory<>("name"));
         searchSkill.setCellValueFactory(new PropertyValueFactory<>("skills"));
+
+        //calcular distancia
+        shortestPathCompany.setCellValueFactory(new PropertyValueFactory<>("name"));
+        shortestPathMetting1.setCellValueFactory(new PropertyValueFactory<>("name"));
+        shortestPathDistance1.setCellValueFactory(new PropertyValueFactory<>("value"));
+
     }
 
     public void handleReadFileAction(ActionEvent actionEvent) {
@@ -468,6 +484,7 @@ public class GraphCreatorFXMLController implements Initializable {
     }
 
     /// Pesquisar profissionais desempregados por skill
+
     public void handleInsertSkillButton(ActionEvent actionEvent) {
         String desempregado="Desempregado";
         removeUnemployedTable.getItems().clear();
@@ -482,21 +499,83 @@ public class GraphCreatorFXMLController implements Initializable {
     }
 
     /// Graph Bipartite
-    public void handlebipartite(ActionEvent actionEvent) {
-        bipartiteTable.getItems().clear();
-        String grafo_pessoas = selectGraphComboBox.getValue();
-
+    public void handleProCompBipartite(ActionEvent actionEvent) {
         Bipartite_Projeto bp = new Bipartite_Projeto(pessoas_empresas);
-
-        bipartiteTable.getItems().addAll(bp.isBipartite());
+        bipartiteTextField.setText(""+bp.isBipartite());
     }
 
-    public void handleSelectGraphFiles(ActionEvent actionEvent) {
-        addGraphBipartiteComboBox();
+    /// Graph Conexo
+    public void handleProConexo(ActionEvent actionEvent) {
+        DepthFirstSearch_Project dfs = new DepthFirstSearch_Project(pessoas,0);
+        if (dfs.count() != pessoas.graph().V())
+            printConexo.setText("Conexo");
+        else
+            printConexo.setText("Not Conexo");
     }
 
-    public void addGraphBipartiteComboBox(){
-        selectGraphComboBox.getItems().clear();
-        selectGraphComboBox.getItems().addAll(pessoas_empresas.toString());
+    //caminho mais curto entre meet e empresa  (Dijkstra)
+    public void handleLoadCompaniesAndMettings(ActionEvent actionEvent) {
+        selectMeComboBox1.getItems().clear();
+        for (Date d:meetings.keys()) {
+            selectMeComboBox1.getItems().addAll(meetings.get(d).getName());
+        }
+
+        selectCoComboBox2.getItems().clear();
+        for (Integer d:company.keys()) {
+            selectCoComboBox2.getItems().addAll(company.get(d).getName());
+        }
+    }
+    public void handleSelectCoComboBox(ActionEvent actionEvent) {
+        tabelaparadistancia.getItems().clear();
+        String dname = selectCoComboBox2.getValue();
+        for (Integer c:company.keys()){
+            if(company.get(c).getName().equals(dname)){
+                tabelaparadistancia.getItems().addAll(company.get(c));
+            }
+        }
+    }
+    public void handleSeleMeetComboBox1(ActionEvent actionEvent) {
+        tabelaparadistancia1.getItems().clear();
+        String dname = selectMeComboBox1.getValue();
+        for (Date d:meetings.keys()){
+            if(meetings.get(d).getName().equals(dname)){
+                tabelaparadistancia1.getItems().setAll(meetings.get(d));
+            }
+        }
+    }
+
+    public void handleCalculeDistance(ActionEvent actionEvent) {
+        tabelaparadistancia2.getItems().clear();
+        String compName=selectCoComboBox2.getValue();
+        String meetName=selectMeComboBox1.getValue();
+        for (Integer c:company.keys()) {
+            if(company.get(c).getName().equals(compName)){
+                for (Date d:meetings.keys()) {
+                    if ((meetings.get(d).getName().equals(meetName))){
+                        /////////////////////////////////////////////
+                        for (int v = 0; v < point_comp_meet.digraph().V(); v++) {
+                            int i = gi.pro_or_comp_or_meet(point_comp_meet, v);
+                            if (i == 1) {
+                                if (company.get(c).getNif() == Integer.parseInt(point_comp_meet.nameOf(v))) {
+                                    for (int vi = 0; vi < point_comp_meet.digraph().V(); vi++) {
+                                        int x = gi.pro_or_comp_or_meet(point_comp_meet, vi);
+                                        if (x == 2) {
+                                            if (meetings.get(d).getDate().toString().compareTo(point_comp_meet.nameOf(vi)) == 0) {
+                                                DijkstraSP_Projeto sp = new DijkstraSP_Projeto(point_comp_meet, v);
+                                                if (sp.hasPathTo(vi)) {
+                                                    tabelaparadistancia2.getItems().setAll(""+sp.distTo(vi));
+                                                } else {
+                                                    tabelaparadistancia2.getItems().setAll("Sem Caminho Possivel");
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
