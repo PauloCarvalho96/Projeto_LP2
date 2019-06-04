@@ -2,7 +2,6 @@ package Projeto.Fase2_JavaFX;
 import Projeto.*;
 import Projeto.Date;
 import edu.princeton.cs.algs4.*;
-import edu.princeton.cs.algs4.SeparateChainingHashST_Projeto;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
@@ -20,11 +19,7 @@ import javafx.scene.control.TextField;
 
 import static Projeto.Fase2_JavaFX.GraphCreator.company;
 import static Projeto.Fase2_JavaFX.GraphCreator.meetings;
-import static Projeto.Fase2_JavaFX.GraphCreator.pontosDeEncontro;
 import static Projeto.Fase2_JavaFX.GraphCreator.professionals;
-import static Projeto.Fase2_JavaFX.GraphCreator.company;
-import static Projeto.Fase2_JavaFX.GraphCreator.meetings;
-import static Projeto.Fase2_JavaFX.GraphCreator.pontosDeEncontro;
 
 import java.net.URL;
 import java.util.Random;
@@ -73,10 +68,11 @@ public class GraphCreatorFXMLController implements Initializable {
     public TableView <Professional>removeTable;
     public HBox addSearchBox111;
     public TextField skillName;
-    public TableColumn searchSkill;
-    public TableColumn searchUnemployed;
-    public TableView removeUnemployedTable;
+    public TableColumn<Object, Object> searchSkill;
+    public TableColumn<Object, Object> searchUnemployed;
+    public TableView<Professional> removeUnemployedTable;
     public MenuItem removeEdge;
+    public TextField addSkillName;
     private Company cc =new Company("ola",334444,43434,null);
     private Graph graph;
     private String delimeter = ";";
@@ -342,56 +338,34 @@ public class GraphCreatorFXMLController implements Initializable {
 
         searchMeetCol.setCellValueFactory(new PropertyValueFactory<>("meet"));
         searchProCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        searchUnemployed.setCellValueFactory(new PropertyValueFactory<>("name"));
+        searchSkill.setCellValueFactory(new PropertyValueFactory<>("skills"));
     }
 
     public void handleReadFileAction(ActionEvent actionEvent) {
         readProfessionalFile();
-        //readCompanyFile();
-        //readMeetFile();
+        readCompanyFile();
+        readMeetFile();
     }
 
     public void readMeetFile() {
         meetTable.getItems().clear();
-        In in = new In(".//data//meets_JAVAFX.txt");
-        in.readLine();
-        while (!in.isEmpty()) {
-            String[] texto = in.readLine().split(";");
-            String[] d = texto[1].split("/");
-            String meet_name = texto[0];
-            Integer dur = Integer.parseInt(texto[2]);
-            Date date = new Date(Integer.parseInt(d[0]),Integer.parseInt(d[1]),Integer.parseInt(d[2]),0,0);
-            Meeting m = new Meeting(meet_name,dur,null,null,date);
-            meetTable.getItems().addAll(m);
+        for (Date d:meetings.keys()) {
+            meetTable.getItems().addAll(meetings.get(d));
         }
-        in.close();
     }
 
     public void readCompanyFile() {
         companyTable.getItems().clear();
-        In in = new In(".//data//company_JAVAFX.txt");
-        in.readLine();
-        while (!in.isEmpty()) {
-            String[] texto = in.readLine().split(";");
-            String name_c = texto[0];
-            Integer nif = Integer.parseInt(texto[1]);
-            Integer phone = Integer.parseInt(texto[2]);
-            Company c = new Company(name_c,phone,nif,null);
-            companyTable.getItems().addAll(c);
+        for (Integer d:company.keys()) {
+            companyTable.getItems().addAll(company.get(d));
         }
-        in.close();
     }
     public void readProfessionalFile() {
         professionalTable.getItems().clear();
-        for(Integer c:company.keys()){
-            Company co =new Company(company.get(c).getName(),0,0,null);
-            for (Integer d:professionals.keys()) {
-                Professional pr = new Professional(professionals.get(d).getName(),null,null,null,null,professionals.get(d).getNif());
-                if(pr.getCompany().getName().equals(co.getName()))
-                {
-                    pr.setCompany(co);
-                    professionalTable.getItems().addAll(pr);//
-                }
-            }
+        for (Integer d:professionals.keys()) {
+            professionalTable.getItems().addAll(professionals.get(d));
         }
     }
 
@@ -406,103 +380,85 @@ public class GraphCreatorFXMLController implements Initializable {
 
     public void addCompaniesToComboBox(){
         selectComComboBox.getItems().clear();
-        String path_search_comp_pro_txt = ".//data//search_comp_pro.txt";
-        In in = new In(path_search_comp_pro_txt);
-        while (!in.isEmpty()) {
-            String[] texto = in.readLine().split(";");
-            String name_c = texto[0];
-            Company c = new Company(name_c,0,0,null);
-            selectComComboBox.getItems().addAll(c.getName());
+        for (Integer d:company.keys()) {
+            selectComComboBox.getItems().addAll(company.get(d).getName());
         }
-        in.close();
     }
 
     public void addMeetingsToComboBox(){
         selectMeetComboBox.getItems().clear();
-        String path_search_meet_pro_txt = ".//data//search_meet_pro.txt";
-        In in = new In(path_search_meet_pro_txt);
-        while (!in.isEmpty()) {
-            String[] texto = in.readLine().split(";");
-            String name_m = texto[0];
-            Meeting m = new Meeting(name_m,0,null,null,null);
-            selectMeetComboBox.getItems().addAll(m.getName());
+        for (Date d:meetings.keys()) {
+            selectMeetComboBox.getItems().addAll(meetings.get(d).getName());
         }
-        in.close();
     }
 
-
     public void handleSelectCompany(ActionEvent actionEvent) {
-        searchTable.getItems().clear();
+        searchTableMeet.getItems().clear();
         String dname = selectComComboBox.getValue();
-        String path_search_comp_pro_txt = ".//data//search_comp_pro.txt";
-        In in = new In(path_search_comp_pro_txt);
-        while (!in.isEmpty()) {
-            String[] texto = in.readLine().split(";");
-            String comp_name = texto[0];
-            Company comp = new Company(comp_name, 0, 0, null);
-            if (comp.getName().equals(dname)) {
-                String name_pro = null;
-                for (int i = 1; i < texto.length; i++) {
-                    name_pro = texto[i];
-                    Professional pro = new Professional(name_pro, null, null, null, null, null);
-                    pro.setCompany(comp);
-                    searchTable.getItems().addAll(pro);
+        for (Integer c:company.keys()) {
+            if (company.get(c).getName().equals(dname)) {
+                for (Integer po : professionals.keys()) {
+                    if(professionals.get(po).getCompany()==company.get(c))
+                        searchTableMeet.getItems().addAll(professionals.get(po));
                 }
             }
         }
-        in.close();
     }
-
+    /////// NAO FUNCIONA CORRETAMENTE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public void handleSelectMeet(ActionEvent actionEvent) {
         searchTableMeet.getItems().clear();
         String dname = selectMeetComboBox.getValue();
-        String path_search_meet_pro_txt = ".//data//search_meet_pro.txt";
-        In in = new In(path_search_meet_pro_txt);
-        while (!in.isEmpty()) {
-            String[] texto = in.readLine().split(";");
-            String meet_name = texto[0];
-            Meeting m = new Meeting(meet_name,0,null,null,null);
-            if (m.getName().equals(dname)) {
-                String name_pro = null;
-                for (int i = 1; i < texto.length; i++) {
-                    name_pro = texto[i];
-                    Professional pro = new Professional(name_pro, null, null, null, null, null);
-                    pro.associateProfessionalMeet(m);
-                    searchTableMeet.getItems().addAll(pro);
+        for (Date d:meetings.keys()) {
+            if (meetings.get(d).getName().equals(dname)) {
+                for (Integer po : professionals.keys()) {
+                    if(professionals.get(po).getMeet().contains((meetings.get(d).getName())))
+                        searchTableMeet.getItems().addAll(professionals.get(po));
                 }
             }
         }
-        in.close();
-    }
+   }
+
 
     public void handleRemoveEdgePro(ActionEvent actionEvent) {
-        addProToComboBox();
+        //addProToComboBox();
         //removeProEge();
     }
     public void removeProEge(){
     }
 
     public void handleSelectProRemove(ActionEvent actionEvent) {
-        removeTable.getItems().clear();
-        In in = new In(".//data//professionals_JAVAFX.txt");
-        in.readLine();
-        while (!in.isEmpty()) {
-            String[] texto = in.readLine().split(";");
-            String name_pro = texto[0];
-            Professional test = new Professional(name_pro,null,null,null,null,null);
-            removeTable.getItems().addAll(test);
-        }
-        in.close();
+//        removeTable.getItems().clear();
+//        In in = new In(".//data//professionals_JAVAFX.txt");
+//        in.readLine();
+//        while (!in.isEmpty()) {
+//            String[] texto = in.readLine().split(";");
+//            String name_pro = texto[0];
+//            Professional test = new Professional(name_pro,null,null,null,null,null);
+//            removeTable.getItems().addAll(test);
+//        }
+//        in.close();
     }
 
     public void addProToComboBox(){                 //mostra profissionais disponiveis a eliminar na comboBox
-        selecProRemoveComboBox.getItems().clear();
-        Graph_project g = new Graph_project();
-        SymbolGraphWheighted pessoas = new SymbolGraphWheighted(".//data//professionals_graph.txt",";");
-        for(int i=0;i<pessoas.graph().V();i++){
-
-        }
+//        selecProRemoveComboBox.getItems().clear();
+//        Graph_project g = new Graph_project();
+//        SymbolGraphWheighted pessoas = new SymbolGraphWheighted(".//data//professionals_graph.txt",";");
+//        for(int i=0;i<pessoas.graph().V();i++){
+//
+//        }
     }
+
+    /// Pesquisar profissionais desempregados por skill
     public void handleInsertSkillButton(ActionEvent actionEvent) {
+        String desempregado="Desempregado";
+        removeUnemployedTable.getItems().clear();
+        String name = addSkillName.getText();
+        for (Integer d:professionals.keys()) {
+            if(professionals.get(d).getSkills().contains(name)){
+                if(professionals.get(d).getCompany().getName().contains(desempregado)){
+                    removeUnemployedTable.getItems().addAll(professionals.get(d));
+                }
+            }
+        }
     }
 }

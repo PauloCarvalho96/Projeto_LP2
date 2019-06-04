@@ -434,7 +434,7 @@ public class GraphCreator extends Application {
 
         //guarda e carrega de bin
         g.save_all_pro_comp_bin_digraph(point_comp_meet,path_point_comp_meet_bin);
-        point_comp_meet = g.read_pro_comp_bin_file(point_comp_meet,path_point_comp_meet_bin);
+ //       point_comp_meet = g.read_pro_comp_bin_file(point_comp_meet,path_point_comp_meet_bin);
 
 //        System.out.println(point_comp_meet.digraph());
 
@@ -462,7 +462,7 @@ public class GraphCreator extends Application {
 //        g.search_meet_pro_followers(m3,point_comp_meet);
 
         //pesquisar profissional desempregado com determinada skill
-//        g.search_pro_without_comp_and_skills(pessoas_empresas,c4,"Base de dados");
+  //      g.search_pro_without_comp_and_skills(pessoas_empresas,c4,"Base de dados");
 //        g.search_pro_without_comp_and_skills(pessoas_empresas,c4,"Computacao");
 
         launch(args);
