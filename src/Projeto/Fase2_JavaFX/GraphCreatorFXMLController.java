@@ -405,7 +405,7 @@ public class GraphCreatorFXMLController implements Initializable {
             }
         }
     }
-    /////// NAO FUNCIONA CORRETAMENTE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    /////// NAO FUNCIONA CORRETAMENTE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public void handleSelectMeet(ActionEvent actionEvent) {
         searchTableMeet.getItems().clear();
         String dname = selectMeetComboBox.getValue();
