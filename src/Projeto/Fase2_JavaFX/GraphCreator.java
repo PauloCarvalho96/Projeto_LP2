@@ -15,9 +15,9 @@ public class GraphCreator extends Application {
     public static SeparateChainingHashST_Projeto<Integer, Professional> professionals = new SeparateChainingHashST_Projeto<>();   //Date é data de nascimento do profissional
     public static RedBlackBST<Date, Meeting> meetings = new RedBlackBST<>();       //Date é data de criação do meeting
     public static SeparateChainingHashST_Projeto<Integer, PontosDeEncontro> pontosDeEncontro = new SeparateChainingHashST_Projeto<>();
-    public static SymbolGraphWheighted pessoas ;//= new SymbolGraphWheighted(".//data//professionals_graph.txt", ";");    //cria o symbol graph de profissionais
-    public static SymbolDigraphWeighted pessoas_empresas ;//= new SymbolDigraphWeighted(".//data//pro_comp_graph.txt",";");
-    public static SymbolDigraphWeighted point_comp_meet; //= new SymbolDigraphWeighted(".//data//point_comp_meet.txt",";");
+    public static SymbolGraphWheighted pessoas ;    //cria o symbol graph de profissionais
+    public static SymbolDigraphWeighted pessoas_empresas ;
+    public static SymbolDigraphWeighted point_comp_meet;
 
     public static void main(String[] args) {
         //datas de nascimento
@@ -229,16 +229,16 @@ public class GraphCreator extends Application {
 //        c1.removeCompany(company, c1, professionals, c4);    //remove empresa c1
 
         //edita empresa
-//        c1.editCompanyName(company, c1, "Microsoft");
-//        c1.editCompanyPhone(company, c1, 252123456);
-//        c1.editCompanyNif(company, c1, 123456789);
-//        c1.editCompanyLocation(company, c1, l1);
+//        c1.editCompanyName(c1, "Microsoft");
+//        c1.editCompanyPhone(c1, 252123456);
+//        c1.editCompanyNif(c1, 123456789);
+//        c1.editCompanyLocation(c1, l1);
 
         /**
          * Profissional P1
          */
         //remove o profissional p1 da empresa c1
-//        c1.removeProfessionalCompany(professionals, p1, c1, c4);
+//        c1.removeProfessionalCompany(p1, c1, c4);
 
         //regista p1 na c2
 //        c2.registerProfessional(d1r, p1, c2, 1000);
@@ -248,7 +248,7 @@ public class GraphCreator extends Application {
 //        professionalHp1.add(p1h1); // p1 -> empresa 1
 
         //remove p1 de c2
-//        c2.removeProfessionalCompany(professionals, p1, c2, c4);
+//        c2.removeProfessionalCompany(p1, c2, c4);
 
         // adiciona ao historico de empresas de p1
 //        CompanyHistory p1h2 = new CompanyHistory(d1s, d2s, p1, c2);
@@ -287,7 +287,7 @@ public class GraphCreator extends Application {
 //        c3.printProForRegistrationDate();
 
         //imprime todos os profissionais desempregados
-//        c4.printProWithoutCompany(professionals,c4);
+//        c4.printProWithoutCompany(c4);
 
         //imprime todos os meetings
 //        Meeting printm = new Meeting(null, 0, null, null, null); //para aceder a classe
@@ -297,32 +297,32 @@ public class GraphCreator extends Application {
 //        printm.searchMeetingsbyDates(meetings,dm2);
 
         // Imprime meetings entre 2 datas
-        //printm.searchMeetingsBetweenToDates(meetings,dm1,dm3);
+//        printm.searchMeetingsBetweenToDates(meetings,dm1,dm3);
 
         // Imprime meetings com n ou mais participantes
-        //printm.searchMeetingsWithNParticipants(meetings,3);
+//        printm.searchMeetingsWithNParticipants(meetings,3);
 
         //imprime todas as empresas e numero de profissionais de cada empresa
-//        Company print = new Company(null, 0, 0, null);
-//        print.printAllCompanys(company);
+        Company print = new Company(null, 0, 0, null);
+//        print.printAllCompanys();
 //        System.out.println("Numero de profissionais da empresa "+c1.getName()+" : "+c1.numberOfProfessionals(c1));
 //        System.out.println("Numero de profissionais da empresa "+c2.getName()+" : "+c2.numberOfProfessionals(c2));
 //        System.out.println("Numero de profissionais da empresa "+c3.getName()+" : "+c3.numberOfProfessionals(c3));
 
         //imprime a empresa pelo nif
-        //print.searchCompanybynif(company,190190190);
+//        print.searchCompanybynif(190190190);
 
         //imprime a empresa pelo nome
-        //print.searchCompanybyname(company,"Fotogrupo");
+//        print.searchCompanybyname("Fotogrupo");
 
         //imprime a empresa pelo numero
-        //print.searchCompanybyphone(company,252759021);
+//        print.searchCompanybyphone(252759021);
 
         //imprime a empresa pela localizacao
-        //print.searchCompanybylocation(company,l2);
+//        print.searchCompanybylocation(l2);
 
 //          imprime todos os profissionais
-        Professional print1 = new Professional(null, null, null, null, null,null);    //para aceder a classe
+//        Professional print1 = new Professional(null, null, null, null, null,null);    //para aceder a classe
 //        print1.printAllProfessionals();
 
         //imprime profissionais pelo salario
@@ -473,8 +473,6 @@ public class GraphCreator extends Application {
   //      g.search_pro_without_comp_and_skills(pessoas_empresas,c4,"Base de dados");
 //        g.search_pro_without_comp_and_skills(pessoas_empresas,c4,"Computacao");
 
-        /// Eliminar profissional
-//        g.remove_professional_from_Graph_pessoas_empresas(p1);
 
         launch(args);
     }
