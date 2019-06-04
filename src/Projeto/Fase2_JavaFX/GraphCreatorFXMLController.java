@@ -22,6 +22,11 @@ import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import static Projeto.Fase2_JavaFX.GraphCreator.professionals;
+import static Projeto.Fase2_JavaFX.GraphCreator.company;
+import static Projeto.Fase2_JavaFX.GraphCreator.meetings;
+import static Projeto.Fase2_JavaFX.GraphCreator.pontosDeEncontro;
+
 public class GraphCreatorFXMLController implements Initializable {
     public TextField verticesNumberField;
     public TextArea edgesField;
@@ -83,8 +88,7 @@ public class GraphCreatorFXMLController implements Initializable {
 //    private String path_pessoas_txt = ".//data//professionals_graph.txt";       //caminho do ficheiro
 //    private String path_pessoas_bin = ".//data//professionals_graph.bin";       //caminho do ficheiro
     Graph_project g = new Graph_project();
-    //private SymbolGraphWheighted pessoas = new SymbolGraphWheighted(path_pessoas_txt, ";");    //cria o symbol graph de profissionais
-    public static SeparateChainingHashST_Projeto<Integer, Professional> professionals = new SeparateChainingHashST_Projeto<>();
+
     public void create_vertice_in_ProGraph(int v)
     {
         Random r = new Random();
@@ -381,11 +385,11 @@ public class GraphCreatorFXMLController implements Initializable {
         }
         in.close();
     }
+
     public void readProfessionalFile() {
         professionalTable.getItems().clear();
         for (Integer d:professionals.keys()) {
-            //Professional p=new Professional(professionals.get(d).getName(),null,null,null,null,professionals.get(d).getNif());
-            professionalTable.getItems().addAll(professionals.get(d).getProfessional());
+            professionalTable.getItems().addAll(professionals.get(d));
         }
     }
 
