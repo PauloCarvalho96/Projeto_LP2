@@ -389,7 +389,7 @@ public class GraphCreatorFXMLController implements Initializable {
                 if(pr.getCompany().getName().equals(co.getName()))
                 {
                     pr.setCompany(co);
-                    professionalTable.getItems().addAll(pr);
+                    professionalTable.getItems().addAll(pr);//
                 }
             }
         }
