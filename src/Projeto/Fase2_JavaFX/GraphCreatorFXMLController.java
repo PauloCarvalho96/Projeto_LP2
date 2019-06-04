@@ -362,6 +362,7 @@ public class GraphCreatorFXMLController implements Initializable {
             companyTable.getItems().addAll(company.get(d));
         }
     }
+
     public void readProfessionalFile() {
         professionalTable.getItems().clear();
         for (Integer d:professionals.keys()) {
