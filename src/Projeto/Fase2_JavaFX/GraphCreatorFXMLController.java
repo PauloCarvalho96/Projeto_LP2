@@ -123,7 +123,7 @@ public class GraphCreatorFXMLController implements Initializable {
             create_vertice_in_ProGraph(v);
         }
         in.close();
-    }
+    }//
 
     public void handleCreateProfessionalsGraphAction(ActionEvent actionEvent) {
         drawGraph_Pro();
