@@ -444,9 +444,14 @@ public class GraphCreatorFXMLController implements Initializable {
                     for (Integer c:company.keys()) {
                         if(company.get(c).getNif()==Integer.parseInt(pessoas_empresas.nameOf(i))){
                             if(company.get(c).getName().equals(dname)){
-                                for (Integer p:professionals.keys()) {
-                                    if(professionals.get(p).getCompany().equals(company.get(c))){
-                                        searchTable.getItems().addAll(professionals.get(p));
+                                for (DirectedEdge d:pessoas_empresas.digraph().adj(i)) {
+                                    int y = gi.pro_or_comp_or_meet(pessoas_empresas, d.to());
+                                    if (y == 0) {
+                                        for (Integer di : professionals.keys()) {
+                                            if (professionals.get(di).getNif() == Integer.parseInt(pessoas_empresas.nameOf(d.to()))) {
+                                                searchTable.getItems().addAll(professionals.get(di));
+                                            }
+                                        }
                                     }
                                 }
                             }

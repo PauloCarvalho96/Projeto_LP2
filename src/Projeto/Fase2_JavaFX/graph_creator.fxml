@@ -203,12 +203,12 @@
                                        <children>
                                           <VBox prefHeight="690.0" prefWidth="871.0">
                                              <children>
-                                                <Label prefHeight="42.0" prefWidth="833.0" text=" Companies" />
+                                                <Label prefHeight="42.0" prefWidth="833.0" text="Profissionais que seguem empresas" />
                                                 <ComboBox fx:id="selectComComboBox" onAction="#handleSelectCompany" prefHeight="31.0" prefWidth="873.0" promptText="Select Company" />
                                                 <TableView fx:id="searchTable" onSort="#handleSelectCompany" prefHeight="543.0" prefWidth="768.0">
                                                    <columns>
                                                       <TableColumn fx:id="searchNameCol" prefWidth="437.0" text="Professional" />
-                                                      <TableColumn fx:id="searchCompCol" minWidth="0.0" prefWidth="427.0" text="Company" />
+                                                      <TableColumn fx:id="searchCompCol" minWidth="0.0" prefWidth="427.0" text="Company (pertence)" />
                                                    </columns>
                                                 </TableView>
                                                 <HBox fx:id="addSearchBox" prefHeight="72.0" prefWidth="871.0" />
@@ -224,7 +224,7 @@
                                        <children>
                                           <VBox prefHeight="690.0" prefWidth="871.0">
                                              <children>
-                                                <Label prefHeight="42.0" prefWidth="833.0" text="Meetings" />
+                                                <Label prefHeight="42.0" prefWidth="833.0" text="Profissionais que foram a meetings" />
                                                 <ComboBox fx:id="selectMeetComboBox" onAction="#handleSelectMeet" prefHeight="31.0" prefWidth="873.0" promptText="Select Company" />
                                                 <TableView fx:id="searchTableMeet" prefHeight="543.0" prefWidth="768.0">
                                                    <columns>
@@ -301,7 +301,7 @@
                                                 </HBox>
                                                 <HBox fx:id="addSearchBox121" layoutX="10.0" layoutY="52.0" prefHeight="72.0" prefWidth="871.0">
                                                    <children>
-                                                      <Button mnemonicParsing="false" onAction="#handleProConexo" prefHeight="31.0" prefWidth="274.0" text="Graph Persons Companies is conexo?">
+                                                      <Button mnemonicParsing="false" onAction="#handleProConexo" prefHeight="31.0" prefWidth="274.0" text="Graph Persons is connected?">
                                                          <HBox.margin>
                                                             <Insets left="10.0" top="15.0" />
                                                          </HBox.margin>
