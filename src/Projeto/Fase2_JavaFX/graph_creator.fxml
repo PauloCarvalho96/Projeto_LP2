@@ -155,6 +155,12 @@
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
                                           <Group fx:id="graphGroup1" layoutX="129.0" layoutY="115.0" />
+                                          <HBox layoutY="594.0" prefHeight="58.0" prefWidth="865.0">
+                                             <children>
+                                                <Button mnemonicParsing="false" onAction="#handleButtonSave1" text="Save" />
+                                                <Button mnemonicParsing="false" onAction="#handleButtonLoad1" text="Load" />
+                                             </children>
+                                          </HBox>
                                        </children>
                                     </AnchorPane>
                                  </content>
@@ -169,6 +175,12 @@
                                              </image>
                                           </ImageView>
                                           <Group fx:id="graphGroup2" layoutX="129.0" layoutY="115.0" />
+                                          <HBox layoutY="589.0" prefHeight="58.0" prefWidth="865.0">
+                                             <children>
+                                                <Button mnemonicParsing="false" onAction="#handleButtonSave2" text="Save" />
+                                                <Button mnemonicParsing="false" onAction="#handleButtonLoad2" text="Load" />
+                                             </children>
+                                          </HBox>
                                        </children>
                                     </AnchorPane>
                                  </content>

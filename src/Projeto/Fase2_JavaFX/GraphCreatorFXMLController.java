@@ -800,4 +800,26 @@ public class GraphCreatorFXMLController implements Initializable {
         graphGroup.getChildren().clear();
         handleCreateProfessionalsGraphAction(null);
     }
+
+    public void handleButtonSave1(ActionEvent actionEvent) {
+        gi.save_all_pro_comp_bin_digraph(pessoas_empresas,".//data//pro_comp_graph.bin");
+    }
+
+    public void handleButtonLoad1(ActionEvent actionEvent) {
+        pessoas_empresas = gi.read_pro_comp_bin_file(pessoas_empresas,".//data//pro_comp_graph.bin");
+        gi.write_pro_comp_to_file_txt(pessoas_empresas,".//data//pro_comp_graph.txt");
+        graphGroup1.getChildren().clear();
+        handleCreateProfessionalsCompaniesGraphAction(null);
+    }
+
+    public void handleButtonSave2(ActionEvent actionEvent) {
+        gi.save_all_pro_comp_bin_digraph(point_comp_meet,".//data//point_comp_meet.bin");
+    }
+
+    public void handleButtonLoad2(ActionEvent actionEvent) {
+        point_comp_meet = gi.read_pro_comp_bin_file(point_comp_meet,".//data//point_comp_meet.bin");
+        gi.write_pro_comp_to_file_txt(point_comp_meet,".//data//point_comp_meet.txt");
+        graphGroup2.getChildren().clear();
+        handleCreateProCompMeetGraphAction(null);
+    }
 }

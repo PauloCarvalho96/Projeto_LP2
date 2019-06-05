@@ -410,8 +410,8 @@ public class GraphCreator extends Application {
 //        g.conect_pro_comp_graphProCompMeet(p10,c3,pessoas_empresas,path_pessoas_empresas_txt,27);
 
         //guarda e carrega de bin
-        g.save_all_pro_comp_bin_digraph(pessoas_empresas,path_pessoas_empresas_bin);
-        pessoas_empresas = g.read_pro_comp_bin_file(pessoas_empresas,path_pessoas_empresas_bin);
+//        g.save_all_pro_comp_bin_digraph(pessoas_empresas,path_pessoas_empresas_bin);
+//        pessoas_empresas = g.read_pro_comp_bin_file(pessoas_empresas,path_pessoas_empresas_bin);
 
 //        System.out.println(pessoas_empresas.digraph());
 
@@ -440,7 +440,7 @@ public class GraphCreator extends Application {
 
 
         //guarda e carrega de bin
-        g.save_all_pro_comp_bin_digraph(point_comp_meet,path_point_comp_meet_bin);
+//        g.save_all_pro_comp_bin_digraph(point_comp_meet,path_point_comp_meet_bin);
  //       point_comp_meet = g.read_pro_comp_bin_file(point_comp_meet,path_point_comp_meet_bin);
 
 //        System.out.println(point_comp_meet.digraph());
