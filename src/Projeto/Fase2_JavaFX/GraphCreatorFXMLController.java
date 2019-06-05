@@ -635,6 +635,7 @@ public class GraphCreatorFXMLController implements Initializable {
                 }
             }
         }
+        handleCreateProfessionalsGraphAction(null);
         listProGraphPessoas.getItems().clear();
         listProGraphPessoas1.getItems().clear();
     }
@@ -653,6 +654,7 @@ public class GraphCreatorFXMLController implements Initializable {
                 }
             }
         }
+        handleCreateProfessionalsCompaniesGraphAction(null);
         listPro_GraphProEmp.getItems().clear();
         listEmp_GraphProEmp.getItems().clear();
     }
@@ -671,6 +673,7 @@ public class GraphCreatorFXMLController implements Initializable {
                 }
             }
         }
+        handleCreateProCompMeetGraphAction(null);
         meet_graphMEP.getItems().clear();
         PE_GraphMEP.getItems().clear();
     }
@@ -689,6 +692,7 @@ public class GraphCreatorFXMLController implements Initializable {
                 }
             }
         }
+        handleCreateProCompMeetGraphAction(null);
         comp_GraphMEP.getItems().clear();
         PE1_GraphMEP.getItems().clear();
     }
@@ -707,6 +711,7 @@ public class GraphCreatorFXMLController implements Initializable {
                 }
             }
         }
+        handleCreateProCompMeetGraphAction(null);
         PE2_GraphMEP.getItems().clear();
         PE3_GraphMEP.getItems().clear();
     }
