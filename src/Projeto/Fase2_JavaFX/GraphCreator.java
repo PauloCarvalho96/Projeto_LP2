@@ -385,8 +385,8 @@ public class GraphCreator extends Application {
 //        g.conect_2_people(p9,p10,pessoas,path_pessoas_txt,5);
 
         //guarda e carrega de bin
-        g.save_all_professionals_bin_graph(pessoas,path_pessoas_bin);   //guarda grafo em ficheiro bin
-        pessoas = g.read_pro_bin_file(pessoas,path_pessoas_bin);          //le do ficheiro bin
+//        g.save_all_professionals_bin_graph(pessoas,path_pessoas_bin);   //guarda grafo em ficheiro bin
+//        pessoas = g.read_pro_bin_file(pessoas,path_pessoas_bin);          //le do ficheiro bin
 
 //        System.out.println(pessoas.graph());
 

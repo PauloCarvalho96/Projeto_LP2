@@ -791,8 +791,13 @@ public class GraphCreatorFXMLController implements Initializable {
 
 
     public void handleButtonSave(ActionEvent actionEvent) {
+        gi.save_all_professionals_bin_graph(pessoas,".//data//professionals_graph.bin");
     }
 
     public void handleButtonLoad(ActionEvent actionEvent) {
+        pessoas = gi.read_pro_bin_file(pessoas,".//data//professionals_graph.bin");
+        gi.write_pro_to_file_txt(pessoas,".//data//professionals_graph.txt");
+        graphGroup.getChildren().clear();
+        handleCreateProfessionalsGraphAction(null);
     }
 }
