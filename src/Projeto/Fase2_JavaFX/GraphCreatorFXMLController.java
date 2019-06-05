@@ -789,4 +789,10 @@ public class GraphCreatorFXMLController implements Initializable {
         showPointsMEP();
     }
 
+
+    public void handleButtonSave(ActionEvent actionEvent) {
+    }
+
+    public void handleButtonLoad(ActionEvent actionEvent) {
+    }
 }
