@@ -92,10 +92,8 @@ public class SymbolGraphWheighted implements Serializable {
         while (!in.isEmpty()) {
             String[] a = in.readLine().split(delimiter);
                 for (int i = 0; i < a.length; i++) {
-                    if (a[i].length() == 9) {           //se for um NIF mete na ST
                         if (!st.contains(a[i]))
                             st.put(a[i], st.size());
-                    }
                 }
         }
         // inverted index to get string keys in an array

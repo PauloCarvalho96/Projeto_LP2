@@ -92,7 +92,7 @@ public class Graph_project {
     public void write_pro_to_file_txt(SymbolGraphWheighted g, String path) {
         Out out = new Out(path);
         for (int v = 0; v < g.graph().V(); v++) {       //percorre os vertices
-            out.print(v + ";");
+            out.print("p"+";"+v + ";");
             for (Edge d : g.graph().adj(v)) {
                 out.print(d.other(v) + ";" + d.weight() + ";");
             }
@@ -162,6 +162,14 @@ public class Graph_project {
                 out.print(d.to() + ";" + d.weight() + ";");
             }
             out.print("\n");
+        }
+        out.close();
+    }
+
+    public void pro_vertex(String path) {
+        Out out = new Out(path);
+        for (int v = 0; v < pessoas.graph().V(); v++) {
+            out.print("p" + ";" + v + ";" + "\n");
         }
         out.close();
     }

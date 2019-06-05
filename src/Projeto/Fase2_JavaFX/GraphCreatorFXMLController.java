@@ -99,6 +99,25 @@ public class GraphCreatorFXMLController implements Initializable {
     public TextField birthDateYearField;
     public TextField locationXField;
     public TextField locationYField;
+    public TextField probox1_graphpessoas;
+    public TextField probox2_graphpessoas;
+    public TextField probox3_graphpessoas1;
+    public TextField proEmpBox1;
+    public TextField proEmpBox2;
+    public TextField proEmpBox3;
+    public ComboBox<String> listProGraphPessoas;
+    public ComboBox<String> listProGraphPessoas1;
+    public ComboBox<String> listPro_GraphProEmp;
+    public ComboBox<String> listEmp_GraphProEmp;
+    public ComboBox<String> meet_graphMEP;
+    public ComboBox<String> PE_GraphMEP;
+    public TextField proEmpBox31;
+    public ComboBox<String> comp_GraphMEP;
+    public ComboBox<String> PE1_GraphMEP;
+    public TextField proEmpBox311;
+    public ComboBox<String> PE3_GraphMEP;
+    public ComboBox<String> PE2_GraphMEP;
+    public TextField proEmpBox3111;
     private Company cc =new Company("ola",334444,43434,null);
     private Graph graph;
     private String delimeter = ";";
@@ -131,22 +150,23 @@ public class GraphCreatorFXMLController implements Initializable {
         In in = new In(path_pessoas_txt);
         while (in.hasNextLine()) {
             String[] a = in.readLine().split(delimiter);
-            int v = Integer.parseInt(a[0]);
+            int v = Integer.parseInt(a[1]);
             create_vertice_in_ProGraph(v);
         }
         in.close();
     }
 
     public void handleCreateProfessionalsGraphAction(ActionEvent actionEvent) {
+        graphGroup.getChildren().clear();
         drawGraph_Pro();
         String delimiter = ";";
         In in = new In(path_pessoas_txt);
         while (in.hasNextLine()) {
             String[] a = in.readLine().split(delimiter);
-            int v = Integer.parseInt(a[0]);
+            int v = Integer.parseInt(a[1]);
             StackPane spv = (StackPane) graphGroup.getChildren().get(v);
             Circle cv = (Circle) spv.getChildren().get(0);
-            for(int i = 1;i<a.length;i=i+2)
+            for(int i = 2;i<a.length;i=i+2)
             {
                 int w=Integer.parseInt(a[i]);
                 StackPane spw = (StackPane) graphGroup.getChildren().get(w);
@@ -211,6 +231,7 @@ public class GraphCreatorFXMLController implements Initializable {
     }
 
     public void handleCreateProfessionalsCompaniesGraphAction(ActionEvent actionEvent) {
+        graphGroup1.getChildren().clear();
         drawGraph_Pro_Comp();
         String delimiter = ";";
         In in = new In(path_companies_txt);
@@ -305,6 +326,7 @@ public class GraphCreatorFXMLController implements Initializable {
     }
 
     public void handleCreateProCompMeetGraphAction(ActionEvent actionEvent) {
+        graphGroup2.getChildren().clear();
         drawGraph_Pro_Comp_Meet();
         String delimiter = ";";
         In in = new In(path_pro_comp_meet_txt);
@@ -363,6 +385,10 @@ public class GraphCreatorFXMLController implements Initializable {
         readProfessionalFile();
         readCompanyFile();
         readMeetFile();
+        addProToConect_Graph_Pessoas();
+        listEmp_ConnectGraph();
+        showMeetMEP();
+        showPointsMEP();
     }
 
     public void readMeetFile() {
@@ -507,7 +533,7 @@ public class GraphCreatorFXMLController implements Initializable {
         String dname = selectMeComboBox1.getValue();
         for (Date d:meetings.keys()){
             if(meetings.get(d).getName().equals(dname)){
-                tabelaparadistancia1.getItems().setAll(meetings.get(d));
+                tabelaparadistancia1.getItems().addAll(meetings.get(d));
             }
         }
     }
@@ -594,4 +620,168 @@ public class GraphCreatorFXMLController implements Initializable {
         Professional p1 = new Professional(name,gender,d1,skillsP1,l1,nif);
         System.out.println(p1.getName()+" "+p1.getGender()+" "+p1.getBirth_date()+" "+"" +p1.getLocation()+" "+p1.getSkills()+" "+p1.getNif());
     }
+
+    public void handlerbutoonConnect_Pro_Pro(ActionEvent actionEvent) {
+        String p1 = listProGraphPessoas.getValue();
+        String p2 = listProGraphPessoas1.getValue();
+        Integer i = Integer.parseInt(probox3_graphpessoas1.getText());
+
+        for (Integer pi1:professionals.keys()) {
+            if(professionals.get(pi1).getName().compareTo(p1)==0){
+                for(Integer pi2:professionals.keys()){
+                    if(professionals.get(pi2).getName().compareTo(p2)==0){
+                        gi.conect_2_people(professionals.get(pi1),professionals.get(pi2),pessoas,".//data//professionals_graph.txt",i);
+                    }
+                }
+            }
+        }
+        listProGraphPessoas.getItems().clear();
+        listProGraphPessoas1.getItems().clear();
+    }
+
+    public void handlerButtonConnect_Pro_Emp(ActionEvent actionEvent) {
+        String p1 = listPro_GraphProEmp.getValue();
+        String c1 = listEmp_GraphProEmp.getValue();
+        Integer i = Integer.parseInt(proEmpBox3.getText());
+
+        for (Integer pi1:professionals.keys()) {
+            if(professionals.get(pi1).getName().compareTo(p1)==0){
+                for(Integer pi2:company.keys()){
+                    if(company.get(pi2).getName().compareTo(c1)==0){
+                        gi.conect_pro_comp_graphProCompMeet(professionals.get(pi1),company.get(pi2),pessoas_empresas,".//data//pro_comp_graph.txt",i);
+                    }
+                }
+            }
+        }
+        listPro_GraphProEmp.getItems().clear();
+        listEmp_GraphProEmp.getItems().clear();
+    }
+
+    public void handlerConnect_M_P(ActionEvent actionEvent) {
+        String m1 = meet_graphMEP.getValue();
+        String pe1 = PE_GraphMEP.getValue();
+        Integer i = Integer.parseInt(proEmpBox31.getText());
+
+        for (Date pi1:meetings.keys()) {
+            if(meetings.get(pi1).getName().compareTo(m1)==0){
+                for(Integer pi2:pontosDeEncontro.keys()){
+                    if(pontosDeEncontro.get(pi2).getName().compareTo(pe1)==0){
+                        gi.conect_meet_point_graphProCompMeet(meetings.get(pi1),pontosDeEncontro.get(pi2),point_comp_meet,".//data//point_comp_meet.txt",i);
+                    }
+                }
+            }
+        }
+        meet_graphMEP.getItems().clear();
+        PE_GraphMEP.getItems().clear();
+    }
+
+    public void handler_Connect_C_P(ActionEvent actionEvent) {
+        String c1 = comp_GraphMEP.getValue();
+        String pe1 = PE1_GraphMEP.getValue();
+        Integer i = Integer.parseInt(proEmpBox311.getText());
+
+        for (Integer pi1:company.keys()) {
+            if(company.get(pi1).getName().compareTo(c1)==0){
+                for(Integer pi2:pontosDeEncontro.keys()){
+                    if(pontosDeEncontro.get(pi2).getName().compareTo(pe1)==0){
+                        gi.conect_comp_point_graphProCompMeet(company.get(pi1),pontosDeEncontro.get(pi2),point_comp_meet,".//data//point_comp_meet.txt",i);
+                    }
+                }
+            }
+        }
+        comp_GraphMEP.getItems().clear();
+        PE1_GraphMEP.getItems().clear();
+    }
+
+    public void hander_Connect_P_P(ActionEvent actionEvent) {
+        String c1 = PE2_GraphMEP.getValue();
+        String pe1 = PE3_GraphMEP.getValue();
+        Integer i = Integer.parseInt(proEmpBox3111.getText());
+
+        for (Integer pi1:pontosDeEncontro.keys()) {
+            if(pontosDeEncontro.get(pi1).getName().compareTo(c1)==0){
+                for(Integer pi2:pontosDeEncontro.keys()){
+                    if(pontosDeEncontro.get(pi2).getName().compareTo(pe1)==0){
+                        gi.conect_point_point_graphProCompMeet(pontosDeEncontro.get(pi1),pontosDeEncontro.get(pi2),point_comp_meet,".//data//point_comp_meet.txt",i);
+                    }
+                }
+            }
+        }
+        PE2_GraphMEP.getItems().clear();
+        PE3_GraphMEP.getItems().clear();
+    }
+
+    public void listEmp_ConnectGraph()
+    {
+        for (Integer d:company.keys()) {
+            listEmp_GraphProEmp.getItems().addAll(company.get(d).getName());
+            comp_GraphMEP.getItems().addAll(company.get(d).getName());
+        }
+    }
+
+    public void addProToConect_Graph_Pessoas(){
+        for (Integer d:professionals.keys()) {
+            listProGraphPessoas.getItems().addAll(professionals.get(d).getName());
+            listProGraphPessoas1.getItems().addAll(professionals.get(d).getName());
+            listPro_GraphProEmp.getItems().addAll(professionals.get(d).getName());
+        }
+    }
+
+    public void showMeetMEP(){
+        for (Date d:meetings.keys()) {
+            meet_graphMEP.getItems().addAll(meetings.get(d).getName());
+        }
+    }
+
+
+
+    public void showPointsMEP(){
+        for (Integer d:pontosDeEncontro.keys()) {
+            PE_GraphMEP.getItems().addAll(pontosDeEncontro.get(d).getName());
+            PE1_GraphMEP.getItems().addAll(pontosDeEncontro.get(d).getName());
+            PE2_GraphMEP.getItems().addAll(pontosDeEncontro.get(d).getName());
+            PE3_GraphMEP.getItems().addAll(pontosDeEncontro.get(d).getName());
+        }
+    }
+
+    public void handlerlistProGraphPessoas(ActionEvent actionEvent) {
+        addProToConect_Graph_Pessoas();
+    }
+
+    public void handlerlistProGraphPessoas1(ActionEvent actionEvent) {
+        addProToConect_Graph_Pessoas();
+    }
+
+    public void handlerlistPro_GraphProEmp(ActionEvent actionEvent) {
+        addProToConect_Graph_Pessoas();
+    }
+
+    public void handlerlistEmp_GraphProEmp(ActionEvent actionEvent) {
+        listEmp_ConnectGraph();
+    }
+
+    public void handlermeet_graphMEP(ActionEvent actionEvent) {
+        showMeetMEP();
+    }
+
+    public void handlerPE_GraphMEP(ActionEvent actionEvent) {
+        showPointsMEP();
+    }
+
+    public void handlercomp_GraphMEP(ActionEvent actionEvent) {
+        listEmp_ConnectGraph();
+    }
+
+    public void handlerPE1_GraphMEP(ActionEvent actionEvent) {
+        showPointsMEP();
+    }
+
+    public void handlerPE2_GraphMEP(ActionEvent actionEvent) {
+        showPointsMEP();
+    }
+
+    public void handlerPE3_GraphMEP(ActionEvent actionEvent) {
+        showPointsMEP();
+    }
+
 }

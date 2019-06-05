@@ -110,7 +110,7 @@ public class GraphCreator extends Application {
         PontosDeEncontro pe1 = new PontosDeEncontro("Estadio do Dragao",l1,0);
         PontosDeEncontro pe2 = new PontosDeEncontro("Bolhao",l2,1);
         PontosDeEncontro pe3 = new PontosDeEncontro("Aliados",l3,2);
-        PontosDeEncontro pe4 = new PontosDeEncontro("Aliados",l4,3);
+        PontosDeEncontro pe4 = new PontosDeEncontro("Jardim Arca de Agua",l4,3);
 
         //insere pontos de encontro da ST
         pontosDeEncontro.put(pe1.getId(),pe1);
@@ -366,22 +366,23 @@ public class GraphCreator extends Application {
         String path_pessoas_bin = ".//data//professionals_graph.bin";       //caminho do ficheiro
         g.save_professionals_txt_graph(path_pessoas_txt);     //guarda todas os profissionais no txt (NIF)
         pessoas = new SymbolGraphWheighted(path_pessoas_txt,";");
+        g.pro_vertex(path_pessoas_txt);
 
         //ligaçoes (funçoes teste)
-        g.conect_2_people(p1,p2,pessoas,path_pessoas_txt,10);
-        g.conect_2_people(p1,p3,pessoas,path_pessoas_txt,20);
-        g.conect_2_people(p1,p4,pessoas,path_pessoas_txt,20);
-        g.conect_2_people(p2,p3,pessoas,path_pessoas_txt,30);
-        g.conect_2_people(p2,p5,pessoas,path_pessoas_txt,15);
-        g.conect_2_people(p2,p4,pessoas,path_pessoas_txt,8);
-        g.conect_2_people(p3,p4,pessoas,path_pessoas_txt,3);
-        g.conect_2_people(p4,p5,pessoas,path_pessoas_txt,5);
-        g.conect_2_people(p6,p8,pessoas,path_pessoas_txt,5);
-        g.conect_2_people(p6,p9,pessoas,path_pessoas_txt,5);
-        g.conect_2_people(p7,p9,pessoas,path_pessoas_txt,5);
-        g.conect_2_people(p7,p10,pessoas,path_pessoas_txt,5);
-        g.conect_2_people(p8,p9,pessoas,path_pessoas_txt,5);
-        g.conect_2_people(p9,p10,pessoas,path_pessoas_txt,5);
+//        g.conect_2_people(p1,p2,pessoas,path_pessoas_txt,10);
+//        g.conect_2_people(p1,p3,pessoas,path_pessoas_txt,20);
+//        g.conect_2_people(p1,p4,pessoas,path_pessoas_txt,20);
+//        g.conect_2_people(p2,p3,pessoas,path_pessoas_txt,30);
+//        g.conect_2_people(p2,p5,pessoas,path_pessoas_txt,15);
+//        g.conect_2_people(p2,p4,pessoas,path_pessoas_txt,8);
+//        g.conect_2_people(p3,p4,pessoas,path_pessoas_txt,3);
+//        g.conect_2_people(p4,p5,pessoas,path_pessoas_txt,5);
+//        g.conect_2_people(p6,p8,pessoas,path_pessoas_txt,5);
+//        g.conect_2_people(p6,p9,pessoas,path_pessoas_txt,5);
+//        g.conect_2_people(p7,p9,pessoas,path_pessoas_txt,5);
+//        g.conect_2_people(p7,p10,pessoas,path_pessoas_txt,5);
+//        g.conect_2_people(p8,p9,pessoas,path_pessoas_txt,5);
+//        g.conect_2_people(p9,p10,pessoas,path_pessoas_txt,5);
 
         //guarda e carrega de bin
         g.save_all_professionals_bin_graph(pessoas,path_pessoas_bin);   //guarda grafo em ficheiro bin
@@ -397,16 +398,16 @@ public class GraphCreator extends Application {
         g.pro_comp_meet_vertex(pessoas_empresas,path_pessoas_empresas_txt);
 
         //ligaçoes (funçoes teste)
-        g.conect_pro_comp_graphProCompMeet(p1,c1,pessoas_empresas,path_pessoas_empresas_txt,10);
-        g.conect_pro_comp_graphProCompMeet(p2,c1,pessoas_empresas,path_pessoas_empresas_txt,20);
-        g.conect_pro_comp_graphProCompMeet(p3,c1,pessoas_empresas,path_pessoas_empresas_txt,30);
-        g.conect_pro_comp_graphProCompMeet(p4,c2,pessoas_empresas,path_pessoas_empresas_txt,12);
-        g.conect_pro_comp_graphProCompMeet(p5,c2,pessoas_empresas,path_pessoas_empresas_txt,17);
-        g.conect_pro_comp_graphProCompMeet(p6,c3,pessoas_empresas,path_pessoas_empresas_txt,22);
-        g.conect_pro_comp_graphProCompMeet(p7,c3,pessoas_empresas,path_pessoas_empresas_txt,24);
-        g.conect_pro_comp_graphProCompMeet(p8,c3,pessoas_empresas,path_pessoas_empresas_txt,14);
-        g.conect_pro_comp_graphProCompMeet(p9,c3,pessoas_empresas,path_pessoas_empresas_txt,37);
-        g.conect_pro_comp_graphProCompMeet(p10,c3,pessoas_empresas,path_pessoas_empresas_txt,27);
+//        g.conect_pro_comp_graphProCompMeet(p1,c1,pessoas_empresas,path_pessoas_empresas_txt,10);
+//        g.conect_pro_comp_graphProCompMeet(p2,c1,pessoas_empresas,path_pessoas_empresas_txt,20);
+//        g.conect_pro_comp_graphProCompMeet(p3,c1,pessoas_empresas,path_pessoas_empresas_txt,30);
+//        g.conect_pro_comp_graphProCompMeet(p4,c2,pessoas_empresas,path_pessoas_empresas_txt,12);
+//        g.conect_pro_comp_graphProCompMeet(p5,c2,pessoas_empresas,path_pessoas_empresas_txt,17);
+//        g.conect_pro_comp_graphProCompMeet(p6,c3,pessoas_empresas,path_pessoas_empresas_txt,22);
+//        g.conect_pro_comp_graphProCompMeet(p7,c3,pessoas_empresas,path_pessoas_empresas_txt,24);
+//        g.conect_pro_comp_graphProCompMeet(p8,c3,pessoas_empresas,path_pessoas_empresas_txt,14);
+//        g.conect_pro_comp_graphProCompMeet(p9,c3,pessoas_empresas,path_pessoas_empresas_txt,37);
+//        g.conect_pro_comp_graphProCompMeet(p10,c3,pessoas_empresas,path_pessoas_empresas_txt,27);
 
         //guarda e carrega de bin
         g.save_all_pro_comp_bin_digraph(pessoas_empresas,path_pessoas_empresas_bin);
@@ -422,20 +423,20 @@ public class GraphCreator extends Application {
         g.pro_comp_meet_vertex(point_comp_meet,path_point_comp_meet_txt);
 
         //ligaçoes (funçoes teste)
-        g.conect_comp_point_graphProCompMeet(c1,pe1,point_comp_meet,path_point_comp_meet_txt,10);
-        g.conect_comp_point_graphProCompMeet(c1,pe2,point_comp_meet,path_point_comp_meet_txt,10);
-        g.conect_comp_point_graphProCompMeet(c2,pe2,point_comp_meet,path_point_comp_meet_txt,10);
-        g.conect_comp_point_graphProCompMeet(c3,pe3,point_comp_meet,path_point_comp_meet_txt,10);
-        g.conect_comp_point_graphProCompMeet(c3,pe4,point_comp_meet,path_point_comp_meet_txt,10);
-        g.conect_meet_point_graphProCompMeet(m1,pe1,point_comp_meet,path_point_comp_meet_txt,13);
-        g.conect_meet_point_graphProCompMeet(m1,pe2,point_comp_meet,path_point_comp_meet_txt,13);
-        g.conect_meet_point_graphProCompMeet(m1,pe2,point_comp_meet,path_point_comp_meet_txt,13);
-        g.conect_meet_point_graphProCompMeet(m2,pe2,point_comp_meet,path_point_comp_meet_txt,13);
-        g.conect_meet_point_graphProCompMeet(m2,pe3,point_comp_meet,path_point_comp_meet_txt,13);
-        g.conect_meet_point_graphProCompMeet(m3,pe4,point_comp_meet,path_point_comp_meet_txt,13);
-        g.conect_point_point_graphProCompMeet(pe1,pe2,point_comp_meet,path_point_comp_meet_txt,13);
-        g.conect_point_point_graphProCompMeet(pe2,pe3,point_comp_meet,path_point_comp_meet_txt,13);
-        g.conect_point_point_graphProCompMeet(pe3,pe4,point_comp_meet,path_point_comp_meet_txt,13);
+//        g.conect_comp_point_graphProCompMeet(c1,pe1,point_comp_meet,path_point_comp_meet_txt,10);
+//        g.conect_comp_point_graphProCompMeet(c1,pe2,point_comp_meet,path_point_comp_meet_txt,10);
+//        g.conect_comp_point_graphProCompMeet(c2,pe2,point_comp_meet,path_point_comp_meet_txt,10);
+//        g.conect_comp_point_graphProCompMeet(c3,pe3,point_comp_meet,path_point_comp_meet_txt,10);
+//        g.conect_comp_point_graphProCompMeet(c3,pe4,point_comp_meet,path_point_comp_meet_txt,10);
+//        g.conect_meet_point_graphProCompMeet(m1,pe1,point_comp_meet,path_point_comp_meet_txt,13);
+//        g.conect_meet_point_graphProCompMeet(m1,pe2,point_comp_meet,path_point_comp_meet_txt,13);
+//        g.conect_meet_point_graphProCompMeet(m1,pe2,point_comp_meet,path_point_comp_meet_txt,13);
+//        g.conect_meet_point_graphProCompMeet(m2,pe2,point_comp_meet,path_point_comp_meet_txt,13);
+//        g.conect_meet_point_graphProCompMeet(m2,pe3,point_comp_meet,path_point_comp_meet_txt,13);
+//        g.conect_meet_point_graphProCompMeet(m3,pe4,point_comp_meet,path_point_comp_meet_txt,13);
+//        g.conect_point_point_graphProCompMeet(pe1,pe2,point_comp_meet,path_point_comp_meet_txt,13);
+//        g.conect_point_point_graphProCompMeet(pe2,pe3,point_comp_meet,path_point_comp_meet_txt,13);
+//        g.conect_point_point_graphProCompMeet(pe3,pe4,point_comp_meet,path_point_comp_meet_txt,13);
 
 
         //guarda e carrega de bin
